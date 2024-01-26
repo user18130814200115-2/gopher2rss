@@ -1,0 +1,29 @@
+name: Generate feeds
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate feeds
+        run: |
+            chmod +x gopher2rss.py
+            ./gopher2rss.py
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add docs/*
+          git commit -m "Generate feeds" || true
+          git push
