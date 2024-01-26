@@ -22,7 +22,7 @@ jobs:
             ./gopher2rss.py
       - name: Generate index
         run : |
-            ls docs/ | sed 's/.*/<a href=\"&\">&<\/a>/g' > index.html
+            ls docs/ | sed 's/.*/<a href=\"&\">&<\/a>/g' > docs/index.html
       - name: Commit and Push Changes
         run: |
           git config --local user.email "actions@github.com"
