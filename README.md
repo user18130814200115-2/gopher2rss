@@ -1,7 +1,21 @@
 # Gopher2rss
 
-This is a python script designed for use with GitHub pages which coverts a
-gophermap of a directory into a rss feed.
+This is a python script which coverts a gophermap of a directory into a rss
+feed.
+
+## Deployments
+There are many ways in which you can run this script, here are some examples:
+
+### GitHub
+This repository is set up for use with GitHub pages and CI. Feeds are checked
+at midnight UCT and pushed to GitHub pages.
+
+### Local
+You can run the script locally before launching your rss reader.
+
+### CGI
+The script can easily be modified to run as a CGI script to be queried by
+your RSS reader of choice.
 
 ## Usage
 In the gopher2rss.cfg file, you can put the url to any gopher page like so:
