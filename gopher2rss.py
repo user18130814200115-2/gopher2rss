@@ -3,6 +3,8 @@
 import os
 import html
 
+directory = 'docs/'
+
 urls = []
 with open('gopher2rss.cfg') as config_file:
     for line in config_file:
@@ -15,7 +17,7 @@ rss_footer = '''
 
 for url in urls:
     full_url = 'gopher://' + ''.join(url)
-    filename = ''.join(filter(str.isalnum, full_url)) + '.xml'
+    filename = directory + ''.join(filter(str.isalnum, full_url)) + '.xml'
 
     articles_present = []
     articles_present_contents = []
