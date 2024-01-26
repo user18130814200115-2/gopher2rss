@@ -27,6 +27,6 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add docs/* index.html
+          git add docs/*
           git commit -m "Generate feeds" || true
           git push
