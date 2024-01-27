@@ -77,7 +77,7 @@ def check(url):
 
     # If there are new posts, write the full data to the xml file
     if new_posts > 0:
-        prints('Writing ' + str(new_posts) + 'new posts to ' + filename)
+        prints('Writing ' + str(new_posts) + ' new posts to ' + filename)
         with open(filename, 'w') as rss_file:
             rss_file.write(rss_header + rss_items + rss_footer + '\n')
     else:
