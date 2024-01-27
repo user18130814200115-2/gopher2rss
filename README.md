@@ -33,4 +33,14 @@ The script is written in python 3 and additionally uses curl. Libraries used are
 `os`, `sys` and `html`.
 
 ## Copyright
-I am not liable if anyone uses this script to scrape and host copyrighted content. Host generated feeds publicly only with permission from the author.
+I am not liable if anyone uses this script to scrape and host copyrighted
+content. If this repository contains your content and you wish for it to be
+removed, please send me a message, issue, pull request, email, or courier
+pigeon.
+
+Credit to the phlogs aggregated in this repo are goes to:
+
+Luxferre at hoi.st/1/posts  
+Alex Karle at alexkarle.com/1/phlog  
+Xiu at rawtext.club:70/1/~xiu/phlog  
+
