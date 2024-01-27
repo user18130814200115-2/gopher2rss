@@ -8,8 +8,6 @@ import html
 directory = './'
 config_path = 'gopher2rss.cfg'
 urls = []
-articles_present = []
-articles_present_contents = []
 rss_footer = '</channel></rss>'
 
 # By default, run verbosely
@@ -21,7 +19,11 @@ def printv(data):
 
 # This is the main function, it takes a url for a gopherhole, parses its contents to xml and writes them to a file
 def check(url):
+    # Clear data from last time
     new_posts = 0
+    articles_present = []
+    articles_present_contents = []
+
     prints('Checking ' + url)
     # Add the protocol
     full_url = 'gopher://' + url
@@ -39,6 +41,8 @@ def check(url):
     except:
         # If there is no feed present, create an empty xml file
         open(filename, 'w+')
+    # Store the articles already present in a variable, we will append new posts to this variable later.
+    rss_items = ''.join(articles_present_contents[5:-1])
 
     # Read the directory gophermap as a list for easy iteration
     data = os.popen("curl -s " + full_url).read()[:-1].split('\n')
@@ -51,8 +55,6 @@ def check(url):
 <title>''' + full_url + '''</title>
 <link>''' + full_url + '''</link>
 '''
-    # Store the articles already present in a variable, we will append new posts to this variable later.
-    rss_items = ''.join(articles_present_contents[5:-1])
 
     # Loop over every line in the gophermap
     for article in data:
