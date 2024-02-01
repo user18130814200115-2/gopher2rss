@@ -8166,4 +8166,134 @@ coming here soon.
 
 --- Luxferre ---
 </pre>]]></description>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-01-29-elite-in-awk-the-beginning.txt</link>
+<title>(2024-01-29) Elite in AWK: the beginning</title>
+<description><![CDATA[<pre>
+(2024-01-29) Elite in AWK: the beginning
+----------------------------------------
+As I said in the previous post, I wasn&#x27;t joking. Elite, even in its text
+version, is an interesting case of how a seemlingly infinite universe can be 
+created with pretty limited resources involved. And when Ian Bell, one of 
+the original Elite creators, released the universe generation and trading 
+algorithms in a form of Text Elite in 1999 (with some fixes going on until 
+2015), I knew it was just a matter of time for me to try and port it myself 
+when I discovered it.
+
+Of course, what I had to deal with was monstrous. While Bell was a genius who
+did wonders in 6502 assembly in the original Elite series, it looks like he 
+didn&#x27;t master C at all, even calling it &quot;a brain-dead language&quot; in the 
+original source code file. Maybe, that&#x27;s for the best, otherwise I&#x27;d have to 
+deal with pointer arithmetic when porting it, to the addition of everything 
+else. By the way, I have nothing against Bell himself. But I had to read the 
+code of _three_ other ports of Text Elite to understand better what whas 
+going on there: in JS, in Python and in Erlang (which I can barely read but 
+hey, it&#x27;s much more readable than e.g. Rust). And as for these ports, I do 
+have questions to their authors.
+
+Let&#x27;s take a look at this tiny code fragment from the original TXTELITE.C:
+
+int myrand(void)
+{	int r;
+	if(nativerand) r=rand();
+	else
+	{	// As supplied by D McDonnell	from SAS Insititute C
+		r = (((((((((((lastrand &lt;&lt; 3) - lastrand) &lt;&lt; 3)
+        + lastrand) &lt;&lt; 1) + lastrand) &lt;&lt; 4)
+        - lastrand) &lt;&lt; 1) - lastrand) + 0xe60)
+        &amp; 0x7fffffff;
+    lastrand = r - 1;	
+	}
+	return(r);
+}
+
+Screwed-up indentation and typos (&quot;Insititute&quot;, lol) are all over the code,
+so I got used to it when porting, but the middle expression that calculates 
+r... I really had to spend more time than I should in order to understand 
+that this abomination could just be replaced with:
+
+r = (lastrand * 3677 + 3680) % 2147483648
+
+Again, Bell was porting his algos from 6502 &quot;as is&quot; without even trying to
+optimize anything (as he didn&#x27;t know C well enough), no questions to him. 
+But... all three ports I looked at, written by third-party people, had the 
+same original formula with a ton of shifts and parens intact. This means the 
+porters didn&#x27;t even try to understand what it was actually doing. And this 
+was the point I understood that my own port had to be completed, it had to 
+be done strictly in POSIX AWK with no external dependencies and it had to 
+become better than all of those.
+
+When done with the basic porting (which was quite non-trivial as POSIX AWK
+doesn&#x27;t support hex literals in strings or in code, as well as bitwise 
+operations), I quickly understood how boring the original TE 1.5 was. Come 
+on, it had &quot;cash&quot;, &quot;hold&quot; and &quot;sneak&quot; commands, as well as free 
+intergalactic jumps! It was a fair trade engine recreation, but far from... 
+well... a game. It was too easy to perform unfair moves there, and it didn&#x27;t 
+even have any reward system besides bare cash. So I decided to move on and 
+create my own game-like experience on top of the original codebase, and 
+first things I did was to make hyperjumps non-free (5000 credits like in the 
+original Elites), to limit the &quot;hold&quot; command to one-time 35t upgrade for 
+400 credits (like in the original Elites) and to move &quot;cash&quot; and &quot;sneak&quot; 
+commands to a special cheat mode. A bit later, I introduced savestates so 
+the cheat mode (along with those commands) became fully unnecessary and was 
+removed. I also ported galaxy names from the Archimedes version of Elite. 
+But then, I had two more things to do to consider my part done.
+
+The first and, I guess, most important thing is the statistics and ranking
+system. The original Elite versions had ranks based on the number of kills, 
+which doesn&#x27;t make any sense in this version that has no combat whatsoever. 
+One of the modern Elite incarnations, Elite Dangerous, has its own &quot;Trade&quot; 
+and &quot;Explorer&quot; ranking scales, but the point system is very different from 
+the classics, so I just took the trade rank names from there. But the method 
+to calculate the rank still was on me. And I still am not sure whether the 
+formula I settled on is viable, but as of today, it&#x27;s like this: the game 
+keeps track of *all* your expenses, then calculates the overall profit 
+margin as (cash - 100CR) / expenses, then takes floor(log2) of it and 
+assigns the rank based on this number. So, e.g. to get to the Elite rank, 
+you must have made 128 times more money than you spent. I repeat, I don&#x27;t 
+know whether this is possible at all yet, so the formula (or at least the 
+logarithm base) might change in the future.
+
+The second thing is the ship upgrade system, and this is the most recent
+change to the game to this day. Instead of the &quot;hold&quot; command (one-time 
+upgrade to 35t for 400 CR in my port or arbitrarily changing the cargo in 
+the original TE), the &quot;upgrade&quot; (or &quot;up&quot;) command was introduced, that would 
+allow you to buy different ships (that, in this game, still only vary by 
+their cargo hold space) for different prices. Here, the ship names, specs 
+and prices were taken from Oolite:
+
+- Cobra Mk3 Extended (35t, 400 CR) - like in the originals
+- Python (100t, 200000 CR)
+- Boa (125t, 450000 CR)
+- Boa 2 (175t, 495000 CR)
+- Anaconda (750t, 650000 CR)
+
+The implementation of this feature was quite straightforward (while the
+&quot;hold&quot; command seemed like a hack anyway) but again, I&#x27;m still not sure if 
+all of them are even necessary. Still, attempting to reach the highest 
+upgrade tier can be considered one of the in-game goals.
+
+Speaking of goals, what about finding the legendary Raxxla? Of course, the
+planet with such a name doesn&#x27;t exist in the classic Elite universe, but if 
+we consider &quot;x&quot; as a wildcard character, there exists precisely one planet 
+that fits this template. If you find it, my port will give you a hint about 
+that. It might seem totally unnecessary but brings an additional element of 
+fun lacking in the original Bell&#x27;s version.
+
+That being said, I invite you to play my port, awlite, and test it out:
+
+git clone git://git.luxferre.top/awlite.git
+
+At the time of this post, its major version is v1.8 (the numbering started
+from the direct port being v1.5) and I doubt the savefile format will 
+further change much, but the code is readable and the README is a must-read 
+if you seriously want to play it. I hope you enjoy.
+
+By the way, please write to me on Matrix if you have any suggestions or
+feedback about the game or any other project of mine: 
+@luxferre:hackliberty.org
+
+--- Luxferre ---
+</pre>]]></description>
 </item></channel></rss>
