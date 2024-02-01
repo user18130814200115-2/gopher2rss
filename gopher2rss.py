@@ -74,7 +74,7 @@ def check(url):
 <title>''' + header[0][1:] + '''</title>
 <description><![CDATA[<pre>\n''' + html.escape(contents) + '''</pre>]]></description>
 </item>'''
-                rss_items += new_item
+                rss_items += '</item>' + new_item
                 printv(new_item)
 
     # If there are new posts, write the full data to the xml file
