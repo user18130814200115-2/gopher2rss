@@ -8296,4 +8296,124 @@ feedback about the game or any other project of mine:
 
 --- Luxferre ---
 </pre>]]></description>
+</item>
+<item>
+<link>gopher://hoi.st/1/posts/2024-02-05-busting-stereotypes-ed.txt</link>
+<title>(2024-02-05) Busting Stereotypes ep.666: featuring ed and rlwrap</title>
+<description><![CDATA[<pre>
+(2024-02-05) Busting Stereotypes ep.666: featuring ed and rlwrap
+----------------------------------------------------------------
+I have a real dilemma now. I&#x27;m no longer sure whether or not I should
+continue doing anything regarding nne development or porting it to Nim. The 
+reason? I finally learned ed.
+
+No kidding. It actually is even more no-nonsense than the text editor of my
+own creation. While jokes about ed are about as old as me or even older, I 
+guess there have been some huge misconceptions about it floating around for 
+all this time. Hadn&#x27;t I eradicated these misconceptions from my mind first, 
+I wouldn&#x27;t be writing this post in ed right now.
+
+From the &quot;normal users&#x27;&quot; perspective, they might be intimidated by not
+knowing what to do when they run ed for the first time, that&#x27;s totally true. 
+Because they got used to a certain concept of a text editor, even if the UI 
+is fully text based and modal like vi/vim. I recently discovered a whole 
+team of very professional specialists, working for the same customer as I 
+do, that also fell into this trap of knowing only one concept of an editor. 
+Meanwhile, I have developed a different approach that gets things much more 
+streamlined.
+
+The secret is: forget about &quot;editors&quot; as an app UI class. At all. Instead,
+recall the concept of REPL. Nowadays, REPL (&quot;read-eval-print loop&quot; if you 
+didn&#x27;t know) interfaces are pretty much everywhere: shells, programming 
+language interpreters, console-based DB clients, text adventures, even some 
+cryptowallets, and so on and so Forth (pun intended). Professional people 
+already have been using REPL interfaces for pretty much everything they 
+need, well, why not apply the same concept to the task of text editing? 
+
+As it stands, ed is just a REPL for text editing. And a pretty good one.
+
+Of course, even though ed doesn&#x27;t have a lot of commands to learn, grasping
+the simple thought expressed above still might not help the transition right 
+away. There still can be two major obstacles, and I&#x27;m going to tell you 
+right now how I overcame both of them.
+
+The first obstacle might be the obvious fact that, as with every REPL, ed is
+purely line-oriented. You can address every line, move around lines, change 
+entire lines, but operating with individual characters inside those lines, 
+deleting something particular from and appending to existing lines is not so 
+straightforward as you might want it at first. Yes, you really need to 
+master the substitution command to do this. Once you do this though, you can 
+become as fast as you are with screen-oriented editors.
+
+The second obstacle is that ed, operating on bare stdio streams, doesn&#x27;t
+offer you much control even over the line you&#x27;re currently entering, that 
+is, no arrow keys per-character cursor movement, no per-word navigation, no 
+input/command history etc. And this is where the rlwrap utility comes into 
+play. It allows to add the entire libreadline functionality to any program 
+run through it. And if you learn to customize it through your ~/.inputrc, 
+you can even add custom shortcuts for ed specifically! This is why, instead 
+of the vanilla ed, I&#x27;m actually using these aliases:
+
+alias ee=&#x27;rlwrap ed -p:&#x27;
+alias eer=&#x27;doas rlwrap ed -p:&#x27;
+
+In addition to using ed with rlwrap, they also set a prompt character by
+default. I chose colon because it reminds me of vi command mode, so that 
+it&#x27;s easier for me to understand that I&#x27;m in it right now. And the 
+~/.inputrc section that adds some custom shortcuts looks like this:
+
+$if ed
+set bind-tty-special-chars off
+set convert-meta on
+Meta-SPC: &quot;\n.\n&quot;
+Control-w: &quot;\n.\nw\n&quot;
+&quot;\e[Z&quot;: &quot;\C-v\t&quot;
+TAB: &quot;  &quot;
+$endif
+
+Now I can exit from the ed&#x27;s input mode by just pressing Alt+Space and save
+the document right from the input mode with Ctrl+W. I also can replicate my 
+vimrc setup where Tab key inserts two spaces and Shift+Tab inserts the 
+actual tabulation character. All thanks to rlwrap, which, by the way, now 
+also highlights matching opening parentheses when I type the closing ones. 
+Ain&#x27;t it beautiful?
+
+As far as I have found out, libreadline integration is just a tip of the
+iceberg. I&#x27;m not going to talk about people piping ed to line-oriented 
+syntax highlighters like pygmentize: that&#x27;s totally possible (which is 
+awesome by its own) but just not my cup of tea. But the overall 
+scriptability of ed on one hand (I think the -e flag in diff wasn&#x27;t created 
+just for fun) and the ! command on the other hand (to run external shell 
+commands without exiting ed) should give you a vague picture of what this 
+editor is capable of, especially in combination with the g (global action) 
+command and/or supplying regexps directly instead of line ranges. And don&#x27;t 
+even get me started on the possibilities that can be achieved with the r 
+command that just reads another file contents or even the results of ! 
+command into the current buffer position.
+
+So, what are my plans on ed? Where am I going to use it? The answer is
+simple: everywhere I can. Writing posts and letters, writing rich text 
+documents (Markdown, Gemtext, HTML, roff... wait a minute, we haven&#x27;t talked 
+about it yet, probably sometime later), programming, automation, configs... 
+You name it. Once you learn it properly (that is, not only learning the 
+command set but, more importantly, learning to decompose your editing flow 
+into atomic operations), there&#x27;s no reason not to use it instead of vim or 
+anything even more bloated. Especially when you have the convenience of 
+using rlwrap and its full inputrc-based customization power at your disposal 
+for interactive ed usage, while being able to totally omit it for 
+scripted/automation usage. By the way, I have hosted my .inputrc at 
+git://git.luxferre.top/dotfiles.git, among other things, and it&#x27;s the most 
+frequently updated dotfile at this repo as of now. So you can take a look 
+how I have set up the flow for myself.
+
+The biggest conclusion out of this though is that stereotypes can and should
+be fought. Everything should be doubted these days, even the public opinion 
+on such an old and well-known piece of software. And besides, it still is a 
+part of POSIX standards, so knowing how to use it won&#x27;t hurt anyway.
+
+Ed, man! !man ed
+
+--- Luxferre ---
+
+</pre>]]></description>
 </item></channel></rss>
