@@ -88,15 +88,15 @@ def check(url):
 
 # Main loop
 # Parse command line switches
-for argument in sys.argv:
+for index, argument in enumerate(sys.argv):
     match argument:
         case '-s':
             def prints(data):
                 pass
         case '-c':
-            config_path = argument
+            config_path = sys.argv[index + 1]
         case '-o':
-            directory = argument
+            directory = sys.argv[index + 1]
         case '-p':
             def printv(data):
                 print(data)
@@ -117,7 +117,7 @@ If a line starts with a hash symbol followed by a single space, it is read as co
 
 # Here we read the configuration file
 prints("Reading configuration file")
-with open('gopher2rss.cfg') as config_file:
+with open(config_path) as config_file:
     for line in config_file:
         # If the line starts with a hash it contains the output directory value
         if line[0] == '#':
