@@ -8,7 +8,7 @@ There are many ways in which you can run this script, here are some examples:
 
 ### GitHub
 This repository is set up for use with GitHub pages and CI. Feeds are checked
-at midnight UCT and pushed to GitHub pages.
+every three hours and pushed to GitHub pages.
 
 ### Local
 You can run the script locally before launching your rss reader.
