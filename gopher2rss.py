@@ -8,7 +8,7 @@ import html
 directory = './'
 config_path = 'gopher2rss.cfg'
 urls = []
-rss_footer = '</channel></rss>'
+rss_footer = '\n</channel></rss>'
 
 # By default, run verbosely
 def prints(data):
@@ -59,7 +59,7 @@ def check(url):
     # Loop over every line in the gophermap
     for article in data:
         # If the entry is a text file, continue
-        if article[0] == '0':
+        if article[0] == '0' or article[0] == '1':
             # Gophermaps contain information separated by tab characters as `name location host port`
             header = article.split('\t')
             # From this header we can reconstruct the url for the given post
@@ -67,15 +67,35 @@ def check(url):
             # Check if the article is already present in the rss feed.
             if article_url not in articles_present:
                 new_posts += 1
+                contents = ''
                 contents = os.popen("curl -s " + article_url).read()
-                new_item = '''
+                # Predict if the gophermap is a phlog entry by counting the number of links versus info items.
+                post_perdict = 1
+                if article[0] == '1':
+                    processed_contents = ''
+                    for line in contents.split('\n'):
+                        try:
+                            if line[0] == '1' or line[0] == '0':
+                                post_perdict -= 1
+                                parts = line.split('\t')
+                                processed_contents += '<a href=gopher://' + parts[2] + '/' + line[0] + parts[1] + '>' + parts[0][1:] + '</a>\n'
+                            else:
+                                post_perdict += 1
+                                processed_contents += line[1:].split('\t')[0] + '\n'
+                        except:
+                            pass
+                if post_perdict > 0:
+                    contents = processed_contents
+                    new_item = '''
 <item>
 <link>''' + article_url +  '''</link>
 <title>''' + header[0][1:] + '''</title>
 <description><![CDATA[<pre>\n''' + html.escape(contents) + '''</pre>]]></description>
 </item>'''
-                rss_items += '</item>' + new_item
-                printv(new_item)
+                    rss_items += new_item
+                    printv(new_item)
+                else:
+                    new_posts -= 1
 
     # If there are new posts, write the full data to the xml file
     if new_posts > 0:
@@ -103,15 +123,15 @@ for index, argument in enumerate(sys.argv):
         case '-h':
             print('''\
 Usage: gopher2rss [options...]
--h, --help      Print this help message, then exit
--s, --silent    Do not output verbose messages
--c, --config    Location of the configuration file, defaults to gopher2rss.cfg
--o, --output    Directory to output the xml files to, defaults to `./`, can also be set in configuration file.
--p, --print     Print the rss data for all new articles to the console, Recommend to be used with -s
+-h    Print this help message, then exit
+-s    Do not output verbose messages
+-c    Location of the configuration file, defaults to gopher2rss.cfg
+-o    Directory to output the xml files to, defaults to `./`, can also be set in configuration file.
+-p    Print the rss data for all new articles to the console, Recommend to be used with -s
 
 Configuration:
 The configuration file contains the urls for the gopher directories you wish to aggregate importantly WITHOUT the `gopher://` protocol string.
-If a line starts with a hash symbol followed by a single space, it is read as containing the output directory. If this value is set, it will overwrite the value set by `-o` or `--output`.
+If a line starts with a hash symbol followed by a single space, it is read as containing the output directory. If this value is set, it will overwrite the value set by `-o`.
             ''')
             sys.exit()
 
