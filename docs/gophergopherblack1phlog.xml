@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>gopher://gopher.black/1/phlog</title>
+<link>gopher://gopher.black/1/phlog</link>
+
+<item>
+<link>gopher://gopher.black/1/phlog/20240205-re-the-state-of-gopher</link>
+<title>2024-02-05 - re: The state of gopher</title>
+<description><![CDATA[<pre>
+----------------------------------------
+re: The state of gopher
+February 05th, 2024
+----------------------------------------
+
+IanJ of gopher.icu wrote a quick rant on things that bother him
+about the current state of gopher[0]. In short, line length,
+misuse of type i, and escape codes for things like color
+deccoration. We run into this sort of gopher purism a lot in the
+bitreich community. It&#x27;s not new, and it&#x27;s also a perfectly fine
+opinion. I just don&#x27;t share it.
+
+&lt;a href=gopher://gopher.icu/0/phlog/Computing/The-state-of-gopher.md&gt;[0] The state of gopher&lt;/a&gt;
+
+Lets talk about the three mentioned things in turn:
+
+First: Lines should be 70 charactes or fewer.
+
+This is indeed in the spec, and it was the impetus for my choosing
+sixty-seven as the line length I use here on gopher.black. But in
+general a line length of 80 or fewer characters won&#x27;t cause
+problems for anyone on a desktop and a line length of 67 is still
+far too wide to be useful on mobile. So what are we to do?
+
+Some people forgo wrapping at all, assuming clients are capable of
+wrapping if they&#x27;re sosphisticated. Others pick a comfortable
+middle-ground (often 80) and stick with it half out of convenience
+and half because it&#x27;s good enough. Still others who use gopher on
+mobile choose to go crazy and use very narrow posts that fit those
+screens.
+
+To the spec it&#x27;s wrong, but the spec doesn&#x27;t have feelings. The
+spec doesn&#x27;t use gopher. If someone is on their phone and very
+narrow lines make their use case better then that&#x27;s absolutely the
+right call. At the end of the day it just isn&#x27;t very important.
+
+
+Second: misuse of type-i
+
+From a historical perspective type i wasn&#x27;t even in the spec, but
+it was already in widespread use in gopherspace within the first
+year of its launch. Clients adjusted, use adjusted. RFC-1436[1]
+never learned to time travel, though, and remains sadly silent on
+the topic. 
+
+&lt;a href=gopher://gopher.black/0/archive/rfc/1436.txt&gt;[1] RFC-1436&lt;/a&gt;
+
+Why use type i gophermaps for things like this phlog? It makes it
+easy to link to things, like the RFC above. I could drop in
+a gopher URL instead, but wait... those didn&#x27;t exist when RFC-1436
+came out either. So should I instead list a selector, server, and
+port? Oh, I better indicate a type as well. No, that&#x27;s silly. Even
+though the URL scheme came later it&#x27;s a useful convention. It
+makes it easier for other people. See where I&#x27;m going?
+
+So why NOT use type i in this way? Well, two reasons. First, it&#x27;s
+harder to lay out. Working in gophermaps is nasty business.
+I wrote a tool[2] to do it for me. Without that I wouldn&#x27;t do it.
+It&#x27;s easy to screw up and awful to edit later. Easier just to
+write plain text, and plain text is sufficient.
+
+[2] Burrow
+
+And the second reason? Very old clients like the original UMN
+gopher client don&#x27;t work well with them.
+
+Thankfully very few people use that client anynmore because it&#x27;s
+pretty janky and has barely been maintained. Last I heard it was
+in search of a new maintainer, actually. And these days we have
+a wealth of new clients that are simply fantastic. We have the
+near-ubiquitous lynx which does a fair job, though notably is
+converting to HTML under the hood. But the bitreich community
+mentioned earlier has led to the creation of at least two gopher
+clients I know of that match that gopher purist philosophy. We
+also have VF-1, a lovely python client that inspired a fork for
+offline browsing of the whole small internet, and another fork for
+gemini. Bombadillo is fun, and there&#x27;s my most recent favorite,
+phetch. Lots of options all with better features and better
+handling of gopherspace.
+
+For me, the benifits of being able to link within the documents
+outweighs the negatives. The format is subverted with my tooling,
+and I don&#x27;t feel the need to lower my gopher content to an ancient
+client when there&#x27;s so many easy alternatives available.
+
+
+Third: escape codes
+
+Here&#x27;s I&#x27;ll agree partially. gopherspace shouldn&#x27;t assume terminal
+environments. Remember the phone users earlier? Generally speaking
+it&#x27;s safer not to do so. But that being said, some places in
+gopher space are not just gopher holes. They&#x27;re not just phlogs.
+They are art installations. They are pushing the boundaries of
+what&#x27;s possible and what&#x27;s decent because that&#x27;s what art does.
+I am of course thinking primarily of cat&#x27;s baud.baby[3] here, but
+there are some other gems around as well. They blow my mind when
+I see what can be created in this long forgotten corner of the
+internet. 
+
+&lt;a href=gopher://baud.baby/1/&gt;[3] baud.baby&lt;/a&gt;
+
+But it&#x27;s only visible in certain ways! Yeah, that&#x27;s true. You
+might stumble on there and go, &quot;AHH! What a mess!&quot; and miss out on
+the awesome. That&#x27;d be too bad. If that&#x27;s the case you should grab
+phetch and try again. It&#x27;s worth it. Maybe not for all of gopher,
+but for this particular thing. Keep doing what you&#x27;re doing, cat.
+
+
+Gopher is a pretty cool thing. It&#x27;s got limits that make it
+awesome because it forces us to focus on content most of the time.
+Those limits aren&#x27;t the point, though. The place it leads us to
+are the point. If we disagree on some of the details getting
+there, so be it. After all, this is in UTF-8, not Latin-1 as the
+spec calls for which lets me do some great things, like share
+music for the shakuhachi[4].
+
+&lt;a href=gopher://gopher.black/1/explorations/shakuhachi&gt;[4] Shakuhachi Music Guide&lt;/a&gt;
+
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.black/1/phlog/20240203-renunciation</link>
+<title>2024-02-03 - Renunciation</title>
+<description><![CDATA[<pre>
+----------------------------------------
+Renunciation
+February 03rd, 2024
+----------------------------------------
+
+On Feb 2, 2024 I formally renounced my US citizenship at the US
+Embassy in Reykjavik Iceland.
+
+It&#x27;s been a while coming. In fact, I knew this was something
+I wanted to strongly consider before we left the country. I had
+rough plans for ~5 years abroad, and it happened at 4.7 years.
+Pretty accurate!
+
+I started the formal process back in October when I notified the
+embassy of my intentions. There were some back and forth emails
+and I eventually received an appointment date. I had to fill out
+a lot of repetitive forms, have a phone call that repeated what
+was on the forms, and finally have the in-person appointment where
+it was all repeated again.
+
+Once the forms and signing were done I got to stand up in front of
+a flag I was literally telling these people I don&#x27;t care about and
+I got to say a formal oath of un-American-ing. Or something. It
+was very bazaar. Like, who was the oath for exactly? They didn&#x27;t
+record it or anything. It was so performative.
+
+Speaking of performative, the consular officer I met with was
+pretty creepy, in that Stepford Wives sort of way. She had
+a really fake pleasant thing going on, and offered up small talk
+that was not really small talk. She kept asking questions, &quot;just
+out of curiosity,&quot; which were obviously designed to probe me about
+my reasoning. Which was strange, since they literally ask about
+the reasoning.
+
+Why do they do that? Well, there&#x27;s one very special provision in
+the middle of all the lists. It says something to the effect of,
+&quot;If the Attorney General decides you are doing this for tax
+avoidance you can be banned from entering the US.&quot; I think the
+questions were to see if that was my reasoning.
+
+Thankfully, that&#x27;s not my reason! My reason is that America is
+a shitbag. It was founded on racism, has been responsible for
+countless atrocities even before its founding, continues to impose
+horrible ethics upon the world at the end of a gun, and
+indoctrinates its people in a cult of self delusion. But yeah,
+getting taxed as an expat is pretty annoying too. Not that I avoid
+it, it&#x27;s just annoying.
+
+So yeah, I&#x27;m done! It&#x27;s both official and not official. It&#x27;s
+official in all the ways that count outside the US. It&#x27;s not
+official yet in the US as that requires them to do some absurd
+amount of paperwork or something and it&#x27;ll take months. Right now
+I don&#x27;t have my passport because they took it, but it technically
+is still issued and valid. So in a few months when I fly through
+the US with my Italian passport and an ESTA, I risk a border
+patrol agent deciding that&#x27;s interesting enough to make my day
+horrible. I don&#x27;t really have any recourse, but then again that
+could have happened for no reason at all. That&#x27;s how America rolls
+for anyone with a badge. ACAB, bitches.
+
+Oh! It cost me $2,300 to renounce. That&#x27;s a nice little extra
+bullshit on top, isn&#x27;t it? Whatever. It&#x27;s done. I&#x27;m free. No, not
+like in America, actually free.
+
+I&#x27;m an Italian citizen, though I&#x27;ve never lived in Italy and
+haven&#x27;t spent a total of a full month in the country in my life.
+I&#x27;d like to spend more time there eventually. We&#x27;ve been
+discussing that in the 6-8 year timeframe it would be great to buy
+a flat in Italy to spend our winters. Wit will be out of school by
+then so it shouldn&#x27;t create schedule problems. I work remotely, so
+as long as we find some place with decent internet it will be
+great. And lets face it, Iceland is amazing, but it sucks monkey
+butt in January and February.
+
+So yeah, I&#x27;ll get around to brushing up on my Italian and we&#x27;ll
+look into splitting up the year. Who knows, maybe when I&#x27;m ready
+to retire I&#x27;ll like that more than Iceland (I doubt it). Then
+again, I really love it here. I have about 2 and a half more years
+before I can apply for citizenship here. That will bring my
+passport count back up to two!
+
+Plans, plans, plans. Sometimes they work out.
+
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.black/1/phlog/20240130-citizenship</link>
+<title>2024-01-30 - Citizenship</title>
+<description><![CDATA[<pre>
+----------------------------------------
+Citizenship
+January 30th, 2024
+----------------------------------------
+
+Tomorrow I have a call with the US Embassy in Iceland. It&#x27;s an
+informal interview in preparation for my renunciation of
+citizenship. Friday is the big in-person meeting where I&#x27;ll make
+it official. No more US citizenship for me! In a few days I&#x27;ll be
+Italian and only Italian (at least for now). I&#x27;d like to get
+Icelandic citizenship when I qualify in a few years.
+
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.black/1/phlog/20240111-doing-a-whole-lot-of-nothing</link>
+<title>2024-01-11 - Doing a whole lot of nothing</title>
+<description><![CDATA[<pre>
+----------------------------------------
+Doing a whole lot of nothing
+January 11th, 2024
+----------------------------------------
+
+Today I&#x27;ve finally lightened up on meetings at work. Monday
+through Wednesday were just packed full of phone calls. So today
+I was excited to not have a ton of things interrupting my day. But
+lo and behold, I have been stricken by the not-give-a-shits.
+
+So I will not be accomplishing anything today. In fact, I&#x27;m gonna
+get away from the computer and go read a bit. Tonight I&#x27;ll go to
+my hackerspace meetup, and then see a film. Tomorrow can be for
+work again.
+
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.black/1/phlog/20240108-i-just-wanna-read</link>
+<title>2024-01-08 - I just wanna read</title>
+<description><![CDATA[<pre>
+----------------------------------------
+I just wanna read
+January 08th, 2024
+----------------------------------------
+
+WHaaaaa!!
+
+(That&#x27;s me crying)
+
+I don&#x27;t wanna today. Gimme coffee, a nice warm blanket, and
+a mountain of books. I just want to read.
+
+I just started on Being Arab and it&#x27;s fascinating! I&#x27;m listening
+to Jin Yong&#x27;s 3rd part of the Legend of the Condor Heroes as well.
+I love it so much.
+
+Once those are done I have hundreds and hundreds more. All the
+entertainment. All the adventures. But no... I need to get on
+conference calls like a sucker. Booooooo.
+
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.black/1/phlog/20240102-resolution</link>
+<title>2024-01-02 - Resolution</title>
+<description><![CDATA[<pre>
+----------------------------------------
+Resolution
+January 02nd, 2024
+----------------------------------------
+
+Be it resolved:
+
+The dance-craze of 2024 will be known as &quot;The Tomasino&quot;.
+
+&lt;a href=gopher://gopher.black/1/phlog/20221231-resolution&gt;2023 Resolution&lt;/a&gt;
+&lt;a href=gopher://gopher.black/1/phlog/20211230-resolution&gt;2022 Resolution&lt;/a&gt;
+&lt;a href=gopher://gopher.black/1/phlog/20201231-resolution&gt;2021 Resolution&lt;/a&gt;
+&lt;a href=gopher://gopher.black/1/phlog/20200101-resolution&gt;2020 Resolution&lt;/a&gt;
+&lt;a href=gopher://gopher.black/1/phlog/20181225-resolutions&gt;2019 Resolution&lt;/a&gt;
+&lt;a href=gopher://gopher.black/1/phlog/20180101-resolution&gt;2018 Resolution&lt;/a&gt;
+
+</pre>]]></description>
+</item>
+</channel></rss>

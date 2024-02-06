@@ -8416,4 +8416,71 @@ Ed, man! !man ed
 --- Luxferre ---
 
 </pre>]]></description>
-</item></channel></rss>
+
+<item>
+<link>gopher://hoi.st/1/</link>
+<title>Go to root</title>
+<description><![CDATA[<pre>
+HOI.ST: Luxferre&#x27;s personal gopherhole
+--------------------------------------
+Hi, this is Luxferre. I&#x27;m into low-power computing (LPC), non-touchscreen
+cellphones, non-Swiss wristwatches, non-proprietary software and 
+non-bullshit discussions.
+
+My resources on Gopher:
+
+&lt;a href=gopher://happynetbox.com/1luxferre&gt;My fingerpage on HNB&lt;/a&gt;
+&lt;a href=gopher://hoi.st/1/posts&gt;LuxPhlog (my posts and articles)&lt;/a&gt;
+&lt;a href=gopher://hoi.st/1/docs&gt;LuxDocs (various useful tech info pages, both mine and third-party)&lt;/a&gt;
+&lt;a href=gopher://hoi.st/1/dl&gt;Downloads&lt;/a&gt;
+
+&lt;a href=gopher://hoi.st/0/data-formats-hall-of-fame.txt&gt;Data formats Hall of Fame&lt;/a&gt;
+&lt;a href=gopher://hoi.st/0/programming-languages-hall-of-fame.txt&gt;Programming languages Hall of Fame&lt;/a&gt;
+
+My resources on Gemini:
+
+My poems (mostly in Ukrainian)
+
+My resources on &quot;big Web&quot;:
+
+Homepage
+Blog (highly subjective)
+SourceHut
+
+My Gopher-related projects:
+
+Kopher (client for KaiOS 2.5.x)
+Bopher-NG and Bopher Tools
+OSmol (static Gopher server in OCaml)
+
+Useful links on Gopherspace:
+
+&lt;a href=gopher://magical.fish/1/&gt;Magical Fish&lt;/a&gt;
+&lt;a href=gopher://i-logout.cz/1/bongusta&gt;Bongusta Phlogs&lt;/a&gt;
+&lt;a href=gopher://bitreich.org/1/lawn&gt;Gopher Lawn&lt;/a&gt;
+&lt;a href=gopher://1436.ninja/1/Port70News&gt;Port 70 News&lt;/a&gt;
+&lt;a href=gopher://graph.no/0help&gt;Graph.no weather forecasts&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/1/&gt;gopher.icu&lt;/a&gt;
+&lt;a href=gopher://bay.parazy.de/1/&gt;Torrent search&lt;/a&gt;
+&lt;a href=gopher://tilde.pink/1/~bencollver/dir/&gt;Google Directions&lt;/a&gt;
+&lt;a href=gopher://worldofsolitaire.com/1/games&gt;World of Solitaire&lt;/a&gt;
+&lt;a href=gopher://happynetbox.com/1/&gt;Happy Net Box&lt;/a&gt;
+&lt;a href=gopher://tilde.club/1/~freet/gophhub/&gt;GophHub (GitHub via Gopher)&lt;/a&gt;
+
+Search engines for Gopher (direct 7-type links):
+
+Veronica-2 (by Floodgap)
+Contrition (by ForthWorks)
+Quarry (by gopher.icu)
+
+For the brave explorers:
+
+&lt;a href=gopher://gopherspace.de/1/alive/new.report.php&gt;Daily Gopher servers still alive&lt;/a&gt;
+&lt;a href=gopher://p3x981.com/1/cgi-bin/known-hosts&gt;Known servers&lt;/a&gt;
+&lt;a href=gopher://gopher.viste.fr/1/ogup/list&gt;The Observable Gopherspace&lt;/a&gt;
+
+--- Luxferre ---
+
+</pre>]]></description>
+</item>
+</channel></rss>
