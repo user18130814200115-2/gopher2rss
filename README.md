@@ -25,8 +25,7 @@ tilde.club /1/~user18130814200115/posts
 ```
 The space between the host and the directory is very important.
 
-The script will then produce an xml file for every text entry in the directory
-(currently does not work if the directory contains other gophermaps).
+The script will then produce an xml file for every text entry in the directory. If the entry is a gophermap rather than a text file, the script tries to estimate if the map is a directory or a post by counting the number of links as opposed to the number of info lines. If the number of info lines is greater, then we process the gophermap as a post, trunign the gopher links into html ones.
 
 ## Dependencies
 The script is written in python 3 and additionally uses curl. Libraries used are
