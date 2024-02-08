@@ -37,7 +37,8 @@ pigeon.
 
 Credit to the phlogs aggregated in this repo are goes to:
 
-Luxferre at hoi.st/1
-Alex Karle at alexkarle.com/1 
+Luxferre at hoi.st
+Alex Karle at alexkarle.com
 Xiu at rawtext.club/1/~xiu 
-James Tomasino at gopher.black/1
+James Tomasino at gopher.black
+IanJ at gopher.icu
