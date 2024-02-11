@@ -1435,4 +1435,88 @@ Email your questions, comments, or recommendations to
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0010-mr-trashman-bring-me-a-mac-mini.txt</link>
+<title>0010-mr-trashman-bring-me-a-mac-min   2024-Feb-06 23:01     3.7 KB</title>
+<description><![CDATA[<pre>
+Mr Trashman, bring me a... mac mini?
+Tue, 06 Feb 2024
+Environmentalism, Technology
+====================================
+
+Just the other day, I took a trip (less than 15 meters) to the
+local e-waste disposal site. Unfortunately, the screen of my
+ereader broke a while back. After letting my old friend collect
+dust for a month or so, I decided to finally put him to rest and
+commit him to the recycling bin.
+
+While I was there however, something caught my attention from the
+corner of my eye: an Apple mac mini. It looked in pretty good
+condition, so I decided to take it home to see if I could repair
+it, or otherwise strip it for parts. Luckily, the previous owner
+had thrown away the power cord as well, so i took that too.
+
+Upon getting home, I hooked the mac up to the only HDMI display
+in my house: The living room TV and pressed the power button.
+Much to my surprise, the machine started up straight away and I
+was greeted by Mac OSX snow leopard. Yea... This thing was pretty
+old, but I&#x27;ll get back to that later.
+
+The system logged in automatically, and I was greeted by the
+classic purple galaxy background and a desktop filled with
+someone else&#x27;s personal files. I set my sights on factory
+resetting the mac, as I felt it rather unethical to dig through
+the other person&#x27;s accounts and files. Resting the mac proved
+rather difficult, as I had no password, and the recovery
+partition was missing.
+
+No matter, I happen to know a little trick for breaking in to
+macs from the time when I used to have a macbook (which, much
+like this mac mini, was also from 2010). Simply enter the shell
+during startup by holding command+S, mount the disk and remove
+the file /var/db/.applesetupdone. This allows you to make a new
+administrator account on the next startup. Which, may I just say,
+is a stupidly easy way of bypassing password protections,
+especially on a product made by a company which prides itself on
+security. I will just assume that this exploit is fixed in later
+versions of OSX.
+
+Anyway, now that I had an admin account, I could start exploring
+the OS. The first thing I noticed was that basically the entire
+internet was not working. Or rather https was not working. Safari
+gave me very helpful error messages such as ``failed to
+establish a connection to ...&#x27;&#x27; while Chrome told me the clock
+was set wrong (it wasn&#x27;t). The problem was of course that the
+certificates expired, since the OS was not updated in over a
+decade.
+
+I managed to get the certificates from curl, and add to the
+keycain using a little shell script. At this point I did realize
+why the original owner thew the thing away though. This is not a
+problem that is easy to diagnose for a non-tech-savvy person, let
+alone fix.
+
+Next, I started looking for a more up-to-date browser. The
+version of safari on this thing could not render most modern web
+pages (though of course my website and many other small-web
+pages loaded just fine). I found a number of discontinued
+projects before settling on Interweb. This one was also
+discontinued, though it was the most recently updated one.
+
+After all of that the OS works... Not great exactly. It is
+remarkably snappy given how many animations and shaders the
+desktop environment has, but the software stack from 2010 is just
+not usable, at this point it is just a DVD player.
+
+I will probably try to get Linux running, and I did see an some
+DDR3 ram sticks for sale second hand for only around 10 euros, so
+I might see if this could be a capable enough little media
+server.  If not, a media server, I might set it up with ssh and
+just run the thing headless. Having a non-cloud based wireless
+backup for my thesis and other important documents would be nice,
+even if it is on spinning rust. Now that I think about it, that
+would be very simple to do, even under OSX.
+</pre>]]></description>
+</item>
 </channel></rss>
