@@ -84,6 +84,8 @@ def check(url):
                                 processed_contents += line[1:].split('\t')[0] + '\n'
                         except:
                             pass
+                else:
+                    processed_contents = contents
                 if post_perdict > 0:
                     contents = processed_contents
                     new_item = '''
