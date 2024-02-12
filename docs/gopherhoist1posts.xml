@@ -8483,4 +8483,65 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-02-12-cosa-nostra.txt</link>
+<title>(2024-02-12) Cosa Nostr-a</title>
+<description><![CDATA[<pre>
+(2024-02-12) Cosa Nostr-a
+-------------------------
+This week, once again I came across an interesting case of people offering a
+technical solution to a non-technical problem. For some unthinkable reason, 
+they still believe in the success of this solution though. Meanwhile, I got 
+convinced in the opposite as soon as I found out the details: it&#x27;s built on 
+top of websockets, its core developers are clueless noobs that don&#x27;t believe 
+there are other version control systems than Git, it tries hard to integrate 
+with the most inconvenient cryptocurrency ever, and it already attracts more 
+propaganda morons than it should given the stage of its development. By now, 
+you might already have guessed I&#x27;m talking about Nostr.
+
+The idea of this network looks quite noble: to create a decentralized,
+extensible and censorship-resistant (at least that&#x27;s what they say) free 
+speech medium where people could share their ideas in various forms and 
+establish social contacts. All Nostr messages are digitally signed &quot;event&quot; 
+objects in the JSON-based format described in so-called &quot;NIPs&quot; — Nostr 
+Implementation Possibilities. By the way, the name &quot;Nostr&quot; itself means 
+&quot;Notes and Other Stuff Transmitted by Relays&quot;. Relays are just servers that 
+serve the events and accept them from others. However, this is where the 
+first problem is: relays don&#x27;t talk to each other, only to end users.
+
+Why is this a problem? Because everyone is required to agree upon some set of
+relays where they can find each other, and even then it&#x27;s not fully 
+censorship-resistant. You can only be not silenced if you run your own 
+relay, but then, good luck getting anyone else finding it if you&#x27;re already 
+censored, and this effectively doesn&#x27;t make any difference from running your 
+own website or a gopherhole (like this one).
+
+Another huge problem is implementation bloat. I haven&#x27;t been able to find a
+single Nostr client in plain C or Nim. The closest to that was Algia written 
+in Go. Requiring EC cryptography, JSON *and* websockets to write a minimum 
+viable client is just too much. Not to mention that even web-based clients 
+are naturally heavy and don&#x27;t work in non-JS browsers like Links or NetSurf. 
+A lot of these clients also integrate &quot;zap&quot; functionality, which is a word 
+for giving tips via... Bitcoin Lightning network. And on top of it all, to 
+do zaps, they promote custodial (!) wallets which are implemented as browser 
+extensions, as well as some extensions to store Nostr private keys... I lost 
+count how many security antipatterns were involved in the implementation of 
+all this.
+
+Yet, despite its immaturity, Nostr already is infested with propaganda bot
+farms just like any other social media. And public relay owners don&#x27;t seem 
+to give a shit. That makes me wonder: who really runs those relays and for 
+what purpose? I won&#x27;t be surprised if they are used to coordinate botnet 
+attacks sometime in the future yet do nothing with it as well.
+
+Still, for some small talk, I&#x27;m gonna hang around Nostr for some time at
+least, because this network does have some good things too (in comparison to 
+the mainstream ones). Just remember: the most dangerous form of slavery is 
+the one that gives you an illusion of freedom.
+
+--- Luxferre ---
+
+</pre>]]></description>
+</item>
 </channel></rss>
