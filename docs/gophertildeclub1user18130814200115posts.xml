@@ -1519,4 +1519,130 @@ even if it is on spinning rust. Now that I think about it, that
 would be very simple to do, even under OSX.
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0011-french.txt</link>
+<title>0011-french.txt                       2024-Feb-16 12:28     5.5 KB</title>
+<description><![CDATA[<pre>
+French
+Fri, 16 Feb 2024
+Academia
+================
+
+I studied French for five years (give or take one) in ``middle
+school&#x27;&#x27; (Dutch middle school combines the American middle school
+and high school into one, that is to say, I had French classes
+from age 11 till 16). I was allowed to drop French in the fifth
+year due to my dyslexia and would have otherwise had six years in
+total.
+
+I -- like most people how had any foreign language in school --
+remember very little of my French classes. Most of them focussed
+on grammar and literature, which are two aspects I know nothing
+about even in my native languages. The only knowledge I retained
+of French were the useful phrases picked up in the first year (my
+name is, I don&#x27;t speak French very well, can you slow down, where
+is the supermarket/hospital/pharmacy, etcetera).
+
+Just in case anyone was wondering, this is the same for people
+who dropped French after two years in favour of German, Latin, or
+Greek, and for people who pursued French for the full six year
+program.
+
+After graduating, i spent some time in France, and most of my
+actually useful French knowledge came from that brief period.
+Needless to say, when I encountered a potential source of my
+masters dissertation written in French, I was not exactly
+ecstatic about translating it. The paper seemed at first glance
+to be very useful however, so I made a cup of tea, grabbed my
+notebooks and tablet, and set off towards the study room in my
+village.
+
+-----------------------------------------------------------------
+
+The paper I was translating is titled ``Valeur critique de la
+mystique plotienne&#x27;&#x27; by Jean Troulliard. This is a highly
+specialized work containing lots of Neoplatonic jargon and a fair
+amount of ancient Greek and Latin. Also, did I mention that
+`translation&#x27; was a course reserved for 6th year Frech? The year
+I happened to drop?
+
+Luckily, there are many tools these days to facilitate
+translation. Large language models are an order of magnitude more
+adept at translation compared to traditional digital methods such
+as google translate, and the availability of digital online
+dictionaries further facilitates the process.
+
+The first problem I had to solve however was getting the document
+in a machine readable format. I possessed only a scan of the
+document which I put through an Optical Character Recognition
+(OCR) program to get the paper in text from. This was actually
+fairly accurate. The program struggled slightly with the French
+quotation marks &lt;&lt; and &gt;&gt;, and it completely botched the Greek,
+footnote markers, and occasionally interpreted a speck on the
+lens as a period or comma.
+
+So I went through the entire document first in French, doing an
+instal pass on the spelling, punctuation, and transcribing all
+the Greek parts by hand.
+
+I then fed this data in its entirety to Chat GPT (it is 2024
+after all) and put that output into a latex document.
+
+I went thought his document as I normally do, reading and
+annotating important parts whist making notes in my physical
+notebook for the sake of redundancy. Having already made a pass
+on the original French, I felt as though this went a lot faster
+than normal. While reading, I also improved the automatic
+translation here and there, mostly breaking up sentence
+structures which appeared rather obtuse in English, and fixing
+some mistakes the LLM made with philosophical jargon. For this
+step I was assisted by someone more versed in the romance
+languages and French in particular, which proved not entirely
+necessary, but certainly improved the translation at the end.
+
+Whist reading, I noticed I was being a lot more critical.
+Usually when reading paper like these, I just take what the
+author says for granted while reading (unless it is particularly
+outrageous) and reflect critically at a later date. Now however,
+I found myself scrutinizing every line -- primarily for
+translation errors, but therefore also picking out lines which
+did not seem in-line with what I knew of the Neoplatonic
+tradition.
+
+At the end of the day, i spent nearly six hours reading 10 pages
+of text, only ~12 times slower than my usual speed. Great
+success.
+
+What stood out to me most about this exercise is how enjoyable
+and educative it was. Wanting to actually read the paper did
+wonders for my motivation, whereas reading French ``high
+literature&#x27;&#x27; in middle school was always a drag. Furthermore, I
+learned more about French sentence structure in these six hours
+than in five years of classes, and I doubt the sixth year would
+have helped much either. Having to transcribe the Greek by hand
+did wonders for my comprehension of the alphabet (which used to
+be shoddy at best, but is now shoddy at worst), and the whole
+project made me much more excited about reading French texts in
+the Future.
+
+-----------------------------------------------------------------
+
+All of that is to say: (middle) school language classes (and
+classes in many other areas for that matter) have failed me and
+almost everyone I know. They both fail to actually teach, and
+suck so much joy out of learning that people develop permanent
+aversions towards certain topics. I was convinced by my teachers
+that I was not good at languages. Now I am fluent in two, capable
+in two others, and a beginner in yet another pair, whist knowing
+phrases and basics for a handful of languages in various
+families.
+
+I sincerely hope that the educational system has improved since I
+left, but given that its main focus currently seems to be
+`modernizing&#x27; -- id est: giving 4 year olds personal laptops
+and/or tablets, so they can stay glued to a screen even at school
+-- I am not expecting much.
+</pre>]]></description>
+</item>
 </channel></rss>
