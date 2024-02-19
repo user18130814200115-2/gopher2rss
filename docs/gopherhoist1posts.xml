@@ -8544,4 +8544,137 @@ the one that gives you an illusion of freedom.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-02-19-got-into-tron.txt</link>
+<title>(2024-02-19) Got into Tron by necessity, staying due to curiosity</title>
+<description><![CDATA[<pre>
+(2024-02-19) Got into Tron by necessity, staying due to curiosity
+-----------------------------------------------------------------
+The week that has just passed might be full of the biggest revelations for me
+so far in the year 2024.
+
+As I&#x27;m partially moving my funds into crypto, I faced a question: which
+currency to store them in? Bitcoin is out of question (yet): too volatile, 
+the fees are enormous and the transaction time too (not counting the crutch 
+in the form of Lightning network). Monero is awesome but still not stable 
+enough. USDT on Ethereum — again, the fees just destroy all the fun. USDT on 
+Polygon — too immature and not widely adopted. This is why I decided to base 
+it all upon USDT TRC20 token, i.e. on the Tron network.
+
+But then, when this decision was made, another problem awaited me. While
+there are several good non-custodial AND FOSS Tron wallets for Android, 
+there are no such ones for Linux desktop, and barely any for CLI, not 
+mentioning the monstrous official Java-based wallet-cli and some strange 
+alternative implementation in Crystal that won&#x27;t work e.g. on OpenBSD 
+anyway. Yes, I had to DIY my own Tron wallet specifically for my own usage 
+needs. And yes, I went for it: git://git.luxferre.top/kisstron.git
+
+When you clone the repo, you can easily see why I chose Python to implement
+kisstron. This wallet is based upon a wonderful tronpy library, which itself 
+is opensource and glues together many other pure-Python and C-FFI 
+cryptographic pieces to interact with the Tron blockchain the way the 
+interaction should be done to be convenient for third-party developers. 
+Being quite a noob in Tron, I only needed about 4 days to create a fully 
+functional wallet with several advanced features. One of these features 
+though, being so minor in itself, became the base for those revelations I&#x27;m 
+gonna talk about. But first, I need to clarify several things about the Tron 
+network that are very important for understanding what happens next in my 
+story.
+
+So, despite Tron was mainly advertised as an Ethereum competitor, it has
+quite a different approach to how transaction fees work. Unlike Ethereum and 
+similar networks, where you always have to have some main &quot;network-native&quot; 
+currency (ETH, MATIC, AVAX etc) on your balance in order to cover the 
+so-called &quot;gas fee&quot; in addition to the tokens you want to transfer, Tron, 
+while being dependent on its main TRX coin too, offers you a way to pay for 
+transactions with so-called &quot;energy&quot; and &quot;bandwidth&quot; points. I won&#x27;t go into 
+details on how these points are spent, earned or automatically replenished, 
+I can only say two things that are essential: 1) for TRC20 token transfers, 
+only energy points are spent (and if there are none, TRX are burned 
+directly), 2) any Tron transaction API allows you to set the fee limit, i.e. 
+the maximum amount of TRX that can be burned by a transaction, and if the 
+transaction requires more, it is considered failed and OUT_OF_ENERGY 
+contract execution result is recorded on the blockchain.
+
+Of course, when writing the wallet, I tested it on a Tron testnet (Nile, to
+be exact, because Shasta is harder to find *both* TRX and USDT faucets for), 
+and testnets generally tend to have higher fees than the mainnet, so I had 
+set up a hard fee limit of about 10000 TRX at first, or something like that. 
+I naturally thought (because that&#x27;s what I read in the docs) that the 
+mainnet fee limit is normal to set to, like, 10 TRX, so this is what I 
+hardcoded as well.
+
+Now, the story itself begins when I finally tested out everything I could on
+Nile, switched to my primary wallet on mainnet and tried to do the first 
+&quot;real&quot; USDT token transaction to an real non-KYC merchant (of course I won&#x27;t 
+disclose which one). I got an OUT_OF_ENERGY error on kisstron but the 
+payment went through on the merchant&#x27;s side. Of course, at first I thought 
+that&#x27;s a bug in kisstron, but then I looked at the transaction ID on 
+Tronscan (Tron&#x27;s blockchain explorer) website and found out that nothing was 
+wrong on my side, the contract invocation really failed with OUT_OF_ENERGY 
+and, on top of that, only a small TRX amount (under 2, maybe even under 1) 
+was deducted from my balance along with the energy points, all TRC20 USDT 
+were intact. Naturally, I still increased the default fee limit in kisstron 
+to 100 TRX so that my mainnet USDT transactions would proceed normally under 
+any circumstances, but also introduced a new command-line flag to optionally 
+manipulate this limit when one needs it.
+
+Nevertheless, I was hit with a stone-hard fact: there are vulnerable
+merchants that cannot validate Tron token transactions properly. And, as I 
+quickly confirmed, the vulnerability wasn&#x27;t limited to a particular merchant 
+but was the same for the entire crypto payment provider they used, as the 
+official demo I stumbled upon had the same exact issue. And this payment 
+provider is now a bit outshadowed by some newer competitors, but still isn&#x27;t 
+completely unknown. I checked whether or not the vulnerability also was 
+present on some of its competitors, turns out they do verify the 
+transactions properly, but I thought there was another area to try my luck.
+
+Non-KYC automated crypto exchanges. I tried many, and one among them still
+turned out to be vulnerable (at least in some conditions), and it&#x27;s not 
+completely no-name either (although I can&#x27;t find out who exactly owns it). 
+Now we&#x27;re talking serious business. Because it&#x27;s no longer about physical 
+goods or services whose sellers, in case of the latter, can just terminate 
+your account if they find any billing mismatch, or, in case of the former, 
+can just get your ass kicked at your delivery address. It&#x27;s about the 
+situation where someday a lot of funds can disappear from the exchange and 
+the owners would have no clue what just happened and what to do with it. 
+Especially if they are some shadowy actors themselves and try to hide their 
+own identity at all cost, but hey, is it immoral to scam the scammers?
+
+And yes, it turned out that you don&#x27;t even have to have the required amount
+of USDT to perform this attack, as the energy validation is done outside the 
+contract code and the source token amount check is done later inside it. You 
+just have to have the amount of TRX necessary to cover the (failed) contract 
+invocations. It&#x27;s interesting, however, that the vulnerability doesn&#x27;t have 
+anything to do with the blockchain itself, only with how the transactions 
+are checked vs. how they should be checked.
+
+As you can see, this is very simple. I really didn&#x27;t think such huge mistakes
+could be possible in 2024, when a horde of developers says they are &quot;into 
+crypto&quot; and &quot;driving blockchain innovations&quot;. Yet they don&#x27;t seem to grasp 
+basic infosec principles, one of the cornerstones of them being &quot;always 
+fully validate the input&quot;. Yes, even if the input already comes from the 
+blockchain and not directly from a user. And if we think of how many of 
+those morons work in other critical areas like military, healthcare, 
+aerospace... I&#x27;m afraid that sooner or later we might have another Therac-25 
+case, but on a global scale, unless something is done about it quickly and 
+swiftly.
+
+I won&#x27;t disclose any further details about which services are vulnerable, nor
+am I going to abuse what I already found. But I still cannot decide whether 
+such a &quot;scholar&#x27;s mate&quot; in this realm was left there deliberately or they 
+really are THAT stupid. And I don&#x27;t even know the full scale of the problem 
+yet, that is, how many other crypto payment processors and exchanges are 
+affected. If such a total noob with those blockchains like myself could find 
+this vulnerability by accidentally sending a token transaction with a lower 
+fee limit, I can only imagine what those who have a full-time job of 
+searching and finding such blunders in all similar systems could do.
+
+Moral of the story: always code responsibly, and triple that aspect if your
+and others&#x27; money depends on it.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
