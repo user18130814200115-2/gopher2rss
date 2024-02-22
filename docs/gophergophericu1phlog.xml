@@ -5452,4 +5452,86 @@ is not eco-friendly. Biodegradable materials like wood may end up as
 compost, but we&#x27;re consuming trees to provide this resource.
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Radio/Ham-Radio.md</link>
+<title>2024-02-22  Ham Radio</title>
+<description><![CDATA[<pre>
+# Ham Radio
+
+I started a new adventure into ham radio. The idea came to me during
+the COVID lock-down but although I purchased the study material, for
+some reason I got distracted and didn&#x27;t follow up on it until just
+before Xmas last year. To get things moving I bought myself a small
+hand-held, Retevis RT85, so that I could at least listen and keep my
+interest. Once I had been reviewing the study material again and
+thought I was ready to take the exam I started to look for a local
+examination centre.  Luckily there was a radio club fairly close that
+was approved to sit the exam. I ended up joining the club and doing
+the final few weeks of studying with their assistance before sitting
+my exam.
+
+I took the examination on the 9th of Feb and was informed by the
+invigilator that I had passed the same evening. Monday this week I
+received my certificate so that I could request my licence and
+call-sign. This was all taken care of within a few minutes via an
+online form.
+
+
+## The myth of HT&#x27;s
+
+Having viewed a significant amount of videos online, I thought my HT
+would have me easily connecting to local repeaters and having a great
+old time talking with the locals. The reality sadly was much
+different. We have 2 repeaters within the town and although I can
+hear their transmissions, including a Hubnet connected repeater some
+24 miles away, I can barely be heard on even the nearest. 5w and a
+rubber duck antenna just won&#x27;t cut it in an urban environment. I have
+to admit I&#x27;m not helped by the terrain as I am basically in the
+bottom of a valley, but I really thought things would be better than
+they are. Obviously I was super keen to make contacts having put in
+all the effort to gain my licence but I feel pretty disappointed
+after 3 days of not being heard, or being barely heard.  Saying that
+I have managed a few contacts, one of which gave me instruction
+over-the-air, how to build myself a dipole antenna.
+
+
+## The dipole
+
+The instruction I received was to take a piece of coaxial cable,
+strip off 19&quot; of the outer jacket and separate the shielding and
+center core and pull them in opposite directions to form the two
+elements of the dipole. Through some fortune I had aquired some RG58
+coaxial from the radio club last Friday evening, so I already had a
+significant component for the build. I needed to keep the elements
+separated and have some way of mounting it. The first thing that came
+to my mind was a long straight piece of plumbing tube that I had
+pulled out of the loft when we first moved in. I measured a length
+about an inch longer than the total length of the dipole and cut the
+tube. I then drilled a hole in the center of the tube to be able to
+feed through the RG58 cable. I made a small hook on the end of the
+cable so that I could try to poke it through the hole and then
+proceeded to draw through the cable[1]. Once I got close to the
+elements I fed in the wire section in its plastic jacket, put a cable
+tie around the coaxial just below where the two wires separated[2],
+and proceeded to pull it down the tube. This eventually resulted in
+the braided half of the dipole being pulled in and both elements
+being centered in the tube[3]. I have ordered an SMA male to BNC
+female connector for the radio and a BNC male to RG58 compression
+plug for the end of the coaxial along with a Diamond SRH701 antenna.
+The 19cm Diamond should be an improvement over the standard rubber
+duck for portable use and I will use the dipole, vertically mounted
+in the loft, when at home.
+
+There are a lot more knowledgeable people at the club than me with
+regard to antenna so, I will see if we can test the SWR of the dipole
+and make any adjustments on Friday evening, before I connect it to
+the radio. Hopefully the connectors will be here by then...
+
+
+[1](gopher://gopher.icu/I/phlog/Radio/images/dipole2.jpg)
+[2](gopher://gopher.icu/I/phlog/Radio/images/dipole3.jpg)
+[3](gopher://gopher.icu/I/phlog/Radio/images/dipole4.jpg)
+</pre>]]></description>
+</item>
 </channel></rss>
