@@ -5578,4 +5578,66 @@ Thanks Paula!
 [1](gopher://gopher.icu/0/phlog/Radio/Ham-Radio.md)
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Radio/VHF-and-UHF.md</link>
+<title>2024-03-02  VHF and UHF</title>
+<description><![CDATA[<pre>
+# VHF and UHF
+
+It was never really my intention to invest too much time, or money,
+into UHF or VHF. Due to my location, in the bottom of a valley, I
+didn&#x27;t think it would work very well and I would be heavily reliant
+on repeater infrastructure. For me, being reliant on infrastructure
+defies the object of the exercise which was station to station
+communications, should there be some event that would interrupt our
+more common communications channels.
+
+After nearly two weeks of operating, my opinion has changed a little.
+On simplex, station to station, I have  spoken to a handful of locals
+, a couple of contacts on higher ground further a field and also one
+contact some 26 miles away who gave me a 5 &amp; 9 report. I have
+frequently used a Hubnet linked repeater some 20 miles away and made
+a number of local contacts via the local repeaters. I have been
+pleasantly surprised by my range in certain directions and confused
+by it in others. There is a repeater practically on my door step some
+4 miles away and I am unable to use it, but I can be heard clearly on
+another some 20 miles away. RF is a strange beast indeed.
+
+
+## Summary
+
+I still don&#x27;t intend to invest heavily in UHF or VHF but my attitude
+towards it has certainly softened over the past week. I have some
+better quality coaxial cable which I will install in the next week or
+so.  Higher frequencies suffer greater losses of signal on poor
+quality cable. Without changing the antenna or any other component
+this should improve my signal due to reduced losses in the cable.  
+
+Like with low powered computers, there is satisfaction to be gained
+by operating low power and squeezing the most out of it. Bear in mind
+that all the above was achieved with a Retevis RT85 5W hand held
+radio that cost 23 GBP, a piece of RG58 coaxial cable and piece of
+plastic waste pipe ...
+
+
+## My station
+
+* Retevis RT85
+* Diamond SRH-701 19cm antenna (for portable use)
+* Retevis RT85 extended battery pack
+* SMA-M to BNC-F connector
+* 10m of RG58 coaxial
+* BNC-M to RG58 connector
+* piece of plastic waste tube (outer of the dipole)
+* Ring ferrite to choke the RF from the exit of the dipole.
+
+
+## Future upgrades
+
+* PSF 1/4m high grade UHF/VHF cable install
+* Make a slim-jim antenna from 300ohm ladder line
+* Hand microphone ?
+</pre>]]></description>
+</item>
 </channel></rss>
