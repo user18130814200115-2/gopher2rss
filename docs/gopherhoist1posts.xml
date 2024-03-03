@@ -8699,4 +8699,52 @@ of freedom.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-03-04-android-and-other-things.txt</link>
+<title>(2024-03-04) Android and several other things this week</title>
+<description><![CDATA[<pre>
+(2024-03-04) Android and several other things this week
+-------------------------------------------------------
+This one won&#x27;t be long either. Not gonna lie, I didn&#x27;t get much inspiration
+throughout the week to write about something exciting. I was emotionally 
+exhausted and whatever I&#x27;d been feeling was totally counterproductive. I 
+did, however, manage to focus on one particular thing, and that is, 
+&quot;reviving&quot; my Gemini PDA (by Planet Computers), i.e. preparing it for some 
+active use.
+
+Alas, there is no ready fully degoogled firmware for this device, although
+I&#x27;m thinking of preparing one. But the software I have installed there is 
+pretty much all FOSS. Starting with app sources themselves: F-Droid, 
+Obtainium and FFUpdater. And I found myself using Obtainium more and more, 
+as it allows to directly tap into the repos that have release publishing 
+enabled. Of course, my minimum list includes KISS Launcher, Amaze, Aegis, 
+Termux, Mull, Tor Browser, Orbot, K-9 Mail, LibreTorrent, OnionShare, VLC, 
+Xmp Mod Player, Lagrange, Unstoppable Wallet, Monerujo, Aves Libre and many 
+other interesting things. Yes, there already is a version of Lagrange for 
+Android, so I can browse Gemini while on Gemini. But why did I dig it up in 
+the first place?
+
+Well, the answer is simple. I&#x27;d even say, eSIMple. This device was the first
+or the second one in the world including a eSIM module (whose IMEI, I 
+reckon, also is editable via the root shell AT commands), and here, this 
+module is configured via a separate &quot;eSIM Wallet&quot; application with quite a 
+lot of config, including (I think) IMEI/TAC spoofing on the module level, 
+which is even better. And I also found a bunch of providers out there who 
+offer global eSIMs anonymously for cryptocurrency, including Monero. Of 
+course, usually they are data-only, but Gemini isn&#x27;t much suited for voice 
+calls anyway, I guess, so that&#x27;s fine for me.
+
+Another reason is that Gemini is the best one to use Termux on. I mean,
+nothing beats physical keyboard, even such a relatively small one. All the 
+netbook/thin client scenarios I&#x27;ve been thinking about are much more usable 
+there than on my main smartphone, Pixel 6. And speaking of Pixel 6, I&#x27;m 
+still thinking on how to back everything up so that I could put GrapheneOS 
+there and then restore all this properly.
+
+In a nutshell, doing what I can with what I got. Well, as always.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
