@@ -8747,4 +8747,184 @@ In a nutshell, doing what I can with what I got. Well, as always.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-03-11-the-graphene-saga-part-1.txt</link>
+<title>(2024-03-11) The Graphene Saga: part 1</title>
+<description><![CDATA[<pre>
+(2024-03-11) The Graphene Saga: part 1
+--------------------------------------
+&quot;Two things are infinite, the universe and human stupidity, and I am not yet
+completely sure about the universe.&quot; — Albert Einstein
+
+When it comes to modern touchscreen smartphones, you don&#x27;t choose the good
+one by filtering out bad ones, you choose the least worst of them among the 
+pile of total garbage. Sad but true. The Google Pixel line is one of such 
+&quot;the least worst&quot; examples, because at least they don&#x27;t have any trojans 
+preinstalled by the vendor besides trojans from Google itself, which, in 
+turn, can be mitigated by installing some custom firmware these top-notch 
+bricks usually have excellent support for.
+
+This is, in essence, how I came to know about GrapheneOS. Its website brags
+about security hardening, privacy features and curbing the Google-specific 
+services to the same privilege level as the rest of the applications, and, 
+to be honest, it&#x27;s easier to build a Google-less Android ecosystem if one 
+keeps it this way. Needless to say, I was interested in such a system ever 
+since I got myself a Pixel 6, but managed to find time and resources to 
+install it only recently. And I was... disappointed.
+
+No, I don&#x27;t give a shit about Google Wallet support at the moment (although
+we&#x27;ll get to that later). But I do care about two things every 
+privacy-oriented smartphone OS must offer IMO: rootability and IMEI editing. 
+And, after lurking on Reddit and Graphene&#x27;s own forum, I was a bit surprised 
+that its authors (or at least its spokespeople) have been strongly opposing 
+both of these things. And they used very weak argumentation, to put it 
+mildly, but we&#x27;ll get to that later too. Having thrown several rants on 
+Nostr about this, I decided to act alone and fix what they won&#x27;t fix at 
+least for my own installation.
+
+Rooting process and subsequent OTA update patching are wonderfully covered by
+the avbroot ([1]) guide, and I recommend everyone wanting to root their 
+GrapheneOS installation to read it very carefully. The only caveat I need to 
+warn about is that you need to reboot from fastbootd back to normal fastboot 
+mode before running fastboot erase avb_custom_key and subsequent fastboot 
+flash avb_custom_key commands. I wasn&#x27;t (and still ain&#x27;t) sure how 
+GrapheneOS works with custom kernels, so I chose the Magisk route instead of 
+KernelSU. But then, I came across a different problem: non-working Zygisk.
+
+Yes, of course I want to use this Pixel for some corporate apps that are
+behind Intune Company Portal, which is another M$&#x27;s privacy invading piece 
+of crap, but they don&#x27;t work without it installed. And of course, it detects 
+root. And, of course, Zygisk framework (which all root-hiding modules 
+effectively use) doesn&#x27;t work specifically on Android 14 based GrapheneOS. 
+And Magisk developers refused to accept the patches adding this support with 
+even more stupid argumentation:
+
+&gt; GrapheneOS hates root and any modification, No reason to be compatible with
+operating systems that hate us.
+
+&gt; ...if its built upon AOSP, they can avoid breaking magisk (because magisk
+supports AOSP). if they really break magisk, that means they dont care about 
+magisk. you should ask them to avoid breaking magisk (or submit their 
+so-called security changes to AOSP), rather than begging here.
+
+It&#x27;s hard for me to comment on anything of this. Seems FOSS developers really
+have forgotten why they do FOSS. In their quarrels, the only one who really 
+suffers is the end user. Or are they probably afraid that someone is going 
+to have a degoogled AND rooted AND hostile work environment ready Android 
+flavour to just enjoy their devices while being in full control of them? 
+
+I tried manually applying those patches myself and spent 3 hours (no kidding)
+building Magisk. It built and ran (after I repatched my OTA, of course) but 
+Zygisk still didn&#x27;t work (and the modules I run don&#x27;t to jack shit with 
+ZygiskNext). Maybe I&#x27;ll spend some time later to figure this out but, for 
+the time being, I decided to focus on the next topic: IMEIs. And I don&#x27;t 
+even know where to start telling you about them on this Pixel 6.
+
+Well, how about I start by providing several quotations on what GrapheneOS
+spokespeople tell us about IMEI changing, the field I&#x27;ve been in for good 5 
+years already?
+
+&gt; Spoofing the IMEI shown in the OS is not changing the IMEI used for
+cellular, and is not useful beyond fooling yourself. Changing the IMEI used 
+for cellular is not possible with modern cellular radios, which are required 
+by regulations to prevent changing it. Changing it requires a cellular radio 
+exploit, which would imply not patching the radio or using a device with an 
+insecure cellular radio.
+
+&gt; Despite articles and guides online it is not possible to truly change your
+IMEI. It is baked into the baseband processor and any changing of it in an 
+Android perspective is just spoofing the value in the operating system so 
+system-level applications would see a different number. When using a 
+cellular network the original IMEI would still broadcast out.
+
+&gt; This thread is completely filled with misinformation and will have to be
+removed. It&#x27;s not clear why people don&#x27;t listen to our official responses 
+explaining that changing IMEI does not mean identifiers are not provided to 
+the cellular network and other things we&#x27;ve explained here.
+
+And then they blocked the threads and accused everyone else of &quot;spreading
+misinformation&quot;, uh-huh. When they were the only ones actually spreading it. 
+No, I don&#x27;t rule out the possibility that they genuinely believe in what 
+they say (i.e. that the IMEI sent to the network is still burned into some 
+OTP areas like it&#x27;s still 2007 out there) but they provide absolutely no 
+proof to their claims. Oh, well. Regulations. I know how they &quot;work&quot;. I know 
+that certification process doesn&#x27;t check whether the IMEI actually is 
+writeable or not. What really happens afterwards (if the certification 
+process even gets to this point, which I suspect it often doesn&#x27;t, they are 
+usually only interested in proper radio frequency ranges and output power) 
+is that the vendor demonstrates that there&#x27;s no way to edit those 
+identifiers in the stock production OS config. That&#x27;s it.
+
+I don&#x27;t work in the telecom industry at all but I know all of this. They
+supposedly work on a large enough telecom project and believe in whatever 
+Big Brother feeds into their brains. And yes, I do happen to have a cellular 
+carrier who displays the model of the phone on the personal account page. So 
+I can easily check which IMEI the network really sees. This is, in fact, my 
+only source of truth, not what&#x27;s displayed in *#06# etc. So, this was the 
+moment I decided to prove that the IMEIs seen by the network are indeed 
+editable in Pixel 6 and to publicly demonstrate how wrong these Graphene 
+forum warriors are.
+
+Now, here&#x27;s the real kicker: as soon as Pixels switched from Qualcomm to
+Tensor chipsets, they also had to switch the baseband module. Guess what 
+they chose? Exynos! Ta-da! To be more precise, Pixel 6 has Exynos 5123, but 
+it doesn&#x27;t quite matter to me, I had never explored any of them before. So, 
+from the bits and pieces, I collected three important facts: 1) IMEIs are 
+stored in /mnt/vendor/efs/nv_protected.bin (and the .md5 file is salted so 
+no way of restoring it manually), 2) AT commands are sent by forwarding them 
+to /dev/umts_router, 3) there are AT+GOOGSETNV and AT+GOOGGETNV commands 
+with some already known syntax and examples on GitHub. That&#x27;s friggin&#x27; it. 
+Everything else was to be found out without any external help.
+
+Of course, first I decided to dump everything found under /mnt/vendor, and I
+noticed it also contained the bare modem firmware binary image. Luckily, it 
+didn&#x27;t contain any compression or obfuscation, so I could search for some AT 
+commands and NV item names. And indeed, three of them (yes, three) turned 
+out to be related to IMEIs: CAL.Common.Imei, CAL.Common.Imei_2nd and 
+DS_CAL.Common.Imei. The third one, I guess, was supposed to be used if the 
+device has the second physical SIM slot in addition to eSIM, but of course, 
+this is never the case for Pixel 6. Interestingly, the IMEI value for this 
+non-existing slot matches the old Nokia 6310. A very unexpected tribute.
+
+Anyway, I found out how to write IMEIs to the &quot;live&quot; EFS (mapped to that
+nv_protected.bin file, and the .md5 is updated automatically, so no need to 
+worry about it). The IMEI format is byte by byte BCD, normal order, 
+zero-padded at the last byte (after the check digit). You must write 9 bytes 
+(from 0 to 8), the last one being always 00. E.g. the 
+AT+GOOGSETNV=&quot;CAL.Common.Imei&quot;,0,&quot;35&quot; command writes the first two digits of 
+IMEI1 (35) to the first byte, and AT+GOOGSETNV=&quot;CAL.Common.Imei_2nd&quot;,5,&quot;82&quot; 
+writes the 6th digit pair 82 to IMEI2. You get the idea. I even employed a 
+newly found AT+GOOGFLUSHNV command to make sure the items are written. 
+However, it wouldn&#x27;t be a flagship smartphone if everything were that 
+simple. These values get overwritten upon reboot (or AT+GOOGNVRESET, for 
+that matter).
+
+Where are they overwritten from? I really don&#x27;t know yet. Not
+/mnt/vendor/efs_backup for sure. Not other (nv_normal.bin) EFS values. Not 
+the metadata partition. Probably the devinfo partition, but it can&#x27;t control 
+everything, can it? This is something I really need to research further. 
+However, for the time being, I decided to check whether the new IMEIs could 
+be seen by the network without rebooting. For that, I remembered the old 
+good AT+CFUN command. To my surprise, only AT+CFUN=4,1 actually did seem to 
+work: 4 means cellular flight mode, 1, as I found out elsewhere, means 
+&quot;modem state save&quot; or something like this. Well, state save was exactly what 
+I needed. And then I turned the radio back on with AT+CFUN=1. And guess 
+what... It worked! My carrier did show my active phone as Nokia 6310 in the 
+account page. Well, who&#x27;s a fool now?
+
+Of course, when trying to automate all this, I went through a lot of trial
+and error and it still doesn&#x27;t seem very stable (I really need to switch to 
+a more reliable way of interacting with /dev/umts_router than just echo and 
+cat), but a general approach to getting temporary IMEIs (that is, the ones 
+working until reboot) is quite clear for the time being. I&#x27;m going to post 
+some work-in-progress documentation about what I have found so far. In the 
+LuxDocs section, of course. But the quest for persistent IMEI editing on 
+these devices has just begun.
+
+--- Luxferre ---
+
+[1]: https://github.com/chenxiaolong/avbroot
+</pre>]]></description>
+</item>
 </channel></rss>
