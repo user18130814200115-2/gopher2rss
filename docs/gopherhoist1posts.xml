@@ -8927,4 +8927,68 @@ these devices has just begun.
 [1]: https://github.com/chenxiaolong/avbroot
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-03-18-the-graphene-saga-part-2.txt</link>
+<title>(2024-03-18) The Graphene Saga: part 2</title>
+<description><![CDATA[<pre>
+(2024-03-18) The Graphene Saga: part 2
+--------------------------------------
+...and probably the last.
+
+I got tired of this circus pretty quickly. I have published whatever I&#x27;ve
+found so far in the LuxDocs section, but... I really need a second Pixel 
+device to keep going with this research. Because I still depend upon several 
+applications that are incompatible with root, and GrapheneOS does nothing to 
+help me with masking the root, on the contrary, making things much harder. 
+In fact, one of Magisk modules broke the boot partition, so I had to 
+reinstall the vanilla Graphene from scratch.
+
+However, as I hinted before, the main problems of the project are not
+technical, they are human. The devs don&#x27;t understand not everyone can afford 
+losing ~1GB of traffic for OTA updates twice a week, and then additional 10 
+minutes of time for the &quot;app optimization&quot; process. The devs don&#x27;t 
+understand not all users are that stupid to not allow them root access, at 
+least with ADB. The devs don&#x27;t understand how modern OEM manufacturing 
+really works and &quot;regulations&quot; don&#x27;t. They seem to be living in a fantasy 
+world where people only need a &quot;more secure stock&quot; without actually giving 
+back control over their own devices to them, only making the permission 
+model more granular and protecting against the exploits no one will ever be 
+able to execute in the real world.
+
+The sad part is, there doesn&#x27;t seem to be anything better at the moment.
+DivestOS lags behind by a major version but essentially suffers from the 
+same issues. CalyxOS is too opinionated and endorsing some dubious things 
+like WhatsApp, Signal and Cloudflare, and also repeats the same silly mantra 
+as Graphene and Divest (&quot;Running any Android device with root permissions 
+severely undermines the security of the device&quot;). LineageOS is probably the 
+freest of them all (when speaking of Pixel 6) but lacks all the security 
+advantages of all the above three. I plan on trying it out on the Mi 8 Pro 
+though (because anything is much better than the stock MIUI spyware), but it 
+can only happen in two weeks. And _if_ I manage to get an ADB root not 
+visible by the rest of the OS there, then I&#x27;ll consider moving from 
+GrapheneOS to Lineage on the Pixel as well. And then I&#x27;ll be able to 
+continue the research on my main subject.
+
+The main subject, as you might have seen in LuxDocs, is now stalled at the
+stage of finding where the IMEI SHA checksums are stored. Because the IMEIs 
+themselves are stored in the devinfo partition in the plain ASCII form 
+(although the partition itself is binary), and this partition, contrary to 
+my expectations, really controls everything over the EFS. Of course, if 
+either IMEI doesn&#x27;t match its checksum, the device reports both of them as 
+000000000000000 to both the OS userspace and the network. And I could 
+partially do this search in the offline mode as I dumped the modem firmware 
+image along with everything EFS-related while I still had the root access. 
+But, of course, I should have dumped everything I could.
+
+Moral of the story: technical superiority isn&#x27;t everything. Human
+understanding of what really matters is much more important.
+
+This week is going to be quite tough but I really hope I get rewarded on the
+end of it. So I&#x27;ll definitely have something interesting to write about next 
+time.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
