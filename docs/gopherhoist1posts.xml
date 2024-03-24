@@ -8991,4 +8991,33 @@ time.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-03-25-i-need-to-take-a-break.txt</link>
+<title>(2024-03-25) I need to take a break (for two weeks)</title>
+<description><![CDATA[<pre>
+(2024-03-25) I need to take a break (for two weeks)
+---------------------------------------------------
+Recently, the concentration of stressful situations in my life drastically
+increased. I feel too emotionally exhausted to be able to write anything 
+constructive on Gopher, Nostr or elsewhere. But I know this is temporary. So 
+expect a new post here on April 8.
+
+It&#x27;s hard for me to plan any upcoming activities for this time, but I at
+least hope to deal with two Xiaomis: Mi 8 Pro and Qin 1s. The former is 
+gonna be equipped with a suitable LineageOS version, the latter will be 
+researched to be able to replace the firmware or, in case it&#x27;s not possible 
+without Faildows, at least it will be equipped with a suitable SIP client 
+with ZRTP support. I&#x27;m also going to try and make use of some phones with 
+remote Bluetooth dialer functionality and find (or even create) a service to 
+pair them with my SIP accounts on my Arch Linux PC or my Orange Pi Zero 
+(with a BT adapter). If it works, as a result, I&#x27;ll have a nice home-office 
+phone and definitely will make a post about it.
+
+For the time being though, silence is also meant to say something. Don&#x27;t
+worry. I&#x27;m here. Just need to rest.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
