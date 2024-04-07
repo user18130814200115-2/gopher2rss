@@ -48,7 +48,10 @@ def check(url):
     try:
         data = os.popen("curl -s " + full_url).read()[:-1].split('\n')
     except:
-        exit
+        return
+
+    if not data:
+        return
 
     # Generate the rss header
     rss_header = '''\
