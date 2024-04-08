@@ -9020,4 +9020,79 @@ worry. I&#x27;m here. Just need to rest.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-04-08-a-few-more-words-about-dos.txt</link>
+<title>(2024-04-08) A few more words about DOS</title>
+<description><![CDATA[<pre>
+(2024-04-08) A few more words about DOS
+---------------------------------------
+I&#x27;m back. And I still dislike DOS, its backslashes and interrupts. However, I
+still consider it quite underrated nowadays, especially the flavors like 
+FreeDOS and SvarDOS (which is based upon FreeDOS, in case you didn&#x27;t know).
+
+Why? Because, well... Yes, DOS looks, feels and pretty much *is* ugly. The
+thing is, it&#x27;s not its own fault, but rather of the underlying hardware 
+architecture. Any DOS is ugly solely because x86 itself is. Period. DOS, as 
+a kernel, just offers some absolutely minimal abstraction over this complete 
+trainwreck. It showcases all the imperfections of x86 and clearly 
+demonstrates how much more complexity is required to fully abstract away 
+from them. Through this, DOS lets us fully understand where the root of all 
+evil in modern computing resides, and how &quot;more modern&quot; began to 
+automatically mean &quot;more complex&quot;. If you still don&#x27;t understand what I&#x27;m 
+talking about, just look at the distribution sizes for some programs, 
+interpreters and compilers backported to DOS from other OSes. If these sizes 
+are bigger than for e.g. Linux, that&#x27;s how much complexity Linux kernel and 
+system libraries hide from you.
+
+On a flip side though, for those who still have to stick to x86, DOS is one
+of the last safe havens if you&#x27;re serious about retaining control over 
+things at least to some extent. Because, of course, we lost the battle long 
+ago when it comes to hardware (no one can solder a modern PC the way we 
+could solder a Spectrum clone anymore), but, with DOS, we still can be as 
+close to that hardware as possible and not let various corporations with 
+dubious intentions decide for us. As a bonus of reduced complexity, we 
+automatically get reduced energy consumption (i.e. less consumed power and 
+better battery life) and ability to better understand WTF is going on if 
+anything doesn&#x27;t work as expected. To be honest, I really have been missing 
+this feeling even with Linux and OpenBSD, so I started looking at 
+possibilities to daily-drive some DOS whenever I could.
+
+This is how I found SvarDOS ([1]), a FreeDOS derivative that has an Arch-like
+package system. Its main maintainer, Mateusz Viste, has developed a lot of 
+other interesting DOS software. He also has a Gopherhole at gopher.viste.fr, 
+and I highly recommend visiting it. Despite being a derivative, SvarDOS 
+doesn&#x27;t have 100% of the processes identical to FreeDOS, so reading its own 
+documentation is mandatory. And the documentation format, AMB (Ancient 
+Machine Book), is just wonderful, I plan on writing my own set of tools to 
+work with it in a cross-platform way. The SVP package format is also simple 
+enough, and the repo contains much more useful software than FreeDOS itself 
+can offer. It even sparked my interest in learning the Rexx scripting 
+language, as the Regina interpreter has a DOS port too. I also was really 
+surprised to see the things like Lua and SQLite3 there, and, of course, the 
+Links browser that has fully working graphics (with -g option) and even 
+modern SSL support. Among the software not present in the SvarDOS repo, I 
+can highlight a huge official Vim 7.3 port and this ([2]) SSH2DOS version 
+that is pretty sufficient to turn any DOS box into a full-featured thin 
+client. Of course, if you have the necessary packet drivers.
+
+And this is pretty much the only obstacle I have: drivers. So far, I&#x27;ve been
+testing SvarDOS in VirtualBox only, and, as you might have guessed, all 
+networking is in place there. Whenever I find a suitable real PC to run it 
+on (otherwise there won&#x27;t be any fun), I may face the problem of not having 
+even Ethernet drivers available for DOS. And WLAN, AFAIK, is pretty much a 
+no-go with the current-gen chips, but I do have a spare Ethernet port on my 
+home mesh node in the room. Anyway, it&#x27;s worth giving it a try, maybe I&#x27;ll 
+find out even more about the hardware itself. And if it works, well, I&#x27;ll 
+make sure to put a good use to it.
+
+The black abyss of DOS is calling to escape from the dystopia of complexity.
+Are you ready for it?
+
+--- Luxferre ---
+
+[1]: http://svardos.org/
+[2]: https://github.com/AnttiTakala/SSH2DOS
+</pre>]]></description>
+</item>
 </channel></rss>
