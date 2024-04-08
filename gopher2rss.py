@@ -45,14 +45,10 @@ def check(url):
     rss_items = ''.join(articles_present_contents[5:-1])
 
     # Read the directory gophermap as a list for easy iteration
-    try:
-        data = os.popen("curl -s " + full_url).read()[:-1].split('\n')
-    except:
+    data = os.popen("curl -s " + full_url).read()[:-1].split('\n')
+    if data == ['']:
+        print(url + " appears to be unreachable... Skipping")
         return
-
-    if not data:
-        return
-
     # Generate the rss header
     rss_header = '''\
 <?xml version="1.0" encoding="UTF-8" ?>
