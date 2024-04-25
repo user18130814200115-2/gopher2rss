@@ -1938,4 +1938,96 @@ Fierce Appetites is a particularly bad example. Not least
 because of the sheer number of quotations on the cover.
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0018-academic-references-to-icelandic-authors.txt</link>
+<title>0018-academic-references-to-iceland   2024-Apr-25 11:45     3.2 KB</title>
+<description><![CDATA[<pre>
+Academic references to Icelandic authors
+Thu, 25 Apr 2024
+Academia, LaTeX
+========================================
+
+Academic references and citations are notoriously finicky to
+handle. This is exactly why systems like biblatex exist to
+automate the process. For the uninitiated, biblatex allows you
+to define a reference in a file like so:
+
+	@book{key,
+		author = {},
+		title = {},
+		date = {},
+		publisher = {}
+	}
+
+This is a rather limited example, but there are more fields
+available. Now, by simply writing \cite{key} in your latex
+document, you get a nice inline citation according to your
+chosen style -- for instance (author&#x27;s last name year) -- and a
+bibliography entry containing all the relevant information at
+the end of your document.
+
+I recently ran into a problem with this system however exactly
+because the author is cited by their last name, and Icelandic
+people do not have last names in the same way as most people do.
+
+On Iceland, it is typical for people to receive as their ``last
+name&#x27;&#x27; the name of the parent matching their gender, plus the
+suffix `son&#x27; or `dóttir&#x27; or a variation on these two (it get&#x27;s
+more complicated, but this will do for now). Think of Lord of
+the Rings, where Thorin (oakenshield)&#x27;s full name is Thorin, son
+of Thror, son of Thrain. On Iceland he would be called Thorin
+Throrson, and his father would be Thror Thrainson.
+
+To refer to these people by their last name is a little strange.
+``The king under the mountain is Thror&#x27;s son&#x27;&#x27;. Therefore, it is
+somewhat common to cite Icelandic people by their first name(s)
+instead.
+
+Getting a citation like this in biblatex turned out to be a
+little tricky, especially when you don&#x27;t want to write a custom
+citation function. This post will detail what I did, for others
+to copy.
+
+-----------------------------------------------------------------
+
+Firstly, In your .bib file you do the following:
+
+	@book{key,
+		author = {{Thorin Throrson}}, % Mind the double braces
+		shorthand = {Thorin},
+		keywords = {icelandic}
+	}
+
+The braces in the author field tell biblatex to cite the name in
+full, rather than separating the first and last parts. The
+shorthand tells it to use only `Thorin&#x27; for inline citations.
+The keyword will be useful for separating out Icelandic names
+from other abbreviations.
+
+Usually, the shorthand field is often used when citing several
+texts by the same author, especially if both texts are cited
+frequently. In a paper about Kant, it is not particularly
+helpful to constantly see (Kant 1781) and (Kant 1790). If on the
+other hand, we use the abbreviated titles (KdRV) and (KdU), the
+reader ends up much better informed. These abbreviations are then
+listed at the end of the document using 
+
+	\printbiblist{shorthand}
+
+If this list is used then -- with the current setup -- this
+would also include all of our Icelandic first names, which we
+defined as abbreviations. This is where the defined keyword
+comes in, which allows us to exclude these `abbreviations&#x27;
+
+	\printbiblist[
+		notkeyword=icelandic
+	]{shorthand}
+
+There may be better ways of doing this in Latex. In fact, I can
+think of several ways to automate this process, but this is the
+most simple and portable way I found of doing things, and it
+importantly works with many versions of (bib)latex.
+</pre>]]></description>
+</item>
 </channel></rss>
