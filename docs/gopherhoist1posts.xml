@@ -9315,4 +9315,90 @@ battery life.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-05-06-on-tablet-pcs.txt</link>
+<title>(2024-05-06) On tablet PCs</title>
+<description><![CDATA[<pre>
+(2024-05-06) On tablet PCs
+--------------------------
+Throughout my life, I&#x27;ve had five tablet PCs in total. The most recent one is
+a Google Pixel Tablet (8/128GB, JP version) bought last month, but I&#x27;ll get 
+to that in a bit. While the smartphone topic is still a bit controversial 
+(not for me but for the general public), tablet PCs are nowadays viewed by 
+most people as peak consumerism, and that opinion is pretty much unanimous. 
+In other words, the public says that&#x27;s a kind of device you never *really* 
+need. Which is hilarious, because I&#x27;ve lived long enough to remember current 
+smartphone screen diagonals (6+ inches) to be considered &quot;tablet PC sizes&quot; 
+as well. Heck, I even remember how 5.5 inch devices were called tablets. And 
+I did understand back then that it already was all about marketing, and the 
+only things separating a tablet from a touchscreen-based smartphone were the 
+physical size and, optionally, lack of a cellular module. Although I do 
+remember some blonde chicks proudly putting their 7-inch Galaxy Tabs to 
+their ears and talking like that in public. That&#x27;s something you never 
+forget: once you see it, you can&#x27;t unsee it.
+
+So, back to Pixel Tablet. Technichally, it is a Pixel 7a without a cellular
+module and in the tablet form factor. The lack of a cellular module is IMO a 
+good thing in this case, but still, precautions needed to be taken and I did 
+install GrapheneOS on it on day one. It comes budled with a magnetic 
+charging dock stand doubling as a speaker: because of this contraption, all 
+official and almost all third-party cases have a huge rounded hole in their 
+backs. And the dock itself is powered by a &quot;universal&quot; AC adapter (although 
+only suitable for US-type sockets, so I needed to find an adapter for this 
+adapter) through a rather non-standard plug (whatever happened to the 
+worldwide USB-C adoption). Luckily, this isn&#x27;t the only way to charge the 
+tablet and the device itself is running off USB-C... and that&#x27;s the only 
+socket in it. No 3.5mm minijack. And, just like with Pixel smartphones, you 
+can&#x27;t use a normal headphone adapter either: it needs to have an active DAC 
+inside. I happen to have none of those, so, for the time being, I have to 
+use Bluetooth headsets with this new acquisition.
+
+Why did I switch to it from the Nokia T20 I&#x27;ve been using almost all the time
+ever since moving to the village? Well, the first and simplest reason was 
+that I want to return to retro and indie gaming, at least to the smallest 
+extent. There are some games where 3GB RAM is simply not enough, especially 
+if you want to directly livestream the gameplay and still be mobile (in a 
+sense of not being attached to the desk where the PC is standing). The 
+second reason was the lack of physical storage space on the T20 (at least 
+for my purposes) and of the overall control over the OS (although it still 
+is much cleaner than everywhere else that doesn&#x27;t come straight from 
+Google). Yes, I ultimately wanted to switch to Graphene or something similar 
+on every Android device actively used by me. And the T20 went to the dad 
+whose Lenovo TB-X606X had been already struggling with some firmware issues 
+and, of course, no official updates or custom firmware to fix those issues.
+
+Of course, gaming/media station is my primary but not the only use case for
+this tablet. Sometimes I also use it as a makeshift laptop replacement when 
+paired with my wireless trackball and, even more often, a wireless keyboard 
+(ironically made by Apple) and running Termux there. With Segfault&#x27;s remote 
+shells, it&#x27;s a bliss as you can continue on one device from where you left 
+on another, although, of course, your own VPS is better for this kind of 
+stuff. When not using a physical keyboard, by the way, I found Thumb-Key to 
+be most comfortable and useful there, and it&#x27;s also fully FOSS and 
+privacy-friendly. For the record, on touch-only smartphones, I fully 
+switched to the Unexpected Keyboard, which also is FOSS, privacy-friendly 
+and extremely customizable out of the box. Moreover, with the lifestyle I&#x27;m 
+currently forced to live, I started viewing my Pixel 6 as a smaller version 
+of the same tablet rather than considering the tablet a larger companion to 
+the smartphone. And both devices running the same up-to-date GrapheneOS only 
+helped this vision.
+
+I might be bad at storytelling but what I&#x27;m trying to say is there really are
+little boundaries between different device types if you really know what 
+you&#x27;re doing. Contrary to the popular belief that only some of them are 
+suitable for content creation and others are only meant for content 
+consumption, whether or not you put the PC part into the notion of &quot;tablet 
+PC&quot; is entirely up to you. Especially if the manufacturer doesn&#x27;t get in the 
+way of you owning your own device. Of course, no Android is ideal and pure 
+Linux distros, like those in Librems or PinePhones, would be much better, 
+but, for running *some* proprietary shit along with FOSS if you have to and 
+for the &quot;doing what I can with what I&#x27;ve got&quot; approach, a Pixel + 
+GrapheneOS/LineageOS (depending on whether or not you want trouble-free 
+rooting as a bonus) looks like a perfect combination as of now. And I hope 
+it lasts even longer than the previous one.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
