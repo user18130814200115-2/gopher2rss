@@ -9401,4 +9401,142 @@ it lasts even longer than the previous one.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-05-13-the-grand-finale-watch.txt</link>
+<title>(2024-05-13) The grand finale watch</title>
+<description><![CDATA[<pre>
+(2024-05-13) The grand finale watch
+-----------------------------------
+If I, purely hypothetically, had to lose my entire watch collection and only
+remain with a single watch on my wrist, which one would it better be? This 
+question had been haunting me for some time and led to a point in my life 
+where I decided to get a timepiece that would finally end it all, at least 
+for as long as I live where I&#x27;m living right now.
+
+Exiting a hobby is always hard. In my case, it was even harder as the
+particular watch that I wanted to buy as the last one had been eluding me 
+for several weeks. The quest of obtaining this watch started on April 19 and 
+finally came to an end on May 7 when I got my package 5 minutes before a 
+thunderstorm started. The seller was quite shady as he had postponed the 
+delivery date for three times and insisted on an off-the-record deal to 
+avoid the platform fee for himself. This was enough for me, in turn, to 
+insist on pay-on-delivery even though I had to pay some extra for it from my 
+end. I decided to suffer through this deal for two reasons: 1) no one else 
+offered this watch in my country of residence (and the abroad logistics is 
+quite complicated here with our crazy import tax), 2) this is literally my 
+last watch purchase in the foreseeable future. So, if you&#x27;ve been reading my 
+most recent posts, you probably already know which watch I&#x27;m referring to 
+right now: Citizen PMD56-2951 from the JDM Promaster Land series.
+
+Technically, it might not be as advanced as some of my other watches in the
+collection. While having full auto calendar, hour offset and hand 
+calibration functions, it lacks any Bluetooth, GPS or optical sync features, 
+and, as it is indeed a Japanese domestic model, its longwave receiver only 
+supports JJY stations whose signal most of the world can&#x27;t receive, but more 
+on that later. This watch, as well as pretty much any other one in the same 
+lineup, was designed to do one thing and do it well, and do it under any 
+circumstances. In fact, everything there is streamlined for maximum 
+efficiency: huge hands, digits and markers (with a huge amount of lume 
+that&#x27;s visible for at least 8 hours of total darkness), a crown that&#x27;s 
+extremely easy to grip, anti-reflective coating on the inside of the 
+sapphire crystal and an on-the-fly 3-step micro-adjustment system on the 
+bracelet. After the Certina DS Caimano Titanium with its almost non-existent 
+lume, thin hands, no weekday display and no micro-adjustments on the 
+bracelet, the contrast it makes cannot be overstated. You might argue that 
+the DS Caimano is a &quot;dress watch&quot; and the Promaster is a &quot;field watch&quot; but 
+again, real use cases are not defined by market positioning and it&#x27;s hard 
+for me to justify anything that&#x27;s not GADA by default. Besides, I have 
+enough &quot;dress watches&quot; left even after shrinking my collection in half, so I 
+don&#x27;t feel any need to fill that particular niche, especially when having 
+zero occasions throughout the year where I&#x27;d want to specifically wear them.
+
+Now, functionality-wise, there&#x27;s surprisingly a lot to cover for this
+particular Citizen, even though I already have one that performs almost 
+exactly like it — AS2050-10E — with the obvious differences of it being 
+DCF77-only and having no weekday display. For instance, the weekday display 
+in PMD56 is bilingual, the second language obviously being Japanese (kanji). 
+The process of manually setting the watch is not that complicated: even 
+though one might have to resort to poorly autotranslated manuals for the 
+H100 movement, it basically is the same as for the AS2050 whose movement has 
+manuals written in most European languages. When really necessary, one can 
+quickly figure it out. At least, for almost a week of usage, I haven&#x27;t had 
+any problems with operating this watch whatsoever, and with hands alignment 
+either — even the second hand hits every marker, although it doesn&#x27;t reach 
+them, but I can forgive this here because they are placed onto a non-flat 
+inset around the dial rather than the dial itself. As for the accuracy 
+between synchronizations, the H100 movement is said to keep 15 seconds per 
+month deviation at most but, from what I&#x27;ve already seen throughout 6 days, 
+it&#x27;s gonna be closer to 3 seconds per month _at most_ for my particular 
+watch. I&#x27;ll keep you updated in June about this.
+
+For me though, the most important and not so obvious feature in both AS2050
+and PMD56 is the hour offset setting, which is called &quot;time difference&quot; in 
+European Citizen manuals: neither of these two watches officially support 
+timezones (those that do also implement fractional zones like the ones for 
+India and Nepal) but they allow to specify the offset from the reference 
+radio signal they support in order to keep the correct time upon reception, 
+as this reception can span across multiple regions. E.g. on AS2050-10E the 
+reference point is the Central European time (UTC+1 or UTC+2 depending on 
+whether it&#x27;s summer or not) observed in Germany, and on PMD56, the reference 
+point is JST (UTC+9). So, as I&#x27;m located in a region where DCF77 still can 
+be received but my time is an hour ahead, I set the time difference to +1 to 
+not get in trouble with my AS2050, and I set the time difference to -6 on 
+the PMD56 to match my summer time relative to JST, and now can use my own 
+JJY emulator (or whatever I find) to sync proper JST time and still display 
+my local one. And yes, this is the only purpose of this function, it has no 
+use in the places where the longwave signal can&#x27;t be received or emulated, 
+so I don&#x27;t know why people still think this is somehow related to timezones 
+in any way and complain it doesn&#x27;t support the fractional offsets it was 
+never meant for. If you use PMD56 in a place with a fractional timezone and 
+want to emulate the signal, just set this offset to zero and make your 
+emulator send whatever time you need. Speaking of which, I&#x27;m already in the 
+middle of porting my own JJY.js (aka &quot;Fukushima&quot;) JJY40 sync library/webapp 
+to Python 3. It transmits the signal on the third harmonic via the audio 
+output. I&#x27;m going to dedicate a separate phlog post to it when it&#x27;s ready 
+because longwave emission with non-radio circuits is an interesting topic on 
+its own. 
+
+Functionality, however, isn&#x27;t everything when it comes to a watch. This
+Citizen just looks and feels premium, which might seem strange because it&#x27;s 
+not even that expensive, basically cheaper than Casio GM-B2100BD and even 
+the aforementioned GMW-B5000D (where it&#x27;s still being sold). Yet it&#x27;s built 
+out of much better materials and with better finishing than those two. Not 
+surprising, by the way, considering that the Promaster Eco-Drive lineup is a 
+direct high-end G-Shock competitor within Japan. I&#x27;m saying &quot;Promaster 
+Eco-Drive&quot; because there also are mechanical Promasters which are honestly 
+beyond my interest as they tend to be much bulkier. Indeed, just like a 
+G-Shock, PMD56 offers 20 bar WR rating (the screw-down crown facilitates 
+that, as well as zero need for battery replacement for every 20 or even 40 
+years) and a shock protection system for the movement. The difference is, it 
+doesn&#x27;t compromise on the looks and uses the materials that only much more 
+expensive G-Shocks are using: all-titanium casing, titanium bracelet and a 
+_domed_ sapphire crystal. The dial is not purely green, but a gradient from 
+field green under a direct bright light down to charcoal dark grey in the 
+darker conditions, and I love that transition. The overall look is much more 
+impressive on the wrist than on any photo you could possibly see around 
+there. It looks so good that I even ditched the idea of getting a PMD56-2952 
+as well, which has a pure-black dial but a yellow second hand and a black 
+PVD-coated bezel as opposed to matte titanium here just like the rest of the 
+watch case. The case itself, by the way, is quite compact, and the general 
+diameter (without the crown) doesn&#x27;t exceed 40 mm for sure, and the 
+lug-to-lug distance doesn&#x27;t exceed 45. Just what I needed.
+
+So, where do I go from here? Is my interest in watches fading away after
+getting my hands on this ultimate artifact? Heck no. I&#x27;m still interested in 
+watch-related news, reviews and discussions, as well as supplementary topics 
+like watch straps/bracelets or longwave/Bluetooth/optical synchronization. 
+It&#x27;s just that my personal search for a perfect watch is over for now. There 
+*might* be some &quot;evolutionary&quot; upgrades to my collection, e.g. if I also 
+find a Casio MRG-B5000 for a reasonable price to replace my GMW-B5000 with a 
+titanium counterpart, or a titanium Seiko chronograph to replace my 
+SSB401P1, or a hypothetical titanium mech diver from Orient to replace my 
+Kamasu, but all that is highly unlikely. And the main reason for this is 
+because Citizen PMD56-2951 really answers the first question I&#x27;ve asked in 
+this post: if I ever have to leave a single watch only, however I love the 
+rest of my collection, this one will be the watch that&#x27;s going to stay.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
