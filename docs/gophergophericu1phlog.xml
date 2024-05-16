@@ -5686,4 +5686,62 @@ the second bed behind the house and decide what I will grow there.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/Wordprocessing-with-vim-and-pandoc.md</link>
+<title>2024-05-16  Wordprocessing with vim and pandoc</title>
+<description><![CDATA[<pre>
+# Wordprocessing with vim and pandoc
+
+It has been quite some time since I have needed to create documents
+for ordinary folks that expect .docx or .pdf files. Having recently
+taken on some administration responsibilities for the radio club I am
+a member of, I find myself again needing to create .pdf documents.
+
+
+## Abiword
+
+At first I installed abiword, along with all its dependencies, which
+turned out to be quite a lot. I tried it briefly, but after many
+years using vim to edit text, it felt terribly slow and awkward.
+
+
+## Markdown
+
+Markdown is an excellent minimalist markup that doesn&#x27;t look out of
+place in plain text documents. My phlog, as you may be aware, is
+written in markdown. Markdown was chosen as I knew tools existed to
+convert it into many other document formats. It can easily be
+converted into web pages or document types suitable for printing.
+Pandoc is probably the most widely known of these tools. 
+
+
+## Pandoc
+
+On OpenBSD I installed the pandoc package and attempted the
+conversion of a markdown file: 
+&gt; $ pandoc myfile.md -o myfile.pdf
+
+Unfortunately something was missing and the conversion failed with an
+error. After a short search for the error message, and test
+installing other packages, I discovered that texlive_base-2023 and 
+texlive_texmf-minimal-2023 were also required.
+
+
+## Workflow
+
+I write the documents in vim, using markdown in the same way that I
+would for my phlog, and then run pandoc on the file to output it in
+PDF format. 
+
+
+## Summary
+
+I use vim for all my text editing and wanted a solution where I could
+continue to do that. This solution is fast and avoids any interaction
+with a word processor, while achieving the same result. I&#x27;m quite
+satisfied with it.
+
+</pre>]]></description>
+</item>
 </channel></rss>
