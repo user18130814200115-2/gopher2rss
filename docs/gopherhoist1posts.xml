@@ -9799,4 +9799,61 @@ they can with what they&#x27;ve got.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-06-03-greed-is-bad.txt</link>
+<title>(2024-06-03) Greed is bad</title>
+<description><![CDATA[<pre>
+(2024-06-03) Greed is bad
+-------------------------
+This one is gonna be rather short. First of all, I didn&#x27;t even notice how I
+had got past the 100-post milestone on this phlog. If there are any readers 
+out there, then I hope it all wasn&#x27;t in vain. My present life is rather 
+dynamic in both good and bad senses, so I don&#x27;t have a lot of time to do 
+thorough writeups, although I do remember all the topics I wanted to cover, 
+so stay tuned. This time, however, I want to talk about a particular case of 
+greed I encountered on the past week, and it truly is something that doesn&#x27;t 
+go unpunished in the long run.
+
+Imagine that you&#x27;re running a VPS hosting reselling business, and your
+selling point is that you&#x27;re doing it for cryptocurrencies and require no 
+user data except an email address. In fact, you&#x27;re not doing pretty much 
+anything else. How much of a markup can you ask from your customers for such 
+a service (relative to the original VPS price)? +5%? +10%? +15%? Well, how 
+about a whole fucking +50%? Yes, the &quot;hosting&quot; I stumbled upon last week (of 
+course I won&#x27;t tell you the name) is doing exactly that: registering 
+DigitalOcean droplets via the API requests from a dashboard and charging 
+1.5x the original price of the droplet, whatever it may be. That&#x27;s it.
+
+Here&#x27;s how it works: you register and account and agree to the ToS (and the
+ToS page is the only place on the entire website where they mention they 
+just resell DigitalOcean and thus their ToS apply firsthand), you top up an 
+internal spend-only &quot;wallet&quot; on the dashboard and you order a droplet from 
+inside that dashboard as well, where you have to supply your own SSH key to 
+access it. Of course, no custom images, no monitoring opt-out on the setup 
+stage and no API keys (they do seem to have the ability to create them but 
+they don&#x27;t work at all as of now). As with DO itself, the amount in your 
+wallet gets diminished on an hourly basis regardless of whether you&#x27;re using 
+the instance or not. And no, powering off/rebooting servers from the 
+dashboard doesn&#x27;t work either. You can only create or delete them. And they 
+ask 1.5x for that kind of service. Pathetic.
+
+I had done a small background check on who the developers of this abomination
+might be, and after finding out, I wouldn&#x27;t have any moral concerns about 
+attempting to bring those scammers down. Now, what&#x27;s the most creative way 
+of doing this? Because if I just do something that results in a complaint 
+from DigitalOcean (and I could do this there without spending a dollar), 
+this will only cause my instances being terminated within a day by them and 
+then the account banned by this &quot;hosting provider&quot;, who still will be doing 
+just fine even after the complaints. Luckily, they are not that high in the 
+search rankings and I hope less people will find them by accident, but the 
+amount of greed just amazes me. For such a markup, they could have at least 
+fixed their dashboard functionality and billing vulnerabilities. But why 
+bother, they probably think, if people still eat this crap?
+
+Well, not for long, folks. Not for long.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
