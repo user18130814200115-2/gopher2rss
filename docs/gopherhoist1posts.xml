@@ -9856,4 +9856,41 @@ Well, not for long, folks. Not for long.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-06-10-wind-of-change.txt</link>
+<title>(2024-06-10) Wind of change (recent news)</title>
+<description><![CDATA[<pre>
+(2024-06-10) Wind of change (recent news)
+-----------------------------------------
+OK, I&#x27;ve got nothing in particular to talk about today (JJY writeup still
+pending, I know) but the past week has been tough and this one is going to 
+be even more difficult for me. Besides work, there are essentially two 
+things I&#x27;m focused on right now: energy independence and migration to Kaspa. 
+The latter shouldn&#x27;t be a surprise as Kaspa is now in a very good state: 
+it&#x27;s PoW but with tokens coming (KRC20), it&#x27;s very fast and fully 
+decentralized. Even at a relatively small loss, I chose to abandon Mina and 
+everything else (except, of course, Monero) in favor of it. And I surely 
+don&#x27;t regret it as of now. When it comes to Kaspa, I&#x27;m more of a stacker 
+than anyone else in my previous classification.
+
+As for the former, the very first stage of my plan is complete and a power
+inverter with a 6 kWh backup battery has been installed. Think &quot;Powerwall 
+for the poor&quot;. The next stages are going to be a 800W wind turbine 
+(hopefully done within this week) and a solar panel array (hopefully done 
+within this month). I&#x27;m also going to run a small Kaspa miner ASIC (IceRiver 
+KS0 Pro, only has ~100W consumption) purely on the energy collected from the 
+wind turbine. By the way, it&#x27;s not about ROI, it&#x27;s about getting some 
+experience with ASIC mining and slow but sure accumulation of the currency 
+that I&#x27;m counting upon in the future. Besides, we shouldn&#x27;t forget about 
+e.g. Sedra and Bugna that can be mined using the same KHeavyHash algorithm 
+but are located at much earlier stages of the curve.
+
+All this, however, is a part of a bigger plan that&#x27;s going to be revealed
+when the time comes. Right now, it&#x27;s more about maintaining peace of mind 
+than anything else.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
