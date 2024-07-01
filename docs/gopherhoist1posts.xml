@@ -10057,4 +10057,92 @@ I&#x27;ve ever owned. After Citizen PMD56-2951, of course.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-07-01-time-needs-to-be-reformed.txt</link>
+<title>(2024-07-01) Time needs to be reformed</title>
+<description><![CDATA[<pre>
+(2024-07-01) Time needs to be reformed
+--------------------------------------
+As much as I love watches, I can&#x27;t help thinking about how imperfect our
+overall system to display time and dates is. Some efforts to fix both appear 
+in the world from time to time. I was reminded of this topic by seeing the 
+article about the &quot;Swatch Internet Time&quot; when the normal (24-hour) day is 
+just divided into its 1/1000th parts called .beats, and those .beats can 
+optionally be divided into 1/100 units for greater precision. All this 
+relative to Swiss standard (non-DST) time, not UTC. Some digital Swatches in 
+late 1990s and early 2000s were displaying both traditional time and this 
+&quot;Internet time&quot;, which by the way, was deemed convenient by some 
+international gamers of that period.
+
+The approach is rather radical, and I&#x27;ll return to something similar at the
+end of the post. But let&#x27;s start from the bottom up with what we can do to 
+the traditional timekeeping. The first and most obvious thing we can get rid 
+of is DST, daylight saving time. Nowadays, it&#x27;s no longer justified to make 
+people switch their life rhythms every half a year. Just let them live in 
+the time natural for the area. Those who need to fully utilize the daylight 
+will do so anyway, without any artificial limitations, and those who don&#x27;t, 
+will live healthier when those limitations are lifted. For now, I feel that 
+DST is more of a political decision than a really useful one. And with more 
+and more work being done remotely, different areas can just coordinate via 
+UTC if they need to.
+
+Which brings me to the next point: abolish timezones. Completely. Timezones
+are an absolute mess, and you can look at the map to see why. The opponents 
+of this idea might say that it would totally twist the way of how we 
+perceive time. So what? We&#x27;ve evolved for a reason. If you live somewhere 
+where the morning starts at 21:00 UTC, so be it. It&#x27;s not as big of a 
+problem as you might think. Those who live and work close to the poles 
+(Northern or Southern) already have the nights and days longer than anyone 
+else is used to, yet their clocks and watches count the same 24 hours as for 
+the rest of us. So the connection between the sunlight part of the day and 
+the time displayed on your clocks can be broken far more easily, especially 
+if you travel a lot or work near the poles like I mentioned.
+
+And yes, please also get rid of that stupid AM/PM notion and stop calling
+24-hour time designations &quot;military time&quot;. It&#x27;s not about the military, it&#x27;s 
+the only actual time we have right now. Newsflash: we don&#x27;t have 12 hours in 
+a day, we have 24. The reasons to divide it in half are purely historical 
+and don&#x27;t make much sense in the modern world.
+
+Finally, let&#x27;s talk about the calendar. It&#x27;s a mess almost the size of the
+timezone mess. Just like the length of the day is essentially determined by 
+one Earth rotation about its axis, a year is determined by one revolution of 
+Earth around the Sun. Throughout the history, people tried to simplify this 
+number as far as they could, but it fought back. Essentially, what I would 
+propose is to set the day and the week as the baseline and, given that the 
+notion of week already is culturally universal, abolish the concept of 
+months altogether and settle on something like the &quot;ISO week calendar&quot; with 
+the year always starting on Monday and having an integer amount of weeks 
+every single time. Which means, most years would have 364 days (52 weeks) 
+and once per 8 years there would be one with 371 (53 weeks). When enough 
+days from the would-be leap years have accumulated, another 53-week year is 
+inserted into the next cycle. That would, however, happen once per 28 years 
+on average. Anyway, I would also change the year numbering as well, but 
+that&#x27;s definitely a discussion for another time.
+
+But back to the beginning of the post with the Swatch&#x27;s radical proposal.
+Like, is there any better way to divide the day than into the traditional 
+hours, minutes and seconds? I think there is but it would take a lot of 
+getting used to in comparison to any calendar reform. While I also like the 
+initial .beats idea (except I&#x27;d use UTC as the baseline as opposed to CET), 
+I have heard another proposal recently. In essence, the day is divided into 
+3 parts (8 hours each) and each of those parts is divided into 256 units. 
+The size of one unit turns out to be 1.875 of a standard minute. And, when 
+displayed in hex, not only does it take only 2 indicator positions (within a 
+part), but also the 0x10 value maps to 30 standard minutes. So, the first 
+hex digit essentially measures 30-minute intervals, and the second one 
+measures 1/16 parts of those intervals. If we go even further, we can reduce 
+each &quot;day&quot; to 8 (standard) hours and thus completely get rid of the sunlight 
+dependency when it comes to time measurement, which would justify UTC 
+unification even better. And one week would have 21 of these neodays instead 
+of 7 standard days. And, e.g. the date and time I&#x27;m writing this paragraph 
+would be described not as 2024-07-01 08:25 UTC, but 2024-27-02-0D (27th 
+week, 2nd neoday, time unit 13). If we need greater precision, we can 
+further divide those units into 256 parts again, but I think you get the 
+idea. Kudos to wd for sharing this interesting proposal with me.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
