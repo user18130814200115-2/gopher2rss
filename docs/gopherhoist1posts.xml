@@ -10145,4 +10145,43 @@ idea. Kudos to wd for sharing this interesting proposal with me.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-07-08-the-future-of-keypad-apps.txt</link>
+<title>(2024-07-08) The future of keypad mobile applications (or lack thereof)</title>
+<description><![CDATA[<pre>
+(2024-07-08) The future of keypad mobile applications (or lack thereof)
+-----------------------------------------------------------------------
+If you&#x27;ve been keeping your eyes on what&#x27;s going on with current
+NON-smartphone hardware lineups, then you might already have realized the 
+situation is more than grim. I mean, it looks like the only LTE-enabled 
+featurephone chipset is Unisoc UMS9117 or UMS9117L. And all the phones that 
+have it run proprietary Mocor OS by Unisoc as well, modded a bit for HMD in 
+case of Nokias. After Nokia 3310 3G, they also fully dropped J2ME support, 
+and the MiniJ/MRP support had been dropped even earlier, so right now all 
+the apps are fully compiled-in by the firmware builder. No customization 
+whatsoever, despite the hardware itself being more than capable of doing it.
+
+And now, trying to fill the vacuum, they started offering &quot;cloud apps&quot;. Of
+course not for the phones sold where I live, and yes, the lack of this 
+feature was proven to be a pure marketing gimmick. But those who do have 
+these, find an adaptation of the Puffin browser interacting with the device 
+in a fashion of Opera Mini (with the browser itself being a very dumb 
+client) but providing a more seamless interaction with modern web 
+applications. There is an entire platform provided by CloudMosa, there is 
+some developer documentation and community of real people developing for it 
+but... WTF happened to using your native offline resources? You have a 1 GHz 
+CPU there, come on! Instead, you opt to constantly depend on the internet 
+connectivity even for the tasks that are traditionally offline, blindly 
+trust Puffin/CloudMosa and share all your in-app actions with who-knows-who 
+every time you launch anything on that &quot;platform&quot; proxying all your 
+requests. An ideal scenario for total control over &quot;the next billion&quot;, as 
+they put it, in the NWO era where users own nothing anymore.
+
+My take on it is simple: if you can&#x27;t invent anything better, just return
+J2ME support. We&#x27;ll figure it out ourselves.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
