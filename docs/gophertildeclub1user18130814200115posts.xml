@@ -2261,4 +2261,248 @@ out the way it was meant to.
 [1]: Accessible for free on the web at unsongbook.com
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0022-oslos-public-transport-is-unfriendly-to-forgeiners.txt</link>
+<title>0022-oslos-public-transport-is-unfr   2024-Jul-11 21:57     6.5 KB</title>
+<description><![CDATA[<pre>
+Oslo&#x27;s public transport is unfriendly to foreigners
+Sun, 07 Jul 2024
+Travel, Opinion
+===================================================
+
+I have been living in Oslo for the past two years and there are
+many good things I can say about the city. It is generally clean,
+the people will largely not bother you, and it has great access
+to many nature areas for recreation. These nature areas are best
+reached by the public transport system which is largely excellent.
+
+There are no gates, no complicated ticket types, subscriptions,
+and discounts, the metro, bus, and tram drive rather frequently,
+and you can even take the ferry with the same card. There are
+however also many, many aspects of Oslo&#x27;s public transport which
+rub me the wrong way. Instead of just listing my issues with the
+system however, I will highlight specifically why these matters
+are particularly detrimental to foreigners.
+
+1. Tickets
+----------
+
+Oslo&#x27;s public transport network does not have ticket machines.
+Instead, tickets are can be bought at various kiosks from four
+particular chains, or at the half a dozen official outlets. This
+is a huge problem for foreigners coming into the city for several
+reasons.
+
+Firstly, it is confusing. Ticket machines are rather universal
+across Europe and most of the world. My process of visiting
+cities is simple. I go to the train or metro stop, buy a day
+pass, check out the map, and get on the next available train. In
+Oslo, you show up to the metro and see... well nothing. There is
+a small sign at most stops describing to you where you can buy
+tickets (only in Norwegian and English), though there is no map
+nor written instructions of the closest outlet. If you don&#x27;t know
+the city well, you might need to walk around for quite some time
+before finding one of these stores.
+
+This leads into my second point. The ticket sale locations are
+not distributed uniformly across the city. In fact, you don&#x27;t
+even need to go very far outside of the commercial center before
+you are in a ticket-dead-zone. There are many places within the
+city where you need to walk at least an hour before encountering
+a point of sale, even assuming you take the shortest route.
+
+At this point I should mention that there is an alternative: a
+mobile app. While it is great that you *can* use a mobile app
+instead of a physical ticket, it does not alleviate the problems
+listed above. You cannot assume that your passengers have mobile
+data plans to download and use the app (yes, you need an active
+internet connection in case of a ticket inspection, and there are
+no mobile hotspots on board the vehicles nor at the stations),
+you cannot assume that everyone has a smartphone with either
+google play or the apple app store, nor for that matter can you
+assume that all of your users have a credit card using either
+Visa or MasterCard to pay for these tickets. While all these
+elements are nigh-universal amongst the Norwegians, they are not
+universal worldwide, therefore placing a greater burden on
+tourists and other foreigners.
+
+2. Times
+--------
+
+The Oslo public transport system is very spotty when it comes to
+service after midnight. The metro and tram lines stop entirely
+around 1, and the regular buses switch to night buses. These
+night buses operate on different lines, with different times,
+and are usually overcrowded with drunk Norwegian partygoers.
+
+This is of course especially problematic if you are making your
+way to or from the airport, placing yet another increased burden
+on tourists.
+
+3. Where am I going again?
+--------------------------
+
+All stations and stops for the bus, train, tram, and metro use
+recognizable enough Norwegian names. These are rather well
+diminishable from another in most cases.
+
+There are however some major accessibility concerns. Firstly, the
+displays showing the coming stops are very frequently broken,
+especially on the buses. This is a problem because you need to
+request the driver to stop at the next station by pressing a
+button for both the bus and the tram. If you do not know what the
+next stop is (because you are unfamiliar with the city), this
+obviously becomes more difficult.
+
+The name of the next stop is also called out by over a speaker,
+however this system also has two problems. Firstly, and most
+obviously, those who are hard of hearing will have no idea where
+they are when the screens are non-functional (or if they also
+have poor vision). Secondly, for those not used to the Norwegian
+language, it can be very hard to put the sounds to words. Add to
+that the fact that there are plenty of people who did not grow up
+with the Latin alphabet, nor even a Germanic language, and you
+are -- once again -- putting an extra burden on foreigners.
+
+4. Inconsistency and information sharing
+----------------------------------------
+
+It happens relatively often that the public transport network
+shuts down, most often due to weather conditions. This is perhaps
+unavoidable, but what makes this problematic is the sharing of
+information in such events.
+
+Firstly, the information is often not updated. Rather, the next
+train will just be pushed back 10 minutes with every 10 minutes
+that pass. Locals have figured out by experience how to tell when
+a train is likely never arriving, but for tourists and
+immigrants, this is not the case.
+
+Secondly, smaller stations will usually have a display simply
+reading: ``check our website for updates&#x27;&#x27;. I mentioned above
+that you cannot assume everyone to be in the possession of a
+smartphone and an active internet connection. Bigger stations
+tend to have spoken announcements about the state of things,
+though these are only given in Norwegian.
+
+And even if you manage to translate these messages, they usually
+only state something along the lines of ``look for alternative
+transport&#x27;&#x27;. They do not broadcast the number for a taxi company,
+they don&#x27;t tell you how long you should expect to wait, whether
+you will be refunded, etcetera. Once again, these are things the
+locals have figured out by themselves over the years, and the
+companies in charge seem to use this acquired knowledge as a
+crutch of sorts, a crutch which falls apart when foreigners come
+in to the frame.
+
+-----------------------------------------------------------------
+
+I have many more complaints about the way Norway disadvantages
+foreigner workers, tourists, and students, but I will leave
+things here for now. A country with the size and wealth of Norway
+should be concerned with matters of accessibility in public
+transport, and while I by no means believe Norway to be the worst
+country in the regard, she too fails to meet the mark of
+acceptable accessibility, at least for non-Norwegian passengers.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0023-project-typewriter-2-0.txt</link>
+<title>0023-project-typewriter-2-0.txt       2024-Jul-11 21:56     4.7 KB</title>
+<description><![CDATA[<pre>
+Project Typewriter 2.0
+Wed, 10 Jul 2024
+Technology, Programming
+=======================
+
+I have, for some time now, been interested in developing some
+sort of machine which is only capable of writing. Those who have
+read my the previous iterations of this blog may remember the
+typewriter which onto which I wired a USB output. The typewriter
+itself is also such a system, one which allows me to record my
+tough&#x27;s onto paper without the possibility for further
+distractions. Today, I have developed a new system. It is by-far
+the most usable one, which I am proving by writing this very post
+on it (excuse the above-average amount of typos).
+
+Before getting into how exactly this system works, let me outline
+what it needs to be capable of doing. Any system on which I write
+must of course have an input method as well as some sort of
+feedback to the user. A screen, a piece of paper, potentially
+even sound. Secondly, the system must be able to store the
+written files in some digital manner. Lastly, I want to keep the
+system as minimal as possible, preferably being able to run it
+off a battery ban. It goes without saying that the system also
+needs to be accurate and fast enough to keep up with my
+(admittedly modest) typing speed.
+
+Having outlined the requirements, let us get in to the latest
+addition to my typing repertoire. This post is currently being
+written on a raspberry pi 400 with a 2*16 LCD character display
+attached. The raspberry pi 400, for those who do not know, is a
+small fanless computer built entirely inside of a keyboard. I
+will not go over all the specifications regarding the raspberry
+pi, but what is important to note is how you can use the device
+to driver various electronics The pi has access to 40 GPIO pins
+which can be connected to motors, sensors, lights, etcetera,
+which can then be controlled by software.
+
+In this case, the object connected to the pi is an LCD character
+display, which is capable of displaying a total of 30 characters
+in beautiful black-on-green text. The display is driven by a
+small python script which is indeed so simple, that calling it a
+text-editor probably counts as a direct insult for anyone who has
+ever actually worked on one. The script is divided into two parts
+which operate independently of one another. This asynchronous
+nature of the script is perhaps its most complicated feature,
+which says a lot about how minimalist its feature set is. The
+first part simple listens for key presses and stores the keys in
+memory. If the backspace is pressed, the latest character is
+removed from memory. When the return key is pressed, the current
+line is saved to a file, at which point the program will proceed
+to forget about it.
+
+The second part of the program updates the display. The display
+is rather slow and the driver will by-default wait for the
+display to finish drawing before continuing with the script. This
+is exactly why this part must be handled separately from the key
+recording. If these were handled on the same thread, then
+keystones would not be registered while the display was updating.
+The display code therefore simply looks at the current working
+string, formats it to fit on the 2*16 display, and sends it off
+to the drawn.
+
+That is really the extent of the editor. I added in a slight
+quality-of-life addition in the ability to exit the program by
+simply writing EXIT on an empty line. After doing so, a new file
+will be created (its name determined by the date and time), and
+the user&#x27;s input will now be written onto that file instead.
+
+Obviously, these files must be taken off the internal SD card of
+the pi and put onto an actual computer for editing and
+publishing. Alternatively, you can attach a full monitor to the
+pi itself and do all the work from there. It is after all a fully
+functioning computer running Linux. This current iteration of my
+``typewriter project&#x27;&#x27; will probably be the host of a number of
+other blog posts. Writing on it gives a fun atmosphere, and the
+entire setup is light, power efficient, and even usable in bright
+daylight (unlike laptops or tablets). Unlike the actual
+typewriter which I gave a usb port; this version actually
+registers keystrokes consistently, is carry able with without a
+briefcase, requires neither ink nor paper, and is not loud enough
+to keep everybody in a 100 meter radius awake. I will miss the
+typewriter somewhat, though with the improvements OCR is making
+these days, I suppose I could just use it without the USB port.
+
+Code as always is available on my GitHub [1], though keep in mind
+that this is largely untested, unoptimized, and uncommented code.
+If you have interest in building a system like this yourself
+though, feel free to send me an email at blog@wester.digital.
+
+-----------------------------------------------------------------
+
+1: https://github.com/user18130814200115-2/LineWriter
+</pre>]]></description>
+</item>
 </channel></rss>
