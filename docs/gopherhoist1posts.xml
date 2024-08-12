@@ -10240,4 +10240,66 @@ in this crazy world. That&#x27;s why we all need to rest sometimes.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-08-12-sokoban-occam-razor.txt</link>
+<title>(2024-08-12) Sokoban: a case of Occam's Razor in video gaming</title>
+<description><![CDATA[<pre>
+(2024-08-12) Sokoban: a case of Occam&#x27;s Razor in video gaming
+-------------------------------------------------------------
+In case I didn&#x27;t already mention it, my gaming preferences have significantly
+changed throughout the year. Now, I prefer the games that are more quiet, 
+calm and don&#x27;t require a lot of timing. For instance, I have beaten Solomon 
+no Kagi 2 (along with its 50 bonus levels), started playing Saboteur (on BGA 
+website) and mastering FreeCell (usually on Aisleriot but I also have my own 
+AWK-based implementation), but I think the most important switch in my 
+&quot;gaming career&quot; was the return to Sokoban.
+
+Being introduced back in 1982 by Hiroyuki Imabayashi and his company called
+Thinking Rabbit, Sokoban was a major hit. Few people know, however, that the 
+original NEC PC-8801 version had some mechanics in the second half of the 
+game that later disappeared from all subsequent releases, as well as 
+unofficial clones: false walls. Quoting Sokoban Fandom: &quot;These false walls 
+appear just like regular walls, with no indication that they are different, 
+but if the player moves toward them from a specific direction they are 
+demolished, thus forming a path through which the player can move through. 
+This mechanic would be ditched after this game.&quot;
+
+Well, why was it ditched? I think it was because such a mechanic would be
+excessive, and much more variety can be added just by designing new levels 
+instead of complicating the engine itself. And this is what I&#x27;d like to 
+emphasize on: simplicity at the core. Sokoban rules are so simple and 
+well-defined that the entire engine can even fit into a 512-byte x86 boot 
+sector ([1]). There are just seven different tile sets: empty space, a goal 
+spot, the player, a box, the player on a goal, a box on a goal and a wall. 
+Together with a &quot;line break&quot;, this only means 8-state (3-bit) pieces needed 
+to design a level. Moves and collisions are easily implementable by simple 
+comparisons and bitwise operations. Controls require 6 buttons at most, that 
+is, if we include undo functionality, which is a good practice for any 
+Sokoban developer. There were some famous official Sokoban implementations 
+though (like Boxxle on Game Boy) that only included last move undo and 
+didn&#x27;t save entire history, but nowadays that&#x27;s more of an exception.
+
+Considering this simplicity, the amount of alternative engines and even two
+different &quot;standard&quot; level formats (one plaintext and one XML-based), 
+there&#x27;s no wonder Sokoban gathered a huge community around it. And this is 
+where the variety I was talking about comes from: as of now, there are over 
+43000 ([2]) community-submitted levels! Just try to wrap your head around 
+the number and imagine the total playtime of all this. Even if some of them 
+could repeat others, it still would easily be over 40k levels of unique 
+content. No game publisher could ever do such work. Maybe we are going to 
+see some AI-generated Sokoban levels in the near future, but I&#x27;m referring 
+to a database of the levels designed, played and proven to be solvable by 
+real people. This is what I call success: from 20 levels on an obscure 
+Japanese PC to over 43k levels that can be played on any platform existing 
+in the world that allows to sideload applications.
+
+Needless to say, I&#x27;m in.
+
+--- Luxferre ---
+
+[1]: https://ish.works/bootsector/bootsector.html
+[2]: https://www.sourcecode.se/sokoban/levels.php
+</pre>]]></description>
+</item>
 </channel></rss>
