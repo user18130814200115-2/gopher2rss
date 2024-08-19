@@ -10302,4 +10302,60 @@ Needless to say, I&#x27;m in.
 [2]: https://www.sourcecode.se/sokoban/levels.php
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-08-19-all-about-ownership.txt</link>
+<title>(2024-08-19) It's all about ownership</title>
+<description><![CDATA[<pre>
+(2024-08-19) It&#x27;s all about ownership
+-------------------------------------
+There is a huge problem no one can be silent about anymore. A huge question
+that you need to ask yourself whenever you consider buying anything, or even 
+receiving it as a gift or something: &quot;Will I own it once I get it?&quot;
+
+The scale of this problem is much larger than you think. And I&#x27;m not even
+talking about legal restrictions (let&#x27;s be honest, no one fully cares about 
+them), I&#x27;m talking about real dystopian stuff. I&#x27;m talking about every time 
+some game or software switches to a subscription model (including the 
+firmware of frigging cars that people already have paid a ton of money for), 
+every time a hardware crypto key breaks, every time you rely upon streaming 
+services instead of downloading everything locally and self-hosting it 
+whenever required, and then suddenly find out that the content you got used 
+to is no longer there and you can do absolutely nothing about it.
+
+For instance, I keep seeing cryptobros actively advertising &quot;hardware
+wallets&quot; like Tangem or Ledger. Who is to guarantee that the master keys 
+never leave the device or weren&#x27;t backed up by the manufacturer even before 
+putting them inside? How do you restore your wallet keys if the device 
+breaks? If you choose the recovery passphrase option, how does it differ 
+from you just memorizing the BIP passphrase and using it to restore the keys 
+with any other wallet, without introducing this extra point of failure? 
+Lastly, whatever happened to &quot;paper wallets&quot; where you just print out your 
+keypairs as QR codes and hex values and store them in a secure place?
+
+This kind of plague didn&#x27;t appear overnight. Since mid-2000s, we&#x27;ve been
+slowly but surely fed the worst Orwellian practices disguised as 
+technological progress. All &quot;for our own convenience&quot;, of course. It&#x27;s just 
+that now the amount of things we have to pay for but still don&#x27;t own becomes 
+so apparent that it can&#x27;t be ignored anymore. The most important part of it 
+is that such things were considered a novelty and out of place back then, 
+but are so commonplace now that the general public already can&#x27;t imagine 
+otherwise, and readily and mindlessly considers anyone who prefers to 
+actually download stuff &quot;a pirate&quot;, &quot;a dork&quot; or &quot;a geek&quot; at best. This is 
+how scarily efficiently Overton window sliding works nowadays.
+
+So, what can be done about this? Plenty, actually. Increase your local
+long-term storage capacity. Archive your software and data. Go Linux and BSD 
+way. Go FOSS-first regardless of the platform. Collect game ROMs and support 
+emulation. Download books, music and movies. Learn how to liberate the 
+firmware of whatever proprietary electronics you have to use. Combat planned 
+obsolescence. DIY wherever you can. Learn analogue skills (mech watch 
+regulation, slide rule usage, Sun/star navigation etc). Resist corporate 
+normie propaganda and keep your mind clear of online noise.
+
+They may have won the battle, but not the war.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
