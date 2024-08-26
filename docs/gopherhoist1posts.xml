@@ -10358,4 +10358,77 @@ They may have won the battle, but not the war.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-08-26-helping-retro-meet-modern.txt</link>
+<title>(2024-08-26) Helping retro meet modern</title>
+<description><![CDATA[<pre>
+(2024-08-26) Helping retro meet modern
+--------------------------------------
+I have reinstalled everything on my main PC, the Asus PN41 nettop. Now,
+instead of Arch + OpenBSD, it&#x27;s only running Alpine Linux. That&#x27;s what I 
+spent the main part of the week on, and the results satisfied me. By the 
+way, I&#x27;ve migrated from WindowMaker to Fluxbox and it still is perfect for 
+my needs. My weekend though has also been rather interesting, and that&#x27;s 
+because of two things. First, I got a VoIP ATA gateway, namely Grandstream 
+HT802. Second, my 12-watch waxed canvas roll by Bertucci finally arrived, 
+alongside the watch I&#x27;d been hinting about before: Seiko SBDC091 (aka Seiko 
+Prospex Alpinist Green). And yes, that&#x27;s SBDC091, not SPB121, although one 
+couldn&#x27;t probably tell any difference without the original packaging. What 
+do these things have in common? They bridge modern and retro technologies.
+
+As for the HT802, I&#x27;d been planning to purchase something like this for some
+time. It&#x27;s only powered by micro-USB, drawing 1A of current at most, hence 
+its maximum power consumption is 5W. But it&#x27;s capable of serving two phone 
+lines via different SIP accounts simultaneously, and more importantly, it 
+supports pulse dialing. Yes, one can hook an old rotary phone to this small 
+box and have it talking to the Internet in no time. This is how I got 
+interested in the purchase. I was initially planning on buying an even older 
+version (HT502), but it turned out to be out of stock when I ordered it, so 
+I got this one. And didn&#x27;t regret it.
+
+The firmware upgrade process (the recent version is 1.0.55) wasn&#x27;t as
+straightforward: Grandstream had changed the main update URL to 
+firmware.grandstream.com, so it had to be adjusted in the admin dashboard, 
+making sure plain HTTP is being used. Afterwards though, even an option to 
+configure routing all traffic through OpenVPN appeared, and I might put it 
+into some use in the future. But what am I using this device for? Well, I do 
+have a SIP number reachable from normal PSTNs, and I do have some old wired 
+phones lying around. With this device, I can create a fixed line phone for 
+my room that would be using that SIP number, and actually use it for calling 
+instead of any of my cellphones, since I&#x27;ve been spending most of my time in 
+this very room anyway. And yes, I&#x27;m going to get an old Tesla rotary phone 
+from a friend of mine within this week, so the process is going to be much 
+more fun than I can imagine.
+
+Now, to the Seiko SBDC091. I&#x27;ve immediately put a different strap on it
+(dark-green canvas with quick-release bars) but, other than that, it looks 
+much cooler than it costs. Time will tell how accurate it is out of the box, 
+but, unlike the Certina DS Action Diver (which still had been running well 
+under +1 spd, by the way), the 6R35A in this one is regulatable, so it 
+shouldn&#x27;t be a problem in the long run. I probably will write a separate 
+post with my impressions about this watch some time into the future, but for 
+now I can say one thing: those who keep comparing it to the SARB017 are 
+doing so in vain. In fact, SARB017 had no _real_ advantages over this one 
+besides probably a white-on-black date window. SARB017 didn&#x27;t even have 
+anti-reflective coating whereas this one has. Here though, where they 
+returned the date magnifier (and I say returned, not added out of nothing), 
+I understand why they implemented a black-on-white date: this new model is 
+all about improved legibility under any conditions. And believe me, all of 
+us start appreciating this when we grow older. Again, the only thing I&#x27;d 
+really like to see is a titanium cased version of the very same watch.
+
+Finally, the Bertucci watch roll. I must admit, that&#x27;s one of the things one
+can never understand until trying it out. The concept is so simple yet so 
+efficient that I wish I had bought one before even buying any of the 
+&quot;traditional&quot; watch boxes. It&#x27;s extremely convenient for securely packing 
+the entire watch collection into a bag or backpack without taking a lot of 
+additional space or weight. As I only have 13 watches left in my entire 
+collection (including SBDC091), this roll perfectly fits my purpose: twelve 
+watches packed and one on the wrist. And the collection is probably gonna 
+shrink even more in the years to come, so it&#x27;s future-proof enough for me.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
