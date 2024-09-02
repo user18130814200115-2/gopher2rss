@@ -10431,4 +10431,108 @@ shrink even more in the years to come, so it&#x27;s future-proof enough for me.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-09-02-rotary-phones-are-underrated.txt</link>
+<title>(2024-09-02) Rotary phones are underrated (feat. VEF TA-68)</title>
+<description><![CDATA[<pre>
+(2024-09-02) Rotary phones are underrated (feat. VEF TA-68)
+-----------------------------------------------------------
+The Tesla (Typ 66?) telephone that I got as promised last week turned out to
+be a bit faulty: its dial (made py Polish RWT) sometimes emitted one more 
+pulse per digit than necessary. And I deduced that nothing could be done 
+about it, so the same friend of mine got me a VEF TA-68 made in Latvia in Q3 
+1978 that his family had been using up until the mid-2010s. Yes, that 
+red-case/black-base neato had been manufactured 46 years ago, and still is 
+in a fully working condition, while the Tesla (seemingly) made in Jan 1990 
+already has some dial issues (well, it also fell from the table so the case 
+got several cracks as well, while the VEF&#x27;s case is almost like new). It&#x27;s 
+remarkable that both of them adhere to the ancient German-type wire color 
+coding, so the brownish wire is Line+ and the white one is Line-. The rest 
+of the wires were unnecessary in either case in order to connect the device 
+to the RJ-11 cable I ripped off from some faulty Genius steering wheel 
+pedals. Both phones passed all GR-909 tests offered by my Grandstream HT-802 
+ATA, so, after a bit of cleaning, the TA-68 was ready to use. It&#x27;s amazing 
+how a 46-year old landline phone is much easier to bring back to life 
+without running into any legal troubles, as opposed to, say, some NMT or 
+AMPS mobile phone from early 1990s.
+
+This is how my SIP DID number from Intertelecom came alive again. I had been
+using it for testing my FrugalVox IVR program, but that never got any actual 
+use as of yet. Now, it&#x27;s serving as my landline, although it&#x27;s quite amusing 
+how this &quot;landline&quot; actually gets routed through a wireless mesh and then a 
+Starlink satellite dish. All thanks to that ATA that is being powered by a 
+measly microUSB cable, requiring 1A of current at most. So, with 5W max 
+power, you can serve _two_ such phone lines (each over a 5+ meter long VEF&#x27;s 
+cord, mind you) and route them to various VoIP providers independently. And 
+here comes the most interesting part: dialing a number with a rotary dial 
+doesn&#x27;t consume any extra line power, it&#x27;s just a series of rapid 
+disconnections that make up these pulses. On the contrary, any push-button 
+keypad does consume extra power for the circuits to generate the DTMF 
+signals to work, and the signals also have to be loud enough, or, in case of 
+still using pulse dialing, to programmatically emulate those pulses on the 
+line. Another paradox is that pulse dialing is purely digital (it&#x27;s a 
+variation of so-called &quot;unary code&quot;) while DTMF (I hate the &quot;touch-tone&quot; 
+term) is analogue, being a mixture of two sine waves, while both generating 
+and decoding it require some digital signal processing.
+
+So, why were rotary phones phased out so quickly (how quickly, depends on the
+part of the world) despite being so simple, robust, reliable and energy 
+efficient? Well, the #1 answer is convenience. Not only did keypads allow to 
+dial the numbers faster and the electronic circuits allowed adding the 
+features like caller ID display and answering machines, but the introduction 
+of DTMF support (which, by the way, wasn&#x27;t a thing until late 1990s where I 
+lived) by automatic phone exchanges opened up a whole new world of 
+possibilities to customers. Even this Grandstream HT802, despite pulse 
+dialing support _and_ converting pulses to tones down the line, can be 
+controlled internally by dialing *** (three stars) which is impossible to do 
+on a rotary phone. And to quickly check the balance without signing into the 
+Intertelecom&#x27;s web portal, I need to dial *7501, again, no way I can do this 
+on my TA-68. I even have an Actionline DTMF beeper to be used on the phones 
+that don&#x27;t support tone dialing — need to replace those 3xLR44 batteries 
+though. So, now I think you can see the problem: the phones kept working but 
+the world around them kept changing. Ten digits are no longer enough, it 
+seems. There are some workarounds like the &quot;hook flash&quot; technique for call 
+control, but this only works when you already made a connection, and there 
+doesn&#x27;t seem to be any way to remap the flash event into dialing e.g. the 
+star character.
+
+Furthermore, when cordless landline telephones were introduced, people became
+hooked on them even quicker. Now you could talk virtually anywhere in the 
+house (or flat) and return the handset to the base station only when it 
+needed charging. With the first generations of cordless phones (or 
+radiotelephones, as we called them), no one even thought about the fact that 
+they could be eavesdropped to with a simple VHF/UHF receiver. This is, like, 
+the first time when convenience won over privacy in the history of 
+telecommunication for &quot;mere mortals&quot;. Long-range radiotelephones (Senao etc) 
+added even more salt into the wound, interfering with other public radio 
+systems (and leading to innocent people being prosecuted for this) and being 
+equally insecure. In fact, until the introduction of the DECT standard, you 
+could not be sure whether the handset-base link was properly encrypted or 
+not. The problem with DECT standard is... when it really became widespread, 
+it was too late: its original encryption had been broken by 2008, and 
+cellphones already took over the world. The question &quot;did mobiles kill 
+landlines?&quot; is highly debatable though, I might dedicate a separate post 
+about it but my short answer is &quot;I wouldn&#x27;t be so sure&quot;.
+
+What I am sure about is that, despite all those points, rotary phones are
+still underrated. They still can work on remaining landlines with no extra 
+power required, they can be used on VoIP lines with as little as 5W of power 
+required in total, they don&#x27;t have any electronics to possibly spy on you 
+inside (with a traditional landline, that&#x27;s what your phone company can do, 
+but with VoIP, you are in control of at least some security options on the 
+ATA), they are not prone to radio eavesdropping (at least not without some 
+extremely specialized equipment), they have little to no parts that can 
+break under normal conditions, but even then they are extremely easy to 
+repair and modify, most of them still have some controls like a ringer 
+volume regulator, some of them have microphone mute and/or hook flash 
+buttons, and most importantly, they don&#x27;t have _any_ distraction factors 
+whatsoever. You can just place and receive calls, optionally control them 
+with a hook flash and adjust the ringer bell volume. That&#x27;s it.
+
+That&#x27;s it. And I think that&#x27;s beautiful.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
