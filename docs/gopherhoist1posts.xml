@@ -10535,4 +10535,63 @@ That&#x27;s it. And I think that&#x27;s beautiful.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-09-09-making-c-great-again-mongoose.txt</link>
+<title>(2024-09-09) Making pure C great again (feat. Mongoose)</title>
+<description><![CDATA[<pre>
+(2024-09-09) Making pure C great again (feat. Mongoose)
+-------------------------------------------------------
+Here, I&#x27;m not going to talk about that Mongoose that has something to do with
+MongoDB, I don&#x27;t even know what it does. I&#x27;m going to talk about that 
+Mongoose that resides on https://mongoose.ws and is an &quot;industrial-grade&quot; 
+networking library with more or less complete Web server capabilities. It&#x27;s 
+written in pure C and compilable directly with your own sources: you just 
+add mongoose.c and mongoose.h to the project, include the .h file in the 
+source and the .c file to the list of files passed to the compiler, and 
+that&#x27;s it. I, for instance, could not find the process as straighforward for 
+libhttp, which they say had been derived from Mongoose some time ago.
+
+I&#x27;ve stumbled upon this library when looking to simplify my upcoming
+livestream chat aggregation server to make it not use raw socket and become 
+more cross-platform in the future. The backend-server-frontend interaction 
+concept had changed several times but I still liked the idea the core should 
+be written in pure C with little to no third-party additions, and its 
+structure should be kept as simple and robust as possible. The amount of 
+manual work, however, began to overwhelm me and made it look not so simple 
+anymore, so I started to look for alternatives. And this is the one I 
+decided to use after all.
+
+Of course, Mongoose does have some issues on its own: it doesn&#x27;t compile with
+-std=c89 (or pretty much any -std for that matter), it can throw out 
+&quot;Illegal instruction&quot; errors when compiled with -O flags (and I&#x27;m not even 
+sure what&#x27;s to blame here — Alpine Linux, musl or Mongoose codebase itself), 
+and it leads to pretty heavy binaries even when no additional compiler flags 
+are switched on. However, despite all this, the package provided here is so 
+complete that I can live without -O flags and C89 compatibility. You get 
+your own multiprotocol networking, API server, static file server, 
+WebSockets, JSON decoding, string processing and much, much more in a single 
+place. It&#x27;s adding to C almost everything that I have missed here from what 
+I have in Python. And it&#x27;s also said to be extremely portable across various 
+OSes and architectures, which is quite important for what I&#x27;m trying to 
+achieve here.
+
+By the way, I&#x27;m also still looking for a pure C, lightweight, cross-platform
+desktop GUI library. The closest to what I want is libui/libui-ng, but its 
+almost non-existent scrolling capabilities make it a no-go for most real use 
+cases. Dear ImGUI+cimgui, raylib+raygui and Nuklear only seem tiny, but the 
+first two of them are built on top of OpenGL, which is quite far from my 
+definition of lightweight, and the third one requires providing your own 
+platform-dependent rendering code. In fact, the search for a sane desktop 
+GUI is still ongoing, but for now Web-based seems like the only choice.
+
+Lastly, I think pure C programming is still underrated. Of course it requires
+you to adhere to strict security practices in terms of memory management and 
+type checking, but when done properly, it rewards you with full knowledge 
+about the internal flow of the program and unparalleled execution speed and 
+resource efficiency, something that&#x27;s sadly often forgot about these days.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
