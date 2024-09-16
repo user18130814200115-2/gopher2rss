@@ -10594,4 +10594,80 @@ resource efficiency, something that&#x27;s sadly often forgot about these days.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-09-16-going-in-the-right-direction.txt</link>
+<title>(2024-09-16) GOing in the right direction</title>
+<description><![CDATA[<pre>
+(2024-09-16) GOing in the right direction
+-----------------------------------------
+No existing programming language is ideal. Everything has its own quirks,
+inconsistencies and/or bloat. And, generally, the more mainstream the 
+language is, the more reasons I find NOT to use it. One of them, however, 
+had been under my radar for quite a long time, and I really don&#x27;t understand 
+why. Yes, my StreamGoose project is officially live ([1]), and yes, I 
+rewrote its message broker server from C to... Go.
+
+Before Nim was introduced, a lot of people referred to Go as a &quot;compiled
+Python&quot;, but that&#x27;s not entirely true. I found Go to include much more 
+&quot;batteries&quot; and be much more versatile in certain ways. My only complaint is 
+that the default behaviour is to link as much as possible statically, so 6+ 
+MiB binaries are normal here. I don&#x27;t necessarily have any problem with 
+that, considering the runtime is pretty complete AND ready to cross-compile 
+too. You don&#x27;t even need to bring in any external cross-compiler unless 
+you&#x27;re linking with external C libraries, as this process is using Cgo and 
+you need to specify the C/C++ compilers to use with it. And it turns out 
+that Go supports plenty of platforms and architectures out of the box, and 
+for those who need something totaly exotic, there&#x27;s TinyGo ([2]) as well, 
+although its capabilities are much more limited as of now.
+
+The main thing that astonished me, however, is how easy Go is to pick up and
+start writing real-life stuff in it. Learning basic syntax and keywords is a 
+matter of several hours, and getting really familiar with the language is a 
+matter of several days. As for someone with C/JS/Python/AWK background, some 
+Go&#x27;s syntactic features still look quite odd to me, but once you learn more 
+idiomatic ways of doing things over time (and a very short period of time, I 
+must add), these features start looking less and less strange. Anyway, as I 
+remember that Go was developed as an alternative to C++, I must add that 
+it&#x27;s lightyears ahead in terms of readability even for complete noobs like 
+myself. As I already mentioned in one of my posts, I ditched syntax 
+highlighting back in the past. With Go, you can fully understand what&#x27;s 
+going on (no pun intended) in a piece of plain, non-colored code. With C++, 
+it turns into a mess. That&#x27;s a sign of good language design: to not require 
+the user to rely on highlighting crutches.
+
+Nowadays, by the way, the hype around Go has settled down, as the hipstest
+among the techbros already have jumped to Rust. That&#x27;s a good sign for Go as 
+it is entering the real maturity stage. And, while I understand some merits 
+of Rust for some system software that requires tight memory management and 
+really high network throughput, I don&#x27;t understand why everyone else (who 
+doesn&#x27;t have those requirements) starts jumping onto the same inhumane 
+syntax bandwagon. Because Rust really looks even less readable than C++ or 
+Java for the general purpose usage.
+
+And, strategically speaking, Go has the potential to shift them off in the
+desktop([3]), server and even mobile ([4]) areas. As I said, it is quite 
+versatile itself. Even WebAssembly is one of its target platforms. Go has a 
+wonderful native multithreading (Goroutines) and inter-thread communication 
+(Go channels) support, something that would require using a third-party 
+library in many other runtimes. And they are integrated into the language in 
+the most straightforward way I have ever seen: you declare channels with the 
+chan type (providing a data type that will be used inside), communicate with 
+them using the &lt;- operator, and make any function a Goroutine by launching 
+it with the &quot;go&quot; keyword before it. Yep, that simple. Overall, it feels like 
+a perfect candidate for that &quot;one language collection&quot; if you&#x27;re too lazy 
+(or afraid) to learn anything else.
+
+So, I&#x27;ll definitely try keeping Go as my main programming language of
+operation for the time being. And hopefully, sometimes in the future, I&#x27;ll 
+tell you how it goes.
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/StreamGoose
+[2]: https://tinygo.org
+[3]: https://awesome-go.com/gui/
+[4]: https://pkg.go.dev/golang.org/x/mobile/app
+</pre>]]></description>
+</item>
 </channel></rss>
