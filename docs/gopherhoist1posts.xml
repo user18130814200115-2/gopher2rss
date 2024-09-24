@@ -10670,4 +10670,108 @@ tell you how it goes.
 [4]: https://pkg.go.dev/golang.org/x/mobile/app
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-09-23-on-desktop-gui-dev.txt</link>
+<title>(2024-09-23) In 2024, desktop GUI development is still pretty wild</title>
+<description><![CDATA[<pre>
+(2024-09-23) In 2024, desktop GUI development is still pretty wild
+------------------------------------------------------------------
+Throughout the recent, like, 10 years already, there is a popular question:
+why are the current-gen desktop GUI application developers so lazy that they 
+keep choosing humongous browser-based frameworks like Electron to implement 
+the GUIs, as opposed to using traditional native toolkits consuming much 
+less resources? Well, I think I know several sad but true answers to this 
+question now. And the first and the most obvious one is: Web browsers work 
+and everything else doesn&#x27;t.
+
+Let&#x27;s consider a simple use case inspired by my StreamGoose chat UI which is
+in no way any complex: a scrollable vertical list of messages that are 
+dynamically appended and can have various height, which is solely determined 
+by the width of the list block itself and the length of their contents. 
+That&#x27;s it. Any Web browser does this naturally by design. Now, try and find 
+a desktop-native GUI framework, preferably a cross-platform one, that would 
+allow you to do just that.
+
+I tried doing this for Go, which is a rather popular programming language and
+has a lot of bindings to a lot of graphical stuff. Even the well-renowned 
+Fyne framework doesn&#x27;t allow you to have dynamic list item height, you&#x27;ll 
+have to calculate it for each item individually, which is nuts, considering 
+you can resize the window and also have some images inside the message. The 
+only library that **kinda** worked in this scenario was Gio UI ([1]), but 
+it&#x27;s far from any desktop-native experience because all of those &quot;immediate 
+mode UI&quot; toolkits are built on top of OpenGL or similar renderers, and when 
+you have to use an engine designed for 3D gaming just to be able to draw 
+simple GUI widgets, I think there&#x27;s something inherently wrong with that. 
+Some GUI libraries (e.g. giu and Cogent Core) didn&#x27;t compile at all on my 
+Alpine because of some dependencies not working with musl, great... And, of 
+course, Go&#x27;s libui binding generally lacks scrolling support just like its C 
+counterpart.
+
+Unfortunately, the problems don&#x27;t stop there. Returning to Fyne, there also
+is no straightforward way to set a different color to a label or even a part 
+of the rich text element. The developers say it&#x27;s a part of &quot;enforcing UI 
+consistency&quot;, but what if e.g. coloring individual Twitch usernames 
+according to their preferences is a necessary part of application design? As 
+such, you&#x27;ll have to use cumbersome workarounds where you really shouldn&#x27;t. 
+If I color a label, I fully know what I&#x27;m doing and why. My take on it is: 
+stop treating developers like idiots and don&#x27;t restrict their freedom to do 
+stuff. Otherwise, the use cases of your toolkit won&#x27;t go far beyond what you 
+can see on the Fyne&#x27;s app gallery page ([2]). Because yes, for anything 
+slightly more advanced, you&#x27;ll have to become MUCH more verbose.
+
+And no, it&#x27;s not a new thing, desktop toolkits have been like this forever.
+MFC, VCL, GTK, Qt... All of them invented a bunch of problems that you 
+absolutely must solve instead of thinking about the UI itself. In terms of 
+development complexity and boilerplate code amount, none of them progressed 
+a lot compared to what bare WinAPI/Xaw/etc could offer. This is because all 
+of them were created from the perspective of those who code, not those who 
+compose. Web browsers, on the other hand, became too atrractive despite all 
+their flaws because they could offer something radically different: you are 
+no longer constrained to a predefined set of layouts, themes, fonts etc, you 
+get fluid text and widget flow basically for free, and, once written 
+correctly, your GUI will work virtually anywhere, from a 2.5-inch KaiOS 
+phone to a giant iMac. In fact, Web UIs became notoriously bad and slow just 
+because most devs stopped knowing how to write them correctly and started 
+stacking a lot of useless framework bloatware on top of them, not because 
+the underlying technology is evil or something.
+
+Speaking of which, my second answer to the initial question is: yes,
+developers are lazy, they usually don&#x27;t have time and/or budget to rewrite 
+the same UI for different target platforms, or, in case of cross-platform 
+frameworks like Qt and Fyne, to fight any quirks they might find in a 
+particular deployment. With HTML5, as long as you adhere to the &quot;lowest 
+common denominator&quot; of Web standards, you&#x27;re generally fine on any platform. 
+With true desktop GUI, it&#x27;s not so obvious, and someone might eventually 
+catch some bug that you can&#x27;t reproduce on your own system. Go-based 
+applications are generally less susceptible to platform-dependent bugs, 
+because they usually bundle as much stuff as possible inside the binary, but 
+that brings another problem to the table: a Fyne hello-world, compiled in 
+release mode, weighs about 22 MB (18 if you exclude the built-in emoji 
+font), and even a barebones Gio UI application is about 7MB large. Of 
+course, any of this is nowhere near the 90 to 170 megs of full-bundled 
+Web-based applications, but in that case you always have an option to offer 
+the user a headless version and to connect with an existing Web browser to 
+it (I even have such a build option for StreamGoose). Anyway, I know that 
+storage space is not a huge issue these days and that most of the stuff 
+occupying that space is not binaries themselves, but OTOH I am old enough to 
+remember self-contained complex UI programs taking up much less than a 
+single 3.5&quot; floppy, so... what happened?
+
+Alright, enough of this rant. What I&#x27;m trying to get to is: don&#x27;t yell at
+those who chose Web for desktop GUI, at least without providing any 
+**viable** alternatives. They chose it simply because everything else they 
+could hear about just sucks at being a good tool for their purposes. This is 
+why we also keep hearing that desktop is dying on the mass consumer market: 
+no one actually wants to write for it. In order to prevent this, we need a 
+really well thought out, close to native, easy to use, lightweight, 
+accessible and cross-platform GUI toolkit. As soon as we find one, things 
+are going to change for the better.
+
+--- Luxferre ---
+
+[1]: https://gioui.org/
+[2]: https://apps.fyne.io/all
+</pre>]]></description>
+</item>
 </channel></rss>
