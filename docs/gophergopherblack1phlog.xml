@@ -608,4 +608,25 @@ with my Dashiell Hammett book. Enjoy, gophs.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.black/1/phlog/20241003-circumlunar-updates</link>
+<title>2024-10-03 - circumlunar updates</title>
+<description><![CDATA[<pre>
+----------------------------------------
+circumlunar updates
+October 03rd, 2024
+----------------------------------------
+
+I fixed solderpunk&#x27;s circumlunar address a little while back
+because I noticed the top level domain info wasn&#x27;t updating
+anymore, but the zaibatsu side was. Today dokuja pointed out the
+same thing was happening to him. So I just went through and
+updated all the phlogs that were at circumlunar.space to now be at
+zaibatsu.circumlunar.space, and lo! so many updates. Enjoy!
+
+&lt;a href=gopher://gopher.black/1/moku-pona&gt;moku-pona&lt;/a&gt;
+
+</pre>]]></description>
+</item>
 </channel></rss>
