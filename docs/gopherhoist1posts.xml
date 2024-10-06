@@ -10841,4 +10841,165 @@ defintely keep you posted.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-10-07-omnia-mea-mecum-porto-tcltk.txt</link>
+<title>(2024-10-07) Omnia mea mecum porto (feat. Tcl/Tk)</title>
+<description><![CDATA[<pre>
+(2024-10-07) Omnia mea mecum porto (feat. Tcl/Tk)
+-------------------------------------------------
+Two posts ago, I ranted about the lack of sane and decent desktop GUI
+solutions. Now, I must emphasize that whatever I said there only applies to 
+compiled programming languages. The domain of desktop GUI scripting hasn&#x27;t 
+been vacant for all these years and hasn&#x27;t been only limited to JS, VBscript 
+(remember that shit?) or some obscure languages from the past like Rexx. 
+Popular interpreted programming languages like Python and Perl have been 
+having their own bindings to all possible C/C++ GUI frameworks in existence, 
+and some languages like Rebol and Red even have self-contained GUI 
+facilities. There is, however, one particular language that&#x27;s simple enough 
+to learn it and start rolling functional GUIs in a matter of minutes, 
+lightweight and cross-platform enough to be sure your GUIs will run 
+anywhere, mature enough to deter any hype riders trying to parasite on it, 
+and dynamic enough to ward off &quot;static typing is everything&quot;-type snobs. 
+That&#x27;s why, in the light of a recent new major version release of this 
+language and its accompanying graphical toolkit, I&#x27;d like to talk about 
+Tcl/Tk today.
+
+What&#x27;s interesting is that despite both of the names being acronyms (Tool
+Command Language and Tool Kit respectively), they are just written with only 
+the first letter capitalized. Even without Tk, the Tcl language itself is 
+interesting on its own: it&#x27;s built upon the same principles TRAC and REBOL 
+were built (even naming TRAC as one of its predecessors on its wiki), but 
+it&#x27;s simpler to grasp than both of them. The language grammar itself is 
+defined with the famous Dodekalogue ([1]), sometimes combined into Octalogue 
+(the example is given on the same wiki page), but I have built an even 
+simpler understanding of what&#x27;s going on there, and this can be formulated 
+in just several sentences.
+
+In Tcl, everything is a string. A string containing a whitespace-separated
+sequence of other strings is a list. Unless specified as a literal (within 
+double quotes or curly braces), the following three sentences apply to any 
+string. Any list is interpreted as a command. A script is a newline- or 
+semicolon-separated sequence of commands. Any string can be enclosed in the 
+square brackets which causes it to be interpreted as a Tcl script and the 
+result substituted in place of the string. If the string starts with $, then 
+it gets replaced with the value of the variable whose name is in the string 
+(not counting the $). {*} makes each item in a list an individual argument 
+of the current command.
+
+That&#x27;s it, that&#x27;s the entirety of Tcl language rules. Of course, the
+Dodekalogue also contains definitions of valid characters and backslash 
+notations and whatnot, but the basic understanding can be as concise as the 
+paragraph above. Everything else in the language builds upon the notions of 
+strings, lists, list expansion, variable and script substitutions. All 
+built-in commands like proc, if, for, foreach, list, dict, array etc have 
+nothing special about them and are just commands operating on lists and 
+strings. Even the comment operator # is just a command, this is why a space 
+is mandatory after it (unless it&#x27;s a shebang) or a semicolon is mandatory 
+before it if you append it to an existing line of code. All this makes Tcl 
+even closer to Lisp than one would realize just because of how different 
+they seemingly look, although the LISt Processing nature makes Tcl use the 
+same prefix notation for all things in the world, even the mathematical 
+expressions need the &quot;expr&quot; command if you need to use anything infix. By 
+the way, conditional commands call &quot;expr&quot; implicitly, this is why you can 
+use infix expressions in the conditions as well.
+
+From the functionality perspective, Tcl is quite a &quot;batteries included&quot;
+language even not counting Tk, although the choice of builtin commands and 
+packages may seem quite strange. All this because it has a rather unique 
+distribution system and plenty of various implementations, sometimes not 
+very compatible with each other. Once you have Tcllib ([2]) up and running 
+though, I think you&#x27;re pretty much set ([3]) for 95% of real-life non-GUI 
+development scenarios. The GUI part, as you might have guessed, is covered 
+by Tk and the Wish (WIndowed SHell) components of the Tcl/Tk distribution. 
+And there also is a Starpack system which, although quite outdated (the most 
+recent sdx kit file is from 2011), still works pretty well for packing any 
+Tcl application into a single binary file. Just make sure to include Metakit 
+(mk4tcl), Tcllib and TLS packages into your tclkit binary when building it 
+with whatever way you prefer. That&#x27;s the absolute viable minimum. And, of 
+course, don&#x27;t also forget to include Tk there if you&#x27;re targeting GUI 
+development. On top of that, even the stock Tcl interpreter, tclsh, also 
+runs great interactivly as a REPL. Well, it becomes much more usable as a 
+REPL provided that you run it via rlwrap, the same way we did back in the 
+ed-related post.
+
+Now, let&#x27;s briefly talk about what Tk can offer us in terms of GUI. While the
+Tk widget command syntax is not fully declarative, it&#x27;s as close as it can 
+get to it with zero boilerplate and without sacrificing the flexibility. To 
+me, who spends a lot of time with command-line parameters, this syntax is 
+much more readable than XML or even HTML, let alone Go/Fyne, C/GTK, C++/Qt 
+or other &quot;traditional&quot; GUI toolkits, the only minor inconvenience being 
+widget creation and placement consisting of two separate commands. That, 
+however, takes place because Tk has three completely unrelated modes of 
+widget placement: absolute (&quot;place&quot; command), stacking (&quot;pack&quot; command) and 
+grid-like (&quot;grid&quot; command). In real life, you&#x27;ll mostly find yourself 
+combining at least two of these three modes, so you definitely need some 
+flexibility when using them, so I don&#x27;t really regret the creation and 
+placement not stuffed into a single line of code. As for the widgets 
+themselves, you can find everything you really need for desktop GUI 
+programming out there, and the most recent version, Tk 9, even added support 
+for host OS printing, notifications and systray. Now you really have no 
+excuse to move elsewhere.
+
+The most underappreciated Tk feature though, in my opinion, is bidirectional
+data binding out of the box. I reckon this only is available when you use it 
+directly with Tcl and not through other language bindings like Tkinter. The 
+thing is, you can assign a global variable to any widget that can change its 
+parameters, and whenever the user modifies the widget contents (enters text, 
+clicks checkboxes, moves sliders etc), the variable automagically changes, 
+and vice versa. You don&#x27;t need to subscribe to any change events or signals, 
+or call the value retrieval method or whatever, it just happens by itself. 
+This way, the actual widget value always stays in sync with what the user 
+sees.
+
+One last thing: contrary to popular beliefs about the bland and obsolete UI
+style, Tk is themable. In fact, it is now recommended to create all widgets 
+from the ttk (themed Tk) namespace. The non-themed Tk engine is only there 
+for backward compatibility with previous versions. Besides several 
+preinstalled themes (&quot;default&quot;, &quot;alt&quot;, &quot;clam&quot; and &quot;classic&quot;), you actually 
+have plenty of options with ttk. You can even try to match the host OS style 
+if you want to. For instance, for normal OSes, there is a dynamic theme 
+called &quot;gtkTtk&quot; ([4]) that you can separately build on your system and have 
+it pull whatever GTK theme you&#x27;re currently using to apply the same style to 
+your Tk applications. For other OSes, there are &quot;aqua&quot;, &quot;winnative&quot;, 
+&quot;winxpnative&quot; and &quot;vista&quot; themes to match corresponding native widget 
+styles. In your own code, if you&#x27;re trying to target as many people as 
+possible but don&#x27;t want to include your own theme, you can even write 
+something like this in the catch blocks:
+
+# iterate over available platform-dependent themes, apply &quot;clam&quot; if none found
+ttk::style theme use clam
+catch {ttk::style theme use aqua}
+catch {ttk::style theme use winnative}
+catch {ttk::style theme use vista}
+catch {ttk::style theme use gtkTtk}
+
+Well, I guess this covers the most basic stuff about this incredible
+scripting language. I think it deserves more attention than it gets, 
+especially in the modern world of total nonsense and bloatware, 
+**especially** when it comes to interpreted programming languages and 
+graphical frameworks. Some people might argue it&#x27;s not &quot;enterprise-grade&quot; 
+enough despite its history in computing is already quite long. For me 
+though, Tcl/Tk still is something really viable for day-to-day desktop 
+scripting. I can imagine creating a bunch of small utilities for personal 
+use (both online and offline) that could easily fit on a floppy (let alone a 
+thumbdrive or a microSD) and travel with me from system to system, from 
+environment to environment, not being affected by anything external at all 
+as long as the underlying Tcl/Tk version can run there. And with version 9, 
+it got even better, although I still will have to stick to 8.6 for some 
+time, at least until the 9 gets ported to the AndroWish/undroidwish stack 
+and some other places that new versions get ported to much later than the 
+upstream ones. Regardless, it still feels exciting to rediscover such a 
+language and its capabilities and see a new major version released after a 
+long time. Now, I think, desktop GUI development finally got a chance, after 
+all.
+
+--- Luxferre ---
+
+[1]: https://wiki.tcl-lang.org/page/Dodekalogue
+[2]: https://www.tcl.tk/software/tcllib/
+[3]: https://core.tcl-lang.org/tcllib/doc/trunk/embedded/md/toc.md
+[4]: https://github.com/Geballin/gtkTtk
+</pre>]]></description>
+</item>
 </channel></rss>
