@@ -11002,4 +11002,86 @@ all.
 [4]: https://github.com/Geballin/gtkTtk
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-10-14-goodbye-bopher-hello-bfg-boxcl.txt</link>
+<title>(2024-10-14) Goodbye Bopher, hello BFG: a practical case of Tcl/Tk's GUI</title>
+<description><![CDATA[<pre>
+(2024-10-14) Goodbye Bopher, hello BFG: a practical case of Tcl/Tk&#x27;s GUI
+------------------------------------------------------------------------
+Tcl 8.6 is a powerful tool indeed, and I hope my previous post have shown
+why. As I have already written, I could see having my personal portfolio of 
+small but useful Tk GUI apps. And, of course, I had to start somewhere. So, 
+as my first &quot;real&quot; Tk application, I decided to write something that I 
+myself would use a lot: a new Gopher browser instead of my pretty limited 
+and unmaintainable Bopher-NG and the already bloated Lagrange. What I came 
+up with is now called BFG ([1]), short for &quot;Back/Forward/Go&quot;. Yes, I put it 
+up on Codeberg because I might need some bugfixes and contributions from 
+folks from the &quot;outer web&quot;, who knows... Of course, I decided to replace 
+Lagrange completely, which meant that my own replacement should at least 
+support not only Gopher, but Gemini, Spartan and Nex too. And it does, along 
+with Gopher-over-TLS if you ever need such a thing.
+
+Nex, by the way, is wonderful. In a way, it&#x27;s even lighter than Gopher
+(because there are no complicated Gophermap-like directories) and borrows 
+the only thing from Gemtext that I really like: its link format. The 
+specification ([2]) is so short that I could copy and paste it right here, 
+but I think I can rephrase it even shorter. Protocol-wise, Nex is fully 
+identical to Gopher: you send a CRLF-terminated (although I think it can be 
+just LF-terminated, the spec says nothing about line endings) selector path 
+to the TCP server (the default port is 1900), and the server returns 
+whatever content is under the path. For directories, the content is pure 
+plain text with the exception of Gemini-like links, with the only difference 
+from the Gemtext spec being that the space after =&gt; is mandatory. So, Nex 
+links always start with these three characters &quot;=&gt; &quot;, which makes writing 
+Nex-only (Nexclusive?) clients even easier. The spec ends with the 
+assumption that an empty path or a path finishing with / is a directory and 
+that a document should be displayed based on the path&#x27;s file extension. 
+Without an extension or a trailing slash, plain text is assumed.
+
+And yes, that&#x27;s really it. That&#x27;s the kind of evolution I wanted to see
+instead of Gemini or Spartan in the first place. Nex is accompanied by a 
+posting protocol called NPS, which is even more straightforward: connect on 
+the port 1915 (by default), send raw text data and end the transmission by 
+sending a line with a single dot. The server must respond with text and 
+close the connection. Implementing NPS, however, is outside the scope of BFG 
+(maybe a separate program will be created for it), I just mentioned it to 
+highlight the simplicity of the overall idea.
+
+But I digress. When writing BFG, I learned a lot about the protocols and how
+stuff is done in Tk and Tcl in general. Even though I think my code is in no 
+way optimal because I still am a noob in the language, I managed to pack the 
+entire functionality I wanted to see into under 1000 SLOC, and I really want 
+the codebase size to stay that way. Nevertheless, BFG is now my daily driver 
+that really has replaced both Bopher-NG and Lagrange for the &quot;small web&quot; 
+browsing purposes, and I really enjoyed writing and testing it on various 
+resources. I hope whoever reads this post gives it a try as well.
+
+Now, onto the case number 2: a Sokoban game in Tcl/Tk. I called it BOXcl
+([3]), and this is where I don&#x27;t need outside contributions, so I placed it 
+onto my own self-hosted Git. It doesn&#x27;t even have a readme because it&#x27;s a 
+single Tcl script that contains everything. Yes, I even put the tile data in 
+there (base64-encoded PNGs) and it still didn&#x27;t exceed 500 SLOC. Which is 
+awesome, I think. The thing is, I already did have my own prototype Sokoban 
+engine written in JS, but that was it, an engine. Which means it defined the 
+internal field representation format and move logic. Now, besides 
+translating this logic into Tcl, I had to &quot;draw the rest of the owl&quot; and 
+convert it into a playable game. This allowed me to learn how image import 
+and composition works in Tk, as well as comprehend the basics of Tk&#x27;s 
+canvas. And, of course, I included an in-game help that can be called by 
+pressing h or F1, and also made my game compatible with the huge databank of 
+levelsets that can be downloaded from sourcecode.se ([4]) in the plaintext 
+format (not the XML-based one though, maybe I&#x27;ll create a format converter). 
+By the way, I&#x27;m really thinking about rehosting all the levelsets somewhere 
+around here, on Gopher or even Nex, along with a copy of the game script 
+itself.
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/BFG
+[2]: https://nex.nightfall.city/nex/info/specification.txt
+[3]: https://git.luxferre.top/boxcl
+[4]: https://www.sourcecode.se/sokoban/levels.php
+</pre>]]></description>
+</item>
 </channel></rss>
