@@ -11084,4 +11084,77 @@ itself.
 [4]: https://www.sourcecode.se/sokoban/levels.php
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-10-21-time-to-ditch-x86.txt</link>
+<title>(2024-10-21) Time to ditch x86: why I have switched to RPi5 as my main desktop</title>
+<description><![CDATA[<pre>
+(2024-10-21) Time to ditch x86: why I have switched to RPi5 as my main desktop
+------------------------------------------------------------------------------
+If there is a single redeeming quality that the modern era of computing has,
+it&#x27;s the abundance of single-board computers. We can call it modern if we 
+forget that some of the earliest home PCs (like ZX Spectrum) also mostly 
+were single-board: obviously the components were larger but replaceable at 
+home, something that current SBCs totally are missing. If we return to the 
+modern side of the topic, then, besides the highly dubious area of &quot;internet 
+of things&quot;, single-board computers nowadays have matured enough to replace 
+your average desktop while eating less electricity. And this is what I 
+decided to check out myself as the low-powered computing is one of the main 
+topics of this phlog. And here&#x27;s what I decided to do: get a Raspberry Pi 5 
+starter kit and install Alpine Linux on it. Of course it would be Alpine, 
+what else could it be? Who needs a huge &quot;official&quot; blob of Raspberry Pi OS 
+(ex-Raspbian) when you should use such amount of computing resources 
+sparingly? I won&#x27;t lie, the installation process didn&#x27;t go as well as I 
+thought at the first time, but that was totally my fault for not following 
+the manuals and not quite understanding what exactly I was doing. Once I 
+finally understood it though, everything went smoothly and I have a fresh 
+&quot;classic&quot; setup on the RPi5 I&#x27;m already writing this post on. The 
+post-installation phase is another thing, and I don&#x27;t think it&#x27;s necessary 
+to describe it here, just a small hint which groups your user should be a 
+part of at the end of this process: lp wheel audio input video netdev 
+docker. That&#x27;s it.
+
+That being said, I&#x27;d like to talk about &quot;why&quot; instead of &quot;how&quot;. Well, for
+starters, the x86 history is full of crutches upon crutches, and now it&#x27;s a 
+total architectural mess. It&#x27;s easier to start from scratch. ARM is one of 
+those attempts that got the most success. Ideally, I dream about writing the 
+same post regarding RISC-V, but there&#x27;s no viable RISC-V-based low-power 
+desktop option as of the time of this writing that I could get my hands on. 
+Alas. I hope they appear soon enough though. The second point is, because 
+ARM is less quirky than x86, my RPi5 consumes 15 to 20 watts less than my 
+Asus PN41 nettop I replaced with it, while providing virtually the same 
+processing power. That&#x27;s 20..23 vs 40..45 W (including the same display 
+monitor) we&#x27;re talking about. This is significant. The third point is, with 
+all the power economy, it still is the same familiar Linux environment at 
+the end of the day. The only hurdle to overcome is running Wine (if you ever 
+need that), but other than that, it really is the same. I don&#x27;t feel limited 
+in anything here compared to the previous nettop, besides the amount of RAM 
+(4 vs 32 GB). The thing is, I don&#x27;t need that much RAM here either: its main 
+consumer is the Web browser (another motivation to use 
+Gopher/Nex/Spartan/Gemini more than ever, btw: my BFG eats at most 9MB per 
+window) and the problem mitigation is as easy as keeping the number of tabs 
+low. So, as the last point, I&#x27;d like to state that such environments keep 
+you disciplined and mindful about resources whatever you&#x27;re doing.
+
+Of course, such migration is no small thing and I spent a couple of days just
+getting everything to the state I used to have. But I think that the end 
+result turned out to be more than satisfying. Given that my main &quot;hobbyist&quot; 
+focus has shifted to Tcl/Tk scripting which has excellent support of such 
+frugal setups, there really seem to be no drawbacks for making such a 
+fundamental architecture switch. By the way, it really goes to show how 
+seamless Linux and FOSS ecosystem is: you can switch architectures and get 
+the same set of tools and software in no time. This, I think, is one of its 
+greatest strengths. And more importantly, it demonstrates that the x86 
+hegemony has just been historically based upon the Faildows hegemony in the 
+desktop segment (the &quot;wintel&quot; amalgamation): once the latter has started 
+being not so important as before, so has the former. The destruction of this 
+status quo has already begun, and I hope that more accessible RISC-V-based 
+SBCs (or even some laptops, who knows) will be the final nail into the 
+corporate desktop monolith that cracks it apart. For now though, let me 
+continue with the Aarch64. I&#x27;ll keep you posted on how this goes in the 
+future. At least the small part of this future that I still can shape myself.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
