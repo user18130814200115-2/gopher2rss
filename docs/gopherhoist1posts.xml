@@ -11157,4 +11157,67 @@ future. At least the small part of this future that I still can shape myself.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-10-28-meet-ii.txt</link>
+<title>(2024-10-28) Meet ii, a new old distributed plaintext communication network</title>
+<description><![CDATA[<pre>
+(2024-10-28) Meet ii, a new old distributed plaintext communication network
+---------------------------------------------------------------------------
+Remember FidoNet? Now, imagine something like that but much simpler and over
+TCP/IP (as of now, even over HTTP(S)). This is a very vague description of 
+what I&#x27;m gonna talk about.
+
+As lightweight protocols are among my hobbyist interests, I was delighted to
+find out about the existence of such a protocol as ii. Gopher, Nex, Spartan, 
+Gemini etc. are nice but they don&#x27;t solve the problem of distributed 
+communication. Email does but it&#x27;s too complex and bulky. Misfin is fine for 
+one-to-one communication but totally impractical for mailing lists or so. We 
+really need something like Usenet/FidoNet but without all the crutches of 
+the past.
+
+This is what ii is about. It was developed in the spring of 2014 and its
+initial author had abandoned it long ago, but it lives in the form of the 
+&quot;IDEC network&quot; (where IDEC stands for &quot;ii-like Data Exchange Convention&quot;) 
+that implements some extensions to the original protocol, which are fully 
+optional, and is backwards-compatible with ii. I have tested some of those 
+extensions myself but eventually deemed all of them unnecessary for my own 
+client purposes, so my client only implements the basic ii standard as 
+described in ([1]), and yes, I think my doc is more concrete and concise 
+than the original GitHub. Maybe I&#x27;ll also add it to the Gopherspace to make 
+sure it doesn&#x27;t get lost somewhere.
+
+As for the client, it&#x27;s called tii, written in Tcl/Tk 8.6 (of course) and
+distributed in the same repo ([2]) as a suite of several scripts, including 
+the tiifetch.tcl CLI fetcher, tiipost.tcl CLI poster, tiiview.tcl CLI viewer 
+and tiix.tcl GUI client. As of now, tiix.tcl depends upon the tiifetch.tcl 
+and tiipost.tcl for corresponding functionality, so tii is not a 
+single-script solution and wasn&#x27;t designed to be one. By the way, I couldn&#x27;t 
+find any existing GUI clients for the ii/IDEC network, so tiix.tcl might be 
+the first one. Besides Tcllib, the tii suite also depends upon the sqlite3 
+package because this is the actual backend for ii message storage.
+
+As for the server side, there exist several ii/IDEC node (aka station)
+implementations in various programming languages (mainly C and Python), but 
+they have some inconsistency in terms of following even the basic ii specs, 
+so I&#x27;ve decided to start working on tiid, my own ii station software. It is 
+only going to serve basic ii requests (GET /list.txt, GET /u/e, GET /u/m and 
+POST /u/point) and have a message DB format compatible with the client-side 
+one. Ideally, it should reuse the same codebase and algorithms from 
+tiifetch. The only thing left to design before I start coding this up is the 
+mechanism of secure anti-spambot signup without requiring JS or any Web 
+browser whatsoever on one hand, and without any manual approvals on the 
+other hand. Essentially, this part will probably be more complicated than 
+the rest of the node codebase, but we&#x27;ll see how it goes.
+
+Overall, I think this network has some potential to become a lightweight
+censorship-resistant environment island in the ocean of centralized 
+locked-down Web bloatware. This is why I&#x27;m totally in.
+
+--- Luxferre ---
+
+[1]: https://git.luxferre.top/tii/file/ii-doc.txt.html
+[2]: https://git.luxferre.top/tii/file/README.html
+</pre>]]></description>
+</item>
 </channel></rss>
