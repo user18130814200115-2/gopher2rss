@@ -11304,4 +11304,182 @@ number of people. And I hope this post also helps with that.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-11-11-cat-s22-first-glance.txt</link>
+<title>(2024-11-11) CAT S22 Flip: a keypad Android flip phone done almost right</title>
+<description><![CDATA[<pre>
+(2024-11-11) CAT S22 Flip: a keypad Android flip phone done almost right
+------------------------------------------------------------------------
+Since KaiOS flopped (and I&#x27;m sure it&#x27;s already pretty safe to declare that),
+the question of finding a decent keypad phone with modern application 
+support is relevant again. And things like Xiaomi Qin1s or AGM M7 are not 
+exactly the kind of support I&#x27;d have expected in 2024. Luckily, Bullitt 
+Mobile to the rescue once again, and the model that still can be found new 
+(although sometimes unofficially), CAT S22 Flip, seems to deliver the very 
+experience I was looking for. It has a Qualcomm Snapdragon 215 (although its 
+Fastboot menu was compiled for 430), 2 gigs of RAM and 16 gigs of built-in 
+flash storage with, of course, ability to expand it with a microSD card 
+which I surely did. It runs Android 11 Go Edition with some (unwanted but 
+removable with root) T-Mobile/Sprint customization, and it looks like the 
+firmware comes in two versions: 29.04 and 30.03, the latter being what my 
+device has, and TBH I doubt this model will get any more updates in the 
+future. And here&#x27;s where things get interesting: it has both a physical 
+keypad and a touchscreen, although you&#x27;d never guess it had one from the 
+pictures. Hence, both Gboard and KikaInput are preinstalled in the firmware, 
+and, thankfully, I managed to replace both of them with Unexpected Keyboard 
+and Traditional T9 respectively.
+
+Hardware-wise, this phone is, as Action Retro would say, &quot;not too shabby&quot;,
+despite only supporting a single SIM in the nano-SIM form factor. The lack 
+of a 3.5mm audio port was compensated with an adapter in the box (which, by 
+the way, you will need if you want to listen to the FM radio), and the lack 
+of wireless charging was compensated with a two-pin dock connector on the 
+back. Good luck finding that dock though, but you still have an option 
+nevertheless. And let&#x27;s not forget a really useful flashlight, which has 
+recently almost replaced my regular flashlight for the kind of tasks where I 
+have to wander around the house at night. My only real complaint about all 
+this is the size: CAT S22 Flip is almost twice as thick as CAT B40 while 
+being just as wide and only a couple of centimiters shorter than it... in 
+the closed state. You won&#x27;t really understand how humongous it looks until 
+you see it in person. Granted that it&#x27;s heavier than B40 as well... I think 
+you get the idea. I understand that this chungus houses a removable 2000 mAh 
+battery but still, they should have consulted whoever manufactures Sigma 
+X-Style 31 how it should be done. So let&#x27;s hope that all this extra size and 
+weight is for some impact and ingress protection the brand claims for this 
+model.
+
+To be honest, rooting and debloating are the first things one should do with
+such a phone, although it&#x27;s not without its quirks. The XDA forum has a 
+guide ([1]) on how to root the S22 Flip, but my mileage varied a bit. First, 
+the guide doesn&#x27;t tell you what to do if the &quot;OEM Unlocking&quot; option is 
+greyed out. My device already came here carrier-unlocked (although the 
+T-mobile branding is all over in the firmware) but I still had no option to 
+toggle the OEM unlocking until I entered my Google account. Afterwards, 
+beware that the firmware has encryption setting turned on, so running 
+&quot;fastboot flashing unlock&quot; will erase your userdata partition. Then you can 
+follow the guide, although I didn&#x27;t have to patch the vbmeta partition 
+either. Maybe I&#x27;ll post the patched v30 boot.img somewhere alongside the 
+simplified guide, we&#x27;ll see.
+
+The post-rooting steps though are the very thing where one can screw up very
+easily. Of course, I installed F-Droid (and FFUpdater and Obtainium via 
+F-Droid) and a number of essential things, the De-Bloater application being 
+among them. This is a Magisk module to move system applications out of the 
+visibility while not physically deleting them. Nevertheless, it still can 
+render the system unbootable, so be careful. By the way, you can find TWRP 
+for this device, but I tested it and found out that it will do more harm 
+than good, so I don&#x27;t recommend it. Here&#x27;s the list of packages (as they&#x27;re 
+called in De-Bloater) I debloated this way and the system still boots and 
+every basic function works:
+
+* 12-Key Keyboard
+* Android Setup
+* Calculator
+* Calendar
+* Camera
+* Carrier Device Manager
+* Carrier Hub
+* Cat phones
+* Chrome
+* Clock
+* com.android.providers.partnerbookmarks
+* Data Restore Tool
+* Digital Wellbeing
+* Drive
+* Duo
+* Files by Google
+* Gallery Go
+* Gboard
+* Gmail
+* Google Assistant Go
+* Google Contacts Sync
+* Google Go
+* Google Location History
+* Google Partner Setup
+* Google Play services
+* Google Play Store
+* Google Services Framework
+* Google SetupWizard Customization
+* Google Speech Services
+* Google TV
+* Keep Notes
+* Maps
+* Market Feedback Agent
+* MCM Client
+* Messages
+* Mobile Installer
+* Speech Services by Google
+* T-Mobile (AdaptClient.apk and TMobile.apk)
+* T-Mobile Diagnostics
+* TDC
+* TMO-RSU-Common
+* TMO-RSU-Sys-Service
+* Unlock
+* Visual Voicemail
+* YouTube
+* YouTube Music
+
+Quite a lot to remove for such a device, if you ask me. I even considered
+moving to a LineageOS setup (yes, there is one for S22) but it&#x27;s not quite 
+ready yet, as it has no support for the programmable side button and, which 
+is more important to me, for the external display. Also, do not remove 
+Quickstep even if you install an alternative launcher: you&#x27;ll lose the 
+ability to switch and close windows. Maybe this stock Android distribution 
+just was built this way, who knows.
+
+Other than that, it&#x27;s a pretty &quot;normal&quot; Android 11, so you can install
+whatever you want, of course, remembering about the amount of RAM and 
+storage here. I, for instance, switched to my favorite Android launcher for 
+small screens, KISS Launcher, and likewise replaced a lot of the 
+aforementioned debloated stuff with its FOSS counterparts: Files by Google 
+=&gt; Amaze, Gmail =&gt; Thunderbird (former K-9 Mail), YouTube =&gt; Clipious, 
+YouTube Music =&gt; InnerTune, Maps =&gt; OsmAnd~, Gallery Go =&gt; Fossify Gallery 
+and so on. I think F-Droid is an excellent starting point to look for such 
+replacements.
+
+Of course, all that is fun and games, but how about the *real* stuff some of
+you come to this phlog for? Well, for starters, let&#x27;s list some secret codes 
+(where applicable, only the mnemonic is provided):
+
+- *#*#INFO#*#*: standard Android info
+- *#*#LOG#*#*: Qualcomm LogKit launcher/stopper
+- *#*#ENGMODE#*#*: a comprehensive engineering menu with netmonitor and other
+stats
+- *#*#0202#*#*: some TFT stats or version
+- *#*#02#*#*: device info
+- *#*#2846#*#*: version info and test toolkit 
+
+Okay, let&#x27;s see where the IMEI is stored in there. And it MIGHT seem like
+it&#x27;s stored in the plain ASCII in the partition called &quot;factory&quot; at the 
+offset 104 (0x68), but that&#x27;s an illusion, it gets overwritten there from 
+somewhere else. Nor is it stored in the fsc, fsg, modemst1 or modemst2 
+partitions. So where is it? Well, the answer seems to be not so pleasant: 
+it&#x27;s stored in the &quot;persist&quot; partition, in the encrypted form. Namely, the 
+mounted path of the directory is /mnt/vendor/persist/data/keymaster64, and 
+inside this directory there is a &quot;keymaster64&quot; file that contains the index 
+of all encrypted factory information files, including the IMEI number, in 
+the same directory. It&#x27;s the Qualcomm KeyMaster, baby! Well, it looks like 
+I&#x27;ve got myself another rather long-term research target in addition to the 
+Pixels.
+
+So, what&#x27;s my overall first impression about CAT S22 Flip? Well, about 7/10.
+It definitely is usable (especially once rooted and debloated), it 
+definitely is rugged, it definitely is &quot;smart&quot;, but it also is a little too 
+bulky in size and too non-free to my taste, considering not only IMEI 
+encryption but also the amount of work required to debloat the stock OS and 
+lackluster support for third-party builds like LineageOS and TWRP. As I 
+said, it makes a nice research target for the future efforts and a nice 
+Android workhorse for the present time, but I&#x27;d also like to find something 
+that would even more adequately respond to my needs. Something 
+Android-based, maybe with a keypad/touchscreen combo as well, but slicker 
+outside and friendlier to folks like me inside.
+
+--- Luxferre ---
+
+[1]:
+https://xdaforums.com/t/tut-root-how-to-root-cat-s22-flip-on-version-30.46269
+1/
+</pre>]]></description>
+</item>
 </channel></rss>
