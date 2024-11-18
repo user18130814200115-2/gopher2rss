@@ -11482,4 +11482,135 @@ https://xdaforums.com/t/tut-root-how-to-root-cat-s22-flip-on-version-30.46269
 1/
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-11-18-lets-put-nix-into-pubnix.txt</link>
+<title>(2024-11-18) Let's put Nix into a Pubnix (feat. nix-portable)</title>
+<description><![CDATA[<pre>
+(2024-11-18) Let&#x27;s put Nix into a Pubnix (feat. nix-portable)
+-------------------------------------------------------------
+The concept of Pubnixes is very common among the current generation of Gopher
+users. Pubnixes are public access shared servers running Unix-like (usually 
+Linux or BSD) systems and offering shell accounts to users, either for free 
+or at extremely low prices. They are great for those who can&#x27;t afford or 
+just don&#x27;t need a VPS for their cloud shell activity. Sometimes they also 
+are called &quot;tildes&quot;, hence the name Tildeverse. In general, you are given a 
+limited user account (although some projects like segfault.net will give you 
+an isolated root account) and a limited amount of software packages 
+available for you to run. One of the Pubnixes called Project Segfault (that 
+sounds terribly similar but has no relation to the segfault.net) gives you a 
+limited account but offers a Nix package manager to install packages in your 
+local environment only. I thought: why not try and achieve the same in all 
+other tildes that don&#x27;t have Nix available or exposed to your user? Luckily, 
+there already is a project to ease your life in such a case.
+
+Enter nix-portable ([1]). This is a self-contained binary that offers
+everything you need to run a fully isolated Nix package environment under 
+limited user privileges. It&#x27;s a rather large file because everything is 
+built statically inside, but that makes it fully independent from the 
+underlying distribution and it will work on any Pubnix as long as it runs 
+Linux on an x86_64 or aarch64 architecture and gives you a large enough disk 
+quota (do not even attempt to try this out if your quota is under 512 MB: as 
+an example, I got banned on one shell provider for instantly overquoting its 
+100 MB with this tool). You may try building nix-portable for other 
+architectures and platforms as well, I didn&#x27;t try yet. Anyway, after 
+downloading the file you just make necessary symlinks (as nix, nix-env and 
+nix-shell) and you&#x27;re all set, just specify the packages in shell.nix and 
+run ./nix-shell. To ease the process, I&#x27;ve created a simple shell script:
+
+#!/bin/sh
+WORKDIR=$PWD
+echo &quot;Setting up nix-portable in $WORKDIR...&quot;
+NIXBIN=$WORKDIR/nix-portable
+RELEASEURL=https://github.com/DavHau/nix-portable/releases/latest
+curl -L $RELEASEURL/download/nix-portable-$(uname -m) &gt; $NIXBIN
+chmod +x $NIXBIN
+ln -s $NIXBIN $WORKDIR/nix
+ln -s $NIXBIN $WORKDIR/nix-shell
+ln -s $NIXBIN $WORKDIR/nix-env
+# setup the shell file in the same working directory
+echo &quot;Setting up shell.nix in $WORKDIR...&quot;
+cat &lt;&lt;EOF &gt; $WORKDIR/shell.nix
+let pkgs = import &lt;nixpkgs&gt; {};
+in pkgs.mkShell {
+  nativeBuildInputs = with pkgs; [
+    # list all the Nix packages you need here
+  ];
+}
+EOF
+echo &quot;All set, run ./nix-shell and enjoy!&quot;
+echo &quot;Edit the package list in ./shell.nix if you need anything else&quot;
+
+After you&#x27;ve run this script and see the nix-portable binary and
+corresponding symlinks, you can run ./nix-shell and wait until you end up 
+being in a Bash prompt with the &quot;nix-shell&quot; as a user name (although in fact 
+the current user won&#x27;t change, i.e. the whoami output will be the same as 
+the user you&#x27;ve run ./nix-shell from). The first run is going to be rather 
+long as nix-portable will download and setup all the necessary dependencies 
+and directory structures. Afterwards though, you can edit the shell.nix file 
+and the next ./nix-shell run will just download and install the new packages 
+you&#x27;ve added there.  
+
+Ironically, I have first successfully used this approach on a root-enabled
+Pubnix, as the systemwide package changes you make there are not persistent 
+across sessions (it&#x27;s running in a container) but the changes made to your 
+home directory are. However, it really doesn&#x27;t matter which user you&#x27;re 
+running nix-portable as. In fact, the more limited it is, the more benefit 
+you get from this kind of setup. One note of warning: it&#x27;s not a full chroot 
+(or rather proot in this case) and sometimes the commands can interfere with 
+the same command from the outer system, so you need to check your current 
+$PATH to make sure the necessary binaries are loaded. I.e. if the outer 
+system offers tmux, you&#x27;ll have a better luck running tmux on the host and 
+the nix-shell inside it. If it doesn&#x27;t though, nothing prevents you from 
+adding tmux package into your Nix environment.
+
+Now, to close it all off, are there any personal free shell account
+recommendations of mine? Well, from my own experience, most of them require 
+you to get a manual approval, write an email, fill out Google Docs forms 
+(can you believe that?), submit a PR, hang out in IRC channels or go through 
+all other circles of humiliation (in some cases, it even goes as far as 
+having to mail a physical postcard!) in order to get an account. There are, 
+however, a few I can think of which offer decent levels of freedom and 
+automated signup with no wait or hassle.
+
+* The aforementioned segfault.net ([2]) looks like the best choice so far:
+  - no email or password required;
+  - no SSH key required (you get a secret env variable that you need to save)
+although you can save it if necessary;
+  - has fair terms of usage (you can keep your background services running
+within 36 hours of your last logout);
+  - runs Kali Linux with a lot of pentesting tools pre-installed;
+  - routes traffic through three different VPNs;
+  - provides you with a (containerized) root account.
+* hashbang.sh is a more traditional approach to Pubnixes:
+  - no email or password required (only your username and public SSH key);
+  - you have to figure out the correct way to register by yourself, but it
+just boils down to two REST API calls ([3]);
+  - provides you with a limited Linux account, an email account
+(username@hashbang.sh) and a lot of pre-configured stuff.
+* ...suddenly, deepnote.com:
+  - not a Pubnix per se but offers a free plan with 2 AMD EPYC cores and 5GB
+RAM;
+  - requires a Google or GitHub account to register;
+  - the SSH shell can be obtained via tmate.io from a terminal (that can be
+added to the project) like this:
+    wget
+https://github.com/tmate-io/tmate/releases/download/2.4.0/tmate-2.4.0-static-
+inux-amd64.tar.xz \
+      &amp;&amp; tar xJvf tmate-2.4.0-static-linux-amd64.tar.xz \
+      &amp;&amp; tmate-2.4.0-static-linux-amd64/tmate -F
+    or from a Jupyter notebook by prepending ! to the above command.
+
+I have personally tested my nix-portable setup script on all the shells
+listed above, so that you know that it works with no issues whatsoever 
+there. Well, as of now, you know hot wo have fun with Nix packages on 
+limited systems, and where to have fun with them. So, have fun!
+
+--- Luxferre ---
+
+[1]: https://github.com/DavHau/nix-portable
+[2]: the instructions are available at https://www.thc.org/segfault
+[3]: really, just read the website&#x27;s source code, it&#x27;s... unusual
+</pre>]]></description>
+</item>
 </channel></rss>
