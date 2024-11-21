@@ -6339,4 +6339,93 @@ If you have such movers among you, let them do their work. Keep them
 happy and they will continue to add momentum.
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/Computing-in-2024-Review.md</link>
+<title>2024-11-20  Computing in 2024 Review</title>
+<description><![CDATA[<pre>
+# Computing in 2024 Review
+
+At the beginning of the year I wrote the original article[1] with
+some goals for the year. 
+
+
+## Computer
+
+Not long after I wrote the article I did in fact treat myself to the 
+proposed HP T620 thin client upgrade. OpenBSD works flawlessly on the
+hardware and so I have been very happy with it. The system is
+completely silent, which actually took a little getting used to.
+
+
+## Software development
+
+I haven&#x27;t written any software of any significance this year. For the
+odd small data processing tasks I have used awk. 
+
+A few weeks ago I purchased a clean used copy of &#x27;The Awk Programming
+Language&#x27;, as I happened to see one advertised for a very reasonable
+price. 
+
+I will over time absorb the material and hopefully become a more
+competent AWK programmer. 
+
+
+## Solar
+
+I had planned to build a small solar power system to power my
+computer and radio gear but I couldn&#x27;t justify the expense. I ended
+up instead spending the money on radio equipment. 
+
+
+## Radio
+
+I had ambitions to experiment with ham radio data modes. This too
+went by the wayside not long after I passed my foundation exam in
+February and started actually talking to people on the air. 
+
+I have kept my computer and radio air-gapped and rather than
+exploring data modes via computer integration. I have instead been
+learning probably the oldest data mode of them all, radio telegraphy.
+
+Learning morse code has been a real challenge and after several
+months of persistent effort, I have finally managed to complete the
+Koch method of learning morse code. 
+
+To do this I used a website[2] resource supplemented by an android
+app called CW Studio.
+
+This past two weeks I have started answering CQ calls of stations
+that are going steadily enough to give me a chance of copying them.
+It is very challenging and engaging at this point so, I am enjoying
+the medium as it requires skill on the part of the operator.
+
+My equipment is, I think, modest. I have a dual band 2m/70cm hand
+held transceiver, a dual band 2m/70cm mobile 25w transceiver (which I
+use as a base station) and a Xeigu G90 20w transceiver for 10m - 160m
+bands. 
+
+Two of my antennas I made, one I was given and one I bought. They
+each have their strengths and weaknesses. Combined they give me a
+good range of abilities.
+
+
+## Summary
+
+I really didn&#x27;t want to commit to spending more time staring at a
+computer screen, typing text to communicate with people and build
+further dependence on computers. Computers are an impersonal medium.
+When you can&#x27;t see or hear the person you are communicating with,
+part of the communication is lost.
+
+Morse code is a skill and a method for data exchange. If you want to
+really communicate, then talk.
+
+This has been my year of radio.
+
+[1](gopher://gopher.icu/0/phlog/Computing/Computing-in-2024.md)
+[2](https://stendec.io/morse/koch.html)
+
+</pre>]]></description>
+</item>
 </channel></rss>
