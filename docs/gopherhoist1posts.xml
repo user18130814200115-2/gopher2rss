@@ -11613,4 +11613,102 @@ limited systems, and where to have fun with them. So, have fun!
 [3]: really, just read the website&#x27;s source code, it&#x27;s... unusual
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-11-25-boosting-8-bit-skill-avr.txt</link>
+<title>(2024-11-25) Boosting the 8-bit skills with AVR microcontrollers</title>
+<description><![CDATA[<pre>
+(2024-11-25) Boosting the 8-bit skills with AVR microcontrollers
+----------------------------------------------------------------
+Yep, I&#x27;ve got a new hobby that eventually can bring me one step closer to one
+of my dreams. It started when I remembered that I had an old clone Arduino 
+Mega 2560 board from a RepRap-like 3D printer build kit that I never 
+finished and never will. Such boards, as you might well know, are usually 
+programmed via the C++-based Arduino IDE but I decided to go with pure C 
+from the day one and use bare avr-gcc and avrdude directly. I also purchased 
+a bunch of smaller clone Arduinos (all Nanos, either on ATmega168PA or on 
+ATmega328PB), a bunch of programmers (more on that in a bit), and a bunch of 
+wires, keypads, displays, resistors and breadboards, as well as downloaded a 
+bunch of pinouts and datasheets. And the journey began.
+
+At first, I didn&#x27;t need a dedicated hardware programmer at all, as the
+ATmega2560 in the Arduino Mega is usually flashed via USB with the standard 
+bootloader (&quot;-c wiring&quot; option in avrdude). But then, it just so happened 
+that when the first of the (clone) Nanos arrived, they didn&#x27;t have any 
+bootloader inside and I thought to make the Mega a programmer for them. And, 
+of course, I managed to flash the wrong .hex file onto it. And, of course, 
+it erased the bootloader. So, I rush-ordered the first USB-powered 
+programmer I could find online. It was marked as Arduino-compatible and 
+USBasp-compatible but... it turned out to be an ATmega88-based Chinese clone 
+that wasn&#x27;t in fact compatible with USBasp and required a specific 
+(Faildows-only) Chinese piece of software to work. Luckliy, I found the 
+project to flash it back to the normal USBasp firmware ([1]) along with the 
+instructions on how to do this. But it still required a &quot;normal&quot; programmer 
+to perform the conversion. So I ordered another one, this time picking more 
+carefully. Well, guess what... The new one didn&#x27;t want to work on my 
+Raspberry Pi 5 no matter how I fiddled with the USB ports and USB-related 
+kernel settings. Turned out that was one of the very first clone versions 
+that required more current than the Rpi5 could deliver. Luckily, I managed 
+to successfully connect it to my parents&#x27; PC with Ubuntu, so I quickly 
+installed avrdude there and flashed the first one according to the 
+instructions (basically, you have to make a jumper between the two &quot;UP&quot; 
+holes before flashing, and remove this jumper afterwards). After the bootleg 
+programmer was successfully recognized as USBasp, I tested it on my RPi5 and 
+everything worked smoothly. To be on the safe side, I ordered three more 
+programmers of yet another type, also marked as USBasp-compatible, but I&#x27;m 
+still waiting for their delivery as of today.
+ 
+But then, when I managed to restore the Mega 2560 to its normal state, I
+started tinkering with the Nanos. In my first batch of Nanos, two of them 
+had ATmega168PA, and two of them had ATmega328PB. For the untrained eye like 
+mine, these chips look identical, with the 168 having half of all the specs 
+of the 328. But when it comes to flashing a bootloader, the chip version 
+matters a lot. I guess you can interchange the bootloaders for the 168P and 
+168PA, but you definitely can&#x27;t interchange the bootloaders for the 328P and 
+328PB. That&#x27;s why I spent a lot of time trying out various bootloaders I 
+could find. And man, I don&#x27;t know, I&#x27;ve read everywhere that Urboot is much 
+smaller and better than Optiboot but I couldn&#x27;t get any Urboot build to be 
+as stable as Optiboot in any of those boards. Yes, Optiboot is much older 
+and a bit chunkier but works flawlessly every time. And it still requires to 
+specify &quot;-c arduino&quot; instead of &quot;-c urclock&quot; in avrdude when flashing. 
+
+So, what am I going to do with all this after learning all the necessary
+basics? Well, I have several plans in mind. The first one is porting one of 
+my interpreted platforms to AVR. Since this is a Harvard-type architecture, 
+it&#x27;s not a trivial task as you get the program memory completely separated 
+from the RAM, and you don&#x27;t get a lot of RAM either. But I have started 
+porting my LVTL-R variant of the VTL-2 language to these MCUs and it looks 
+promising so far. The second plan is something I&#x27;ve dreamt of a long time 
+ago: an independent mobile platform that perfectly fits into my low-powered 
+computing paradigm. I have a couple of SIM800Cs and other wireless modules 
+to tinker with, so that looks like a perfect opportunity to finally make 
+some use of them. And I am learning to work with Nokia 5110 LCD displays, 
+character-based LCD displays, some OLED displays and 16-key keypads, so you 
+might take a guess where all this is heading.
+
+Finally, I was pleasantly surprised to find out how cheap all this is
+nowadays. In the previous decade, even an MCU board like Arduino Nano was 
+quite expensive. Now, you can get a full Nano clone with a microUSB or even 
+USB-C port for well under $3. I remember the times when you couldn&#x27;t get a 
+single MCU chip for such a price. On the other hand, that makes it 
+economically impractical to purchase the ATtiny series: the chips alone 
+approach the price of these Nanos and sometimes even surpass the price of 
+full Arduino-compatible boards with 328P-like chips like LGT8F328P. I hadn&#x27;t 
+experimented with those, for now sticking with the original ATmegas only, 
+but planning on ordering several of those clones as well. Cost-wise, 
+however, there are some strong competitors that give an even better bang for 
+the buck: ESP8266 and its clones, and, if you are ready to pay a bit more, 
+RP2040-Zero and its clones. Both of these families can even run Python, an 
+opportunity I definitely will explore in some of my upcoming posts (as I do 
+have some ESP8266 boards lying around as well), both of them have pretty 
+indestructible bootloaders, and both of them, especially the RP2040, require 
+much less hassle to get your code up and running. And, if and when I hit the 
+limit of what could be done on the AVR8 MCU family, I&#x27;ll definitely consider 
+those as a more future-proof approach.
+
+--- Luxferre ---
+
+[1]: https://github.com/aleh/usbisp
+</pre>]]></description>
+</item>
 </channel></rss>
