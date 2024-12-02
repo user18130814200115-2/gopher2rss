@@ -11711,4 +11711,101 @@ those as a more future-proof approach.
 [1]: https://github.com/aleh/usbisp
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-12-02-the-most-optimal-mcu-board-so-far.txt</link>
+<title>(2024-12-02) Looks like I've found the most optimal MCU board so far</title>
+<description><![CDATA[<pre>
+(2024-12-02) Looks like I&#x27;ve found the most optimal MCU board so far
+--------------------------------------------------------------------
+As my journey into the world of MCUs began, I knew for sure that it wouldn&#x27;t
+stop on AVRs. In particular, if you remember my previous post, I mentioned 
+some other chips at the end of it, namely ESP8266 and RP2040. Well, since 
+then, I&#x27;ve had a chance to obtain some boards based on both of those (all 
+clones, of course): ESP-01 (01S), WeMos D1 Mini and RP2040-Zero. I&#x27;ve yet to 
+get much more familiar with the latter (I already like how easy it is to 
+flash and how small it is in size for what it can do) but I can already say 
+which one of these three became my absolute favorite, especially considering 
+its price comparable to clone Arduino Nanos. Yes, I&#x27;m talking about the D1 
+Mini.
+
+Why? Well, the ESP-01S is definitely the cheapest option if you want pure
+processing power with wireless capabilities, but is stripped to the bare 
+bones: no USB (you need to use a USB-TTL converter to interact with it), 
+pure 3.3V dependency, no guarantee of how much flash memory you&#x27;re gonna get 
+(typically 1 MiB but it can vary from 512 KiB to 4 MiB), no ADC or other 
+advanced pins that the ESP8266EX chip does have, not even a reset button, 
+only two free GPIO pins (one of which also controls the internal LED) if you 
+still need UART, and a totally not breadboard-friendly pinout. Not sure I&#x27;ll 
+have a lot of situations where such an amount of compromises would justify 
+about half the price. And the RP2040-Zero is still cool in almost every 
+aspect and has a lot of ADC pins but is priced about the same as the WeMos 
+while having no wireless module whatsoever and, again, not being compatible 
+with standard Arduino-style breadboards (if you do solder the five pins on 
+the side opposite to the USB port, that is).
+
+The D1 Mini, on the other hand, has none of those issues. It is totally
+breadboard-friendly, has enough pins for everyday hobby needs (even though 
+there&#x27;s only one ADC pin but that&#x27;s what the ESP8266EX itself gives you), 
+has an internal USB-TTL adapter and a way to power it not only via USB but 
+with external 5V or 3.3V sources, has the guaranteed 4 MiB of on-board flash 
+memory and even fixes some drawbacks of the original chip, for instance by 
+having a dedicated reset button or a built-in voltage divider to bring the 
+3.3V ADC pin input to the allowed range of 0..1V. Also, unlike e.g. NodeMCU 
+clones, the clone D1 Mini boards usually don&#x27;t have a lot of (or any) QC 
+issues because they are basically manufactured by soldering a ready-made 
+ESP-12S (or 12F?) module on top of their custom PCB. Hence, the WeMos serves 
+both as a breakout board for the ESP-12 (and ESP8266EX itself) and as a 
+quality-of-life enhancer for it by adding all those features for a small 
+fraction of the price you&#x27;d pay if you had to take a bare ESP-12 and do all 
+this by yourself.
+
+Well, how easy is it to work with? I was interested in operating it with a
+higher-level language, and among JS, Python and Lua, I obviously chose 
+Python. That&#x27;s why all I needed was a corresponding MicroPython firmware 
+binary and the esptool to flash it via USB. Definitely much more 
+straightforward process than what needed to be done to interact with ATmega 
+MCUs. Well, flashing an RP2040 is even easier, but I&#x27;ll compare the 
+MicroPython experience on both in my later posts. For now though, once I 
+have MicroPython up and running on a D1 Mini, the only thing I need is the 
+ampy tool to move files there. I have some understanding how this tool 
+actually works, so I might end up writing my own if I dislike something 
+there. As of this moment, I just call ampy as a part of my makefiles. I find 
+it quite astonishing that the Alpine Linux repos already have both ampy and 
+esptool directly available via the system&#x27;s apk package manager.
+
+And the MicroPython distribution is... well, a full-featured Python. Of
+course, it somewhat limits you with the set of libraries you can call (and 
+the 1MB build for the ESP-01S limits you even more), but other than that, 
+it&#x27;s a &quot;normal&quot; Python 3.4 with some features backported from the newer 
+language versions and some differences from the &quot;big&quot; CPython thoroughly 
+documented in the official documentation ([1]) which I highly recommend to 
+fully read anyway. On top of that, it offers several levels of optimization 
+(turned on with decorators) and an mpy-cross tool to pre-compile Python 
+modules before loading them onto the device, so it definitely can be made 
+not as slow as you probably might imagine. Also, there even is a possibility 
+to leverage micropython-lib to install third-party libraries ([2]), similar 
+to the way pip works on the &quot;normal&quot; CPython. You can find many useful 
+things there, like USB HID/CDC/MIDI drivers or an aiohttp port. Some of 
+those libraries even extend the standard MicroPython library to the CPython 
+level of features, just in case you really need those in your MCU.
+
+Now, my first plan for the nearest future using these D1 Minis is to build
+something like a pocket assistant device that would eliminate the need of 
+carrying pretty much any phone around the house. Kinda like a programmable 
+pager or something. I&#x27;ve already soldered the first prototype contraption 
+(that doesn&#x27;t even have a piezo buzzer) and, of course, am going to refine 
+it a lot, but for now I&#x27;m more focused on the software side of things, which 
+presents enough of a challenge of its own, given that the device is only 
+going to have four buttons in the original design. I&#x27;m also keeping tabs on 
+the projects like ESPboy although I&#x27;m not quite at that level yet. Let me 
+also remind you that I do have a couple of SIM800C GSM modules lying 
+around... and they are waiting for their time to shine as well. 
+
+--- Luxferre ---
+
+[1]: https://docs.micropython.org/en/latest/reference/index.html
+[2]: https://docs.micropython.org/en/latest/reference/packages.html
+</pre>]]></description>
+</item>
 </channel></rss>
