@@ -6467,4 +6467,103 @@ Have a Merry Christmas!
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/Computing-like-1995.md</link>
+<title>2024-12-04  Computing like 1995</title>
+<description><![CDATA[<pre>
+# Computing like 1995
+
+It&#x27;s strange sometimes how we go full circle. 
+
+When I first connected one of my PC&#x27;s to the internet, back in the
+mid 90&#x27;s, I discovered IRC, Usenet, Email and the WWW was in its
+infancy.
+
+Fast forward 30 years, we&#x27;re almost in 2025, and guess what? I&#x27;m
+using IRC, Usenet, Email and now also Gopher.
+
+My interest in computers lead me down a big rabbit hole. Into a
+career as a perl programmer and web developer and eventually, once
+out of the rat race, computing returned to being a hobby. 
+
+Thankfully my career was spent mostly with open source software and
+operating systems. I got to learn a little bit along the way and
+not to be easily fooled by the gloss on the surface of software. Once
+you have seen what lurks beyond some of these shiny web front ends
+and the infrastructure of some seemingly high status companies, you
+realize that it is much more about appearance than substance.
+
+
+## IRC
+
+If you want to find groups of people with a similar interest to talk
+to in real-time then this is the place. 
+
+There are still numerous public IRC networks out there, and private
+servers, that you can join and participate in the conversation. 
+
+
+## Usenet
+
+The original federated platform. Now that google have relinquished
+their grasp, and stopped bridging Usenet to the internet via google
+groups, the Usenet world is a much nicer place.
+
+There are literally groups for every possible interest, although many
+may have not had activity for a very long time. That doesn&#x27;t mean
+no one is subscribed to them. I have been surprised a few times when
+posting to a seemingly dead group. It often appears people are very
+grateful to have something new to read!
+
+Revive this wonderful resource, there is no better time.
+
+
+## Email
+
+What can you say about email? Part of daily life for most of us. I
+still have a couple of accounts with large providers, as backup and
+for things I think might generate spam. However, I host my own mail
+server and have done so for many years.
+
+I don&#x27;t trust third parties to not read my emails.
+
+
+## Gopher
+
+Gopher is perfect for micro-publishing; blogs, news articles or even
+file distribution. There is narrow scope for defining the appearance
+of plain text, so appearance is not a great consideration.
+
+All my articles are exclusive to gopher, I have no social media
+accounts, no Gemini capsule and no personal website.
+
+
+## Commonality
+
+What does everything above have in common? They can all be accessed
+using netcat or telnet. A client is not a requirement to interact
+with these services, if you learn a little about the protocol.
+
+
+## The future
+
+The future is the past. The command line, a companion that follows my
+will, with awk as my aide and where all errors are my own. You can
+visit any time, the port is always open, as long as the lights are
+on.
+
+When will we transcend our teletype emulation and our typewriter
+keymap? Once upon a time someone had a plan, or 9, but they too
+became corrupted by the world and their new master. Won&#x27;t someone
+pick up the mantle so that we may once again see the light? 
+
+
+``` 
+Technological progress has merely provided us with more efficient
+means for going backwards. -- Aldous Huxley
+```
+
+</pre>]]></description>
+</item>
 </channel></rss>
