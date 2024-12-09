@@ -11808,4 +11808,203 @@ around... and they are waiting for their time to shine as well.
 [2]: https://docs.micropython.org/en/latest/reference/packages.html
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-12-09-engineers-wristwatch-of-today.txt</link>
+<title>(2024-12-09) Probably the best engineer's wristwatch of today</title>
+<description><![CDATA[<pre>
+(2024-12-09) Probably the best engineer&#x27;s wristwatch of today
+-------------------------------------------------------------
+As more and more circumstances out there are forcing me to stay home, I asked
+myself a question: &quot;which watch out of my current collection would I really 
+wear all day long with the least troubles?&quot; To be honest, any of the watches 
+in the collection wouldn&#x27;t give me a lot of troubles (otherwise it wouldn&#x27;t 
+stay there), but some watches are still more suitable to the current 
+lifestyle than the others. Of course, one doesn&#x27;t need a diver&#x27;s or a field 
+watch for the activity happening mostly indoors. And this is when I 
+remembered about the type of watches that I called &quot;engineer&#x27;s watch&quot;. To 
+me, an engineer&#x27;s watch has to meet the following requirements:
+
+1. It must be digital, 24-hour display support is required.
+2. It must be suitable for continuous indoors usage: legible enough in any
+room and not dependent on the sunlight for functioning. The backlight must 
+keep it legible even in total darkness.
+3. It must be accurate enough to not worry about it within a month or even
+between the DST changes. Of course, auto calendar also is a must-have.
+4. It must contain at least one alarm and a stopwatch. Additional alarms and
+a countdown timer are desirable but not necessary.
+5. It must be as thin as possible to fit under any cuff.
+6. It must be as comfortable to wear as possible, without even noticing it on
+your hand until you need to look at it.
+
+Up until this moment, I considered Casio A700WEM-7A the king of engineers&#x27;
+watches based on the above criteria. I have given mine away some time ago 
+but still would like to return to it sometimes. However, as of now, I do 
+have an even more modern and functional alternative to it: Casio 
+ABL-100WE-1A (later referred to as just ABL-100). I do wish this one came on 
+a mesh bracelet too but this one is also just fine. It is a bit thicker than 
+the A700 (8.2mm vs 6mm) but, considering all the functionality hidden within 
+this case, it still is pretty slim. Besides, it still is slimmer than the 
+A168WA (9.6mm) everyone likes to compare it to, even slimmer than A163 
+(9.1mm), A164 (8.3mm), F-91W (8.5mm), and is on par with the classic 
+A158/A159 models that also have 8.2mm of thickness. So, also given the 
+design similarities, I&#x27;d rather consider ABL-100 a modern upgrade to the 
+593-module classic series and specifically A158/A159 above anything else. Of 
+course, it weighs more as well (60 grams) just because the case is a bit 
+larger in other dimensions and has more components packed inside, and the 
+bracelet is a bit wider too. But that&#x27;s exactly the kind of weight I got 
+used to in the past several years (comparable to the lightest of G-Shocks 
+I&#x27;ve had), so it&#x27;s not a problem for me in the slightest.
+
+Regarding wearability, it&#x27;s really cool that Casio continued the trend of
+&quot;sliding clasp&quot; for their bracelets introduced in A158..A164 models. It 
+really helps to size the bracelet with much more precision and much less 
+effort than any other solution. All you really need for this is a small 
+screwdriver to lift the clasp clamp off. And the overall bracelet profile 
+still remains slim and elegant without having to remove extra links or 
+anything. I had read some horror stories about the stock ABL-100 bracelet 
+being a hair puller but haven&#x27;t found any major problems like that with it. 
+Once some inconveniences did start appearing though, I put on a spare 18mm 
+steel mesh strap to the rescue, it&#x27;s even Casio-branded because it was 
+pulled from the A700WEM indeed. And an even cooler thing is that this watch 
+has drilled lugs, so the strap/bracelet change is easier than ever. You just 
+need a round pin of the corresponding diameter, I even have one (a SIM 
+removal pin) as a corkscrew addon in my Victorinox Spartan.
+
+Besides the ultraslim case and the mesh strap, another thing that I
+remembered in the A700WEM was an extremely crisp and legible LCD display. 
+The contrast was much, much better than in any 593-based Casio. Well, I&#x27;m 
+glad to say that the display of ABL-100 is just as good. It is important to 
+me because, as I said, I&#x27;ll have to use this watch under limited lighting 
+conditions all winter long. Another great thing about the display is the use 
+of screen real estate. It is common for Casio to include pretty unnecessary 
+graphical elements on the displays larger than the usual &quot;module 593&quot; style 
+or G-Shock square style. Here, the only graphical element is the horizontal 
+scale that occupies the top strip on the screen (along with the power saving 
+mode and Bluetooth indicators) and it is pretty functional in every mode. In 
+the timekeeping, stopwatch and dual time modes, this is the gauge that 
+increases every 3 seconds and fills within a minute, in the timer mode it 
+goes backwards with the same pace, in the step counting mode, it shows the 
+percentage of steps relative to the goal (adjusted in the settings), and the 
+only mode where it does nothing is the alarm menu. I really don&#x27;t mind 
+having this strip as it is useful, unobtrusive and doesn&#x27;t take a lot of 
+space.
+
+Now, to the functionality. First, let&#x27;s address two elephants in the room:
+Bluetooth and the step tracker. To be honest, BLE connectivity was the 
+primary reason I paid any attention to this watch, as it presented a perfect 
+opportunity to extend the list of models supported by my rcvd.py ([1]) 
+utility program. Feature-wise, the Bluetooth module in this watch turned out 
+to be similar to one in OCW-T200S, so I added ABL-100 into the same section. 
+Contrary to the previous digital models that I owned, this one has the 
+connection shortcut by long-pressing the Mode button, not Search. Maybe 
+that&#x27;s because the initial pairing setup code is different and I don&#x27;t know 
+which exactly (another Casio app disassembly might be coming, who knows). 
+Anyway, as of now, syncing time is the only feature I&#x27;ve been really using 
+the BLE connectivity for. Although I&#x27;m still thinking about how to turn the 
+&quot;find my phone&quot; feature into some kind of a watch-based remote control. As 
+for the step tracker though... In the past, I learned not to trust any step 
+tracker data the hard way, but in my scenario, it at least helped me 
+estimate the overall amount of any physical activity done throughout the 
+day. Nevertheless, I still consider adding it here a strange design 
+decision: IMO adding just BLE would be sufficient and wouldn&#x27;t lead to such 
+a drastic battery life reduction.
+
+Speaking of battery, the manufacturer states that the watch is going to last
+for about two years on the stock CR2016 given the following conditions: auto 
+time correction with the official smartphone app 4 times per day, alarm once 
+(10 seconds) per day, backlight illumination once (1.5 seconds) per day, 
+step counting 12 hours per day, power saving mode off. Now, how does this 
+apply to me? Of course, I&#x27;m not even going to use the official smartphone 
+app, let alone sync with it 4 times per day: I&#x27;m going to sync the watch 
+with my rcvd.py once or twice per month at most. I&#x27;m probably going to only 
+use the alarm occasionally but use the backlight more than once per day for 
+sure. And yes, there is no setting to turn the step counter off completely 
+(only the step reminder function), so I don&#x27;t have full control over this 
+aspect. I have also disabled the button operation tone and turned on the 
+power saving mode, which, according to the manual, turns off the display &quot;if 
+it is left unused for approximately 150 minutes between 10 p.m. and 6 a.m.&quot; 
+The problem here though is that if the step tracker accelerometer registers 
+the movement, it automatically wakes up the display, so I&#x27;m not sure how 
+useful this setting will turn out to be as I almost never take the watch off 
+my wrist, even when going to sleep. Anyway, still much better than the Nokia 
+Steel watch (yes, I even had that one at some point!) where the movement and 
+the step counter alone ate the entire battery in just 6 months.
+
+All the other functionality of ABL-100 is quite trivial but still a step up
+from the A700: dual time (with a quick-swap with home time feature), 5 
+alarms, hourly time signal, a stopwatch for up to 24 hours with up to 200 
+split time/lap time records and a countdown timer for up to 60 minutes. I&#x27;d 
+say this feature set is quite sane, but again, it is a bit baffling as to 
+why Casio placed their bet on the sports-oriented functions in a 
+vintage-design watch and sacrificed the precious memory for 200 lap records 
+instead of, say, world timezones or text reminders. Maybe they plan on 
+releasing another model in the ABL series and we&#x27;ll see such features there, 
+who knows. BTW, on the &quot;Wrist Action&quot; YT channel, I have seen the comparison 
+of this one with the GD-B500 model, and the only added feature there is 
+auto-backlight, so we probably have some variations of the same firmware 
+already (and this allows to safely add the GD-B500 support into the same 
+section of rcvd.py as ABL-100). As for me, I&#x27;m quite happy about even having 
+the most basic stopwatch and the most basic timer in there, but I can 
+theoretically see an engineer doing some timing-based experiments and 
+comparing the results in the record memory of the watch. It is also 
+interesting that the manufacturer claims +/- 15 sec/month maximum deviation 
+without the BLE sync, which is twice more accurate than the A700, A1000, 
+W-800H and the module 593 based models. I hope this remains the go-to 
+standard for digital Casios going further, even for the more budget-friendly 
+ones.
+
+Another interesting thing about this watch is its test screen, which is
+entered by pressing Adjust, Mode and Search at the same time. The screens 
+are then switched by pressing the Search button. After the three usual 
+segment test screens (and the &quot;all-segment&quot; test screen is the third for 
+some reason, not the first), you get a clear screen, then the &quot;FC&quot; screen 
+(mine says 01 here), then the module/firmware screen (mine says QW 141 at 
+the top and then 3565 at the bottom, which matches the module number and 
+proves that this model is indeed the first one on this board), then the ROM 
+version screen (mine says 01 again), then the &quot;FIL&quot; screen (mine says 001), 
+then the &quot;AIR&quot; screen (mine says 01), then the &quot;DST&quot; screen (mine says 20), 
+then the &quot;DI&quot; screen (mine says 06), then the &quot;FV&quot; screen (maybe internal 
+firmware version, mine says 17), then the &quot;FI&quot; screen (mine says 03), and 
+finally, the &quot;FC&quot; screen (mine says 01). I feel like there&#x27;s a lot of 
+deciphering of all this information to do, but I haven&#x27;t seen so many 
+test/info screens in any other digital Casio watch. And, unlike many other 
+models, you can use the Light button while in a test screen, it won&#x27;t do 
+anything else.
+
+Lastly, as for the price of all this... Well, I&#x27;m not tracking the current
+prices of GA-B001 and DW-B5600 but I think this one still is the cheapest 
+BLE-enabled Casio to date. And it certainly is the slickest looking of all 
+BLE-enabled Casios (if we don&#x27;t count the MRG and Oceanus series, of course) 
+and definitely THE slickest looking one with a step tracker if you really 
+need this function. And, for this price, it definitely doesn&#x27;t qualify as a 
+cash grab, compared to e.g. A1100 (which is almost twice as expensive and 
+doesn&#x27;t even have a 24-hour time display mode, sic!) or the fashion limited 
+editions of DW-5600 or GA-2100. Of course, those who could live with a 
+chrome-plated resin case in A158/A159/A163/A164/A168/A700 can live with it 
+here too: one doesn&#x27;t just get a full steel (let alone titanium) build in a 
+vintage-styled watch. Neither does one get water resistance rating higher 
+than 3 bar. Nor does one get solar charging. Those, besides the stock 
+bracelet being not as comfortable as I thought it would be, are my only 
+possible complaints about this model, but they all would be valid if I chose 
+this as a single watch for the rest of my life. However, I already have one, 
+and I did a post about it. This one I do have, because I still have a choice 
+of more than one watch. And with the A700&#x27;s mesh strap, it already seems to 
+be perfect for the use cases I described in the beginning of this post.
+
+By the way, I have also updated the &quot;Watch collection&quot; file on my main Gopher
+page (yes, the Citizen AS2050 and Casio MQ-24 were also given away). Now all 
+watch models are just sorted alphabetically, and I think the ABL-100 
+deserves the first spot in this table, on my wrist and eventually my watch 
+roll as the classic digital reference with some modern features mixed in. 
+Given all circumstances, I really doubt this file is gonna be updated yet 
+again anytime soon but, as I already said before, I am not planning to 
+expand my collection to more items and am really enjoying the items I 
+already have. 
+
+--- Luxferre ---
+
+[1]: https://git.luxferre.top/rcvd-py/files.html
+</pre>]]></description>
+</item>
 </channel></rss>
