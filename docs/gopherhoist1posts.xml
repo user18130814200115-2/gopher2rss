@@ -12007,4 +12007,148 @@ already have.
 [1]: https://git.luxferre.top/rcvd-py/files.html
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-12-16-two-more-casios.txt</link>
+<title>(2024-12-16) Two more digital Casios flying under the radar</title>
+<description><![CDATA[<pre>
+(2024-12-16) Two more digital Casios flying under the radar
+-----------------------------------------------------------
+As much as I like my Casio GMW-B5000D, I find it almost unwearable in my 24/7
+mode. That&#x27;s because of its full-steel construction and corresponding weight 
+of about 150 grams. This is the same reason I&#x27;m never going to buy the 
+Casiotron reissue (TRN-50) which, by the way, contains virtually the same 
+module inside. And the MRG-B5000D doesn&#x27;t cost the amount of money that I&#x27;d 
+be ready to give for merely a watch anytime soon. But an idea of a 
+metal-core G-Shock with a proper screwback case that&#x27;s not as heavy still 
+couldn&#x27;t escape me... until I found the GW-5000U.
+
+Compared to the GMW-B5000D, the GW-5000U loses Bluetooth connectivity while
+retaining its solar charging and the longwave time signal receiver, but 
+there&#x27;s a reason for that. You see, a long time ago I also owned a GW-M5610, 
+one of my first longwave-enabled G-Shocks and the first fully digital one 
+with that feature. It appeared on the market in 2011. Even before that, in 
+2009, Casio released the GW-5000 model that mimicked the original DW-5000C 
+design and had a steel core and a proper screwback case, but other than 
+that, was identical to the GW-M5610 and housed the same module 3159. So, 
+essentially, GW-M5610 was a pleb variant of the fully Japanese-made GW-5000. 
+Well, when Casio &quot;upgraded&quot; the GW-M5610 to GW-M5610U in 2021, guess what 
+they released in pair with that? GW-5000U on the same module 3495. By the 
+way, I don&#x27;t really get what the &quot;upgrade&quot; consists of besides changing the 
+backlight from EL to LED (don&#x27;t have a lot of complaint though), but the 
+original GW-5000 is extremely hard to find nowadays, so I&#x27;m fine with this 
+one. It looks classy, the strap is much softer than the usual (and even the 
+strap here is made in Japan) and it&#x27;s overall more pleasant to wear than the 
+M5610, both versions of which, by the way, have been getting a lot of praise 
+by &#x27;murican reviewers because, you know, WWVB station.  
+
+Speaking of stations, I have also written (and specifically tested on this
+watch) another time signal emulation and transmission utility, this time for 
+Chinese BPC. Hence, I called it Beepy ([1]). Well... it beeps indeed! Its 
+code is mainly based on my jjy-py ([2]) code, but the amount of differences 
+proved to be enough to shape it into a separate program. Just like with 
+JJY40, you can just enter the receiver test mode (by the way, you could do 
+this on the original M5610/GW5000, AWG-M100B and all other multiband-6 
+G-Shocks) by pressing and holding first Light, then Receive/Set and then 
+Mode button. Scrolling with the Receive button, you can get to the &quot;B 01&quot; 
+screen and then press Light to start the reception. And that&#x27;s it. The 
+transmitter must fully emulate the original BPC station, i.e. transmit the 
+time in UTC+8. Once the signal has been received, the watch will 
+automatically translate it into your current time zone. For JJY40 (&quot;J 40&quot; in 
+the test menu), the transmitted time must be in UTC+9 respectively. And my 
+jjy-py and Beepy programs do take care of that.
+
+Other than the outer look and full-steel inner case, the GW-5000U is almost
+too mundane: auto-backlight, ability to switch date and month position, 
+multi-language day of the week, non-reprogrammable world time, 5 alarms and 
+an hourly signal, 24-hour stopwatch and a 24-hour countdown timer. No other 
+bells and whistles present, not that anyone needs them, but for that 
+price... Here, I&#x27;m going to present another Casio watch which is much 
+cheaper and comes with a much stiffer polyurethane strap, has a usual 
+four-screw backplate, a &quot;normal&quot; lithium battery instead of solar charging, 
+has a much more subtle history and is not even a G-Shock, being only 
+classified by Casio as belonging to the &quot;Sports Gear&quot; series. Yet, despite 
+having no solar charging or longwave or Bluetooth sync, it has no shortage 
+of bells and whistles to my taste. I&#x27;m calling it &quot;a poor man&#x27;s Protrek&quot; 
+because that&#x27;s what it essentially is. Lo and behold... Casio SGW-100.
+
+Now, that&#x27;s a watch I definitely wouldn&#x27;t wear 24/7, at least not on the
+stock strap. Besides, in order to properly use the thermometer function, you 
+need to take it off your wrist for up to 20 or even 30 minutes, so yeah. The 
+thermometer and the digital compass (based on the built-in magnetometer) are 
+the two features Casio calls &quot;twin sensor&quot; in this watch. However, it&#x27;s not 
+as large as I thought it would be, and definitely looks larger than it 
+really is. In fact, it even is 0.3mm thinner than the GW-5600U! I was also 
+really pleased to see this model have a real alumunium bezel, as well as 
+aluminium strap hinges. On the other hand, this means that not every strap 
+is going to fit this model. There surely are some aftermarket adapters but 
+this is something I&#x27;m only going to worry about if I decide this watch stays 
+with me for a long time of day-to-day usage.
+
+Another notable thing of the &quot;poor man&#x27;s Protrek&quot; is its backlight. It&#x27;s
+non-adjustable (1.5s only) but electroluminescent (and yes, I can hear some 
+high-pitched noise if the watch is close to my ear when activating it) and, 
+unlike e.g. DW-5600E and other &quot;traditional&quot; EL-equipped Casios, this one 
+has a twist: only the active segments light up here. Yes, even on a positive 
+display. I don&#x27;t know how they achieved it but now I feel like this is the 
+only way EL should be implemented anywhere. Otherwise you really can get 
+away with LEDs, no problem. Of course, there is no auto-backlight in this 
+model because it would eat the battery too fast. G-2900F, for instance, did 
+have it but it also did have a 10-year battery life claim. SGW-100 only 
+claims 3 years on a CR2025, so who knows? What&#x27;s no less interesting is that 
+the test screen shows the 3157-07 firmware version. The 3157 is indeed the 
+module number, but 07? Where did the other 6 revisions go? Well, on the 
+GW-5000U, the test screen also shows the 3495 module with the 003 revision 
+number. It also has some submenus similar to what was seen in ABL-100, 
+although not as much: ROM (01) and FILE (F001). This hints at a bigger 
+platform lying underneath the surface that we surely don&#x27;t know a lot about 
+yet.
+
+With the SGW-100 representing an older generation, some things are not so
+obvious. For example, button operation tone can be toggled with a really 
+long press of the Mode button. And the temperature unit setting (C/F) is 
+inside the time/date adjust menu. The compass calibration procedure also 
+seems a bit counterintuitive at first, but one can get used to it. Anyway, 
+the &quot;golden standard&quot; feature set of world time, 5 alarms and an hourly 
+signal, a stopwatch and a countdown timer (for 24 hours too) is present here 
+as well, which, combined with a true EL, makes it a decent competitor to the 
+AE-2000, AE-1500 and other similar Illuminators that don&#x27;t have anything 
+else besides this or an even more modest feature set (the only thing they 
+really can bet on is their battery life). On the other hand, if you don&#x27;t 
+need a built-in barometer/altimeter, why would you choose a (non-solar) 
+Protrek over the SGW anyway? I think this is one of the models where Casio 
+deliberately blurs the line between Protreks and Illuminators, naming it 
+neither of them. Oh yeah, did I mention that SGW-100 claims 20 bar of water 
+resistance? That makes it closer to the AE-2000 even more. And the overall 
+construction puts it somewhere in between the Illuminator, G-Shock and 
+Protrek series too. As someone told, it could have been a G-Shock but then 
+they would sell it for twice the price just because of the branding.
+
+So, what is the target audience of both of these timepieces, who are they
+intended for? Well, I think the GW-5000U is intended for two categories of 
+people: avid Casio collectors and those who, on the contrary, want to only 
+purchase one watch in the category (or even a single watch at all) and 
+expect it to serve them for the rest of their lives. Either way, this is not 
+a casual type of people. In contrast with this, the SGW-100 is as casual and 
+utilitarian as it can get: it doesn&#x27;t promote longevity, heritage or 
+materials, it&#x27;s pure function over form. There is, however, something common 
+between these two watches besides being all-digital and made by Casio. While 
+there is an increasing number of Casio watches made as companions to other 
+gadgets (the aforementioned GMW-B5600D and ABL-100, the GM-B2100, the GBD 
+series and so on), these two definitely are aimed at fully autonomous usage. 
+Their functionality is fully available even to those who don&#x27;t have anything 
+to connect them to, or just don&#x27;t want their watches to be connected to 
+anything. In fact, I can imagine a scenario where either of these watches is 
+the only portable digital gadget one has around. Of course, the GW-5000U 
+with its solar charging would be preferable in this case. Moreover, as the 
+world delves into a dystopia faster and faster, not having a single 
+transmitting device on you becomes quite essential for escaping global 
+surveillance.
+
+--- Luxferre ---
+
+[1]: https://git.luxferre.top/beepy/file/README.html
+[2]: https://git.luxferre.top/jjy-py/file/README.html
+</pre>]]></description>
+</item>
 </channel></rss>
