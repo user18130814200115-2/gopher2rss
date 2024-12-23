@@ -12151,4 +12151,93 @@ surveillance.
 [2]: https://git.luxferre.top/jjy-py/file/README.html
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-12-23-fed-up-with-the-industry.txt</link>
+<title>(2024-12-23) Fed up with the industry</title>
+<description><![CDATA[<pre>
+(2024-12-23) Fed up with the industry
+-------------------------------------
+Seriously, I&#x27;m sick and tired. The mainstream IT industry is a total mess now.
+
+Yes, I say that. It stopped solving real problems long ago, it stopped making
+the world a better place long ago, it started being &quot;a thing in itself&quot; with 
+all the &quot;innovations&quot; made up to merely justify its own further existence. 
+And it&#x27;s not just because a new fad appears every 3 to 5 years, which in 
+turn just adds to an already long list of totally useless and, in the long 
+run, even harmful things that simply must die. No, the main issue with that 
+is being able to produce at least some value for the company (or even the 
+entire industry) no longer equals to being able to produce any value for the 
+world&#x27;s people. In fact, in some cases, NOT producing that value for the 
+companies (especially big corporations) ends up being more useful for the 
+society.
+
+Of course, big corps like to tell everyone how they value every employee and
+contractor of theirs, while telling the employees (and especially 
+contractors) at the same time that no one is irreplaceable and ending up 
+treating them like their own property. Been there, seen that. On top of 
+that, regardless of the company size, there&#x27;s a clear observation made 
+throughout the 12 years in the field: the more your management (up to the 
+very top) starts talking about &quot;company values&quot;, &quot;teamwork&quot;, &quot;commitment to 
+the success&quot;, &quot;devotion to perfect delivery&quot; and other similar BS, the more 
+likely it is that you&#x27;re not going to get a raise anytime soon or even get 
+your current salary in time. Because all that is just a fancy way of 
+shifting responsibility to the innocent workers and saying &quot;we want y&#x27;all to 
+work twice as more while you&#x27;ll get nothing extra&quot;. This is how the VAI 
+syndrome is cultivated en masse, by the way.
+
+What&#x27;s VAI, you may ask? Nothing to do with AI (more on that later though),
+it&#x27;s short for Vigorous Activity Imitation. A popular acronym where I&#x27;m 
+from. And it&#x27;s not just IT-specific, it&#x27;s the source of problems in all 
+sorts of areas. The IT sector is just one of those where most of VAI really 
+can go undetected. Everyone there imitates vigorous activity to some extent 
+because, under the corporate pressure, what you really do becomes not as 
+important and even irrelevant compared to what you show that you&#x27;re doing. 
+All those &quot;daily standups&quot;, &quot;sprint planning meetings&quot;, &quot;quarterly planning 
+meetings&quot;, &quot;task grooming sessions&quot;, &quot;tech demos&quot;, &quot;all-hands&quot;, &quot;performance 
+reviews&quot;... I might have missed a few but you get the idea. Any sane person 
+would think all this exists for the sole purpose of wasting everyone&#x27;s time 
+and energy, but not the corporate zombies who desperately need this to 
+fulfill their VAI goals. And then there is a whole lot of positions just for 
+serving this VAI infrastructure: project managers, scrum masters (tell me a 
+single reason why a team leader can&#x27;t do the task management job), delivery 
+managers and who knows who else. Not so long ago, I was on a project where 
+there were far more managers than the actual engineers. And everyone seemed 
+to be fine with that. Good old bureaucracy in a new shell.
+
+Needless to say, what you see is very far from what you get at the end of the
+day. No one there is actually motivated to write efficient and bugless code, 
+it&#x27;s enough for it to be able to pass the tests and to work on the tech 
+demos. No one there is actually motivated to build secure infrastructure 
+unless/until they explicitly are told to do so. Combined with the moronic 
+management that just can&#x27;t know any better than installing Faildows on 
+mission-critical systems, no wonder that the disasters like WannaCry or 
+CrowdStrike had such a success. And I&#x27;m afraid that&#x27;s just the beginning. 
+Because the old suits are slowly but surely getting replaced with 
+TikTok-brained dummies who are even more clueless but think they already 
+know everything and keep jumping onto every new fad without a second 
+thought. And the most recent plague they let into the business, GenAI, 
+already has started showing its fruit with serious data breaches and leaks. 
+And we&#x27;re talking huge amounts of data being processed every second. So, at 
+this point, I think it&#x27;s too late to talk about potential leaks, what could 
+happen already has, we can only talk about those that have been discovered 
+and those that haven&#x27;t. And I believe that the amount of undiscovered leaks 
+is much larger than the number of ones we know about. Even when a company 
+uses third-party AI to automate its VAI (see the connection?), everyone&#x27;s 
+privacy is already at risk: employees, contractors and clients. And the 
+unsuspecting public is the one who usually suffers the most.
+
+Given all that, as well as my local situation making it increasingly
+uncomfortable to continue conducting any business here legally, I&#x27;m planning 
+to quit my job at some point in the coming year. As of now, I&#x27;ve got enough 
+savings for the next 3 to 5 years, and I&#x27;m sure I&#x27;ll figure out what to do 
+afterwards, what matters today is just staying alive. You may call it a 
+burnout, but &quot;better to burn out than fade away&quot;, as the song goes. Not that 
+anyone is going to miss me or even notice that, but I don&#x27;t want to be a 
+part of all that anymore. It is, in my opinion, wiser to watch this bubble 
+burst from afar.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
