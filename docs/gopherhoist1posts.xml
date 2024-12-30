@@ -12240,4 +12240,67 @@ burst from afar.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2024-12-30-the-end-of-the-year.txt</link>
+<title>(2024-12-30) The end of the year is finally nearing</title>
+<description><![CDATA[<pre>
+(2024-12-30) The end of the year is finally nearing
+---------------------------------------------------
+Not gonna lie, this year has been the worst in the decade so far and one of
+the most difficult years of my entire life. Many factors &quot;contributed&quot; to 
+this and the future never has been more uncertain for me, but I still have 
+got some strength to keep going. I have created several new tools, got an 
+entirely new hobby and some fresh plans for the next year. The main mission 
+though is staying alive.
+
+Some of my collections have been significantly changed. For instance, I&#x27;ve
+made no less than 8 watch reviews on this phlog in 2024, while keeping the 
+collection under 20 items. As of this moment though, at the end of this 
+year, I&#x27;m wearing one of the simplest and cheapest digital Casios currently 
+available: the W-218H. You could say it&#x27;s technically identical to F-91W or 
+A700 but it has larger digits and much better display viewing angles (on par 
+with the GMW-B5000D, no kidding!), better backlight (well, on par with the 
+A700) and, most importantly, a more ergonomic 3-button layout, with the 
+Light/Advance button being in the bottom right and the Start/Stop/12/24h 
+button being in the top left. My main complaint about the 593-module watches 
+and the A700/A1000 was that sometimes I accidentally pressed the bottom 
+right button and switched the time to the 12-hour format in the timekeeping 
+mode without noticing it. Well, it&#x27;s just not possible anymore with this new 
+button layout: the worst that can happen is backlight activation. And it 
+doesn&#x27;t have afterglow, so accidental presses won&#x27;t consume much energy. By 
+the way, the buttons here are very easy to press, even easier than on some 
+other Illuminators, so e.g. turning hourly chime on and off is a breeze on 
+this one. On top of that, W-218H is extremely lightweight for its size and 
+look (remotely resembling the vintage DW-5300) and I really stop noticing it 
+on my wrist from time to time. This is what I call &quot;zero-distraction 
+timekeeping&quot;. So, in a month, I&#x27;ll tell you how accurate this watch turns 
+out to be. And yes, it also has the LCD test screen when you press all three 
+buttons together and the 593-like &quot;CASIo&quot; screen when you press and hold the 
+Start/Stop button. Neat.
+
+As for my other hobbies (MCUs, poetry, music making)... Not that I&#x27;m out of
+ideas but definitely out of inspiration. For instance, I do have enough 
+parts to start building something based onWemos D1 Mini, but I still haven&#x27;t 
+shaped the vision of what exactly I want it to do. Same for the ATMegas and 
+for the RP2040. I&#x27;m sure I&#x27;ll figure this out but it needs time. What I 
+recently have achieved significant progress in though, is my Pixel research. 
+I don&#x27;t want to talk about this progress just yet but you&#x27;ll definitely see 
+the first practical results of this research within several months. To make 
+those results more tangible, I&#x27;m going to dive into some Android development 
+too, namely using the Go language and the Fyne GUI framework I already told 
+you about some time ago, just because I can&#x27;t stand Java but still want my 
+future app to be able to work without any kind of middleware like AndroWish. 
+There&#x27;s a lot of effort ahead but the end goal surely is worth it. It has 
+the potential to have as big of an impact as the first KaiOS jailbreak in 
+2018, if not even bigger. And I&#x27;m slowly approaching this moment, step by 
+step.
+
+Overall, I surely hope the next year will allow me to escape the
+circumstances and bring back some light and inspiration into my life. 
+Staying strong as always.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
