@@ -12303,4 +12303,131 @@ Staying strong as always.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-01-06-fully-javaless-android-dev.txt</link>
+<title>(2025-01-06) Fully Java-less Android development on... Android itself</title>
+<description><![CDATA[<pre>
+(2025-01-06) Fully Java-less Android development on... Android itself
+---------------------------------------------------------------------
+As I already hinted in my last post of 2024, I was going to dive into some
+Android stuff. And the things I have already learned actually turned out to 
+be very friendly if you know what you&#x27;re doing. But one question still 
+bothered me: could all this be done without any PC at all, on the tablet or 
+even the target smartphone I was developing my tool for? Well, the answer is 
+yes. While things like AndroWish definitely are cool and somewhat 
+liberating, the ability to develop standalone GUI applications and compile 
+them into ready-made .apk packages on the device itself is another level of 
+self-sustainability. So, today, I&#x27;m going to tell you how this can be done 
+without having to write a single line of Java code or XML markup. The only 
+caveat as of now is that all this is only fully possible on the 64-bit ARM 
+architecture (aka aarch64). Well, although I don&#x27;t usually advocate for 
+switching to new hardware, moving to a 64-bit CPU might be a worthy upgrade 
+after all.
+
+So, what do we need to setup our development environment for Android on
+Android? First and foremost, an independent Linux terminal with package 
+management. Until one is shipped within Android itself (rumors are it&#x27;s 
+going to happen in Android 16), the most viable option is Termux. This is 
+where all the fun is going to happen. Of course, I&#x27;m going to skip some 
+necessary steps like pkg update, pkg upgrade and termux-setup-storage 
+commands, but the gist of it is that you&#x27;re getting a Debian-like 
+environment in the Termux app sandbox, where you can set up packages like in 
+a normal Debian distribution. Then, of course, you need to have a text 
+editor suitable for coding inside Termux. I personally always choose Vim but 
+your mileage may vary. In case you are not using a physical keyboard, a good 
+virtual one is also a must (my personal recommendation is Unexpected 
+Keyboard from F-Droid). Now, let&#x27;s get to the actual programming tooling we 
+need to install.
+
+For the task of writing Android GUI software, we&#x27;re going to use the Go
+programming language and the Fyne framework. Go itself is extremely simple 
+to install and use in Termux (just specify the golang package), but we also 
+need to have something like Git, Make and, most importantly, Android NDK to 
+be able to use Fyne. Now, Termux only ships library helpers for Android NDK 
+but not the NDK itself. You need to download it from a third-party repo and 
+then fix some paths inside the executable scripts (with the 
+termux-fix-shebang tool provided via a separate package), as well as 
+populate the ANDROID_NDK_HOME and ANDROID_NDK_ROOT environment variables in 
+the Termux shell profile. So, the first step can be summarized as follows:
+
+cd
+pkg update
+pkg in termux-tools android-tools golang git make unzip wget
+wget
+https://github.com/lzhiyong/termux-ndk/releases/download/android-ndk/android-
+dk-r27b-aarch64.zip
+unzip android-ndk-r27b-aarch64.zip
+termux-fix-shebang
+$HOME/android-ndk-r27b/toolchains/llvm/prebuilt/linux-aarch64/bin/*
+rm android-ndk-r27b-aarch64.zip
+echo &#x27;export
+ANDROID_NDK_HOME=/data/data/com.termux/files/home/android-ndk-r27b&#x27; &gt;&gt; 
+$HOME/../usr/etc/profile
+echo &#x27;export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME&#x27; &gt;&gt; $HOME/../usr/etc/profile
+
+Now, before actually installng Fyne, we need to extend our $PATH in the same
+place:
+
+mkdir -p $HOME/go/bin
+echo &#x27;export PATH=$PATH:/data/data/com.termux/files/home/go/bin&#x27; &gt;&gt;
+$HOME/../usr/etc/profile
+
+Finally, we can install Fyne according to the official instructions:
+
+go install fyne.io/fyne/v2/cmd/fyne@latest
+
+Then, you can exit and enter the terminal or just run &quot;source
+~/../usr/etc/profile&quot; to apply all the path changes and check whether the 
+fyne command is working. If everything is fyne (lol), your environment is 
+ready and you can build your first application.
+
+Of course, I won&#x27;t get into details of writing Fyne applications in this very
+post, just want to mention that this process isn&#x27;t much different from 
+writing them on desktop, unless you need to use some platform-specific APIs. 
+What&#x27;s more important is the building step. In order to build and package 
+your Fyne application on Android, you prepare the icon file (called Icon.png 
+by default) and then run this in your project directory:
+
+go mod tidy
+fyne package --os android/arm64 --appID [your Android app ID] --name
+[launcher name] --release
+
+It&#x27;s usually convenient to wrap this into a Makefile, that&#x27;s what I normally
+do. You can specify additional parameters like version and build numbers, it 
+will default to version 0.0.1 if you don&#x27;t do so. You can also replace 
+&quot;android/arm64&quot; with just &quot;android/arm&quot; if you want to build the app for 
+32-bit ARMv7a CPUs and it will take about the same size (at least 23 MiB in 
+the release mode). If you specify just &quot;android&quot; though, it will increase 
+the minimum .apk size to the whopping 97 MiB, because Fyne will 
+cross-compile the code for all supported architectures at once: ARMv8a 
+(aarch64), ARMv7a, x86 and x86_64. So, if you don&#x27;t embed any non-Go native 
+binaries and want to achieve maximum compatibility without having to create 
+various .apk files for various architectures, you can choose this option at 
+the cost of quadrupling the package size. Yes, you still need to host the 
+build process on a 64-bit ARM device but that doesn&#x27;t prevent Fyne from 
+cross-compiling your binary to other platforms if you instruct it to do so.
+
+Now, how do we install the freshly compiled APK package file? You can do this
+in several ways:
+
+1) copy the file into the outer storage (you should have set up the storage
+with termux-setup-storage command) and then install it using your favorite 
+file manager (you can also try using termux-open but I didn&#x27;t have a lot of 
+success with that on my GrapheneOS installations),
+2) if you have root access, run su -c pm install /path/to/program.apk,
+3) install the android-tools Termux package (mentioned above), enable
+Wireless debugging in your Android developer options, then run adb connect 
+127.0.0.1 and just use adb install /path/to/program.apk as if you had been 
+installing the package from a PC. With this option, you can even directly 
+install your program to other Android devices, either wirelessly or with an 
+OTG cable if your device supports it.
+
+Well, that&#x27;s it. I hope this guide helps someone stranded on Android only to
+start creating and not just consuming content on such devices. Have fun in 
+the new year!
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
