@@ -12745,4 +12745,67 @@ https://github.com/ggerganov/llama.cpp/blob/master/examples/server/README.md
 [4]: https://huggingface.co/spaces/ggml-org/gguf-my-repo
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-01-20-theory-vs-practice-again.txt</link>
+<title>(2025-01-20) Theory vs. practice, again</title>
+<description><![CDATA[<pre>
+(2025-01-20) Theory vs. practice, again
+---------------------------------------
+Today, I&#x27;m not gonna talk about anything specific in any depth, just some
+random and short musings united with a common idea, rooted back in the 
+famous quote by Linus Torvalds: &quot;Theory and practice sometimes clash. And 
+when that happens, theory loses. Every single time.&quot;
+
+In theory, Forth and OCaml programming languages are much superior to Go and
+Rust in every possible aspect, but in practice, most natively compiled 
+software is written in the latter ones nowadays. Even I, personally, would 
+prefer Go over other mainstream BS like Java or C++. By the way, in theory, 
+compiled languages are the go-to choice for almost any problem, but in 
+practice, interpreted (or at most JIT-compiled) languages are being used 
+much more on a daily basis.
+
+In theory, Tcl/Tk is much easier to learn and get started with real everyday
+desktop usage than Python, but in practice, Python has embraced literally 
+all areas of scripting while Tcl still remains in its niche. You want 
+desktop? Got Tkinter (ironically Tcl-based). You want peripherals? Got 
+pyaudio, pyserial and pyusb. You want client/server? Got tons of libraries. 
+You want AI? Got Pytorch, Tensorflow, Ollama, Langchain, Pydantic and other 
+integrations. I&#x27;m having a hard time now if I have to explain why it&#x27;s 
+better to learn Tcl, when Python already has you covered everywhere, even on 
+MCUs like ESP8266EX.
+
+In theory, Web should be only used for displaying static and, to some extent,
+dynamic content, but in practice, Web has become another full-fledged 
+platform to run applications, and this fact has become so obvious that no 
+one can ignore it anymore. The quality and the level of user&#x27;s control over 
+these applications is another thing.
+
+In theory, there are plenty of mobile Linux distributions like postmarketOS
+that are better than Android in every way, but in practice, it makes much 
+more sense for people to extend their Androids to achieve advanced Linux 
+functionality (e.g. with Termux or custom builds) than fully ditch the 
+ecosystem they got used to. In theory, &quot;FOSS smartphones&quot; would imply full 
+control over their components, but in practice, their evangelists go apeshit 
+with a simple question: &quot;Does it even allow IMEI editing?&quot;
+
+In theory, if you pick up any non-Apple laptop except the cheapest ones,
+provided that you install a normal OS instead of Faildows, you will get a 
+twice+ better performance per price ratio than any MacBook (not even to 
+mention their serviceability and upgradeability). In practice though, 90% of 
+laptops still are utter crap regardless of their price, and it is very hard 
+to find a decent alternative. I, for instance, have settled upon a ThinkPad 
+L14 Gen5, but just because there wasn&#x27;t any real competition for that price.
+
+The most interesting twist is, you have to know the theory well enough to
+determine whether the practice is good or bad. The examples I&#x27;ve mentioned 
+are not as bad as most others. We just have to admit that we live in a world 
+of bad practices full of clueless people who don&#x27;t even know how bad those 
+practices are because they didn&#x27;t even bother to learn any theory. Can 
+anything be done about it? If you answer this question for yourselves, 
+you&#x27;ll understand why this phlog even exists.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
