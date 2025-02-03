@@ -12893,4 +12893,78 @@ generation of John Connors will have to resist first.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-02-03-a-message-to-copycats.txt</link>
+<title>(2025-02-03) A message to copycats</title>
+<description><![CDATA[<pre>
+(2025-02-03) A message to copycats
+----------------------------------
+I didn&#x27;t even suppose that I&#x27;d have to write anything like this at any point
+in time. Yet here we are. This is a post for a specific parts of my 
+audience, as that part recently got surprisingly large.
+
+As you know pretty well by now, I am a strong proponent of open source and
+*absolute* software freedom. That&#x27;s why I usually release my own code into 
+public domain. That&#x27;s why I totally do not object to usage of my ideas in 
+the others&#x27; projects. However, you know, sometimes it really hurts to see 
+how the projects employing those ideas are... mediocre at best. As soon as I 
+abandoned KaiOS-related development, I hoped that practice would cease. Alas.
+
+For instance, tell me please, what kind of nonsense is ([1]) this? The author
+even mentions several posts of my phlog as the reference points. He 
+introduces the final step that I haven&#x27;t even published yet (although it had 
+been found back in the late December, and I will prove this when my own tool 
+repo goes public on Mar 1 2025). Yet the logic he uses in the explanation 
+(&quot;Technicalities&quot; section) is not completely wrong but contains several 
+redundant steps. On top of that, he states that the method &quot;will not work if 
+you want to change the phone&#x27;s imei number to something other than what it 
+had originally&quot;, which is not true. In fact, the step that I had been 
+missing but he added makes it work on any IMEI combination (without it, as 
+you remember, both IMEIs were zeroed out, and there only was a way to bypass 
+this on the 6/6 Pro). You&#x27;ll see it for yourselves when my tool is 
+published. As such, he has written twice more code than necessary, and 
+presented all this in the most uncomfortable way to use.
+
+But this is not even the most egregious example. At least it&#x27;s open-source
+and honest, mentioning all credits below. There was, however, some other guy 
+who created a Faildows-only Tkinter-based application in Python that 
+couldn&#x27;t even work without a ton of external components in the same folder, 
+and a part of the logic was baked into this application but a part of it was 
+inside an external script. Well, I managed to decompile it. It&#x27;s a total 
+mess. Even more extra steps, even more confusion, and the level of GUI is 
+like... a third-grade student could create a better one. I wouldn&#x27;t be 
+surprised if the GUI part was AI-generated. And the author decided to remain 
+completely anonymous (maybe to avoid public humiliation). The only thing I 
+found as the hint to his origin was the docstrings. Which, in case you 
+didn&#x27;t know, remain intact in the compiled .pyc bytecode files, unlike the 
+&quot;normal&quot; single-line Python comments. This, AFAIK, was a deliberate design 
+decision for Pydoc to be able to generate documentation from compiled 
+modules as well. So, I saw those docstrings and they were written in 
+Turkish. I&#x27;m well aware that Turkey has a big problem with imported 
+cellphones, but come on, you don&#x27;t have to be that sloppy.
+
+The main question is: what drives all those people? If they don&#x27;t seem to
+have a basic understanding of what&#x27;s going on and just paste whatever they 
+found into their haphazardly put together utilities, then why publish them 
+at all? If you require root access anyway, might as well make a decent 
+autonomous tool to use on the device itself, or at least something that&#x27;s 
+pleasant to use and optimized on a fundamental level. It&#x27;s as if there is no 
+mid-space between the amateur script kiddies and &quot;flashing box&quot; thin air 
+sellers. No, unlike the &quot;boxers&quot;, I respect every effort to spread the 
+knowledge, but this knowledge has to be based. If you don&#x27;t understand what 
+you&#x27;re doing, then you&#x27;re not really helping anyone in the long run. What 
+will you do when/if they change the baseband in Pixel 10? Yeah, you&#x27;ll wait 
+for someone to research it again.
+
+I had started all this in an attempt to prove that the GrapheneOS devs were
+totally wrong, and now I have everything at my disposal to prove it. 
+Whatever y&#x27;all do with the results of this proof is none of my concern. The 
+spring is coming. Mark your calendars.
+
+--- Luxferre ---
+
+[1]: https://github.com/bitdomo/restore_imei
+</pre>]]></description>
+</item>
 </channel></rss>
