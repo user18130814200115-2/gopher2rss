@@ -6720,4 +6720,76 @@ new year. Stay well and stay safe!
 [5](https://visitbala.org.uk)
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Radio/VHF-Portable.md</link>
+<title>2025-02-08  VHF Portable</title>
+<description><![CDATA[<pre>
+# VHF Portable
+
+I&#x27;ve operated 2m portable on a number of occasions now. Twice already
+this year and a handful of times last year with various pieces of
+equipment.
+
+If you have a good take-off, even with just 5w and a modest whip
+antenna you will get out pretty well.
+
+
+### Operating Portable
+	
+When operating portable you want to keep your radio kit as compact
+and light as possible. Only deviate from this basic principle if you
+have a specific goal in mind and the extra weight and complexity will
+significantly improve your chances of success.
+
+
+### My setup
+
+Personally I have found a 5w dual band hand held radio to be more
+than adequate for the job and perfect for SOTA type activities. My
+own radio is a Retevis RT85 with an extended 2800mah battery.
+
+Coupled to this I use a roll up slim-jim 2m antenna and about 6m of
+mil-spec RG58 coaxial with BNC connectors, male one end and female
+the other. The male end attaches to a BNC adapter that screws onto
+the top of the radio, the female end to the BNC connector on the
+antenna. The antenna is suspended from a 5m fishing pole to get some
+extra height.
+
+Gear list:
+* Retevis RT85.
+* Retevis RT85 2800mah battery pack.
+* 2m roll up slim-jim antenna with male BNC connector.
+* 6m mil-spec RG58 (male BNC one end, female BNC the other).
+* BNC to SMA adatper for the top of the radio.
+* 5m fishing pole
+* Two stretchy velcro straps (to tether the fishing pole).
+
+
+### Other considerations
+
+You may well need something to sit on. Often I found somewhere that I
+could operate and tie the pole, but not some place comfortable to
+sit. The floor has often been muddy.
+
+A flask and some snacks (tea and biscuits?) if you will be out for
+some time.
+
+Even if it doesn&#x27;t appear cold out, when you are stood on top of a
+ridge or peak and exposed to the wind chill, you can lose a lot of
+heat quickly. Take some warm layers and gloves.
+
+A small notebook for logging your contacts, waterproof ones are
+available from camping and outdoors stores. You could use your phone
+but that could run down your battery and then you can&#x27;t make a call
+if you should have an emergency.
+
+
+### Summary
+
+In short keep it simple, keep it light and you will have plenty of
+fun hilltopping / doing SOTA activations.
+
+</pre>]]></description>
+</item>
 </channel></rss>
