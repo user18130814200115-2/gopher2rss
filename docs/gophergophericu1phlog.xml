@@ -6792,4 +6792,35 @@ fun hilltopping / doing SOTA activations.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/Phlog-format.md</link>
+<title>Phlog format                                               2025-02-21</title>
+<description><![CDATA[<pre>
+# Phlog format
+
+I almost daily check bongusta[1] to see if there are any new tasty
+morsels to consume. Generally I also pay attention to the
+presentation of phlogs as well as their content. Some I have actually
+stopped reading due to bad decisions regarding line length and being
+inconsiderate of the wider world of gopher client compatibility.  So
+when someone makes a change that looks good, and causes no issues,
+maybe there is no shame in copying it?
+
+Matto&#x27;s phlog[2] was the inspiration for the latest format change.
+You may notice that my article dates are all now nicely right
+justified.  When I saw Matto had done this, it just seemed like the
+right thing to do.  After all, most of us read from left to right and
+so the most important information should probably come first.
+Visually it also gives some balance to the page.
+
+*Note:* I am still using the UMN gopher client and if your phlog
+looks like crap (filled with terminal escape codes), or doesn&#x27;t work
+(using menus for content to emulate web pages), in that client then
+you can guarantee I don&#x27;t read it.
+
+[1](gopher://i-logout.cz/1/bongusta)
+[2](gopher://box.matto.nl/1/)
+</pre>]]></description>
+</item>
 </channel></rss>
