@@ -6846,4 +6846,95 @@ you can guarantee I don&#x27;t read it.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/Display-lines-and-UMN-gopher.md</link>
+<title>Display lines and UMN gopher                             2025-02-25</title>
+<description><![CDATA[<pre>
+# Display lines and UMN gopher
+
+As Matto described in his recent post[1], the gopher RFC suggests we
+should keep our display lines below 70 characters.
+
+Having read the RFC, and made every attempt to keep my gopher hole
+within specification, I had arrived at 69 as the magic number for
+line length. My posts are also wrapped at 69 characters, as it is a
+comfortable line length to read[2].
+
+I have taken some pride in my gopher hole being RFC compliant,
+compatible with all gopher clients and having unique content and
+services.
+
+When it was pointed out to me a couple of days ago that my newly
+added date format was being truncated on an 80 character terminal. I
+was shocked that I could have made such an oversight and immediately
+set to put it right. This was at 12am, just as I was preparing to go
+to bed...
+
+Having amended my entire gopher hole to reduce the maximum number of
+characters to 67, to stop the truncation. It suddenly dawned on me
+that the complaint was only about the menu items, and if it weren&#x27;t
+for the &#x27;..&#x27; suggesting truncation the entire line would have fitted
+on screen.
+
+I reverted my changes to the ASCII banner and section headings and
+looked to find the UMN gopher source code[3].
+
+
+## Into the rabbit hole
+
+It took me some time digging until I found what I was looking for[4].
+The *magic* happens inside DisplayTitle(), maxlength is the result of
+COLS-13.
+
+COLS I assume comes from curses knowledge of your terminal
+capabilities, 13 is what is reserved for the info in the left margin.
+
+The margin takes the following form: &#x27; --&gt;  [XXXX] &#x27;
+
+When accounting for the entire line length UMN gopher reserves 13
+characters for the left margin, even though it doesn&#x27;t always use
+them.  Essentially it calculates whether to truncate your line as
+follows: line &lt;= COLS-13.
+
+If your display line is 69, under 70 as per the RFC, then it
+calculates a deficit of 2 characters on an 80 character display...
+
+I&#x27;ve never had cause to look at the source for UMN gopher before or
+really critically assess the user interface.
+
+
+## Initial observations
+
+* There is a lot of wasted space within the margin.
+	&#x27;--&gt; &#x27; could be replaced with terminal foreground/background
+	invert, to highlight the selected item.  This would save 3 or 4
+	characters in one swoop.
+
+* The margin width is variable depending on the index number.
+	I think that this should be fixed as when it expands it pushes
+	the menu title across to the right reducing usable space.
+
+
+## Summary
+
+Is it a bug, is it a feature? Should it it be condemned forevermore,
+or should it be fixed?
+
+Lynx suffers in the same regard when it comes to wasted space and
+variable info margin. I actually think it&#x27;s worse...
+
+Even with all its quirks and occasional crashes, it is still my
+preferred client.
+
+
+## References
+
+[1](gopher://box.matto.nl/0/shorter-lines-in-gophermap.txt)
+[2](https://baymard.com/blog/line-length-readability)
+[3](https://github.com/jgoerzen/gopher.git)
+[4](https://github.com/jgoerzen/gopher/blob/master/gopher/manager.c)
+
+</pre>]]></description>
+</item>
 </channel></rss>
