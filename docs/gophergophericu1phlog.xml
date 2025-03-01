@@ -6937,4 +6937,47 @@ preferred client.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/UMN-gopher-revisited.md</link>
+<title>UMN gopher revisited                                       2025-03-01</title>
+<description><![CDATA[<pre>
+# UMN gopher revisited
+
+In my previous post[1] I explained the issues that I recently found
+and what I thought might be the west way to address them.
+
+In an effort to resolve the issues, today I wrote a patch[2] for the
+latest source tree[3]. I don&#x27;t claim to be a competent C programmer,
+or have any knowledge of ncurses, but I managed to discover enough in
+a few hours to make an attempt.
+
+The left margin, which contains the menu index, is now fixed at 8
+columns. In its current skinny format[4], it provides enough room for
+indexes up to 999999. 
+
+There are still problems, as file type suffixes can be appended and I
+don&#x27;t think those are accounted properly for truncation either. But
+at least now that the margin doesn&#x27;t vary in width, there may be more
+chance of shaking out the rest of the issues.
+
+
+## Want to try the patch?
+
+* git clone the latest source tree[2].
+* cd into the resulting gopher directory
+* download the patch[1] into the same directory
+* patch &lt; 0001-Removed-selected-item-indicator-from-left-margin-rep.patch
+* ./configure
+* gmake (If you are on one of the BSDs you will need this.)
+
+
+## References
+
+[1](gopher://gopher.icu/0/phlog/Computing/Display-lines-and-UMN-gopher.md)
+[2](gopher://gopher.icu/0/files/0001-Removed-selected-item-indicator-from-left-margin-rep.patch)
+[3](https://github.com/jgoerzen/gopher.git)
+[4](gopher://gopher.icu/I/files/gopher-menu2.png)
+</pre>]]></description>
+</item>
 </channel></rss>
