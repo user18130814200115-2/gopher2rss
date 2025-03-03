@@ -6980,4 +6980,68 @@ chance of shaking out the rest of the issues.
 [4](gopher://gopher.icu/I/files/gopher-menu2.png)
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/UMN-gopher-revisited-pt2.md</link>
+<title>UMN gopher revisited pt2                                   2025-03-03</title>
+<description><![CDATA[<pre>
+# UMN gopher revisited pt2
+
+
+## Once more into the breach
+
+There were still some anomalies in text string truncation which I was
+unhappy to leave causing me to dive back in to the code for a second
+time.
+
+I found a rather strange routine which would truncate menu titles at
+the point it found a &#x27;/&#x27;. Rather than truncate from the end of the
+line it would truncate what it needed after the &#x27;/&#x27;. It was an
+unexpected behaviour so I have removed it. The author should have
+control over how their menu titles appear.
+
+Also lines were being truncated at &#x27;maxlength&#x27; and then having &#x27;..&#x27;
+appended causing the line to again be too long. I have adjusted the
+truncation to be &#x27;maxlength-2&#x27; to account for this.
+
+My original patch[1] has been replaced with a combined one including
+the above changes.
+
+Now that I am a little happier with the client[2], and a patch is
+available to correct the problems, I have put my menu titles back to
+69 characters.
+
+
+## Usenet
+
+I started a thread on comp.infosystems.gopher on this topic but
+unfortunately it soon became more about criticism of the client and
+its shortfalls (in their opinion). The fact that it ignores pages
+full of type &#x27;i&#x27; is an annoyance to many who like create pseudo web
+pages using menus. The fact that it was a deliberate design change by
+the authors of the reference client and writers of the RFC maybe
+tells you that they weren&#x27;t intended to be used that way.
+
+
+## Summary
+
+I&#x27;ve done my bit to iron out some of the bugs. If everyone did this
+then maybe the world would be in a much better state. Unfortunately
+people seem largely content with complaining. 
+
+*Bonus info*: You can change the index display in the left menu by
+setting an environment variable. The default is &#x27; %6d &#x27;, there are 8
+columns to fill. 
+
+    $export GOPHERMENUSTYLE=&#x27; [%4d] &#x27;
+    
+    $export GOPHERMENUSTYLE=&#x27; %5d) &#x27;
+
+
+## References
+
+ [1](gopher://gopher.icu/0/files/0001-Removed-selected-item-indicator-from-left-margin-rep.patch)
+![2](gopher://gopher.icu/I/files/gopher-menu3.png)
+</pre>]]></description>
+</item>
 </channel></rss>
