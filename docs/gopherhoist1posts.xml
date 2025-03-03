@@ -12982,4 +12982,108 @@ recover. Hope y&#x27;all understand. See you soon!
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-03-03-the-graphene-saga-part-3.txt</link>
+<title>(2025-03-03) The Graphene Saga: part 3</title>
+<description><![CDATA[<pre>
+(2025-03-03) The Graphene Saga: part 3
+--------------------------------------
+The spring has come, and guess who&#x27;s back. Guess **what** is back almost a
+year since the last time. I had to have a lot of patience to wait until this 
+moment, and it&#x27;s not even the biggest thing to come yet. Right now, as far 
+as I&#x27;m concerned, IMEI editing in Google Pixels from 6 to 9 Pro is a fully 
+solved thing. Of course, you have to have it rooted but I don&#x27;t deal with 
+carrier-locked devices in general, there are other people who are more 
+interested in that. Regardless, there now is a totally irrefutable proof 
+that GrapheneOS developers were absolutely wrong in their statements about 
+IMEI editing in Pixels and in general. I don&#x27;t know why they said that in 
+the first place, either because of their own stupidity or due to the fear of 
+being threatened a legal action, but the proof is out there now, and in my 
+case, it even is shaped into a fully autonomous FOSS tool that runs on any 
+rooted Pixels themselves starting from the model 6 and above.
+
+I&#x27;ve called it lexipwn ([1]). It&#x27;s a portmanteu of the reversed word &quot;pixel&quot;
+and &quot;pwn&quot;. It consists of two parts, both written in Go: lexipwn-cli and 
+lexipwn-gui. You can use lexipwn-cli independently in the console like 
+Termux or ADB (as long as you have root access), but it also gets built 
+inside the lexipwn-gui APK file and is unpacked and called as root by the 
+GUI part when you perform any saving or loading action. The GUI part is 
+handled by the Fyne ([2]) framework which might not be an ideal choice for 
+everyone but is the easiest way to get started with Android GUI without 
+having to write a single line of Java or XML. Also, since all targets are 
+Pixels that share the same architecture, we can easily instruct Fyne to only 
+build the application for &quot;android/arm64&quot; and save a ton of space by 
+eliminating unused binary code.
+
+So, as you can see, lexipwn offers a lot of fields to edit, and also eases
+the IMEI and MAC address randomization. Of course, everything is done via 
+editing the devinfo partition, which had been covered before. But what&#x27;s 
+different this time and why does the IMEI editing finally work as intended? 
+Well, let&#x27;s recap where the research had stopped a year ago. Quoting my last 
+post on the topic directly:
+
+&gt; The main subject, as you might have seen in LuxDocs, is now stalled at the
+stage of finding where the IMEI SHA checksums are stored. Because the IMEIs 
+themselves are stored in the devinfo partition in the plain ASCII form 
+(although the partition itself is binary), and this partition, contrary to 
+my expectations, really controls everything over the EFS. Of course, if 
+either IMEI doesn&#x27;t match its checksum, the device reports both of them as 
+000000000000000 to both the OS userspace and the network. And I could 
+partially do this search in the offline mode as I dumped the modem firmware 
+image along with everything EFS-related while I still had the root access. 
+But, of course, I should have dumped everything I could.
+
+And then yes, I had to move to an unrooted Graphene on my Pixel 6 and have
+been using it as my main Android ever since, having no way to continue this 
+research. The truth is, I had no idea how close to the solution I had been 
+for all this time. But then, in December 2024, a guy who was interested in 
+my research contacted me. As a result, after a short exchange of ideas, I 
+bought myself a Pixel 7a, rooted it and resumed digging. Yes, I had been 
+right about the place where the checksums were stored, the 
+/mnt/vendor/persist/modem/cpsha file, but how was its content generated? 
+Well, the algorithm still is a black box inside the modem firmware but it 
+can be triggered with an external command, and I had also seen that command 
+before: AT+GOOGGETIMEISHA. It just didn&#x27;t work for me. Why? And that&#x27;s when 
+that guy gave me a tip that unraveled everything else: for this AT command 
+to work, the phone needs to be booted into the factory mode.
+
+What&#x27;s factory mode, you may ask? Well, that&#x27;s essentially a value for
+another field in the devinfo partition, &quot;bootmode&quot;. I don&#x27;t know other 
+values for this field besides &quot;normal&quot; and &quot;factory&quot;, and these values can 
+also be set via the &quot;fastboot oem set_config bootmode&quot; command. When editing 
+the field manually and not via fastboot, you also have to change its field 
+type to DIUS if it was initially set to DIFR (lexipwn-gui does this 
+automatically btw). Anyway, when you set this field to &quot;factory&quot; and reboot, 
+it indicates that the phone has been booted into the factory mode by showing 
+a big red word &quot;Factory&quot; instead of the very first boot logo, and I&#x27;m not 
+sure whether it affects anything else but it unlocks certain modem 
+interactions including the AT+GOOGGETIMEISHA command, which now returns the 
+hexadecimal value to be replaced in the /mnt/vendor/persist/modem/cpsha 
+file, which is calculated from the current devinfo fields. So, again, the 
+devinfo partition is the primary source of truth for EFS here, not vice 
+versa. And this is where everything worked: after fixing the CPSHA value, 
+regardless of whether or not the &quot;bootmode&quot; field is changed backed to 
+&quot;normal&quot;, the new IMEI numbers are shown both to the device and the network 
+after rebooting.
+
+This was a real breakthrough, but I&#x27;m not going to stop there. Since I have a
+performant enough hardware to build Android locally now, I am planning on 
+creating a custom rooted (or at least userdebug) GrapheneOS build with 
+lexipwn, a fingerprint spoofer and several other privacy-protecting tools 
+preinstalled. If going the userdebug route, I&#x27;ll also have to change the way 
+lexipwn-cli is called inside the GUI part, but that is the least of my 
+worries for now. The primary testbed is still going to be the Pixel 7a, but 
+I&#x27;m pretty sure similar builds will work on every device from the 
+Tensor/Exynos family. This is pretty much going to be my magnum opus of the 
+year, unless, of course, GrapheneOS devs themselves realize their past 
+mistakes, embrace the truth and finally incorporate IMEI, MAC, other devinfo 
+and fingerprint editing into their mainline builds.
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/lexipwn
+[2]: https://fyne.io
+</pre>]]></description>
+</item>
 </channel></rss>
