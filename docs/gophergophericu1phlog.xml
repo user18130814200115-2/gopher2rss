@@ -7044,4 +7044,35 @@ columns to fill.
 ![2](gopher://gopher.icu/I/files/gopher-menu3.png)
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Radio/HF-Portable.md</link>
+<title>HF Portable                                                2025-03-06</title>
+<description><![CDATA[<pre>
+# HF Portable
+
+Today I finally set up my portable HF station[1], just in the garden
+for a trial run. 
+
+I had recently bought a pac-12 portable vertical antenna in
+anticipation of doing some portable HF operating this year and had
+been itching to have the opportunity to set it up. 
+
+I did some experimentation across the bands using the SWR meter on
+the rig with the antenna tuner disengaged. My results didn&#x27;t exactly
+tie up with those in the rather confusing chinglish manual and it
+wasn&#x27;t clear at first that for use on 10m band you don&#x27;t need the
+coil or 4 aluminium base rods.
+
+On 10m the SWR is 1.0 right across the band, which was very
+encouraging. I managed to get similar results on 20m and acceptable
+results on 40m also.
+
+Hopefully in the next two weeks I will have the opportunity to use it
+on a field day. Although I really could do with ditching the lead
+acid motorcycle battery in favour of a LiFePO4...
+
+![1](gopher://gopher.icu/I/images/G90-portable.jpg)
+</pre>]]></description>
+</item>
 </channel></rss>
