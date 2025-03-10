@@ -13086,4 +13086,143 @@ and fingerprint editing into their mainline builds.
 [2]: https://fyne.io
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-03-10-return-of-the-pen-and-paper.txt</link>
+<title>(2025-03-10) Return of the Pen and Paper</title>
+<description><![CDATA[<pre>
+(2025-03-10) Return of the Pen and Paper
+----------------------------------------
+Those who have been following this phlog for a long time, know that pen and
+paper cryptography is one of the topics left a bit behind the others. Well, 
+I think it&#x27;s time to return to it with several new ideas and re-evaluations 
+of my old approaches. First, I&#x27;d like to mention that my main emphasis has 
+shifted on the ease of operation and the minimum (if any) amount of 
+intermediate steps necessary to be written down. Second, some of my earlier 
+&quot;no-no&quot; techniques are now acceptable, but with some important modifications 
+and precautions. Third, there are several new approaches that I hadn&#x27;t 
+considered before for some reason.
+
+Let&#x27;s take Playfair cipher, for example. It is pretty weak when used &quot;as is&quot;
+and with a 5x5 character matrix. Let&#x27;s improve it in several ways: extend it 
+to 6x6, interleave the plaintext with completely random characters from the 
+grid and change the &quot;same row/same column&quot; rule by swapping the resulting 
+ciphertext digraph letters. Voila! We&#x27;ve made it much more resistant to the 
+usual frequency analysis attacks. And since we&#x27;re swapping the characters in 
+some cases, you can&#x27;t just remove the entire interleaved ciphertext because 
+you don&#x27;t know which character in each digraph is real and which one is a 
+decoy. Add to this a reliable grid keying scheme and variable prefix length, 
+and you&#x27;ll get what I have called InterPlay-36 ([1]). All the technical 
+description along with examples and a reference Python implementation is 
+right there. You can also play with it in a JS-enabled browser using the Web 
+version ([2]) which also has an option of outputting the keyed grid based on 
+your passphrase. In fact, one of the best ways to train yourself on this 
+cipher is to encrypt something in the website and try to decrypt it 
+manually, and vice versa.
+
+In some cases, however, Playfair still can be used &quot;as is&quot;. For instance,
+when encrypting short digital information, such as PINs and phone numbers, 
+you can write all the digits from 0 to 9 in a random order into a 5x2 table 
+(2 rows, 5 columns), append a zero to the plaintext if it has an odd number 
+of digits, and use this table with the following Playfair-like rules for 
+every digraph ab:
+
+- if a is equal to b, replace both digits with the digit from the other row
+on the same column;
+- if a and b are on the same column, swap them;
+- if a and b are on the same row, replace them with the ones to the immediate
+right when encrypting and to the immediate left when decrypting (when the 
+index is out of bounds, just wrap around the row);
+- if a and b are on different rows and columns, replace them with the
+corresponding opposite corners of an imaginary rectangle on the same row.
+
+Just like with InterPlay-36, while you still might need to write down the 5x2
+table somewhere, all the operations can and should be performed mentally and 
+very quickly. I call this method Digifair for obvious reasons. Even before 
+applying it, however, you can mask each digit of the plaintext with the 
+following fractionation technique:
+
+1. Choose a random digit from 0 to 9. 
+2. Subtract your plaintext digit from it modulo 10. E.g. 4 - 7 mod 10 = 7.
+3. Write both results as a new digraph instead of the initial plaintext digit.
+
+To restore the initial digit from the digraph, just subtract the second digit
+from the first one modulo 10 again. That easy.
+
+Let&#x27;s combine these two techniques in an example. Suppose we want to encrypt
+a PIN 389211 with the key 6473820915. Let&#x27;s write the key in a 5x2 table:
+
+64738
+20915
+
+Then, let&#x27;s fractionate and encrypt each digit (only the result of the
+operation needs to be written down):
+
+1. 3 =&gt; 74 =&gt; 37
+2. 8 =&gt; 24 =&gt; 06
+3. 9 =&gt; 56 =&gt; 28
+4. 2 =&gt; 31 =&gt; 13
+5. 1 =&gt; 43 =&gt; 78
+6. 1 =&gt; 98 =&gt; 57
+
+So, the encryption result is 370628137857. Note that this is not the only
+valid ciphertext as this depends on the random choice on the fractionation 
+stage.
+
+Finally, to not make this post extremely long, I&#x27;m going to tell you about
+another pen and paper technique that can be used as a pseudorandom number 
+generator for any hand stream cipher that operates on decimal digits. It&#x27;s 
+based on the &quot;subtract-with-carry&quot; or &quot;add-with-carry&quot; algorithm. I&#x27;m going 
+to use subtraction, although the addition-based approach would be identical 
+here.
+
+1. Write the initial key seed on the paper.
+2. Start a new line underneath by subtracting the first digit from the last
+one in the previous line modulo 10. Put a tick near the resulting digit if 
+the result not modulo 10 would be less than 0.
+3. Fill in the rest of the line by subtracting the digit to the top right
+from the newly added digit modulo 10. If the digit has a tick, subtract 1 
+more. Put a new tick near the resulting digit if the result not modulo 10 
+would be less than 0.
+4. Repeat steps 2 and 3 until you get the desired amount of pseudorandom
+digits, not counting the original seed.
+
+Example. Suppose your short-term key is 13378008135, then the next digits are
+calculated like this (all operations are modulo 10):
+
+* 5 - 1 = 4
+* 4 - 3 = 1
+* 1 - 3 = 8&#x27;
+* 8 - 7 - 1 = 0
+* 0 - 8 = 2&#x27;
+* 2 - 0 - 1 = 1
+* 1 - 0 = 1
+* 1 - 8 = 3&#x27;
+* 3 - 1 - 1 = 1
+* 1 - 3 = 8&#x27;
+* 8 - 5 - 1 = 2
+* (now the original key is over, we continue on the calculated values) 2 - 4
+= 8&#x27;
+* 8 - 1 - 1 = 6
+* 6 - 8 = 8&#x27;
+* 8 - 0 - 1 = 7
+* 7 - 2 = 5
+* 5 - 1 = 4
+* 4 - 1 = 3
+* 3 - 3 = 0
+* 0 - 1 = 9&#x27;
+* and so on...
+
+So, after discarding the original 13378008135 sequence, the first 20
+keystream digits are calculated as 41802113182868754309.
+
+Well, this is not everything that I wanted to tell you on this subject but I
+surely hope this is a good start. Stay tuned!
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/InterPlay-36
+[2]: https://pf.hoi.st
+</pre>]]></description>
+</item>
 </channel></rss>
