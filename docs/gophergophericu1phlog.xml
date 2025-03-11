@@ -7075,4 +7075,95 @@ acid motorcycle battery in favour of a LiFePO4...
 ![1](gopher://gopher.icu/I/images/G90-portable.jpg)
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/DICT-dictionary-server-protocol.md</link>
+<title>DICT dictionary server protocol                            2025-03-11</title>
+<description><![CDATA[<pre>
+# DICT dictionary server protocol
+
+I have often found myself browsing the web just to look up some word
+definition. This seems a terrible waste of resources just to find out
+the meaning of a word, and then I remembered there is a protocol that
+provides this. That protocol is DICT[1].
+
+As with many protocols from the golden era of computing, it can be
+utilized without a specialized client.
+
+
+## Some examples
+
+&gt; $telnet dict.org 2628
+&gt; Trying 199.48.130.6...
+&gt; Connected to dict.org.
+&gt; Escape character is &#x27;^]&#x27;.
+
+Type &#x27;help&#x27;.
+
+&gt; help
+&gt; 113 help text follows
+&gt; DEFINE database word         -- look up word in database
+&gt; MATCH database strategy word -- match word in database using str..
+&gt; SHOW DB                      -- list all accessible databases
+&gt; SHOW DATABASES               -- list all accessible databases
+&gt; SHOW STRAT                   -- list available matching strategies
+&gt; SHOW STRATEGIES              -- list available matching strategies
+&gt; SHOW INFO database           -- provide information about the da..
+&gt; SHOW SERVER                  -- provide site-specific information
+&gt; OPTION MIME                  -- use MIME headers
+&gt; CLIENT info                  -- identify client to server
+&gt; AUTH user string             -- provide authentication information
+&gt; STATUS                       -- display timing information
+&gt; HELP                         -- display this help information
+&gt; QUIT                         -- terminate connection
+&gt; 
+&gt; The following commands are unofficial server extensions for debu..
+&gt; only.  You may find them useful if you are using telnet as a cli..
+&gt; If you are writing a client, you MUST NOT use these commands, si..
+&gt; they won&#x27;t be supported on any other server!
+&gt; 
+&gt; D word                       -- DEFINE * word
+&gt; D database word              -- DEFINE database word
+&gt; M word                       -- MATCH * . word
+&gt; M strategy word              -- MATCH * strategy word
+&gt; M database strategy word     -- MATCH database strategy word
+&gt; S                            -- STATUS
+&gt; H                            -- HELP
+&gt; Q                            -- QUIT
+&gt; .
+&gt; 250 ok
+
+To do a basic word search of all databases.
+
+&gt; d gopher
+
+To do a word search of a specific database.
+
+&gt; d foldoc gopher
+&gt; 150 1 definitions retrieved
+&gt; 151 &quot;gopher&quot; foldoc &quot;The Free On-line Dictionary of Computing (3..
+&gt; gopher
+&gt; 
+&gt;    &lt;networking, protocol&gt; A {distributed} document retrieval sys..
+
+If you want to script something or just use it from the command line
+then you can do something like the following:
+
+&gt; $echo &quot;d foldoc gopher&quot; | nc -N dict.org 2628 | less
+ 
+
+## Conclusion
+
+I thought about writing a gopher interface to DICT, but maybe it&#x27;s
+worth learning a bit about the protocol[2]. 
+
+I may come back to it if there is any interest...
+
+
+## References
+
+[1](gopher://gopherpedia.com:70/0/DICT)
+[2](gopher://gopher.icu/0/files/rfc/rfc2229.txt)
+</pre>]]></description>
+</item>
 </channel></rss>
