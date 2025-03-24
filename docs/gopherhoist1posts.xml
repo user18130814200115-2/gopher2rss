@@ -13461,4 +13461,126 @@ let&#x27;s hope that I won&#x27;t have to.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-03-24-let-it-be-as-simple-as-it-can.txt</link>
+<title>(2025-03-24) Let it be as simple as it can be... but no simpler</title>
+<description><![CDATA[<pre>
+(2025-03-24) Let it be as simple as it can be... but no simpler
+---------------------------------------------------------------
+The topic of &quot;hand&quot; or pen and paper ciphers turns out to be much vaster than
+I initially thought. Even in the modern era, new designs are constantly 
+popping out. Some of them are made just for fun and don&#x27;t imply a lot of 
+security (being used, like, at school or for geocaching purposes), while 
+others are seriously preparing for even more dystopian scenarios than we 
+already are living in. The main problem of the second group of such ciphers 
+is a great deal of inconvenience: either with key material distribution if 
+we&#x27;re talking about one-time pads, or, if we&#x27;re talking about something 
+else, with encryption/decryption process itself which usually is too slow 
+and/or error-prone. Today, I&#x27;d like to focus on a single case of taking a 
+for-fun cipher from the first category and applying some slight 
+modifications to it in order to successfully (in my opinion) move it into 
+the second category without increasing the complexity too much. Let&#x27;s go!
+
+I must admit, I don&#x27;t know much about ACA (American Cryptogram Association)
+except for the fact that this organization turns 95 years old this year and 
+that its members still are proposing some interesting pen and paper cipher 
+designs to this day and challenge others to break them. In this very 
+context, the CONDI (CONsecutive DIgraph) cipher developed by Wilfred 
+Higginson in 2011 seems like a perfect candidate. It&#x27;s quite easy to use in 
+the field and possible to crack for amusement. What&#x27;s more interesting 
+though is that everything that makes it possible to crack can be mitigated 
+just as easily. So, let&#x27;s first describe the original CONDI algorithm.
+
+Message preparation (quoting the document): The Condi uses a simple keyed
+alphabet and keeps the word divisions and retains
+punctuation. Proper nouns are preceded by an asterisk (*).
+
+Key preparation: write the keyphrase and the rest of the A-Z alphabet, then
+strike out the letters that appear more than once. Then you may cyclically 
+shift the alphabet by some known position. You should be left with 26 unique 
+letters in a mixed order. Also, you must select a random offset from 0 to 25 
+as the initial offset.
+
+Encryption (quoting the document): With a starter value or offset of #,
+substitute the first plaintext letter by the letter found # places further 
+along the alphabet. Then the position of that first plaintext letter is the 
+new value for #, the offset for the next plaintext letter. 
+
+Decryption: With a starter value or offset of #, substitute the first
+ciphertext letter by the letter found # places left along the alphabet. Then 
+the position of the found plaintext letter is the new value for #, the 
+offset for the next ciphertext letter.
+
+As we can see, the design is simple but, although it&#x27;s reported to be
+&quot;surprisingly difficult to crack even with a computer&quot;, it poses multiple 
+problems when it comes to serious analysis. Let&#x27;s list those noticed by 
+myself alone:
+
+1. Since the offset value comes from the plaintext letter we just have
+encrypted, the initial offset only affects the first ciphertext letter and 
+nothing else. The rest of the ciphertext can be attacked as if the first 
+letter doesn&#x27;t exist.
+2. Word length, punctuation, proper noun and whitespace preservation might be
+fun for recreational usage but not for any real secret communication in a 
+non-electronic setting.
+3. Just like the original (non-interleaved) Playfair, this cipher encrypts
+the same plaintext digraphs into the same ciphertext digraphs, and the 
+message like &quot;aaaaaaaaaa&quot; will encrypt into the same letter of the 
+ciphertext.
+4. The keying scheme, while being popular at ACA, does not consider repeating
+keyphrase letters at all. So, for instance, the keywords &quot;routes&quot; and 
+&quot;routers&quot; will produce the same alphabet.
+5. The overall keyspace is too small for bruteforcing the keyed alphabet by
+an adversary with modern equipment, as it corresponds to about 88 bits. This 
+is true for any hand ciphers that rely upon a single A-Z alphabet 
+permutation.
+
+Now, how can we improve this without complicating things too much? Well,
+three things come to mind: change the alphabet keying scheme, make the next 
+offset dependent on more things and, most importantly, introduce the second 
+key. Within several days of brainstorming, I have come up with something 
+that addresses all these points.
+
+Enter the... DRACONDI. It stands for &quot;Dual-key Rotating Alphabet CONDI&quot;. It
+still is simple enough to execute on paper and in software but eliminates 
+all the original CONDI weaknesses. I have released the full design along 
+with some reference implementations on my Codeberg page ([1]), but here are 
+the main points:
+
+1. The keying algorithm has been changed: every subsequent repeating letter
+of the keyphrase is substituted with the previous unused one in the 
+alphabet, the process repeated if necessary. Then, the rest of the alphabet 
+is written in order. Then, the alphabet is cyclically shifted L characters 
+left, where L is the keyphrase length.
+2. This keying algorithm is applied to TWO keyphrases to get TWO keyed
+alphabets, KA1 and KA2.
+3. The KA1 alphabet is used like in the original CONDI. Additionally, it&#x27;s
+used to prepend the initial offset value to the ciphertext. Unlike the 
+original CONDI design, this value is selected randomly for every new 
+ciphertext and then encrypted with KA1.
+4. The KA2 alphabet is used in the next offset calculation step: instead of
+the plaintext letter position in KA1, we use the _ciphertext_ letter 
+position in KA2 and then add (modulo 26, of course) the amount of already 
+encrypted/decrypted letters.
+5. Finally, all word division, punctuation etc are ditched. DRACONDI
+recommends (and, for software implementations, even mandates) dividing the 
+ciphertext into 5-letter groups, padding them with random letters at the end 
+to fill the last group if it&#x27;s not 5 letters long.
+
+This approach increases the keyspace size to the whopping 225 bits, makes
+sure the initial offset affects the rest of the ciphertext, breaks any 
+digraph dependencies, makes every repeated keyphrase letter count, and 
+prevents revealing any information about the plaintext structure. All while 
+adding a single offset calculation step using the second keyed alphabet 
+which would still allow to maintain reasonable encryption/decryption speed 
+when doing things fully manually. As of now, I can&#x27;t think of a simpler 
+substitution cipher design which would be just as secure as this one, but I 
+think the key is... never stop looking. Have fun!
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/dracondi
+</pre>]]></description>
+</item>
 </channel></rss>
