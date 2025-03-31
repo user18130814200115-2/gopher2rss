@@ -13583,4 +13583,64 @@ think the key is... never stop looking. Have fun!
 [1]: https://codeberg.org/luxferre/dracondi
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-03-31-a-single-why-for-a-thousand-how.txt</link>
+<title>(2025-03-31) A single "why?" for a thousand "how?": hand cipher threat models</title>
+<description><![CDATA[<pre>
+(2025-03-31) A single &quot;why?&quot; for a thousand &quot;how?&quot;: hand cipher threat models
+-----------------------------------------------------------------------------
+Before even considering using any cryptosystem, regardless of its level of
+security, one must answer a very important question: what and whom exactly 
+are we protecting our data or communication against? Improper threat 
+modeling may lead to underestimation of the adversaries&#x27; resources or 
+overprotection of one area while neglecting some other no less critical 
+ones. And when the main &quot;why?&quot; is answered, it might seem that, in the 
+modern age, pen and paper ciphers just cannot be the answer to the &quot;how?&quot;. 
+Surprisingly, this is not always true, and I can show some scenarios such 
+ciphers still are very useful in.
+
+Imagine a situation where you have to use a public computer or a work
+computer in a corporation evil enough to keylog every machine. So, 
+everything you type in is monitored. Not just everything you send but 
+everything you type in. In an anticipation of such a situation, you might 
+already have set up an innocent-looking gateway page to send out your 
+communication to the outer world from such harsh environments. However, you 
+need to type in the message in an already encrypted form. Here&#x27;s where pen 
+and paper ciphers like DRACONDI, InterPlay-36 or even Digifair come in 
+handy. Of course, if the threat model includes sending gibberish or coded 
+data itself being discovered, you might also have to use a null cipher by 
+turning every ciphertext letter into a random-ish word that starts with that 
+letter, with the gateway page being able to convert your text back into the 
+ciphertext and then decrypt it and send it out. Additionally, in order to 
+protect your gateway from replay attacks, your plaintext must contain a 
+predefined prefix and a non-reusable message ID, and if either of them is 
+invalid, the gateway must not further process such a message.
+
+Another scenario might be personal notekeeping and storage of structured
+personal information like phonebooks, card numbers, PINs etc in a physical 
+or even electronic environment that can&#x27;t be trusted. In this case, the 
+balance between speed of operation, key length and security is paramount. 
+For example, the main mistake of Theodore Kaczynski when he encrypted his 
+diary was his usage of enormous keytables that were impossible to memorize 
+and had to be kept at all times. Of course they were found (along with all 
+the usage instructions!) and used to decrypt the journal. Had he used 
+something where the key material could easily be destroyed and then 
+recreated from memory whenever necessary, that journal might remain a secret 
+to this very day. 
+
+Finally, let&#x27;s not forget that &quot;traditional&quot; communication methods such as
+snail mail and classified ads still exist. Of course, one could use PGP and 
+print out the base64-encoded version of the ciphertext data and send it as a 
+physical letter, but that would imply more effort than just using a hand 
+cipher with no electronics in the middle. Again, if the threat model also 
+suggests that all letters are monitored, the mere fact of sending base64 
+could be incriminating. Besides, computers can help with concealing the 
+information in the covertext but the handwriting, if done properly, can 
+conceal much more. Steganography for mere mortals though is a topic for 
+another time.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
