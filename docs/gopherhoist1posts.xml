@@ -13643,4 +13643,221 @@ another time.
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-04-07-old-offline-outstanding.txt</link>
+<title>(2025-04-07) Old, offline, outstanding</title>
+<description><![CDATA[<pre>
+(2025-04-07) Old, offline, outstanding
+--------------------------------------
+It seems that I keep getting some items with interesting history even to this
+day. For instance, two days ago, I was given my real father&#x27;s mechanical 
+pocket watch on a chain as a birthday present. Of course it works but is 
+hellishly fast and does need some maintenance since it was never given one 
+since 1990 or something like that when it had been bought, however, that&#x27;s 
+not what I&#x27;m here to talk about today. There is yet another artifact that I 
+purchased last week, and I bet that, just like with that custom-engraved 
+Seiko SBTM091 I already wrote about, the sellers didn&#x27;t really know what 
+they were selling. They were selling it as a &quot;programmable calculator with 
+formula entry capabilities&quot;, sic. Meanwhile, it even says &quot;HANDHELD COMPUTER 
+/ ORDINATEUR PORTABLE&quot; on the backplate, and this is what this Texas 
+Instruments TI-74S really is.
+
+To be honest, I don&#x27;t even know where to start. I remember dreaming about
+such a device since like 2001 or 2002, when I was a schoolboy and was given 
+my first programmable calculator, MK-52, that ate batteries away so quickly 
+that it was impractical even trying to take it to school with no power 
+outlets available. On a positive side, one of my classmates had an MK-61 
+(almost the same internally) so we got another topic to chat about. The 
+school library even had a couple of books about Soviet programmable 
+calculators, and the librarian let me keep them for several years straight 
+as no one else was interested in this topic. In one of those books, I 
+remember reading about MK-85 (that, as I found out many years later, was 
+visually a Casio FX-700P clone but built on a PDP-11-like architecture) that 
+could do BASIC which might be more interesting for me than just plain RPN 
+keystroke programming and it still was available from some second-hand 
+sources at the time, and I even asked my parents about it, but they had a 
+hard time understanding what I was asking about and then said &quot;no, study 
+well and we&#x27;ll get you a REAL computer&quot;. Oh well, they did get a standard 
+budget PC in 2004 but it wasn&#x27;t portable and, of course, they got it more 
+for themselves than for me. Yes, it was that PC that I later learned C and 
+JS programming on, but it was MK-52 that taught me byte-to-byte optimization 
+and the basics of the stack and indirect calling even before that. When I 
+got my first cellphone, Nokia 3100, in 2005, I even managed to install 
+Mobile BASIC there, but the documentation was non-existent and the programs 
+were too inconvenient to type in. Later in life, I got a laptop, a 
+smartphone, a lot of other things, but a small QWERTY machine with a full 
+programming environment onboard remained an unobtainium for me for many 
+years to come.
+
+As the saying goes, &quot;if you had no bike in the childhood but got a Bentley as
+an adult, you still had no bike in the childhood&quot;. So, over a week ago, out 
+of boredom, I just typed in &quot;programmable calculator&quot; on a local online 
+marketplace website to see if anything new would come up in the search 
+results compared to what was there half a year ago. To my surprise, there 
+was exactly one new result, and it was this TI-74S. Of course I didn&#x27;t 
+hesitate to place an order as the lot turned out to be more than affordable 
+(less than 30 USD for such a treasure). The device came in a stock hard case 
+and, while the case has been scratched pretty badly, it served its purpose: 
+the computer&#x27;s condition itself is near mint. And it even came with a flash 
+ROM cartridge tailored for a German insurance company VGH with preprogrammed 
+life and estate insurance cost calculations for the year 1995. Which in 
+itself is an interesting thing since the S variant was manufactured from 
+1986 to 1992 (my particular item was made in February 1988), which means 
+Texas Instruments themselves kept offering post-production support for 
+various companies long after the model had been discontinued. Also, despite 
+the TI-74&#x27;s character table has German umlauts near the end of it (along 
+with some Greek characters and even katakana), the insurance cartridge 
+software, displaying messages solely in German, didn&#x27;t use those umlauts and 
+substituted them with ae/oe/ue respectively. Maybe the cartridge developers 
+didn&#x27;t even realize that those characters were actually accessible, who 
+knows.
+
+So, what exactly is TI-74S? After reading through some sources, I can say
+that this is the last of the last in the TI-99 line of computers. It all 
+started with refactoring an Altair-like 16-bit minicomputer TI-990 into a 
+home microcomputer called TI-99/4, which was deemed a failure and replaced 
+with TI-99/4A, which was also deemed a failure and (somewhat) replaced with 
+its miniaturized 8-bit form, TI Compact Computer 40 (CC-40), which was such 
+a failure they didn&#x27;t even manage to release an official cassette tape drive 
+for it (hoping to release a floppy drive instead, they even made a promise 
+on the box about it that never came true), and opted for further 
+miniaturization of the concept, releasing TI-74 BASICALC in 1985 and TI-74S 
+in 1986. Unlike its predecessors, the 74 got а decent set of official 
+peripherals and add-on cartridges (none of which are possible to find here 
+nowadays, of course), proved to be quite reliable over time and is generally 
+considered a success. Since then, however, Texas Instruments started 
+developing their graphing calculators like the TI-8x lineup and others on 
+the Zilog Z80 or 68k architectures instead of their own, switching to ARM in 
+mid-2000s for their highest-end models. That&#x27;s why TI&#x27;s own in-house 
+architecture really ends with TI-74S. And this final form offers an 8-bit 
+CPU (TMS70C46), 8K RAM and a single-line scrollable 31-character display 
+with the space for 80 characters total. Well, at least it can into lowercase 
+letters, most similar machines of the time just shouted at you with 
+permanent uppercase like the first Apple II iterations. And most 
+importantly, nothing at all had happened to this display since 1988. And the 
+contrast adjustment wheel functions as expected too. The machine that&#x27;s 
+older than me really works like new on four rechargeable AAA cells. I am 
+truly impressed.
+
+What are the differences between the BASICALC and S versions of TI-74, you
+might ask? As far as I know, there are only three of them. First, and that&#x27;s 
+the most obvious one, the S keyboard doesn&#x27;t have all those overlays that 
+BASICALC has. This was done so that the OEM customers the S version was 
+shipped to could label the keys the way they saw fit for their custom 
+software ROMs. For the same reason, the quick reference sheet in the S 
+version is always customized (in my case, it was a quick German manual on 
+how to use the VGH cartridge module). Second, for the sake of customization, 
+the S version allows the cartridge to autoload its contents on the power-on, 
+yes, I found out that the BASICALC version didn&#x27;t allow that. Third, and I 
+have no way to verify this, rumors are that the S version allows adding 16K 
+RAM cartridges while the BASICALC version only supports adding 8K at most. 
+Not sure how practical this is since RAM cartridges were always 
+battery-backed and the battery there had an uncommon size (CR1620 or 
+something like that), but yeah, these are the only TI-74 version differences 
+I could find about online. So, other than that, everything applicable to the 
+BASICALC version is valid for the S version, and vice versa. So, from now 
+on, I&#x27;ll just refer to my TI-74S as just the 74.
+
+Unlike its &quot;older siblings&quot;, the 74 supports two modes: BASIC (programming)
+and CALC (scientific calculations), hence the initial BASICALC moniker. I&#x27;ll 
+be honest, without the key overlays, the CALC mode is harder to grasp but 
+still doable. In the BASIC mode, all the overlays give you are shortcuts to 
+some most-used BASIC keywords via the FN key, but even the BASICALC version 
+doesn&#x27;t have all of them printed, so it&#x27;s better to just memorize those you 
+use most often. As far as I understand, the BASIC dialect here is quite 
+advanced compared to most handheld PCs of the time and descends directly 
+from the TI-99/4A Extended BASIC through the CC-40 (minus graphics, sound, 
+machine code debugging, direct memory manipulation and custom glyph 
+definition capabilities). The programming manual is now available online and 
+easy to find, so I have downloaded it (along with the general user manual 
+and technical reference) and started studying this BASIC dialect. I&#x27;m pretty 
+sure that some of my next phlog posts are going to cover various aspects of 
+programming on this machine, because what I&#x27;m seeing so far is pretty 
+fascinating.
+
+Another interesting feature is the Dockbus port on the back of the computer.
+This is not a new invention and is just a single-line rearrangement of the 
+CC-40&#x27;s Hexbus port, however, the Hexbus had 8 pins and the Dockbus has 10. 
+And it turned out that the two additional pins are actually pretty 
+important: pin 1 (along with pin 10, which is Ground) allows to power 
+external peripherals from the 74&#x27;s batteries, and pin 2 (again, along with 
+pin 10) allows to power the 74 itself from external sources. And it looks 
+like the voltage of an external source can vary from 4.5 to 6.3 volts (4.5V 
+is when the &quot;LOW&quot; indicator shows up). It&#x27;s easy to see that 5V also is 
+within this range. So, guess what I did? Right: took a useless charge-only 
+USB cable, cut off the microUSB plug and soldered a black Dupont connector 
+to the minus wire and white to the plus wire. Now, whenever I plug the white 
+connector into Dockbus pin 2 and the black one into Dockbus pin 10, I can 
+power the device via USB even without any batteries. And guess what I tried 
+next? Right, connecting this makeshift USB power cable to one of the weakest 
+foldable solar panels I have. And yes, it worked. So, now I have a backup 
+scheme to power the machine whenever I run out of charge in my rechargeable 
+AAAs and out of backup AAAs: a USB power bank or even a small foldable solar 
+panel that won&#x27;t give a reasonable amount of power to a modern smartphone. 
+Do you know any other retro computers that would allow you to easily do such 
+things? Of course, this isn&#x27;t everything I&#x27;m going to do with Dockbus, but 
+it&#x27;s the most useful thing I have already done with it for the time being.
+
+The main question though is, why did I need this machine and what am I
+planning to do with it? Well, I see it as a nice, totally offline and thus 
+untraceable, low-power tool for helping with tedious field cipher operations 
+like generating keyed alphabets, Polybius square or tabula recta 
+permutations from keyphrases, or even main encryption/decryption operations 
+in an airgapped environment. It would allow for the same operations you 
+might do with pen and paper (so the counterparties without such a machine 
+would still be able to communicate with you), but faster and less 
+error-prone. It can also be used as a moderate volatility notetaking tool 
+using the BASIC&#x27;s DATA statements: as long as the batteries are there and 
+you don&#x27;t type the NEW command, every program line remains in the memory. In 
+case of emergency though, everything on the device can be deleted as easily 
+as typing NEW ALL. Add power source versatility and overall reliability to 
+the picture, and you get a perfect field computer for those who need to stay 
+off the radars. And I kid you not, there even was a special modification of 
+MK-85 called MK-85S, which was a government-issued airgapped cryptographic 
+tool with a custom ROM and Cyrillic keyboard layout. What prevents us from 
+making the same on a stock TI-74 if we want to?
+
+Furthermore, once you know the language, such a machine becomes a canvas to
+unleash your creativity in such a seemingly limited space. They say that the 
+Internet opened a whole world previously unknown to every individual user, 
+well, I could say that devices like this one, being fully offline, contain 
+their own worlds inside themselves. And these worlds are sometimes no less 
+interesting to explore. I remember playing around with MK-52 and finding 
+ways to enter &quot;unenterable&quot; hexadecimal characters and illegal program 
+sequences into memory, even created a sort of a virus that would hang the 
+calculator once loaded from the EEPROM and accessed via registers. And those 
+were 15 registers and 104 bytes of program memory (and 512 bytes of EEPROM) 
+and a digits-only calculator display, imagine what you can fit into the 
+entire 8K RAM with full ASCII capabilities if done right. Of course, this 
+can only be done if you think outside the box of colorful graphics and other 
+multimedia fed to you in the modern information age. The 74 is pretty much 
+an antithesis of the nowadays trend of consuming more resources to do the 
+same things, so it aligns with my low-power computing philosophy better than 
+most devices in my collection.
+
+And no, using a modern smartphone or tablet to do the same kind of
+programming, even with an external keyboard, is nowhere near as convenient 
+and secure as a dedicated QWERTY device that doesn&#x27;t consume extra power for 
+the display you don&#x27;t need and for constantly trying to connect somewhere 
+without your consent. It is, in fact, a bit of a problem that any 
+portable/pocket PC you can buy nowadays is connected by default, sporting 
+Wi-Fi and/or Bluetooth and/or cellular, and you don&#x27;t even have a choice to 
+have neither of them anymore, and usually have no control over what happens 
+under the hood. Yes, TI-74 has a ROM chip with irreplaceable firmware too, 
+but it physically cannot spy on you and doesn&#x27;t even theoretically have 
+enough hardware capabilities to do so. Besides, the technical document 
+contains full device schematics that can be verified just by opening it up. 
+No &quot;security through obscurity&quot;, no hiding of the truth from the customers, 
+maximum honesty and repairability. Something that nearly every new piece of 
+consumer electronics is missing, including the current generation of TI 
+calculators as well. That&#x27;s why, by the way, I&#x27;m not interested in getting a 
+TI-Nspire or even a TI-84 Plus as much as I&#x27;m interested in further studying 
+what this TI-74S really can do. And I&#x27;m pretty sure it can do enough 
+interesting stuff, so you can expect more phlog posts from me on the topic 
+of this machine in the future. For now though, that&#x27;s all I can tell. See ya!
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
