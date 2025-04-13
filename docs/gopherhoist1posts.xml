@@ -13860,4 +13860,270 @@ of this machine in the future. For now though, that&#x27;s all I can tell. See y
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-04-14-ported-dracondi-on-ti74.txt</link>
+<title>(2025-04-14) What I have learned from porting DRACONDI onto the TI-74S</title>
+<description><![CDATA[<pre>
+(2025-04-14) What I have learned from porting DRACONDI onto the TI-74S
+----------------------------------------------------------------------
+To be honest, I don&#x27;t remember the last time before the last week when I
+wrote anything worthwhile in any BASIC dialect. As I already mentioned in my 
+previous post, my programming journey started from an RPN-programmable 
+calculator and then I jumped straight to C and JS. I missed out on Pascal 
+for the most part (although I read about it a lot) and surely missed out on 
+any BASIC environments except for some Mobile BASIC on the Nokia 3100 and 
+VBScript (sic) although I had enough literature to pick it up on the first 
+opportunity. And, of course, once I learned C and C-like syntax, I never 
+since thought of going back to the world of mandatory line numbers and 
+having $ in any string-related things. However, if I wanted to hop on a bike 
+I never had in the childhood, I needed to finally face this and learn the 
+TI-74&#x27;s BASIC dialect in order to write anything useful and stick to my 
+initial plan, and this was exactly what I did when I wrote my previous post.
+
+I must admit, the experience hasn&#x27;t been as terrible as I thought it would
+be. The machine does a nice job with compacting the code and helping you 
+with all the FN-shortcuts and line autonumbering (using the NUM keyword), as 
+well as reusing the previously typed lines with the PB function. In short, I 
+didn&#x27;t feel uncomfortable at all when typing in the program and editing it 
+on the fly whenever necessary, which is a very important aspect in case 
+you&#x27;re stuck with this computer only. The language is not without its quirks 
+(which I&#x27;m going to mention here), but it surely contains enough features to 
+get the job done, and let me remind you that those were the times when most 
+of the TI-74&#x27;s direct handheld competitors couldn&#x27;t even display lowercase 
+letters, let alone offer you string manipulation functions. Here, I can type 
+everything in lowercase and the machine will auto-convert it to uppercase, 
+except for the string literals (in quotes, comments or DATA statements) 
+where the original case is surely preserved. Very convenient. Some reviewers 
+also say that you can&#x27;t touch-type on the TI-74 while you can on the CC-40, 
+and I can tell that they are incorrect: even with as little practice as I 
+have with this machine, I am already very close to touch-typing on it. 
+That&#x27;s exactly because of its size: yes, it&#x27;s bulkier than your average 
+modern smartphone but this is why its keyboard is not too small to be able 
+to type relatively fast, and when I get used to the FN-shortcuts... oh man, 
+I&#x27;m gonna master typing on this.
+
+Now, I already knew which algorithm I was going to implement first. Of course
+it would be DRACONDI. So, what would a DRACONDI port look like here? Well, 
+first we need some place to enter and store the two keyphrases, then an 
+entry point where we could choose and call an operation, accepting user 
+input (plaintext or ciphertext) if necessary, and, of course, we need the 
+subroutines to perform the actual keyed alphabet generation, encryption and 
+decryption. For the obvious reasons, I started with the alphabet keying 
+part. I decided to store the keyphrases in two DATA statements in the 
+beginning of the program:
+
+100 DATA firstkeyphrase
+110 DATA secondkeyphrase
+
+I wanted to write the key generation subroutine right after these lines, but
+here&#x27;s the first quirk of the TI-74 BASIC dialect. This dialect supports two 
+types of subroutines: old-school numbered subroutines (GOSUB/RETURN) and 
+named subroutines with parameters (CALL/SUB/SUBEND). To make the code 
+clearer, I firmly decided to only use named subroutines. However, the TI-74 
+requires you to put all named subroutines (that the manual calls 
+&quot;subprograms&quot;) after the main program code. Quoting the manual: &quot;Subprograms 
+appear after the main program. If a SUB statement is encountered in a main 
+program, it terminates as if a STOP statement had been executed. Only 
+remarks and END statements may appear between the SUBEND of one subprogram 
+and the SUB of the next subprogram&quot;. That&#x27;s why I had to plan my subroutines 
+in advance, numbering the lines in 1000s, so please don&#x27;t pay attention to 
+the final line numbers at this point (they were generated after the RENUMBER 
+command). I decided to put the encryption and decryption functions first and 
+the last one would be the alphabet keying function. But I wrote it first in 
+the timeline, and here&#x27;s what it looks like:
+
+620 SUB KEYGEN(P$,KA$)
+630 KA$=&quot;&quot;
+640 L=LEN(P$)
+650 FOR I=1 TO L
+660 C$=SEG$(P$,I,1)
+670 IF POS(KA$,C$,1)&gt;0 THEN 680 ELSE 710
+680 CK=ASC(C$)-72:IF CK&gt;25 THEN CK=CK-26
+690 C$=CHR$(97+CK)
+700 GOTO 670
+710 KA$=KA$&amp;C$
+720 NEXT I
+730 KA$=KA$&amp;&quot;abcdefghijklmnopqrstuvwxyz&quot;
+740 KR$=&quot;&quot;:L2=LEN(KA$)
+750 FOR I=1 TO L2
+760 C$=SEG$(KA$,I,1)
+770 IF POS(KR$,C$,1)=0 THEN KR$=KR$&amp;C$
+780 NEXT I
+790 L=L-INT(L/26)*26
+800 KA$=SEG$(KR$,L+1,26)&amp;SEG$(KR$,1,L)
+810 SUBEND
+
+If you already are familiar with the DRACONDI&#x27;s alphabet keying scheme, you
+might have an understanding of what&#x27;s going on here, but yeah, I had to cope 
+with several more things: string operations in TI-74 are quite slow, all 
+character positions in the strings are 1-based, and... this BASIC dialect 
+doesn&#x27;t have any modulo operation. Like, really? Come on, they even added 
+XOR here, but no way to get a remainder! This is why the line 790 contains a 
+construct that involves integer division, all just to get the value mod 26. 
+This has been my biggest disappointment in this particular programming 
+language so far. Maybe I don&#x27;t know something but I haven&#x27;t found anything 
+regarding modulo in the official programming manual.
+
+On a positive side though, I had learned another important fact: all
+&quot;subprogram&quot; parameters are passed by reference. That&#x27;s why we can&#x27;t use the 
+RETURN statement in such functions but we can directly modify the parameter 
+variables instead. If you need to be absolutely sure that the original 
+parameter variable remains intact, you can pass its value by enclosing it in 
+parentheses, thus creating an &quot;ephemeral&quot; reference for the subprogram call. 
+Overall, I think this mechanic was pretty advanced for the time as well, 
+considering most people just viewed TI-74 as an advanced programmable 
+calculator as opposed to what it really was.
+
+With all that in mind, let&#x27;s take a look at the encryption function:
+
+320 SUB DRENC(M$,KA1$,KA2$,RES$)
+330 OFFS=INT(26*RND)
+340 RES$=SEG$(KA1$,OFFS+1,1)
+350 L=LEN(M$):SK=1
+360 FOR I=1 TO L
+370 C$=SEG$(M$,I,1)
+380 CI=POS(KA1$,C$,1)+OFFS
+390 IF CI&gt;26 THEN CI=CI-26
+400 CT$=SEG$(KA1$,CI,1):RES$=RES$&amp;CT$
+410 SK=SK+1
+420 IF SK=5 THEN 430 ELSE 440
+430 SK=0:RES$=RES$&amp;&quot; &quot;
+440 OFFS=POS(KA2$,CT$,1)+I-1
+450 IF OFFS&gt;25 THEN OFFS=OFFS-26*INT(OFFS/26)
+460 NEXT I
+470 SUBEND
+
+I think this is pretty straightforward and fully follows the algorithm,
+except for the one bit with the SK variable. Well, the third rule of the 
+compliant DRACONDI software implementations states the following: &quot;The 
+encryption part shall sanitize the message and output the ciphertext in 
+5-letter groups separated by a whitespace&quot;. Since all messages are 
+hand-entered, the sanitization part is on the operator, but the 5-letter 
+grouping part still needs to be implemented. Yes, I imposed this rule myself 
+and must suffer for this. Well, not really, it&#x27;s a piece of simple 
+conditional spacing logic. Now, let&#x27;s review the decryption function:
+
+480 SUB DRDEC(M$,KA1$,KA2$,RES$)
+490 OFFS=POS(KA1$,SEG$(M$,1,1),1)-1
+500 M$=SEG$(M$,2,1024)
+510 RES$=&quot;&quot;:L=LEN(M$):RI=0
+520 FOR I=1 TO L
+530 C$=SEG$(M$,I,1):IF C$=&quot; &quot; THEN 600
+540 RI=RI+1
+550 CI=POS(KA1$,C$,1)-OFFS
+560 IF CI&lt;1 THEN CI=CI+26
+570 RES$=RES$&amp;SEG$(KA1$,CI,1)
+580 OFFS=POS(KA2$,C$,1)+RI-1
+590 IF OFFS&gt;25 THEN OFFS=OFFS-26*INT(OFFS/26)
+600 NEXT I
+610 SUBEND
+
+This one is even simpler, but yeah, we could use the built-in LEN call as
+opposed to hardcoding 1024 when calling SEG$ to get the rest of the 
+ciphertext, but the real line limit is much lower than that so it makes no 
+sense doing an extra call. Because of the rule #4 (&quot;The decryption part 
+shall sanitize the ciphertext before processing, removing any whitespace and 
+non-letter characters from the input&quot;), where, again, we only care about the 
+whitespace part of it, we have to use two counter variables here: I and RI 
+(&quot;real index&quot;) which only increments after we have checked for a whitespace. 
+Other than that, this is a step-by-step translation of the DRACONDI 
+decryption algorithm.
+
+Finally, once I had all the subroutines in place, I proceeded with writing
+the rest of the main code. Here&#x27;s what I came up with:
+
+100 DATA firstkeyphrase
+110 DATA secondkeyphrase
+120 PRINT &quot;Initializing keys...&quot;
+130 RANDOMIZE
+140 READ P1$,P2$
+150 CALL KEYGEN(P1$,KA1$)
+160 CALL KEYGEN(P2$,KA2$)
+170 LINPUT &quot;Operation (k/e/d): &quot;;OP$
+180 IF OP$=&quot;k&quot; THEN 190 ELSE 220
+190 PRINT &quot;KA1: &quot;;KA1$:PAUSE
+200 PRINT &quot;KA2: &quot;;KA2$:PAUSE
+210 GOTO 170
+220 IF OP$=&quot;e&quot; THEN 230 ELSE 270
+230 LINPUT &quot;Msg: &quot;;MSG$:IF MSG$=&quot;&quot; THEN 170
+240 CALL DRENC(MSG$,KA1$,KA2$,RES$)
+250 PRINT &quot;Enc: &quot;;RES$:PAUSE
+260 GOTO 230
+270 IF OP$=&quot;d&quot; THEN 280 ELSE 170
+280 LINPUT &quot;Msg: &quot;;MSG$:IF MSG$=&quot;&quot; THEN 170
+290 CALL DRDEC(MSG$,KA1$,KA2$,RES$)
+300 PRINT &quot;Dec: &quot;;RES$:PAUSE
+310 GOTO 280
+
+So, after defining the keyphrases with DATA statements, we call RANDOMIZE
+(remember that we use RND in the encryption routine), then read the 
+keyphrases and call the KEYGEN routine twice for each, saving the resulting 
+alphabets into KA1$ and KA2$ variables. This process, by the way, takes a 
+bit longer than I expected, maybe there&#x27;s some room for optimization in the 
+KEYGEN routine but I&#x27;m not sure. Then we ask the user for an operation to 
+perform by pressing the corresponding key and Enter: yes, I know, I could 
+have used CALL KEY() to not have the user press Enter, but this is more 
+compact as it doesn&#x27;t require a separate PRINT statement for the prompt. If 
+the user chooses &quot;k&quot;, we just display the keyed alphabets in sequence (and, 
+by the way, the prefix line and the alphabet form a perfect 31-character 
+string to fit into the display). If the user chooses &quot;e&quot; or &quot;d&quot;, we prompt 
+for the plaintext or ciphertext respectively and then display the 
+encryption/decryption result. Both encryption and decryption operations are 
+in a loop until the user enters an empty message (just pressing Enter), at 
+which point the program returns to the main operation selector. That&#x27;s it, 
+no more fancy stuff going on here.
+
+You can enter all the above parts in any order and get a working DRACONDI
+program on your TI-74 too, but just in case, the full listing is also 
+provided on my Codeberg ([1]). When checking with FRE(1), the internal 
+memory taken by the program with my own test keyphrases is 1373 bytes out of 
+7710 available in total, that&#x27;s how good the TI&#x27;s internal tokenizer is. 
+Here are my main takeaways from this coding experience:
+
+* named subroutines/functions aka &quot;subprograms&quot; rock as they make the code
+much cleaner than in most handheld BASIC dialects of the time;
+* the requirement to place them strictly after the main code looks like a
+strange design decision though;
+* all their parameters are passed by reference unless explicitly
+parenthesized, which rocks too;
+* on the other hand, the absence of a modulo operator really sucks as it
+makes no sense at all to not have it in any computer with such capabilities;
+* typing in relatively long programs is much more convenient than I thought
+it would be;
+* some keyboard shortcuts are more useful than the others;
+* an internal tokenizer auto-converts all non-literals in the program to
+uppercase and also gets rid of all unnecessary whitespaces;
+* you do have some choice on how to organize your text input and output in
+the program;
+* you also have a rich choice of string operations here but keep in mind that
+they are rather slow and all character positions are 1-based;
+* you can store multiple programs in the same space (just be careful not to
+use the RENUMBER command if you don&#x27;t want all your programs compacted into 
+a continuous line sequence) and pass line numbers to the RUN command and 
+line ranges to the DELETE command if required;
+* the program runtime doesn&#x27;t have a scrollable output buffer, so you have to
+call PAUSE after printing every significant line of text.
+
+All in all, I think this experience has been invaluable and pretty exciting.
+On the first day, when I only had implemented the alphabet keying routine 
+and still was testing just that piece to make sure it worked as expected, 
+for a brief moment, I felt that very kind of childish joy that I felt 23+ 
+years ago when I got my first MK-52 program working. It was a &quot;yes, I can 
+figure this out; yes, it can do what I tell it to do&quot; kind of moment. It was 
+completely unlike the present day when you&#x27;ve got a ton of video tutorials 
+and instructional materials on any (modern) stuff you want to learn to 
+program in: a manual booklet and a handful of examples is everything you 
+usually had back then. And, despite the manual booklet has been read in a 
+digitized form, I&#x27;ve experienced absolutely the same emotions with the 
+TI-74S. So, I&#x27;m definitely going to continue exploring this machine and 
+adapt a bunch of other stuff to this BASIC dialect. Including, but not 
+limited to, a pretty surreal thing that I&#x27;m going to describe in detail on 
+the next week.
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/dracondi/src/branch/main/dracondi.b74
+</pre>]]></description>
+</item>
 </channel></rss>
