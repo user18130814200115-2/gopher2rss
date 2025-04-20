@@ -14126,4 +14126,316 @@ the next week.
 [1]: https://codeberg.org/luxferre/dracondi/src/branch/main/dracondi.b74
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-04-21-a-story-of-ultralight-vms.txt</link>
+<title>(2025-04-21) A story of ultralight virtual machines designed to run anywhere</title>
+<description><![CDATA[<pre>
+(2025-04-21) A story of ultralight virtual machines designed to run anywhere
+----------------------------------------------------------------------------
+Imagine a world where the history of computing went a slightly different
+path, where computers would become more powerful over time but still would 
+stick to numeric input and output only. Could they be as useful as the 
+current generation machines? Could we do real work or even play games on 
+them? Well, the topic I&#x27;m gonna discuss today makes a pretty good attempt to 
+answer those questions. It&#x27;s gonna be a long read, so make yourselves 
+comfortable, grab some snacks, fasten your seatbelts and let&#x27;s go!
+
+== Part 1: The 1V0 ==
+
+When browsing YouTube for some retro tech content, I came across a vlog
+channel called &quot;Alone in the Kitchen&quot; run by a Bulgarian guy (currently 
+living in Austria AFAIK) called Nino Ivanov. From what I understood, that 
+guy primarily tinkers with underpowered hardware from the past, mainly in 
+portable or ultraportable form factors, which is quite adjacent to my LPC 
+ideology. The first video from his channel that I purely accidentally 
+stumbled upon, however, was back from 2020, where he, with terrible audio 
+recording quality (that had been fixed in the later videos), told the world 
+about his new ultralight virtual machine design named 1V0. It&#x27;s pronounced 
+&quot;Ivo&quot; and was named after his father who had sadly passed away some time 
+before. Interestingly enough, the name NINO itself can be deciphered into 
+&quot;Numbers In, Numbers Out&quot;, which is the primary concept of what that machine 
+operates on: all you need is a way to display and input numbers and a way to 
+delimit them and confirm the entry. Moreover, the sole internal data type in 
+1V0 is a floating point number (fixed point in some variants), although you 
+can only enter integers inside program instructions, but the instruction set 
+allows you to overcome that limitation too. The author stated that his main 
+goal was to simulate the way computing had been done in late 1940s to early 
+1950s and to design a platform that could be recreated with the cheapest 
+components available today to build a fully functioning programmable 
+computer for educational purposes. Sinclair/Cambridge MK14, MOS KIM-1 and 
+Acorn System 1, anyone?
+
+Needless to say, I became interested in this project a lot. I visited its
+GitHub page ([1], and, by the way, Nino has a lot of other awesome stuff in 
+there, for instance, a list of still working WAP sites), found, downloaded 
+and studied the documentation PDF and thought &quot;yeah, I need to port this to 
+more platforms&quot;. For the time being, 1V0 had already been ported to many 
+platforms, including some AVR microcontroller units and even J2ME midlets 
+for both MIDP 1.0 and 2.0 versions. However, a bit later, I found another 
+video on that channel where the author told about the 1V0 version he 
+developed for ZX Spectrum, and in that version, the instruction format 
+itself was totally different. You see, the older 1V0 version had 2-operand 
+instructions in the general format &quot;[ino] [cmd] [arg1] [arg2]&quot;, where [ino] 
+is the instruction number, [cmd] is the command number (the opcode itself) 
+and then two command arguments follow. The Spectrum version, on the other 
+hand, was developed much later where Nino decided to switch to 3-operand 
+instructions in the format &quot;[ino] [cmd] [arg1] [arg2] [arg3]&quot;, which would 
+simplify a lot of operations and avoid unnecessary parameter copying. The 
+problem was, however, this new version had been documented in a separate 
+.txt file that was not so obvious to find and the instruction descriptions 
+were rather incomplete.
+
+After studying both of these documents, I decided to try and port 1V0 to
+Python 3 in order to prototype and debug everything I could before porting 
+any further. In the middle of the process, however, I realized that the 
+1V0&#x27;s instruction set was a bit... suboptimal, so to speak. A lot of 
+instructions just catered to vector and statistical processing, three of 
+them were used for compound interest parts calculation, heck, the original 
+spec from 2020 even has a separate opcode to calculate factorials! Like, 
+really? Do we also need a separate command to compute cube roots on a 
+vector? And the compatibility matrix across different 1V0 ports... well... 
+let&#x27;s say it hasn&#x27;t been great either. At that point, it occurred to me that 
+1V0 had been a great inspiration but the ISA there needed to be revamped 
+almost from scratch.
+
+Almost.
+
+== Part 2: The 808UL ==
+
+I don&#x27;t remember any Ivo Bobul&#x27;s song by heart but his last name couldn&#x27;t be
+any cooler for a derivative of something that&#x27;s pronounced &quot;Ivo&quot;. Besides, 
+that singer is as oldschool as this stuff, so the name checks out. Anyway, 
+to bring order to the mess I was initially facing, several firm design 
+decisions had to be made:
+
+* the only allowed instruction format is set to be 3-operand (like it was in
+the Spectrum version of 1V0);
+* the core instruction set is to be limited to 16 opcodes (if we count the 0
+opcode which is NOP);
+* the last core instruction (15) is optional to implement but opens a way to
+run extended subcommand opcodes;
+* all vector, financial and statistical processing operations are to be
+removed completely.
+
+You can view the final 808UL spec at my Codeberg page ([2]), as well as try
+out my reference implementation in Python (also tested on a desktop 
+MicroPython, by the way, ESP8266EX testing is still pending), but here&#x27;s 
+what&#x27;s left of the instruction set:
+
+* the negative instruction numbers from -1 to -10 are retained from the
+original 2020 1V0 spec (except -3, of course);
+* the core commands include NOP, jump (the same logic as 1V0), indirect
+addressing toggle, runtime input/output, value setting and copying, indirect 
+address/value assignment, four arithmetic operations, modulo and value swap 
+commands;
+* the extended subcommands of the command 15 include operations to get whole
+and fractional parts, absolute value, powers, logarithms, exponents, 
+degree/radian conversions, square root, trigonometric functions, hyperbolic 
+tangent/arctangent and random numbers, as well as four operations to perform 
+direct and indirect port input and output.
+
+Yes. Port input and output. That is the main innovation that 808UL offers
+over the original 1V0 specification. It is an optional extension to the 
+optional part of the VM, but it can bring platform-dependent I/O such as... 
+ASCII characters, for example. The reference 808UL implementation has all 
+the ports explicitly defined in the spec: the mandatory null port 0 (well, 
+it&#x27;s mandatory _if_ an implementation supports the port I/O commands at 
+all), the port 1 for ASCII character output and the port 2 for ASCII 
+character input. Of course, with 808UL being purely a machine language, 
+using these capabilities is still a bit tedious (as you can see from the 
+&quot;Hellorld!&quot; example on the Codeberg page), but it definitely can be done if 
+absolutely necessary and if the target platform supports such operations.
+
+Why not use MMIO for port input/output, like Nino himself suggested in the
+replies to my comments to the videos? Well, the answer is simple: ease of 
+porting. With 808UL, like the original 1V0, being a strictly Harvard-type 
+architecture and the program/logic and data memory areas are fully separated 
+from each other, making additional switches for certain data addresses could 
+be quite cumbersome. And again, this could lead to a situation when a 
+program initially written for the platform that doesn&#x27;t support port I/O 
+writes to the memory address that has a special meaning for another 
+platform, leading to an inevitable bug when run on that second platform. No 
+way. All data memory addresses except 0 (which essentially is a black hole) 
+must not have any special meanings. The port I/O subcommand set is a fully 
+auxiliary interface that leaves no place for ambiguity.
+
+With all that in place though, there needed to be something more than a
+couple of toy examples to fully showcase the capabilities of this VM. So... 
+Why not write a whole frigging game?
+
+== Part 3: The Bulls and Cows challenge ==
+
+When it comes to number-only gaming, one can dig into the memory and remember
+a handful of titles, like the very first variants of Lunar Lander (which, by 
+the way, I also tried &quot;porting&quot; to 808UL later on), some ports of Craps, 
+Hurkle, and, with enough imagination, even Tic-Tac-Toe (I kid you not, I 
+even had a listing of that for the MK-52!). However, in my own memory, only 
+one game is firmly associated with being fully playable (and enjoyable) with 
+strictly numeric I/O, and that&#x27;s Bulls and Cows. Its gameplay is quite 
+simple: the computer generates four random digits (all of them must be 
+different) and you guess which digits it stored. After each guess, the 
+computer replies with the count of bulls (both the digit and its place is 
+correctly guessed) and the count of cows (the digit is present in the target 
+number but in another place). When you fully guess the number (the computer 
+replies with 4 bulls and 0 cows) or you run out of tries (usually up to 7), 
+whichever comes first, the round ends and the game starts over. That simple.
+
+As simple as it sounds though, coding B&amp;C on such a (virtual) machine is not
+as trivial as it might seem. Essentially, the entire game can be split into 
+the following high-level steps:
+
+1) generating four _unique_ digits and storing them into the target number
+area;
+2) prompting the player to enter the digits of their guess;
+3) evaluating each input digit and counting bulls and cows;
+4) halting the game if the player reached 4 bulls or ran out of attempts, or
+returning to step 2 otherwise.
+
+The first part of the challenge was figuring out how to generate unique
+digits to implement step 1. With the constraints I worked within, I couldn&#x27;t 
+think of anything better than pre-generate the digits 0 to 9 in a separate 
+location, then randomly pick them one by one and replace the value at those 
+locations with 10, so that the next iteration would retry the picking step 
+if it encounters 10. All that took me a lot of debugging and 28 808UL 
+instructions, whereas the step 2, including the preparation for the next 
+one, took just four of them.
+
+For the guess evaluation phase (step 3), I knew that there are some fancy
+algorithms to do that more optimally, but since I was writing machine code 
+directly, I just became concerned that I wouldn&#x27;t be able to keep track of 
+all the required things, so I opted for a direct method that involved 16 
+independent digit-to-digit comparisons. Each of those comparisons took three 
+machine instructions, so that&#x27;s 48 more. By the way, since the data type is 
+floating point, I used the same memory location to keep track of both bulls 
+and cows: when comparing digits at positions 1 and 1, 2 and 2, 3 and 3, 4 
+and 4, I increment the value by 1 if there&#x27;s a match; for all other position 
+comparisons, I increment the value by 0.1 if there&#x27;s a match. So, the 
+evaluation result then gets displayed as &quot;bulls.cows&quot;. Anyway, that&#x27;s 32 + 
+48 = 80 instructions already.
+
+Finally, for the last part, I compare the match result with 4.0 and go to the
+end if the guess is right, then compare the attempt counter with 0 and go to 
+the end if there are no attempts, otherwise return to the step 2. At the 
+end, the target number is output digit by digit. All of that took me 7 
+instructions, which brings the total program length to 87. 
+
+Ultimately though, I had rewritten the guess evaluation part to have proper
+inner and outer loops, increasing the bull counter if the digits match and 
+the indices match too, and the cow counter if the digits match but the 
+indices don&#x27;t. The resulting code turned out to be 59 instructions long. So, 
+I just saved 28 instructions by switching to a nested loop from blatant 
+hardcode. Not much, but that&#x27;s already something. I thought there still 
+would some room for optimization if I&#x27;d make use of the indirect addressing 
+toggle instruction. So far, only three more instructions could be saved with 
+that technique.
+
+Call it what you want, but I think that the size of 56 instructions is not
+bad at all for a fully functioning game ([3]) in such an ultralight machine 
+language that, in theory, can work on devices with numeric keypads and 
+7-segment displays. And keep in mind that I was writing this code in the 
+machine language itself: no assembly, no preprocessing, nothing. If and when 
+such things appear, one can only imagine what kind of games and other 
+software could be ported to this platform.
+
+== Part 4: What&#x27;s next? ==
+
+From here on, 808UL obviously needs two things: more ports to various
+runtime/hardware platforms and more software to run on this VM itself. 
+Surprisingly, the first part is not that much of a problem, as the ANSI C89 
+port is already there, as well as the POSIX AWK port, and I already have a 
+JS-based Web version ([4]) which has been a bit of a nightmare to develop 
+and some more ideas about where I could port 808UL to:
+
+* Tcl (maybe even Hecl to run it on J2ME-enabled phones),
+* MicroPython on ESP8266EX with a custom shell (if/when I revive my
+Wemos-based 4-button contraption) which will merely use the reference 808UL 
+implementation module as a library,
+* and, of course, TI-74 BASIC: this is the pretty surreal thing that I
+mentioned in my previous DRACONDI-related post.
+
+By &quot;surreal&quot; I mean that I&#x27;m not quite sure whether or not there is any
+practical point in turning a BASIC system into an 1V0/808UL system, but that 
+level of uncertainty is not enough to stop me from trying. Of course, if I 
+had all the tools to access the machine level of my TI-74S unit, I&#x27;d rather 
+port 808UL to it than to BASIC. Alas, I can&#x27;t. After all, Nino even ported 
+some Lisp to a Kyotronic BASIC dialect, why can&#x27;t I port 808UL to the 
+TI-74S? Although I&#x27;m also not sure which idea is more surreal - this one or 
+the idea of combining the 808UL Python module with my FrugalVox ([5]) IVR 
+software to be able to enter and run code via DTMF. Anyway, I personally 
+think that so far, with ~300 SLOC in Python and ~340 SLOC in ANSI C89 with 
+the support for the entire 808UL spec, this is just about perfect size for a 
+full-featured VM to try porting it as much as possible without getting too 
+sweaty and with the codebase remaining fully manageable by a single human (I 
+hope someone here remembers my struggles with finishing and stabilizing Equi 
+and LVTL just because they were much closer to 1000 SLOC). For such a 
+lightweight size, this VM looks far too useful and definitely outside the 
+esoteric realm, which makes ANY porting effort worthwhile.
+
+The second part of this equation though is a much more serious question:
+where to get more software to run on 808UL itself? Only to write it by hand, 
+there&#x27;s no other way. Will I be able to write everything alone? Of course 
+not, only some essentials. So far, I only have those I had put into the 
+&quot;examples&quot; directory as official 808UL code examples: compound interest 
+calculator, simple linear regression calculator, @UsagiElectric&#x27;s 
+&quot;Hellorld!&quot; (just for the sake of it), the Bulls and Cows and the Lunar 
+Lander games. Not much, as you can see. Well, I hope that, as soon as the 
+AWK and Web ports of the machine are ready, it will be enough to get the 
+ball rolling by getting more people interested in this. The Python and C 
+implementations already are pretty usable, but they only cover the desktop 
+CLI and MicroPython serial console, while a Web version certainly would 
+enable more people to tinker with the language, even from some handheld 
+devices (and yes, I will make sure it works on KaiOS). So, a way to write 
+for 808UL is gonna be there for pretty much everyone. The main question 
+remains though: what will people write?
+
+The answer is simple: what they can, including but not limited to the domains
+the original 1V0 targeted. Yeah, like those statistical and financial 
+calculations... well, pretty much anything one might use a programmable 
+scientific calculator for, although this one would be much more powerful 
+given enough memory and indirect addressing capabilities. I, for one, gonna 
+try coding some encryption stuff in 808UL at some point, because why not? 
+Even without extended subcommands, the core instruction set is capable 
+enough for complex problem solving (for instance, in the Bulls and Cows 
+game, I only used the opcode 15 once, to call a random number generator, 
+which, of course, has to be platform-dependent). And let me tell you the 
+exact scenario when such a VM might be useful even without all the opcode 15 
+goodies: when you have a zoo of low-powered hardware of various 
+architectures and need to run the exact same code to compute some hardcore 
+stuff on all of it. Say, what&#x27;s the lowest common denominator between an 
+ATMega328P, an ESP8266EX, a TI-74S, an Apple II, an old x86 laptop and three 
+phones running KaiOS, Android and Symbian? What if there was a way to run 
+the exact same machine code on all of them? Like JVM, but running in the 
+places JVM never could? Don&#x27;t you see how to make use of such a way?
+
+With that said, we must keep in mind that the original 1V0 was, among other
+things, devised as an educational platform too, and I think that 808UL fits 
+into that role even better without those unnecessary CISC instructions: once 
+you learn to optimize on the machine level, it will become harder for you to 
+write suboptimal crap code even in high-level programming languages anymore. 
+That&#x27;s why, by the way, I&#x27;m grateful that my programming path began with the 
+MK-52 programmable scientific calculator: with 104 program memory bytes, 4 
+stack registers and 15 data registers, there was just no place for vanity 
+there. And it also was the first device where I learned about the power of 
+indirect addressing, which is featured prominently in both 1V0 and 808UL. 
+Did I ask myself what else to write on the MK-52? All the time. Did I find 
+the answers to that question? All the time. I didn&#x27;t have any other choice. 
+Was that experience useful? More often no than yes. Was it fun? Absolutely. 
+Hadn&#x27;t it been fun, a lot of people wouldn&#x27;t be using HP 48SX or 15C 
+emulators on their smartphones nowadays while having all the choices in the 
+world. And I really hope that returning to the roots in the shape of a 
+humanly readable and universally understandable machine language will be 
+able to evoke the same kind of fun in people. And maybe some of them will 
+get inspired enough to switch from playing Bulls and Cows to playing with 
+bools and floats.
+
+--- Luxferre ---
+
+[1]: https://github.com/KedalionDaimon/1V0
+[2]: https://codeberg.org/luxferre/808UL
+[3]: https://codeberg.org/luxferre/808UL/src/branch/main/examples/bc.8ul
+[4]: https://808ul.luxferre.top
+[5]: https://git.luxferre.top/frugalvox/files.html
+</pre>]]></description>
+</item>
 </channel></rss>
