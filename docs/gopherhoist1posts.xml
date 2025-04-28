@@ -14438,4 +14438,111 @@ bools and floats.
 [5]: https://git.luxferre.top/frugalvox/files.html
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-04-28-the-real-deal.txt</link>
+<title>(2025-04-28) 808UL was just an exercise. Here's the real deal</title>
+<description><![CDATA[<pre>
+(2025-04-28) 808UL was just an exercise. Here&#x27;s the real deal
+-------------------------------------------------------------
+Sometimes, my hobby projects are doomed to be short-lived, but they serve
+their purpose nonetheless. The lifetime of the 808UL VM between the 
+completion of its four reference implementations and officially announcing 
+its deprecation was about... one week. No, I&#x27;m not going to shut down the 
+repo or the JS version web page, but I&#x27;m not going to develop them further. 
+And let me explain why: because over this time period, I have come up with 
+something even better instead.
+
+Let me first remind you what I started with in the beginning: the ideas of
+1V0, an extremely interesting, minimalistic, numeric-only VM that already 
+had multiple implementations largely incompatible between each other. That 
+being the first problem and instruction bloat being the second problem, I 
+decided to create a fresh, unified spec that would address both of them. And 
+thus, 808UL was born. However, when writing that spec, I still was adhering 
+to some of 1V0&#x27;s concepts I shouldn&#x27;t have stuck to in the first place, like 
+the operand order for certain operations and the distinction between the 
+runtime and interactive mode data I/O (also adding port I/O as the *third* 
+type). As such, some unnecessary complexity and confusion still was present 
+both in the implementations AND the programs written for 808UL. On top of 
+that, I explicitly stated that the 808UL spec wouldn&#x27;t enforce a lot of 
+things like binary instruction representation or memory size, which might 
+lead to further incompatibilities in the future. As such, I began to feel 
+that 808UL still wasn&#x27;t a finished product but rather an intermediate 
+experimental step between what I started with and what I wanted to see. It 
+needed to be minified and structured even further. That&#x27;s what eventually 
+led me to the creation of mu808. Yes, it&#x27;s pronounced exactly the way you 
+think: micro-bob.
+
+Since I didn&#x27;t have to reinvent absolutely everything from scratch, I think
+it won&#x27;t be surprising that a Codeberg page with the same four reference 
+implementations already exists ([1]), and even the Web version ([2]) is 
+fully functional on the same level as 808UL. The presence of a stricter 
+binary format for programs (MU8B) that&#x27;s optional to implement won&#x27;t 
+surprise you either. What might surprise you is that mu808, unlike 808UL, 
+already has its own assembly language called MU8A, and the official 
+assembler/disassembler (as of now, only in Python) is already present in the 
+repo and fully functional. MU8A is extremely simple to both write in and 
+parse, and that&#x27;s quite intentional: you should be able to assemble mu808 
+programs by hand with little effort if you have to. Besides MU8A and MU8B, 
+the plaintext machine code format (MU8) remains the main format to 
+communicate with the VM, although the VMs are now required (at least when 
+loading the .mu8 files) to recognize instructions delimited with just 
+whitespace, not newline characters, and the user is generally required to 
+always enter 5 numbers in the interactive mode before the instruction is 
+entered/executed. On top of that, the specification defines just sixteen 
+instructions (along with their MU8A mnemonics) with a much clearer parameter 
+order, ditching the concepts of extended instructions and dedicated port I/O 
+(because now it is integrated into the main INP/OUT instructions), and 
+reduces the amount of interactive instruction numbers to just -1..-5. 
+
+What&#x27;s lost in comparison to 808UL, you may ask? Well, not much. The only
+instructions that are really gone are the power, swap and degree-radian 
+conversion instructions, but they, like everything else, can be easily 
+emulated with what&#x27;s left. The natural logarithm and natural exponentiation 
+instructions were combined into the opcode 13 (NEL), and the sin/cos/arctg 
+instructions were combined into the opcode 14 (TRI), among others. A really 
+breaking change though is that mu808 combines addition and multiplication 
+into a single opcode 7 (FMA). Yes, the implementations ARE supposed to use 
+the fused multiply-add operation *a3 = fma(v3, v2, v1) on the platforms that 
+support it, and emulate it with the usual *a3 = v1 + v2*v3 on the platforms 
+that don&#x27;t. And yes, it changes the way mu808 programs are written, since it 
+does require an extra copy before the multiplication sometimes. But I think 
+this change is worth it and can be useful in a lot of cases. I have 
+described some typical FMA usage scenarios in the FAQ section of the mu808 
+readme file. Also, as you may have seen, the examples are now primarily 
+shipped in the form of MU8A assembly source code, but the plain .mu8 files 
+to be directly used in the VMs are also available in the 
+&quot;examples/assembled&quot; subdirectory. If/when an implementation appears that 
+only supports MU8B binaries, I&#x27;m probably going to ship those too. Besides, 
+since the port I/O is now unified with the main I/O (with character 
+input/output ports still being optional and platform-dependent), I could 
+greatly simplify the &quot;Hellorld!&quot; example by just specifying the memory range 
+to output as characters. With 808UL, if you remember, I had to roll my own 
+memory looping logic to output the characters one by one. 
+
+Now, what&#x27;s the future of mu808? Is it going to be as short-lived as 808UL? I
+don&#x27;t think so. The ISA is now rock-solid, the niche is defined, the tooling 
+is here. And **this** is what I&#x27;m going to further port to some exotic and 
+retro platforms, including but not limited to what I had planned to port 
+808UL to. I still do have some concerns about some platforms, e.g. how much 
+of the remaining memory will we get for data and the mu808 program itself 
+when this VM is ported to BASIC that can run on my TI-74S? Well, you&#x27;ll 
+never find out until you actually try it. So I have tried it, and now the 
+TI-74 BASIC port also is there along with others. And, while 149 program 
+steps and 256 data cells doesn&#x27;t seem to be a lot, there still is enough 
+room to run all the existing mu808 examples, although a number of 
+limitations definitely do apply due to the nature of the TI-74 runtime 
+environment itself. It also is quite slow, something to expect from a VM on 
+top of an interpreted environment on a portable PC from 1980s. But it does 
+work and run my examples. The story of how this porting has been done, 
+however, is worth a separate post, I think. Maybe the next one. What can I 
+say for sure is that this definitely is not the last mu808 port to retro 
+systems. So, as always, stay tuned!
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/mu808
+[2]: https://mu808.luxferre.top
+</pre>]]></description>
+</item>
 </channel></rss>
