@@ -14545,4 +14545,359 @@ systems. So, as always, stay tuned!
 [2]: https://mu808.luxferre.top
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-05-05-the-anatomy-of-a-tiny-vm.txt</link>
+<title>(2025-05-05) The anatomy of a tiny VM (and a blackjack game for it)</title>
+<description><![CDATA[<pre>
+(2025-05-05) The anatomy of a tiny VM (and a blackjack game for it)
+-------------------------------------------------------------------
+How small can a virtual machine get before dwindling into a fully esoteric
+state (like FlipJump, BytePusher, Subleq or even my own NRJ16)? In an 
+attempt to answer this question, the mu808 VM has evolved into n808 ([1]) 
+which, at the time being, already has a much more convenient assembly 
+language but strictly limits both program and data memory areas to 128 steps 
+and cells respectively, as well as reduces the ISA to just eight base 
+opcodes and 24-bit instruction length. Nevertheless, I have been able to 
+implement the same examples in this new VM just as successfully as in mu808, 
+and the Bulls and Cows game, by the way, no longer is the most impressive of 
+them all. But first, let&#x27;s review how the n808 VM itself works in detail, 
+looking at its TI-74 BASIC port where all of its inner secrets get revealed 
+in the most obvious way.
+
+Let&#x27;s see how we prepare the machine with the first line. The n808
+specification has a random number generator and suggests that the 
+trigonometric functions only accept radians as their arguments. That&#x27;s why 
+we write the instructions to initialize the RND and to switch the 
+calculations to the radian mode:
+
+100 RANDOMIZE:RAD
+
+Then, we initialize the randomly accessible storage areas for the program and
+data memory areas. Keep in mind that in this particular implementation we 
+need to allocate one more step for the program memory, for the reason that 
+will be obvious right away.
+
+110 DIM PMEM(129),DMEM(128)
+
+Now, we&#x27;re ready to load the n808 program. The only viable way to store the
+programs in TI-74 is DATA sections in its BASIC environment. So, we start 
+reading the instruction values from the BASIC line 1000. But we also need to 
+know when to stop, that&#x27;s why the last DATA record has to be -1, and that&#x27;s 
+what we store in the 129th memory cell as the halt marker if the entire 
+program memory is exhausted:
+
+120 RESTORE 1000
+130 I=0
+140 READ PMEM(I)
+150 I=I+1
+160 IF PMEM(I-1)&gt;-1 THEN 140
+
+Once the program is loaded, it&#x27;s time to fetch and decode the instructions.
+First, we initialize the counters and the memory value placeholders:
+
+170 L,IAT,V1,V2,V3=0
+
+The IAT variable is the &quot;indirect addressing toggle&quot; flag set by the
+instruction opcode 2. It will be used to detect which instruction parameters 
+to use when the instruction is decoded. Now, the main execution loop starts:
+
+180 A=PMEM(L):L=L+1
+190 IF A&lt;0 THEN 770
+
+Here, we fetch the next instruction from the program memory and then
+increment the instruction pointer (you&#x27;ll shortly see why this order is 
+important). Whenever we have fetched the negative value (-1 in our case), we 
+halt the program immediately. Now comes the decoding logic:
+
+200 CMD=INT(A/2097152)
+210 IF IAT=1 THEN 220 ELSE 230
+220 P1=INT(V1):P2=INT(V2):P3=INT(V3):IAT=0:GOTO 250
+230 A=A-CMD*2097152:P1=INT(A/16384):A=A-P1*16384
+240 P2=INT(A/128):P3=A-P2*128
+
+This logic directly comes from the formula to shape an instruction value in
+n808 from its four parameters: instruction = cmd * 2097152 + p1 * 16384 + p2 
+* 128 + p3. The only difference is that we don&#x27;t need to derive the rest of 
+parameters if the IAT flag is set, so we use the previously cached memory 
+cell values as the current instruction parameters and then unset it. 
+Otherwise, we derive the parameters according to the same formula. The 
+clunkiness of the statements comes from the fact that the TI-74 BASIC 
+doesn&#x27;t have any modulo operation, so we decrease the fetched value by the 
+integer factor of the previous one before calculating each parameter as the 
+integer quotient.
+
+Before we begin command processing though, we need to set up the memory and
+populate the buffer memory values:
+
+250 DMEM(0)=0:DMEM(127)=1:DMEM(126)=-1
+260 V1=DMEM(P1):V2=DMEM(P2):V3=DMEM(P3)
+
+The n808 spec requires the memory cells 0, 126 and 127 to be read-only, and
+to return 0, -1 and 1 respectively. The line 250 enforces these values on 
+every virtual CPU iteration. The next line caches the memory values from all 
+three parameters, assuming the parameters are addresses themselves. This is 
+to reduce the amount of code in every opcode branch.
+
+Now, the processing begins. And the first non-NOP instruction code, 1, is the
+most sophisticated one and describes the jump instruction:
+
+270 IF CMD=1 THEN 280 ELSE 430
+280 IF P1=0 AND V2=0 THEN L=P3:GOTO 180
+290 IF P1=1 AND V2&gt;0 THEN L=P3:GOTO 180
+300 IF P1=2 AND V2&lt;0 THEN L=P3:GOTO 180
+310 IF P1=3 AND V2&gt;=0 THEN L=P3:GOTO 180
+320 IF P1=4 AND V2&lt;=0 THEN L=P3:GOTO 180
+330 IF P1=5 AND V2&lt;&gt;0 THEN L=P3:GOTO 180
+340 IF P1=6 THEN L=P3:GOTO 180
+350 IF P1=7 AND V2=0 THEN L=INT(V3):GOTO 180
+360 IF P1=8 AND V2&gt;0 THEN L=INT(V3):GOTO 180
+370 IF P1=9 AND V2&lt;0 THEN L=INT(V3):GOTO 180
+380 IF P1=10 AND V2&gt;=0 THEN L=INT(V3):GOTO 180
+390 IF P1=11 AND V2&lt;=0 THEN L=INT(V3):GOTO 180
+400 IF P1=12 AND V2&lt;&gt;0 THEN L=INT(V3):GOTO 180
+410 IF P1=13 THEN L=INT(V3):GOTO 180
+420 IF P1=14 THEN DMEM(125)=L:L=P3:GOTO 180
+
+This snippet fully replicates the jump logic from the specification. As soon
+as we hit the condition, we adjust the instruction pointer L and then go 
+right back to the beginning of the processing loop. The line 420 
+demonstrates the benefit of adjusting the pointer right after parsing the 
+instruction: we don&#x27;t have to increment it here and assign the index of the 
+next instruction to the data memory cell 125.
+
+The opcode 2, indirect addressing toggle command, on the other hand, is
+extremely simple to implement as it just sets the IAT flag:
+
+430 IF CMD=2 THEN IAT=1:GOTO 180
+
+Next, we handle I/O with the opcode 3:
+
+440 IF CMD=3 THEN 450 ELSE 520
+450 FOR I=P2 TO P3
+460 IF P1=0 THEN PRINT(DMEM(I)):PAUSE
+470 IF P1=1 THEN INPUT DMEM(I)
+480 IF P1=2 THEN 490 ELSE 500
+490 IF DMEM(I)=10 THEN PAUSE ELSE PRINT(CHR$(INT(DMEM(I))));
+500 IF P1=3 THEN DMEM(I)=ASC(KEY$)
+510 NEXT I:GOTO 180
+
+The specification defines two &quot;standard&quot; ports and two &quot;extended&quot; ports
+(although no one prevents anyone from implementing more of them). The 
+standard ports are 0 (numeric output) and 1 (numeric input) which are 
+implemented in the lines 460 and 470 respectively. Note the PAUSE statement 
+after printing the memory value. This is required because of the nature of 
+single-line TI-74 output. On the extended port 2 (character output), we 
+don&#x27;t pause the execution after printing every character (the &quot;;&quot; at the end 
+tells PRINT to not print the newline afterwards), unless we explicitly print 
+10 which means a newline. Finally, with the port 3, we enable raw (blocking) 
+character input in the line 500. After outputting/inputting the whole 
+specified range, we return to the beginning of the processing loop.
+
+The opcode 4 means the copy instruction and is processed in a very
+straightforward manner, like this:
+
+520 IF CMD=4 THEN 530 ELSE 580
+530 IF P1=0 THEN DMEM(P3)=P2:GOTO 180
+540 IF P1=1 THEN DMEM(P3)=V2:GOTO 180
+550 IF P1=2 THEN DMEM(INT(V3))=P2:GOTO 180
+560 IF P1=3 THEN DMEM(INT(V3))=V2:GOTO 180
+570 IF P1=4 THEN DMEM(INT(V3))=DMEM(INT(V2)):GOTO 180
+
+The opcode 5 is used to set a memory cell to values larger than 128 or to
+fractional values, and also is implemented in a simple way:
+
+580 IF CMD=5 THEN DMEM(P3)=P1*100+P2+V3/100:GOTO 180
+
+The opcode 6 is used to perform various mathematical operations. Let&#x27;s first
+see the snippet and then I&#x27;ll share some remarks about it:
+
+590 IF CMD=6 THEN 600 ELSE 720
+600 IF P1=0 THEN DMEM(P3)=V2+V3:GOTO 180
+610 IF P1=1 THEN DMEM(P3)=V2-V3:GOTO 180
+620 IF P1=2 THEN DMEM(P3)=V2*V3:GOTO 180
+630 IF P1=3 THEN 640 ELSE 650
+640 IF V3=0 THEN DMEM(P3)=0:GOTO 180 ELSE DMEM(P3)=V2/V3:GOTO 180
+650 IF P1=4 THEN 660 ELSE 680
+660 IF V3=0 THEN DMEM(P3)=INT(V2):GOTO 180 ELSE 670
+670 DMEM(P3)=V2-V3*INT(V2/V3):GOTO 180
+680 IF P1=5 THEN DMEM(P3)=ABS(V2):GOTO 180
+690 IF P1=6 THEN DMEM(P3)=SQR(ABS(V2)):GOTO 180
+700 IF P1=7 THEN DMEM(P3)=EXP(V2):GOTO 180
+710 IF P1=8 THEN DMEM(P3)=LN(ABS(V2)):GOTO 180
+720 IF P1=9 THEN DMEM(P3)=SIN(V2):GOTO 180
+730 IF P1=10 THEN DMEM(P3)=COS(V2):GOTO 180
+740 IF P1=11 THEN DMEM(P3)=ATN(V2):GOTO 180
+
+Most lines directly replicate what&#x27;s written in the spec, including replacing
+the result with 0 if the second parameter is 0 for the division and modulo 
+operations. However, please note once more that we have to replace the 
+modulo operation with a four-operation statement because, again, this BASIC 
+dialect totally lacks it.
+
+The last opcode, 7, is used for random number generation and its
+implementation here is a direct copy from the C version:
+
+750 IF CMD=7 THEN DMEM(P3)=INT(V1)+INT(RND*(INT(V2)-INT(V1)+1))
+
+Note that we don&#x27;t end this line with the usual :GOTO 180 because this is the
+next instruction to pass execution to the next step:
+
+760 GOTO 180
+770 END
+
+We need GOTO 180 on a separate line in order for the entire loop to handle
+unknown opcodes as NOPs. The line 770 is necessary because, as you remember, 
+we jump to it from the line 190 once we hit the instruction value -1.
+
+So yeah, that&#x27;s it. That&#x27;s the entire VM logic that&#x27;s implemented more or
+less the same for all other supported platforms and languages. Of course, 
+the TI-74 BASIC port is missing the interactive mode but that mode became 
+rather rudimentary in n808 anyway, and is trivial to describe and clone for 
+any platform supporting it. If we just talk about the main logic though, it 
+still is compact enough for me to be stunned about what it actually can do. 
+Because what it can do (for what it is) is quite far from the esoteric realm.
+
+Speaking of what it can do, I decided to up the challenge a bit and develop a
+blackjack game that would be playable within such constraints. I won&#x27;t 
+review its N8A code ([2]) line by line, as it already is commented well 
+enough, but I&#x27;m going to share the story of how it was built. In order to 
+create a blackjack game for a numeric-only VM with just 128 program steps 
+available, three sub-problems need to be addressed first: how to represent 
+hands, how to generate cards and how to calculate the hand score. These 
+sub-problems need to be solved in this very order, so let&#x27;s start from the 
+beginning.
+
+The first dilemma I faced was: do we need to represent individual card values
+or is just their sum enough? If so, what about aces that can have two 
+different values depending on conditions? For mu808, I experimented with the 
+first option and wasn&#x27;t fully satisfied with the result. For n808, I opted 
+for the second one but with a twist: we add 2 to 9 for the cards 2 to 9, 10 
+for the cards 10 to K, and... 101 for aces. Yes, not 1, not 11, but 101. The 
+reason for that will become obvious in just a moment.
+
+Based on this hand representation system, random card generation (assuming we
+never run out of cards with a particular value, say, we have an 8-deck 
+blackjack) also is rather straightforward. We start with a uniformly chosen 
+random number N from 1 to 13 (inclusively). Then, we convert all the N 
+values higher than 9 to 0 using this formula: C = N * (1 - [N/10]), where 
+[x] is the floor operation. Then, we return the value of 10 if C is equal to 
+0, 101 if it is equal to 1, or the value of C itself otherwise.
+
+Now that we have a sum of cards generated in such a way, how to evaluate the
+true blackjack score from it? Of course, if no aces are in the hand, then 
+the score is just this sum. But what if the hand does contain aces? This is 
+where the genius of the value 101 comes into play. According to the 
+blackjack rules, aces only score 11 if there is a single ace in the hand and 
+the sum of the rest of the hand and this 11 doesn&#x27;t exceed 21. If at least 
+one of these conditions fails (there&#x27;s more than one ace or the sum is 
+busting), aces only score 1. But we already have the 1-score in the lower 
+two digits, so the condition boils down to the hand sum being between 101 
+and 111 for the ace to score 11. In other words, for any hand value H, the 
+score S can be calculated as follows:
+
+S = (H + 10) mod 100 if 100 &lt; H &lt; 112,
+S = H mod 100 otherwise. 
+
+Sounds like a simple conditional branch but I decided to go further and
+devise a way to avoid double comparison conditionals. First, let&#x27;s notice 
+that we can&#x27;t have 100 as an actual hand value so we can adjust the lower 
+bound to 99 to be able to reuse the constant 13 we need in another part of 
+the code. How do we reuse it? Well, at first I thought I could do this by 
+rewriting the above conditional formula to the following form:
+
+A = (H - 112) * (H - 99),
+S = (H - 5 * (A/|A| - 1)) mod 100,
+
+where |x| is the absolute value of x. This formula takes advantage of the
+fact that the sign of (H - 112) * (H - 99) will only be negative if H is 
+between 99 and 112. In that case, A/|A| - 1 will generate -2 and the value 
+of 10 will be added to H. In other cases (except A=0), it will generate 0 
+and the value of H won&#x27;t change. As we already have seen, H cannot be 99, 
+but what if H is equal to 112? The score will then be evaluated to 17, which 
+is totally incorrect. So, looks like we need at least one conditional:
+
+A = (H - 112) * (H - 99),
+S = 12 if A = 0,
+S = (H - 5 * (A/|A| - 1)) mod 100 otherwise.
+
+Now, where does the constant 13 come from? You can see that if we subtract
+112 first then we can derive H - 99 by just adding the constant 13 we 
+already store elsewhere.
+
+So, we have two approaches here: one involves very simple arithmetic but
+requires two conditionals, another one minimizes the conditional logic but 
+requires more calculation steps. Which one is shorter? Let&#x27;s look at the N8A 
+code for the procedure with a single conditional:
+
+; scoring procedure, parameter is in the @va cell
+; the result is in the @vc cell
+:score dca 112 @vb       ; set vb to 112
+sub @va @vb              ; set vb to va - 112
+dva @vb @vc              ; copy vb value into vc
+add @c_13 @vc            ; add 13 to vc
+mul @vc @vb              ; vb * vc =&gt; vb
+jeq @vb :s12             ; jump to scoring 12 if the result is 0
+abs @vb @vc              ; abs(vb) =&gt; vc
+div @vc @vb              ; abs(vb) / vb =&gt; vb
+dec @vb                  ; vb - 1 =&gt; vb
+mul @c5 @vb              ; vb * 5 =&gt; vb
+sub @va @vb              ; va - vb =&gt; vb
+dca 100 @vc              ; store 100 into vc
+mdf @vb @vc              ; store vb mod 100 into vc
+ret
+:s12 dca 12 @vc          ; hardcode the result
+ret
+
+16 instructions. Now let&#x27;s look at the &quot;naive&quot; approach with two conditionals:
+
+; scoring procedure, parameter is in the @va cell
+; the result is in the @vc cell
+:score dca 112 @vb       ; set vb to 112
+sub @va @vb              ; set vb to va - 112
+jge @vb :skscore         ; skip adding 10 if &gt;= 112
+dca 100 @vb              ; set vb to 100
+sub @va @vb              ; set vb to va - 100
+jlt @vb :skscore         ; skip adding 10 if &lt; 100
+dca 10 @vb               ; set vb to 10
+add @vb @va              ; add 10 to va value
+:skscore dca 100 @vc     ; set 100 to vc
+mdf @va @vc              ; set vc to va mod 100
+ret
+
+Just eleven instructions that are much more speed-optimal too. Yeah... That&#x27;s
+another reminder that computer systems often work in a different way than 
+pure math, and two simple conditions are often much faster than a single but 
+complicated formula.
+
+Once the score evaluation function was settled upon, everything else wasn&#x27;t
+as interesting. The rest of the program consists of just three loops: the 
+outer one that starts with prompting the player to enter the bet, the first 
+inner one that prompts for the actions and adds to the player&#x27;s hand, and 
+the second inner one that activates after the stand (or double) action has 
+been selected and performs the dealer&#x27;s actions. Then, the final scores get 
+evaluated and the player&#x27;s balance gets changed accordingly, and the next 
+round begins in the outer loop.
+
+At the end of the day, this blackjack game takes 115 steps, making it
+officially the largest program I&#x27;ve ever written for any of the three 
+architectures (808UL/mu808/n808) to this date. On the other hand, when 
+compiled into the binary format (N8B), the resulting game file is just 345 
+bytes. Considering the maximum amount of steps in n808 is 128, the 
+theoretical binary size limit would be 384 bytes, so this program is just 13 
+steps (39 bytes) short of that limit, yet it still is a fully playable game. 
+And yes, while all existing implementations only require the text 
+representation (N8), I am planning on some n808 ports that will only be able 
+to consume the N8B binary format. Given all that, this might be the smallest 
+blackjack in existence. Ever wanted to fit an entire card game into a 
+low-res QR code? Well, now it&#x27;s totally possible. 
+
+And this, I might add, is just the beginning.
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/n808
+[2]: https://codeberg.org/luxferre/n808/src/branch/main/examples/numjack.n8a
+</pre>]]></description>
+</item>
 </channel></rss>
