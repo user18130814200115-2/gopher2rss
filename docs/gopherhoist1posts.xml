@@ -14900,4 +14900,651 @@ And this, I might add, is just the beginning.
 [2]: https://codeberg.org/luxferre/n808/src/branch/main/examples/numjack.n8a
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-05-12-hps-sole-survivor.txt</link>
+<title>(2025-05-12) HP's sole survivor among the touchscreen madness</title>
+<description><![CDATA[<pre>
+(2025-05-12) HP&#x27;s sole survivor among the touchscreen madness
+-------------------------------------------------------------
+For a bit, let&#x27;s diverge from the tiny VM topic (I promise I have something
+to return to that topic with in the next post) and talk about another piece 
+of nice hardware. In my story about the TI-74S, I already told you about the 
+calculator I grew with: Elektronika MK-52. Nowadays, I also have a full-kit 
+MK-61, but it still is too large to carry around in a pocket and too 
+battery-hungry. So, for all these years, I&#x27;ve been continuously looking for 
+a pocketable enough RPN-only programmable calculator that would have a 
+longer battery life and, most importantly, would be realistic to get where I 
+live (which, unfortunately, is not the case for SwissMicros models). Last 
+week, I finally found one on a local eBay-like platform for a more than 
+humane price of around $16, in a mint condition, with a stock pouch and a 
+printed instruction manual. And couldn&#x27;t be happier about this find. 
+Partially because it still is one of the original architectures that comes 
+from the inventors of the RPN calculator concept themselves: Hewlett-Packard.
+
+Alas, as of now, HP calculators don&#x27;t have a fraction of the glory they had
+in the past. In fact, modern HP calculator division primarily boils down to 
+the boring OEM crap from the OfficeCalc line, some remnants from their 
+scientific and business lines (10s+, 300s+, 10bII+, 17bII+), all non-RPN and 
+mostly also OEM AF, and a touchscreen monstrosity called Prime G2. Of 
+course, they also have had a limited-run buggy cash grab from the Voyager 
+series called 15C Collector&#x27;s Edition. There is, however, a single specimen 
+that truly continues the same series of HP calculators and still is being 
+produced in both the &quot;standard&quot; (gold) and the &quot;platinum&quot; variants: HP 12C. 
+Of course, I despise the &quot;platinum&quot; one because it was the first step for HP 
+to bow to normies and introduce an optional algebraic input mode in the 
+series. The gold one is more than enough in my opinion. Although its 
+internal design and architecture had changed several times, it had never 
+been discontinued since its introduction in 1981, while the rest of the 
+series died out in 1989.
+
+Why did the 12C get so lucky? Well, because it catered to the right kind of
+people: those who handled big finance. Yes, it is a financial calculator, 
+one that got the highest reputation in those circles. While scientists and 
+engineers could just eat up the discontinuation of the 10C, 11C, 15C and 16C 
+and move on to something newer or more powerful, business people just 
+refused to switch to the newer financial calculator models offered by HP at 
+the start of the 1990s. The demand for the 12C still was high, and HP 
+responded to it. In 1990s, they still had to move the production lines out 
+of the USA to cut costs (first to Brazil, then to Malaysia, then to China), 
+but production never stopped. In 2001, they switched to a new Agilent (and 
+later Marvell) CPU with the same HP Nut architecture but lower voltage (now 
+a single CR2032 instead of 3xLR44), and in 2008, they switched to an 
+ARM7DTMI-based CPU (that ran an emulator of HP Nut) with two CR2032 
+batteries in parallel. Again, I won&#x27;t cover what happened to the 12C 
+Platinum and Prestige versions introduced in 2003, just gonna say they first 
+ran on a 6502-compatible CPU and then, just like with the gold version, an 
+ARM-based emulator was put in there instead.
+
+And just like the 12C model was lucky enough to survive thoughout 44 years, I
+was lucky enough to find one here in a mint condition. If I got all the 
+information about the model right and decoded the serial number correctly, 
+my unit was manufactured in the week 23 of the year 2001, which makes it one 
+of the first batches in the Agilent-based production run, because the serial 
+numbers for CR2032-powered 12Cs started from the week 15 of that very year. 
+Another things that confirm my dating are that my unit has the dates from 
+1999 and 2000 as examples on the backplate, and also that the manual I got 
+with it is much older as it had been printed back in November 1994 and still 
+depicts an old battery compartment. So yeah, this very calculator already is 
+24 years old. Yet it looks and works like new. I mean, nothing surprising, I 
+do have a late-1980s Casio fx-3400P, but still, this already was after they 
+moved production to China. Also, while I understand that the current 
+ARM-based models are much faster and (at least theoretically) reflashable, 
+I&#x27;m kinda glad that I got a non-ARM one on the native 884 KHz clock speed, 
+because its battery life surely will be much longer, yet it is new enough to 
+consume even less energy and not have to fiddle with three LR44 cells. Well, 
+for firmware upgradeability, I&#x27;ll probably get a SwissMicros someday. This 
+one is just fine as it is.
+
+When it comes to &quot;normal&quot; (non-programming and non-financial) usage, the 12C
+is not something very different from a usual scientific calculator, keeping 
+in mind that it&#x27;s RPN-only though. The only thing you might really be 
+missing is trigonometry. That&#x27;s pretty much it. All the other essentials are 
+there: square root, square, arbitrary powers, reciprocal, natural exponent, 
+natural logarithm, scientific notation, statistical functions, even a 
+factorial. It even has some functions I&#x27;ve been missing in almost all other 
+calcs I ever had, like getting an integer or a fractional part of the 
+number. Yes, MK-52, MK-61 and 12C are the only three calculators where I had 
+seen the integer and fractional part functions. Anywhere else we need to 
+resort to some sort of hacks, like switching to the base-N mode and back 
+(Casio fx-3200P, all Sharp EL-506P clones) or running the 
+degrees-minutes-seconds conversion 22 to 25 times to get rid of the fraction 
+(Citizen SRP-145). I really don&#x27;t understand why Casio and Citizen couldn&#x27;t 
+get such simple functions into their programmable models of the past. I&#x27;d 
+also like to see an absolute value function in 12C (it&#x27;s also present in 
+MK-52/61 btw), but, to be honest, it&#x27;s easily emulatable here with 
+successive application of the square (ENTER x) and square root functions if 
+you&#x27;re writing a program, or just by pressing the CHS key when necessary if 
+you&#x27;re in the manual mode.
+
+The programming mode though... While the overall vibe and principles are
+roughly the same as in the MK-52/61, the 12C&#x27;s programming capabilities are 
+totally different, sometimes even inferior to those two (as well as being 
+clearly inferior to any other Voyager series model). No, I don&#x27;t mind the 
+Els having 105 program steps vs. 99 in 12C, or their 15 registers not 
+interfering with the program memory while each seven extra steps in 12C eat 
+away one register, or even having four different conditions instead of two 
+in 12C. What I really miss is indirect addressing and indirect jumping. The 
+latter was a really powerful feature in the 3rd-gen programmable Els that 
+would allow writing advanced programs otherwise impossible to fit into their 
+105-step memory, because it allowed for easy conditional selection of 
+various logic pieces without cascading conditional jumps. The HP Voyager 
+series, and 12C is no exception, does not have such a feature. It does have 
+storage arithmetic for the lower five registers though, and it really helps 
+with saving extra program steps sometimes.
+
+That being said, I&#x27;m still really enjoying the process of discovering what
+this little machine can do even with all these limitations. Besides, we can 
+compensate for some of the missing registers by using the financial 
+registers instead. Yes, the n, i, PV, PMT and FV financial variables can be 
+used with the STO and RCL operations just like any other registers. Thus, in 
+theory, you can never have less than 12 addressable registers available for 
+data storage in a 12C program. In practice though, there&#x27;s almost always 
+guaranteed to be even more space unless you max out the steps. The formula 
+for the amount of registers taken by an S-step program is: regs = ceil((S - 
+8)/7). So, even a 78-step program will not eat into the first 10-register 
+area. From my MK-52 experience, I don&#x27;t remember needing more than 10 
+operating registers at a time anyway, so I don&#x27;t see any problem here at 
+all. I do wish it had an EEPROM like MK-52 had (to be able to store several 
+programs 98 steps each), but at least a single program is gonna persist in 
+12C: as long as a working battery is in there, nothing is lost when the 
+power is off.
+
+Now, &quot;talk is cheap, show me the code&quot;. Of course, this still ain&#x27;t a 41C and
+we still are only limited to numeric input here, but that doesn&#x27;t prevent us 
+from being creative with the vast amount of tasks we can accomplish. For 
+instance, we don&#x27;t have trigonometric functions but they are much easier to 
+approximate than e.g. logarithms. I have studied the topic of sine/cosine 
+approximations and it turns out that the best one from the keystroke count 
+perspective is ye olde goode Taylor. Because the series is very similar for 
+both functions, we can combine the logic and make it dependent on the 
+incoming parameters. The following is a Python equivalent of the algorithm, 
+taking the argument, the first Taylor term t and the first denominator 
+factorial constant value c:
+
+def taylorsincos(x, t=1, c=0):
+    sq = -x*x
+    res = t
+    prev = 0
+    while abs(prev - res) &gt; 0.00000001:
+        prev = res
+        t *= sq / (c + 1) / (c + 2)
+        c += 2
+        res += t
+    return res
+
+If we pass t = x and c = 1 to this function, we get a sine. If we pass t = 1
+and c = 0 to this function, we get a cosine.
+
+Now, here&#x27;s the 12C program to calculate sines and cosines. For sine, type 1
+STO 3 [arg] STO 1 STO 2 R/S, for cosine, type 0 STO 3 1 STO 1 STO 2 [arg] 
+R/S:
+
+01 ENTER   ; commit x to stack
+02 x       ; calculate x^2
+03 CHS     ; calculate -x^2
+04 STO 5   ; save -x^2 to R5
+05 RCL 2   ; loop start; save the current result at R2
+06 STO 6   ; ...to the previous result cache at R6
+07 RCL 5   ; recall -x^2 
+08 RCL 3   ; recall c
+09 1       ; calculate c + 1
+10 +
+11 /       ; calculate (-x^2) / (c + 1)
+12 RCL 3   ; recall c
+13 2       ; calculate c + 2
+14 +
+15 /       ; calculate (-x^2) / (c + 1) / (c + 2)
+16 STO x 1 ; multiply this result by t and store into t
+17 2       ; add 2
+18 STO + 3 ; ...to the c value
+19 RCL 1   ; recall t
+20 STO + 2 ; and add it to R2
+21 RCL 2   ; recall the result
+22 RCL 6   ; recall the previous result cache
+23 -       ; subtract the cache value
+24 x=0     ; if they are equal...
+25 GTO 27  ; then skip to the end
+26 GTO 05  ; else go to the loop start
+27 RCL 2   ; display the result
+28 GTO 00  ; program end
+
+This version might not be the most optimal in terms of program steps but at
+least it avoids using some time-costly operations like power and factorial. 
+There is, however, another cosine approximation that is a bit (4 steps) 
+longer but takes much less time to execute and is terribly good because it 
+returns the results usually accurate within the maximum machine precision, 
+or with 6 guaranteed digits after the decimal point in the worst cases. It 
+takes advantage of the fact that 12C, among others, has two functions 
+available under the g-modifier: a natural exponent function and a special 
+&quot;12/&quot; key to easily divide anything by 12 (and also store the result into 
+the financial register i). Behold!
+
+01 STO 0   ; store our argument x into R0
+02 4       ; push 4
+03 y^x     ; calculate x^4
+04 12/     ; calculate x^4 / 12 as the variable K and store it into Ri
+05 STO 1   ; as well as into R1
+06 ENTER   ; push into the stack
+07 x       ; calculate K^2
+08 1
+09 4
+10 0
+11 /       ; calculate K^2 / 140
+12 STO + 1 ; append into R1
+13 RCL i   ; recall K
+14 x       ; calculate K^3 / 140
+15 9
+16 9
+17 0
+18 /       ; calculate K^3 / 138600
+19 STO + 1 ; append this into R1 too
+20 RCL 0   ; recall x
+21 e^x     ; natural exponent
+22 ENTER   ; push into the stack
+23 1/x     ; reciprocal: calculate e^(-x)
+24 +       ; calculate e^x + e^(-x)
+25 2       ; calculate (e^x + e^(-x))/2
+26 /       ; the result is cosh x which can be used to approx cos x
+27 STO - 1 ; subtract this from R1
+28 RCL 1   ; recall the result
+29 2       ; and add the final 2
+30 +       ; ???
+31 GTO 00  ; PROFIT!
+
+There is a similar algorithm for the sine function approximation as well,
+although this one is a bit longer and doesn&#x27;t use the 12/ command:
+
+01 STO 0   ; store our argument x into R0
+02 4       ; push 4
+03 y^x     ; calculate x^4 as the variable K
+04 6
+05 0
+06 /       ; divide by 60
+07 STO 1   ; store K into R1
+08 STO 2   ; store into R2 (result cache)
+09 ENTER   ; push into the stack
+10 x       ; calculate K^2
+11 5
+12 0
+13 .
+14 4
+15 /       ; calculate K^2 / 50.4
+16 STO + 2 ; append into R2
+17 RCL 1   ; recall K
+18 x       ; calculate K^3 / 50.4
+19 2
+20 8
+21 6
+22 /       ; calculate K^3 / 14414.4
+23 STO + 2 ; append this into R2 too
+24 2       ; add constant 2
+25 STO + 2 ; into R2
+26 RCL 0   ; recall x
+27 STO x 2 ; multiply R2 by x
+28 e^x     ; natural exponent
+29 ENTER   ; push into the stack
+30 1/x     ; reciprocal: calculate e^(-x)
+31 -       ; calculate e^x - e^(-x)
+32 2       ; calculate (e^x - e^(-x))/2
+33 /       ; the result is sinh x which can be used to approx sin x
+34 STO - 2 ; subtract this from R2
+35 RCL 2   ; recall the result
+36 GTO 00  ; PROFIT!
+
+In case you&#x27;re tight on memory and need both functions at the same time, you
+can, of course, derive one value from another using the formula (sin x)^2 + 
+(cos x)^2 = 1, but if you need the maximum precision, you can combine both 
+programs into one just like with the Taylor series. In Python, the combined 
+algorithm looks like this:
+
+def fastsincos(x, a, b, c, d, e):
+    t = x ** a
+    k = (x ** 4) / b
+    m = k * k / c
+    hyp = (math.exp(x) + d/math.exp(x)) / 2
+    return t * (2 + k + m + m * k / e) - hyp
+
+And the set of (a, b, c, d, e) parameters is:
+
+* (1, 60, 50.4, -1, 286) for sine,
+* (0, 12, 160, 1, 990) for cosine.
+
+Let&#x27;s use the 12C&#x27;s financial registers to store these parameters ([a] n [b]
+i [c] PV [d] PMT [e] FV) so that only R0 to R2 will be used among the 
+general purpose registers. According to all this, here&#x27;s what the program 
+looks like:
+
+01 STO 0   ; store the argument x into R0
+02 4       ; push 4
+03 y^x     ; calculate x^4
+04 RCL i   ; recall the parameter b
+05 /       ; calculate the K value
+06 STO 1   ; store the K value into R1
+07 STO 2   ; store the K value as the first result part in R2
+08 ENTER   ; push into the stack
+09 x       ; calculate K^2
+10 RCL PV  ; recall the parameter c
+11 /       ; calculate the M value
+12 STO + 2 ; add M to the result in R2
+13 RCL 1   ; recall K
+14 x       ; calculate M * K
+15 RCL FV  ; recall the parameter e
+16 /       ; calculate M * K / E
+17 STO + 2 ; add this to the result in R2
+18 2       ; push constant 2
+19 STO + 2 ; add it to the result in R2
+20 RCL 0   ; recall x
+21 RCL n   ; recall the parameter a
+22 y^x     ; calculate x^a
+23 STO x 2 ; multiply the result value by it (1 or x)
+24 RCL 0   ; recall x again
+25 e^x     ; calculate its natural exponent
+26 ENTER   ; push into the stack
+27 1/x     ; reciprocal e^(-x)
+28 RCL PMT ; recall the parameter d (1 or -1)
+29 x       ; multply the reciprocal by it
+30 +       ; add to the natural exponent
+31 2       ; calculate (e^x (+-) e^(-x))/2
+32 /       ; the result is sinh/cosh
+33 STO - 2 ; subtract this from R2
+34 RCL 2   ; recall the result
+35 GTO 00  ; PROFIT!
+
+To run the sine, preload the registers like this: 1 n 60 i 50.4 PV 1 CHS PMT
+286 FV.
+To run the cosine, preload the registers like this: 0 n 12 i 160 PV 1 PMT 990
+FV.
+Then, just enter the argument and press R/S. The result is guaranteed to
+appear within five seconds with the precision of at least 6 figures after 
+the decimal point.
+
+Finally, here&#x27;s a &quot;noob-friendly&quot; version that is just 3 steps longer but
+doesn&#x27;t require you to pre-enter any registers, uses just three of them (R0, 
+R1 and Ri) and is, in fact, an extended fast-cosine routine that then 
+calculates sine according to the (sin x)^2 + (cos x)^2 = 1 formula and puts 
+both of them into the stack registers (the cosine is in X, the sine in Y):
+
+01 STO 0   ; store our argument x into R0
+02 4       ; push 4
+03 y^x     ; calculate x^4
+04 12/     ; calculate x^4 / 12 as the variable K (storing it into Ri)
+05 STO 1   ; store it into R1 too
+06 ENTER   ; push into the stack
+07 x       ; calculate K^2
+08 1
+09 4
+10 0
+11 /       ; calculate K^2 / 140
+12 STO + 1 ; append into R1
+13 RCL i   ; recall K
+14 x       ; calculate K^3 / 140
+15 9
+16 9
+17 0
+18 /       ; calculate K^3 / 138600
+19 STO + 1 ; append this into R1 too
+20 RCL 0   ; recall x
+21 e^x     ; natural exponent
+22 ENTER   ; push into the stack
+23 1/x     ; reciprocal: calculate e^(-x)
+24 +       ; calculate e^x + e^(-x)
+25 2       ; calculate (e^x + e^(-x))/2
+26 /       ; the result is cosh x which can be used to approx cos x
+27 STO - 1 ; subtract this from R1
+28 2       ; and add the final 2
+29 STO + 1 ; the cosine value is now in R1
+30 RCL 1   ; recall it
+31 ENTER   ; push into the stack
+32 x       ; calculate (cos x)^2
+33 1       ; push 1
+34 -       ; calculate (cos x)^2 - 1
+35 CHS     ; calculate 1 - (cos x)^2 = (sin x)^2
+36 SQRT    ; calculate sin x
+37 RCL 1   ; recall cos x
+38 GTO 00  ; PROFIT!
+
+Enter the argument (from 0 to pi radians), press R/S and get both results
+within 4 seconds. The first result will be the cosine, press the x&lt;&gt;y key to 
+see the sine, or press the division key to get the tangent. Of course, you 
+may also then press the 1/x key to get the cotangent. Despite being the 
+longest among all five trigonometric programs provided so far, this one is 
+the fastest and easiest to use and only consumes three registers, so I use 
+it myself and definitely recommend it for most people.
+
+Now, we need at least one inverse trigonometric function. For instance,
+here&#x27;s a straightforward Taylor-based arcsine algorithm which looks like 
+this in Python: 
+
+def taylorasin(x):
+    t = x
+    c = 3
+    sq = x*x
+    res = t
+    prev = 0
+    while abs(prev - res) &gt; 0.00000001:
+        prev = res
+        t *= sq * (c - 2) / (c - 1)
+        res += t / c
+        c += 2
+    return res
+
+On the 12C, it looks like this (just enter the argument and press R/S):
+
+01 STO 1   ; save the argument as t into R1
+02 STO 2   ; save the argument as the first result term
+03 ENTER   ; commit into stack
+04 x       ; calculate x^2
+05 STO 5   ; save x^2 to R5
+06 3       ; enter 3
+07 STO 3   ; save 3 into c
+08 RCL 2   ; loop start; save the current result at R2
+09 STO 6   ; ...to the previous result cache at R6
+10 RCL 5   ; recall x^2
+11 RCL 3   ; recall c
+12 2       ; subtract 2
+13 -
+14 *       ; calc x^2 * (c - 2)
+15 RCL 3   ; recall c again
+16 1       ; subtract 1
+17 -
+18 /       ; calc x^2 * (c - 2) / (c - 1)
+19 STO x 1 ; multiply this result by t and save into t
+20 RCL 1   ; recall t
+21 RCL 3   ; recall c
+22 /       ; divide t by c
+23 STO + 2 ; add this to the result register
+24 2       ; add 2...
+25 STO + 3 ; to the c variable in R3
+26 RCL 2   ; recall the result
+27 RCL 6   ; recall the previous result cache
+28 -       ; subtract the cache value
+29 x=0     ; if they are equal...
+30 GTO 32  ; then skip to the end
+31 GTO 08  ; else go to the loop start
+32 RCL 2   ; display the result
+33 GTO 00  ; program end
+
+The problem is, the arcsine series converges too slowly if the value of x is
+close enough to 1. So, for the values of x &gt;= 0.7, what I recommend is 
+running the program like this:
+
+[arg] ENTER ENTER x 1 - CHS SQRT 2 x 2 + SQRT / R/S (...wait until the
+program finishes...) 2 x
+
+Now, in the worst case scenario (when the argument is 1 and scaled down to
+sqrt(2)/2), the program will run for about 38 seconds. Too slow bro. I also 
+have stumbled upon a rather long but relatively fast-converging arctangent 
+algorithm. Here&#x27;s what it looks like in Python:
+
+def machinatan(x):
+    a = 2/x
+    b = 1
+    k = 1 - 4/(x*x)
+    sum = 0
+    prev = 1
+    i = 1
+    while abs(prev - sum) &gt; 0.00000001:
+        prev = sum
+        sum += a / (a*a + b*b) / i
+        a_prev = a
+        a = a * k + 4 * b / x
+        b = b * k - 4 * a_prev / x
+        i += 2
+    return 2 * sum
+
+Implementing this &quot;fast-converging&quot; algorithm had led to a 69-step program
+that still was too slow and now also too large, as well as sensitive to the 
+argument range. Fortunately for us, there exists a much smaller and more 
+practical approach: arithmetic-geometric mean. It even doesn&#x27;t have any 
+argument constraints. The only limitation is that we need to specify a fixed 
+number of iterations. In Python, it looks like this:
+
+def agmatan(x):
+    a = a0 = 1/math.sqrt(1 + x*x)
+    b = 1
+    iters = 15
+    for i in range(0, iters):
+        a = (a + b) / 2
+        b = math.sqrt(a*b)
+    return x * a0 / a
+
+The corresponding 12C program looks like this, using R0 for iteration count
+and R1 and R2 as the a and b parameters:
+
+01 STO 4   ; store the x argument into R4
+02 ENTER   ; push into the stack
+03 x       ; calculate x^2
+04 1       ; push 1
+05 STO 2   ; store 1 into b while at it
+06 +       ; calculate 1 + x^2
+07 SQRT    ; calculate sqrt(1 + x^2)
+09 1/x     ; calculate a0
+09 STO 1   ; store a
+10 STO 3   ; store a0
+11 1       ; push the iteration count (15 by default)
+12 5
+13 STO 0   ; store iteration count into R0
+14 RCL 1   ; loop start, recall a
+15 RCL 2   ; recall b
+16 +       ; a + b
+17 2       ; push 2
+18 /       ; get the arithmetic mean
+19 STO 1   ; store the new a value
+20 RCL 2   ; recall b again
+21 x       ; calculate a*b
+22 SQRT    ; calculate sqrt(a*b)
+23 STO 2   ; store the new b value
+24 1       ; push 1
+25 STO - 0 ; decrement the iteration count
+26 RCL 0   ; recall the iteration count
+27 x=0     ; if out of iterations, then
+28 GTO 30  ; go to the end
+29 GTO 14  ; else go to the loop start
+30 RCL 4   ; recall x
+31 RCL 3   ; recall a0
+32 x       ; multiply them
+33 RCL 1   ; recall a
+34 /       ; the result is x * a0 / a
+35 GTO 00  ; program end
+
+Much, much better. Just under 17 seconds of runtime, regardless of the
+argument, and it loses accuracy very slowly, giving you a result accurate to 
+9 digits after the decimal point for any x. This is definitely a keeper in 
+my library. If you want even faster results at the expense of precision, 
+just reduce the number of iterations in the code. For instance, I have 
+reduced mine to 14 as the accuracy difference is negligible compared to 
+1-second economy.
+
+Yeah, all that fuss just to find an arcsine/arctangent. But the point is, it
+can be done here even though it might not be supposed to. The stack language 
+itself is extremely fun to learn, and I hope to really master it sooner than 
+later just like I did with the MK-52 over 20 years ago. On top of that, the 
+original 884 KHz speed stimulates me to find new ways to optimize algos for 
+speed rather than step count: for instance, I don&#x27;t think that I&#x27;d stumble 
+upon those epic sin/cos formulas to get their approximations from sinh/cosh 
+values if I got an ARM-based version that could run the Taylor-based algo 
+fast enough. Mind you, this still is an upgrade from about 75 KHz clock 
+speed I had in the MK-52, so nothing to actually complain about. And yes, I 
+have started a document in my Gopherhole ([1]) to collect the most 
+interesting 12C programs I have created so far. Obviously, this document is 
+going to be updated regularly, but the trigonometry topic, I think, is 
+finally closed.
+
+Of course, these sine/cosine/arcsine/arctangent examples are just a minor
+scratch on the surface. The hpcc.org website contains a lot of useful stuff 
+for this and similar devices, including but not limited to a whole 
+trigonometry suite ([2]), but I honestly prefer my own algorithms as I fully 
+understand how they work and what to expect from them. So I rolled my own 
+suite in the aforementioned document. And... for the direct sine/cosine 
+call, it&#x27;s even faster than the V. Abillo&#x27;s one. Not to mention that it 
+provides a built-in radian/degree conversion routine. Within just three days 
+of owning this device, I also have created another suite that adds another 
+missing piece of functionality, namely geographical coordinate conversion 
+(between degrees-minutes-seconds and decimal degrees) and some 
+nautical-related unit conversions.
+
+By the way, I also have devised a way to add a missing pseudorandom number
+generator using the financial register Rn (that must be pre-populated with a 
+seed value from 0 to 1) in just five steps: RCL n FRAC e^x 12x FRAC. I can&#x27;t 
+think of a shorter method so far. But how well does the S[n] = frac(12 * 
+exp(S[n-1])) formula work as a PRNG? Alas, not very well: it is slightly 
+biased in favor of smaller values. Fortunately, this is easy enough to fix: 
+we need to add a small constant value &gt; 2 before exponentiation. So, the 
+improved version S[n] = frac(12 * exp(S[n-1] + 3)) already takes seven 
+steps: RCL n FRAC 3 + e^x 12x FRAC. Can we make it six? Not sure yet. As of 
+now, seven steps is the observed minimum for a fully autonomous unbiased 
+PRNG in this calculator.
+
+On a side note, the overall ergonomics of this device is exceptional, with
+all that tactile feel and distinct clicks that won&#x27;t leave you in a doubt 
+whether or not you have pressed the key you intended to press. The force 
+required to press a key is just right to give that much needed feedback but 
+not give any stress on the finger at all. Unlike e.g. Casio fx-3400P with 
+its softy rubber keys, this design just invites you to tinker with the 
+calculator and to use it more and more and more. And tinker with it I do a 
+lot. Within just four days, it has completely shifted my focus away from the 
+fx-3400P and other goodies in my calculator collection. Hell, it even has 
+replaced the fx-991DE PLUS: who needs &quot;natural VPAM&quot; when you&#x27;ve got RPN? On 
+the other hand, the TI-74S is kinda irreplaceable, but that one is a 
+full-featured portable computer from another league, and I cannot put it 
+into any of my pockets. But I can put the 12C in there instead and call it a 
+day. Additionally, since my Seiko SBTM291 (that I&#x27;ve been wearing ever since 
+I got it) doesn&#x27;t have a date display, I often use the 12C&#x27;s date 
+calculation functions to find the day of the week for the current or some 
+future date, and it&#x27;s been very efficient and fun, provided the D.MY mode is 
+set, of course.
+
+Yes, I can&#x27;t stress enough how compact and lightweight this calculator is. It
+is not tiny by any means (after all, it&#x27;s not a card-shaped SwissMicros 
+DM12C) but perfectly sized to fit into a standard man&#x27;s shirt chest pocket. 
+Remember, when it was first introduced, most calculators marketed as 
+&quot;programmable pocket calculators&quot; could not actually fit into pretty much 
+any pockets. Now I see how much of an exception to this rule the Voyager 
+series had been. In all probability, financial specialists might also have 
+refused to switch to the newer HP models because those models, besides 
+looking more generic and lame, no longer could be fully placed inside the 
+chest pocket. Even though the technology began allowing to make calculators 
+pocketable enough, this gigantomaniac trend has been observed among other 
+calculator brands too, including my most favorite ones like Casio and Sharp. 
+Gargantuan creatures like HP Prime, Casio fx-CG and TI-nspire series are 
+just logical consequences of this trend. The absurdity of the situation has 
+led to most people actually switching to the calculator apps on their 
+always-on spying consumerist bricks called &quot;smartphones&quot;, losing all tactile 
+feel but still having a single device in their pockets. And yes, even the 
+12C has an official emulator at least for Android. It may be based off the 
+original ROM but they somehow managed to screw it up, and did this even more 
+than I expected. Needless to say, I refuse to go that route. My new old 
+gold, normal, physical, non-platinum, non-prestige, non-limited-edition, 
+non-collectors-edition, non-anniversary-edition 12C is still standing 
+against all this nonsense, running virtually forever on a single CR2032 and 
+being able to go with me anywhere. Finally, an MK-52-like device that I 
+actually have no trouble carrying around.
+
+Well, what else can I say? When writing this post, I suddenly remembered a
+rather old viral video where an old fisherman caught a really large ide in a 
+lake and started shouting: &quot;Here it is, the fish of my dreams! Here it is, 
+here it is! An ide! Guys, it&#x27;s a huge ide, A HUUUUUUGE IIIIIDDDDE!&quot; So, is 
+there anything better out there, or can this Agilent-based HP 12C be really 
+called &quot;a fish of my dreams&quot; when it comes to calculator collecting? Not 
+sure yet, but I think it&#x27;s quite close to that. Besides, I&#x27;m just being 
+realistic about the probability of me finally obtaining a 41C/CV/CX or a 
+titanium SwissMicros DM15L/15C in the nearest future, which is rather close 
+to zero. Even when/if I get any of those, will I be using them to the same 
+extent I&#x27;m now using the 12C? Will any of them really become my daily 
+driver, knowing that I paid about $16 for the 12C and I&#x27;ll have to pay &gt;$150 
+for any of those choices and some extra for the batteries if the choice is 
+from the 41C series? In a way, this situation is akin to my Casio G-Shock 
+dilemma: the GW-5000U might be hard to get but I do have it here and now and 
+it already is good enough for every practical occasion, but the absolute 
+grail G-Shock, the MRG-B5000D, is pretty much an unobtainium for me due to 
+different factors (not just price). Maybe... just maybe... that ide just 
+needs to be released back into the lake.
+
+--- Luxferre ---
+
+[1]: gopher://hoi.st:70/0/documents/own/hp-12c-soft.txt
+[2]: https://hpcc.org/datafile/hp12/12c_TrigonometryFunctions.pdf
+</pre>]]></description>
+</item>
 </channel></rss>
