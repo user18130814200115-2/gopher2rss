@@ -15547,4 +15547,478 @@ needs to be released back into the lake.
 [2]: https://hpcc.org/datafile/hp12/12c_TrigonometryFunctions.pdf
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-05-19-ported-moo-12c.txt</link>
+<title>(2025-05-19) How I ported Bulls and Cows to HP 12C and why it is important</title>
+<description><![CDATA[<pre>
+(2025-05-19) How I ported Bulls and Cows to HP 12C and why it is important
+--------------------------------------------------------------------------
+Yes, I promised to return to the topic of tiny VMs in the next post but I
+still think this story needs to be told sooner, and you can, by the way, 
+consider this one a direct precursor to the next post about tiny VMs. 
+Because it is about a game that&#x27;s my all-time favorite when it comes to 
+numeric-only I/O, and can (arguably) be viewed as the ultimate benchmark 
+that sets apart computers from calculators. Yes, Bulls and Cows return, now 
+on the programmable financial HP 12C I told you about in the previous post.
+
+If you just want a short form listing, the setup and the gameplay rules, this
+game has already been published in my HP 12C software collection text 
+document ([1]) under the name &quot;SlowMoo12&quot;. But I assume everyone who&#x27;s been 
+reading my phlog for some time already knows how to play Bulls and Cows. 
+Today, I want to discuss all the technical challenges that I had to overcome 
+in order to fit it into 99 program steps of a not very advanced instruction 
+set, with just the seven main registers and the five financial registers 
+left at my disposal. At some moments, the mission felt impossible but I 
+still managed to accomplish it. Let&#x27;s talk about how and then get to why.
+
+But first, let&#x27;s break down the design of the game itself on the high level.
+Any Bulls and Cows session with a computer consists of two parts: one where 
+the computer generates a random number and one where the player tries to 
+guess the generated number. What do we know about the first part? Well, we 
+know two requirements: the generated number must contain four decimal digits 
+(and can start with 0) and all digits must be unique. So, we need to 
+generate a digit, check if it hasn&#x27;t already been used and append (or 
+prepend, doesn&#x27;t matter) it to the number if it hasn&#x27;t been used yet. How do 
+we check for uniqueness? This is where the first challange comes.
+
+In the mu808 and n808 versions of Bulls and Cows, I had a pool of digits from
+0 to 9 in separate memory cells. Then, I generated a random position from 0 
+to 9 and extracted the digit from the corresponding cell. If the cell 
+already contained 10, I retried with a different position. If it didn&#x27;t, I 
+took the digit from there and put 10 instead. This way, the result was 
+guaranteed to have four unique digits. However, this approach won&#x27;t work on 
+the 12C at all: we don&#x27;t have indirect addressing and we don&#x27;t even have 
+enough cells to start with. We do, however, have a ten-digit (visible) 
+register size, so we can save the digit pool within a single register just 
+by writing 1234567890 in there.
+
+Once we have this value in a register, we need to generate a random position
+between 0 and its length. How do we know its length? We know that it will be 
+10 for the first iteration, 9 for the second iteration, 8 for the third 
+iteration, and 7 for the fourth (and last) iteration. Since our iteration 
+counter I starts with 4 and then decrements (with the condition to get out 
+of the loop when it gets to 0), we know that the pool number length is just 
+I + 6.
+
+So, we&#x27;ve generated the position P as a random integer number in the [0; I+6)
+interval, now what? Now we need to do two things: extract the digit at that 
+position and shrink the pool number to not include that digit anymore. Digit 
+extraction is seemingly easy: calculate the factor F in the form of 10^P, 
+divide the pool number N by F, take the integer part of the result and the 
+digit will be that integer part modulo 10. However, another hurdle arose: 
+the 12C does not have any modulo operation, only the operations to take the 
+integer (INTG) and fractional (FRAC) parts. So, instead of going all the way 
+to obtaining the modulo, we divide the integer part by 10 and store the 
+digit as the fractional part of that as it is (from 0 to 0.9). Then, we 
+update the target number T (initially set to 0) by shifting it 1 position to 
+the right and adding this decimal fraction representing the new digit. So, 
+with the pool number N and position P:
+
+F = 10 ^ P
+DP = INTG(N/F)
+D = FRAC(DP/10)
+T = T/10 + D
+
+That&#x27;s why, by the way, we naturally obtain the guess numbers between 0 and
+1. Now, we need to shrink the pool number N. Remember that 
+we have the factor F stored and also the integer part (DP) we got from
+dividing N by that factor. So, essentially, we need to divide DP further by 
+10, take an integer part from that, add the fractional part of N/F and then 
+multiply the result by the factor. Using only the above variables, that 
+comes down to:
+
+N = N + (INTG(DP/10) - DP) * F
+
+It might also be helpful to cache the DP/10 value since we&#x27;re calculating
+both integer and fractional parts from it. To sum it up, the pseudocode (a 
+bit BASIC-like but in the terms close to the 12C&#x27;s instruction set) for 
+generating all four digits in the result T looks like this:
+
+N = 1234567890
+T = 0
+I = 4
+:GENLOOP
+F = 10 ^ INTG(RAND() * (I+6))
+DP = INTG(N/F)
+DQ = DP / 10
+T = T/10 + FRAC(DQ)
+N = N + (INTG(DQ) - DP) * F
+I = I - 1
+IF I = 0 THEN GOTO :MAIN ELSE GOTO :GENLOOP
+:MAIN
+...
+
+OK, we&#x27;ve got the resulting unique 4-digit number in R (which, along with the
+PRNG implementation itself, took 46 steps of the real 12C program, and 
+that&#x27;s considering 1234567890 and 10 being set in the registers outside the 
+program as a part of the first-run game setup). But that just was the first 
+part of the game. The second part is the main loop where we prompt the 
+player for the number to guess and then score the input by matching all 
+digits. This seems to be straightforward: just set up two loops, increase 
+the number of bulls if the digits and the indices match, increase the number 
+of cows if just the digits match and the indices is different... but to do 
+this in a size-efficient way is quite a challenge of its own. In order to 
+actually compare the numbers digit by digit, we shift each of them by 
+multiplying by 10 and taking the integer part, then, again, using the 
+fractional trick on their integer parts difference divided by 10. We don&#x27;t 
+need the actual digit values to be whole, just need to get 0.0 difference to 
+spot a match. If a match has been spotted, we increase the score by 1, but 
+also increase it by another 9 if the indices are equal too. Finally, we 
+restore the guess number after we&#x27;ve fully gone through the inner loop and 
+the target number after we&#x27;ve fully gone through the outer loop by dividing 
+them by 10000 (another constant that had to be placed into a register during 
+the first-run setup).
+
+As a &quot;last-minute change&quot;, I decided to actually move the guess value
+adjustment to the point _before_ the inner loop starts, so that the player 
+actually can enter just four digits without the decimal point. This wasn&#x27;t 
+present in the first version of the game, by the way.
+
+In the pseudocode, the main routine looks like this. Let&#x27;s call the outer and
+inner loop counters I and J, the target number T and the guess input G:
+
+:MAIN
+G = INPUT()
+I = 4
+SCORE = 0
+:OUTERLOOP
+G = G / 10000
+T = T * 10
+TI = INTG(T)
+J = 4
+:INNERLOOP
+G = G * 10
+C = FRAC((INTG(G) - TI)/10)
+IF C = 0 THEN GOTO :IDXCOMP ELSE GOTO :INNEREND
+:IDXCOMP
+D = I - J
+IF D = 0 THEN SCORE = SCORE + 10 ELSE SCORE = SCORE + 1
+:INNEREND
+J = J - 1
+IF J = 0 THEN GOTO :OUTEREND ELSE GOTO :INNERLOOP
+:OUTEREND
+I = I - 1
+IF I = 0 THEN GOTO :SCORESHOW ELSE GOTO :OUTERLOOP
+:SCORESHOW
+T = T / 10000
+OUTPUT(SCORE)
+GOTO :MAIN
+
+As such, the entire Bulls and Cows game can effectively be described with the
+following algorithm (that should work on any platform supporting 10 digits 
+before and 4 after the decimal point):
+
+N = 1234567890
+T = 0
+I = 4
+:GENLOOP
+F = 10 ^ INTG(RAND() * (I+6))
+DP = INTG(N/F)
+DQ = DP / 10
+T = T/10 + FRAC(DQ)
+N = N + (INTG(DQ) - DP) * F
+I = I - 1
+IF I = 0 THEN GOTO :MAIN ELSE GOTO :GENLOOP
+:MAIN
+G = INPUT()
+I = 4
+SCORE = 0
+:OUTERLOOP
+G = G / 10000
+T = T * 10
+TI = INTG(T)
+J = 4
+:INNERLOOP
+G = G * 10
+C = FRAC((INTG(G) - TI)/10)
+IF C = 0 THEN GOTO :IDXCOMP ELSE GOTO :INNEREND
+:IDXCOMP
+D = I - J
+IF D = 0 THEN SCORE = SCORE + 10 ELSE SCORE = SCORE + 1
+:INNEREND
+J = J - 1
+IF J = 0 THEN GOTO :OUTEREND ELSE GOTO :INNERLOOP
+:OUTEREND
+I = I - 1
+IF I = 0 THEN GOTO :SCORESHOW ELSE GOTO :OUTERLOOP
+:SCORESHOW
+T = T / 10000
+OUTPUT(SCORE)
+GOTO :MAIN
+
+This, however, is just pseudocode. Implementing it in the actual 12C
+instruction set required quite a lot of non-trivial thinking.
+
+Let&#x27;s first perform some basic clearing:
+
+01 CLx     ; get 0
+02 STO 4   ; the target number T will be in R4
+03 RCL PV  ; recall the 1234567890 constant
+04 STO 2   ; copy into the operating register R2 as N
+05 4       ; push 4 as the iteration counter I
+06 STO 0   ; save it into R0
+
+Let&#x27;s now see how the RAND() function is implemented. We&#x27;ll use the 7-step
+generator described in my previous post (using Rn as the preset seed value 
+from 0 to 1):
+
+07 RCL n   ; generation loop start, recall Rn
+08 FRAC    ; and take its fractional part
+09 3       ; push 3
+10 +       ; add 3
+11 e^x     ; take its natural exponent
+12 12x     ; multiply by 12 and rewrite Rn
+13 FRAC    ; return its fractional part for further usage
+
+Then we convert the value returned by the generator into our factor value
+(assuming the iteration counter I already is in R0 and the constant 10 is in 
+R5):
+
+14 6       ; push 6
+15 RCL 0   ; push the iteration counter
+16 +       ; add it
+17 x       ; multiply by the generator output
+18 INTG    ; get the integer index of the target digit
+19 RCL 5   ; push 10
+20 x&lt;&gt;y    ; prepare for 10 ^ index
+21 y^x     ; calculate it
+22 STO 1   ; store the factor F into R1
+
+Yes, it took 16 steps just to calculate the F = 10 ^ INTG(RAND() * (I+6))
+line from the algorithm. In 15C with its built-in PRNG, it would take 10 at 
+most. But we&#x27;re prepared to carry that burden, so let&#x27;s move on. Here, we 
+just calculate DP = INTG(N/F):
+
+23 RCL 2   ; recall N
+24 x&lt;&gt;y    ; swap the args
+25 /       ; divide N by F (already in the stack)
+26 INTG    ; get DP
+
+That&#x27;s 26 steps in total already. Now, the problem is that we don&#x27;t have
+enough registers to store both DP and DQ in, so we resort to some stack 
+manipulation to calculate these lines:
+
+DQ = DP / 10
+T = T/10 + FRAC(DQ)
+N = N + (INTG(DQ) - DP) * F
+
+In the actual code (using (X Y Z T) stack diagrams to make the picture
+clearer):
+
+27 ENTER   ; push DP
+28 ENTER   ; (DP DP - -)
+29 RCL 5   ; (10 DP DP -)
+30 STO / 4 ; T = T/10
+31 /       ; (DQ DP - -)
+32 FRAC    ; (FRAC(DQ) DP - -)
+33 STO + 4 ; T = T + FRAC(DQ)
+34 LSTx    ; (DQ FRAC(DQ) DP -)
+35 -       ; (-INTG(DQ) DP - -)
+36 +       ; (DP-INTG(DQ) - - -)
+37 CHS     ; (INTG(DQ)-DP - - -)
+38 RCL 1   ; recall the factor F
+39 x       ; F * (INTG(DQ) - DP)
+40 STO + 2 ; N = N + F * (INTG(DQ) - DP)
+
+14 more steps. But it&#x27;s time to finish the loop.
+
+41 1       ; push 1
+42 STO - 0 ; I = I - 1
+43 RCL 0   ; recall the I value from R0
+44 x=0     ; if reached 0
+45 GTO 47  ; go further
+46 GTO 07  ; otherwise repeat the loop
+
+Now, after the long journey of 46 steps, we finally have our desired unique
+four digits abcd in the 0.abcd format in R4. We&#x27;re ready to prompt the 
+player to enter the number to guess, right? Well, almost. We need to clear 
+the score first, which is gonna be stored in R3. We can make use of the fact 
+the X register now contains 0, but at the end of the loop it will contain 
+the score itself. Then, we input the guess G and store it into R2:
+
+47 STO - 3 ; UI loop start, clear the score register R3
+48 R/S     ; prompt for the guess number G
+49 STO 2   ; store it into R2
+
+Then, let&#x27;s store 4 into the outer loop counter I in R0:
+
+50 4       ; push 4
+51 STO 0   ; store it in R0 (outer loop counter)
+
+Start the outer loop by setting up the same for the inner loop counter in R1
+and adjusting the guess number G to move it into the correct decimal range 
+(either after the initial input, or after previous multiplications):
+
+52 4       ; outer loop start, push 4
+53 STO 1   ; store it in R1 (inner loop counter)
+54 EEX     ; push 10000
+55 4
+56 STO / 2 ; restore the guess number G value
+
+Then, perform the T = T * 10 and TI = INTG(T) steps (storing the TI value in
+R6):
+
+57 RCL 5   ; recall 10
+58 STO x 4 ; multiply T (in R4) by 10 in place
+59 RCL 4   ; recall T
+60 INTG    ; get the integer part of the new T value (TI)
+61 STO 6   ; store the TI value in R6
+
+Now, we can start the inner loop. First we do the same as for the outer loop
+but with a twist:
+
+62 RCL 5   ; inner loop start, recall 10
+63 STO x 2 ; multiply G (in R2) by 10 in place
+64 RCL 2   ; recall G
+65 INTG    ; get the integer part of the new G value
+66 RCL 6   ; recall the TI value
+
+The twist is, we don&#x27;t need to store the INTG(G) value anywhere as we already
+have it in the stack register Y, and the previously stored TI value is now 
+in the register X, so we can just continue with our algorithm by computing C 
+= FRAC((INTG(G) - TI)/10):
+
+67 -       ; INTG(G) - TI
+68 RCL 5   ; push 10
+69 /       ; (INTG(G) - TI)/10
+70 FRAC    ; C = FRAC((INTG(G) - TI)/10)
+
+Again, the C value is ephemeral because we only need it to compare to 0,
+which we do right now:
+
+71 x=0     ; compare C to zero
+72 GTO 74  ; proceed to compare indices if it is zero (the guess and target
+digits match)
+73 GTO 83  ; go to the inner loop finalization if it isn&#x27;t
+
+Now, we perform the index comparison and scoring logic in case a match is
+found, and some advanced stack manipulation also is necessary here to save 
+crucial step count:
+
+74 RCL 5   ; push 10 beforehands (10 - - -)
+75 1       ; push 1 beforehands (1 10 - -)
+76 RCL 0   ; recall the outer index I (I 1 10 -)
+77 RCL 1   ; recall the inner index J (J I 1 10)
+78 -       ; compare them (I-J 1 10 10)
+79 x=0     ; if they are equal
+80 ROLL    ; (1 10 10 0)
+81 ROLL    ; the stack top will be 10 if they are equal, 1 if not
+82 STO + 3 ; add to the score in R3
+
+The trickery here is with the correct stack setup. When the x=0 condition is
+run, the stack is (I-J 1 10 10). If I-J is NOT 0, only one roll is 
+performed, which makes the state (1 10 10 I-J) and returns 1 at the top. But 
+if I-J actually is equal to 0, then the second roll will bring the stack to 
+the (10 10 0 1) state, with 10 at the top. This top value is what finally 
+gets added to the score variable in R3.
+
+83 1       ; end of the inner loop, push 1
+84 STO - 1 ; decrement the inner index
+85 RCL 1   ; recall the inner index
+86 x=0     ; if 0, then
+87 GTO 89  ; go to the outer loop end
+88 GTO 62  ; else repeat the inner loop
+
+Now, we can finalize the outer loop too, not forgetting to reset the G value
+to its initial state by multiplying by 10000:
+
+89 1       ; outer loop end, push 1
+90 STO - 0 ; decrement the outer index
+91 RCL 0   ; recall the outer index
+92 x=0     ; if 0, then
+93 GTO 95  ; go to show the score
+94 GTO 52  ; else repeat the outer loop
+
+We&#x27;ve lastly come to the final part, where we prepare for the next guess
+iteration by restoring the T value and showing the score before looping back 
+to the new prompt:
+
+95 EEX     ; push 10000
+96 4
+97 STO / 4 ; restore the target number T
+98 RCL 3   ; show the score
+99 GTO 47  ; go to the new input prompt
+
+This is it. This is how it has been done, from the idea to the pseudocode to
+the exact 99 steps taken by the program. I could make it a bit less but that 
+would make the game require more setup than just f REG [seed] n 1234567890 
+PV 10 STO 5 and still wouldn&#x27;t make the program take less than 92 steps in 
+order to free an extra register. Anyway, I&#x27;m pretty satisfied with the 
+result, considering it has been achieved on a mere financial calculator with 
+no internal PRNG or advanced programming features like indirect addressing, 
+subroutines or loop helpers, with very few conditional instructions and 
+limited storage arithmetic capabilities. And this, by the way, answers the 
+&quot;why&quot; question: because I wanted to prove the point that a normal, classic 
+HP 12C is also capable of running such a game, and that fact, despite all 
+its limitations, puts it into a class much above &quot;normal&quot; scientific or 
+financial calculators. Again, even though it has nowhere near the same 
+programming capabilities as the MK-52/61, 15C or even 11C, it still is 
+lightyears ahead of what e.g. Casio fx-3400P or Citizen SRP-145 programmable 
+calculators could offer. As I already said, if it can run Bulls and Cows 
+which can be programmed on the device itself, it can be considered a pocket 
+computer. A very limited one, but a computer nonetheless. You won&#x27;t get this 
+game on a Casio fx-3400P, no matter how hard you try. Because it&#x27;s just a 
+totally different class of devices in a similar form factor.
+
+And now, just for fun, here&#x27;s a port of the very same algorithm (with slight
+input/output decorations) to the TI-74 BASIC:
+
+10 RANDOMIZE:N=1234567890:T=0
+20 FOR I=10 TO 7 STEP -1
+30 F=10^INT(RND*I)
+40 DP=INT(N/F)
+50 DQ=DP/10
+60 IDQ=INT(DQ)
+70 T=T/10+DQ-IDQ 
+80 N=N+(IDQ-DP)*F
+90 NEXT I
+100 INPUT &quot;Guess:&quot;;G
+110 IF G&lt;=0 THEN 270
+120 BS,CS=0
+130 FOR I=1 TO 4
+140 G=G/10000
+150 T=T*10
+160 TI=INT(T)
+170 FOR J=1 TO 4
+180 G=G*10
+190 C=(INT(G)-TI)/10
+200 IF INT(C)&lt;&gt;C THEN 220
+210 IF I=J THEN BS=BS+1 ELSE CS=CS+1
+220 NEXT J
+230 NEXT I
+240 T=T/10000
+250 PRINT USING &quot;Bulls: #, cows: #&quot;,BS,CS:PAUSE
+260 GOTO 100
+270 PRINT USING &quot;The number was ####, bye!&quot;,T*10000:PAUSE
+280 END
+
+The gameplay is the same, except you can also type 0 (or any negative number)
+to give up, get the final number and exit the game. The game takes up just 
+447 bytes out of the total 7710 in the internal TI-74S memory, but it just 
+shows how drastically a slight increase of computing power simplified 
+programming capabilities. The TI-74 is just as far ahead of the 12C as the 
+12C is ahead of the fx-3400P. And the HP 41C, I guess, was somewhere in 
+between the two, but closer to the TI-74, especially when it came to 
+peripheral support. The latter, by the way, had been mostly ditched in the 
+42S (except a proprietary infrared port), which many already considered a 
+decline in the series. However, it ran on just three LR44 batteries instead 
+of pretty non-standard N-size cells, while supporting the same programming 
+language. As we can see, 1980s and 1990s were the time when the line between 
+(programmable) calculators and computers started to blur as much as it 
+could, but again, HP Voyagers, in my opinion, were among the first to blur 
+it. And the fact that we can play Bulls and Cows even on the 12C just proves 
+it one more time.
+
+Since then, I have ported some other games to the 12C, like a dice simulator,
+a Yahtzee box simulator, a customizable variant of Nim, even the entire 
+Mugwump/Hunt the Hurkle/Snark trilogy and a 3D variant of Hurkle called 
+Depth Charge. But this particular game... It, so to speak, in a way, still 
+makes me horny.
+
+--- Luxferre ---
+
+[1]: gopher://hoi.st/docs/own/hp-12c-soft.txt
+</pre>]]></description>
+</item>
 </channel></rss>
