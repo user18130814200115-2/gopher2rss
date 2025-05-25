@@ -16021,4 +16021,129 @@ makes me horny.
 [1]: gopher://hoi.st/docs/own/hp-12c-soft.txt
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-05-26-herding-the-cattle-hp-12c.txt</link>
+<title>(2025-05-26) Herding the cattle better with advanced HP 12C techniques</title>
+<description><![CDATA[<pre>
+(2025-05-26) Herding the cattle better with advanced HP 12C techniques
+----------------------------------------------------------------------
+This surely is not my last 12C-related post here, but probably my final post
+about porting Bulls and Cows onto this surprisingly capable pocket machine. 
+As you might have told, the previous version was quite slow, especially on 
+the initial target number generation phase, and required rather complicated 
+setup. Within the previous week, I discovered a bunch of &quot;hidden&quot; 12C 
+functionality that not only allowed me to make that phase a bit faster, but 
+also to simplify the setup and to compress the entire program code. Let&#x27;s 
+dig into that a bit, shall we?
+
+If you remember, I had written in my previous posts that the 12C doesn&#x27;t have
+indirect memory addressing and indirect jumps. The latter, as far as I know, 
+still holds true (unfortunately), but the former turned out to be pretty 
+much false. The 12C, in fact, DOES have indirect memory addressing. What&#x27;s 
+more, it even has some special-purpose registers that can only be accessed 
+indirectly! But let&#x27;s begin from the very beginning.
+
+Among other financial-specific functions, two of them pose a particular
+interest: NPV (net present value) and IRR (internal rate of return). Not 
+digging into much specifics, I&#x27;ll only tell you that the NPV function 
+computes the value of a polynomial (with the argument transformed in a 
+simple way) and the IRR function finds _roots_ of that polynomial. Yes, the 
+12C has a built-in polynomial solver, although it&#x27;s not documented as such. 
+I have added all the detailed info on how to make use of this in my &quot;Tricks&quot; 
+section of the document ([1]), so feel free to read that section if you&#x27;re 
+interested in polynomials in general, but here, I&#x27;m gonna focus on how the 
+_coefficients_ for those polynomials are input and stored, because that&#x27;s 
+what&#x27;s important for understanding the indirect addressing feature. 
+Officially, the manual says that you start entering the coefficients (in the 
+Horner order, from the free coefficient A0 to the highest degree coefficient 
+An) with the &quot;cash flow&quot; keys: CFo for A0 and then subsequent presses of CFj 
+for Aj. The manual also says you can recall and edit the coefficients by 
+pressing RCL CFj. What&#x27;s really happening behind the scenes is:
+
+1. Whenever you press CFo, the number in the X register is stored into R0 and
+the number 0 is stored into Rn.
+2. Whenever you press CFj, the contents of Rn is autoincremented and the
+number in the X register is stored into whatever register Rn is pointing to 
+after this increment. If the register index is just 1 more than what&#x27;s 
+available, the machine writes the number into RFV.
+3. Whenever you press RCL CFj, the number stored into whatever register Rn is
+pointing to gets copied into the X register, and THEN Rn gets 
+autodecremented. Again, if Rn was pointing to a register index just 1 more 
+than what&#x27;s available, the contents of RFV would be returned.
+
+So yeah, that&#x27;s your indirect register addressing for ya. Just put an index
+one less than you need into Rn and you can write to the register under that 
+index using the CFj command. Yes, this works for R0 too if you say 1 CHS STO 
+n, for instance, putting -1 into Rn: it will pre-increment and write to R0 
+when you press CFj. When you need to indirectly read from a register, just 
+put its unaltered index into Rn and issue RCL CFj, and you&#x27;re good to go. 
+But wait, there&#x27;s more! There&#x27;s much more.
+
+You see, the NPV/IRR functions also allow you to specify _repeating_ cash
+flows with a separate Nj function. Essentially, that repeats the last 
+polynomial coefficient CFj Nj times (up to 99), allowing you to also 
+increase the degree of the polynomial without having to waste extra storage 
+space. What&#x27;s interesting for us is that the Nj registers to not overlap 
+with the main register area. In fact, physically, they are stored in three 
+separate 7-byte blocks of memory. Why so? Because every Nj register can only 
+hold integers, and those integers can only be from 0 to 99 (yes, whoever 
+tells you it&#x27;s 1 to 99 is wrong, it&#x27;s 0 to 99). So, how do we access those 
+special registers? Same way but the operations don&#x27;t alter the contents of 
+Rn: you first set the index to Rn and then use Nj for writing and RCL Nj for 
+reading. Now, how many Nj registers are available? Alas, despite this memory 
+area is independent, the amount of available Nj registers is strictly equal 
+to the amount of available coefficients, which is the amount of available 
+main area registers plus one (because of the RFV register). This means that, 
+for instance, in order to have 10 Nj registers available, you need r-09 to 
+be displayed on the g MEM screen, which means 85 program steps at most. Oh, 
+and one more thing: they all get initialized to 1, not 0. And there is some 
+inconvenience when trying to reset them all to 1 because they survive the f 
+FIN command, and f REG cannot be called programmatically.
+
+But why would I ever need ten extra registers that can only hold integers
+from 0 to 99? Well, for starters, this makes a perfect flag array for 
+generating numbers with unique digits. Just like in... you know... Bulls and 
+Cows. Having a set of flags for marking which digits already have been used 
+means a much faster and cleaner algorithm. Now, only three &quot;minor&quot; 
+challenges needed to be overcome for the ultimate Bulls and Cows version for 
+the 12C to appear:
+
+1) switching to a PRNG that wouldn&#x27;t depend on Rn,
+2) incorporating a mechanism to reset the Nj flags after the target number
+has been generated,
+3) squeezing all the code to the hard limit of 85 steps.
+
+The first challenge was rather easy to tackle because, besides the shortcut
+12x function that multiplies by 12 and automatically saves the result into 
+Rn, we also have the 12/ function that divides by 12 and automatically saves 
+the result into Ri. After some testing, I had come up with the formula S[n] 
+= frac(exp(S[n-1] + 7) / 12) which takes the same 7 steps and achieves 
+equally good statistical results. The second challenge, on the other hand, 
+was tightly intertwined with the third one. Every time I came up with a nice 
+flag clearing algorithm, I found that I fully ran out of steps. Finally, I 
+decided that I would calculate the outer digit as a single digit (as opposed 
+to the the entire integer part of whatever remained of the target) and use 
+the digit as the index to reset the flag as well. Still several steps more 
+than necessary though. And then it dawned on me: why not just use Rn as the 
+outer digit intermediate storage, since I had to populate it anyway? And 
+after that, everything finally clicked into place and, after using the 
+CL.STAT trick to clear the registers R1 to R6 at once (and reallocating the 
+constants 10 and 10000 to R7 and R8), the new Bulls and Cows version takes 
+exactly 85 steps and has been published in the document under the 
+UltimateMoo12 name. Because this, in my opinion, is the pinnacle of digital 
+cattle herding on a purely financial calculator. But the real value is 
+contained in all those techniques I have learned throughout this 
+optimization process. I have been capturing them all in the document&#x27;s 
+&quot;Tricks&quot; section as well for everyone to see and try out. Because people 
+deserve to know what&#x27;s really possible even on the original 884 KHz model.
+
+And you know what? I have a feeling that all that still is just a tip of the
+iceberg.
+
+--- Luxferre ---
+
+[1]: gopher://hoi.st:70/0/docs/own/hp-12c-soft.txt
+</pre>]]></description>
+</item>
 </channel></rss>
