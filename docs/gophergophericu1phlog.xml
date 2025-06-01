@@ -7554,4 +7554,82 @@ The path of the outlier is one of solitude.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/Stabilizing.md</link>
+<title>Stabilizing                                                2025-06-01</title>
+<description><![CDATA[<pre>
+# Stabilizing
+
+Over time my computing setup has changed in many ways. Operating
+systems, input devices, applications and programming languages. The
+past 12 months or so it has begun to stabilize.
+
+Some of the changes have been purely pragmatic, like when I switched
+to using the Dvorak key map or stopped using a mouse. Both of these
+changes were because of a physical need to change due to the onset of
+RSI. A little research and experimentation lead me to choose a more
+optimal key map for the English language and to banish the rodent,
+which was the primary source of my issues.
+
+Other changes have been due to changes in philosophy and better
+understanding what I actually need. Such as using less resource
+hungry software and so requiring lower power hardware to achieve the
+same outcome.
+
+I have also run into the restrictive nature of libraries and
+frameworks where you are forced to work in the way established by the
+author of it and no matter how little of it you need, the rest comes
+along with it. I tinkered also with OO programming for a while but,
+once the novelty wore off, it seemed like it actually made more work
+to adhere to the method than what you gained from it. So that too was
+abandoned.
+
+It&#x27;s easy to get carried along with a fad when others are excited
+about it. Quite often these people don&#x27;t even understand why they are
+excited about something. They are just carried along by the
+excitement of others and not wanting to feel they are missing out on
+being part of something new or something great. Unfortunately the
+world is full with the voices of salesmen and excitable people rather
+than those of seasoned professionals.
+
+
+## Seeking wisdom
+
+Some time ago I read The Cathedral and the Bazaar by Eric S. Raymond.
+Currently I am reading The Art of Unix Programming by the same
+author. In that book he points to the classic text The Unix
+Programming Environment written by Brian Kernighan and Rob Pike. I am
+quite familiar with Brian Kernighan&#x27;s work having on a number of
+occasions attempted to work through The C programming language and
+also having recently purchased a copy of The Awk programming
+language. I think sometimes if you want to understand something you
+have to go back to the origin and seek out contemporary sources.
+
+
+## Battlestation
+
+Flat surfaces invite objects. My desk was always a mess with
+transient things, usually things which required dealing with at some
+point. In an attempt to prevent accumulation of deferred decisions, I
+no longer have a computer desk. 
+
+Using a trackpoint keyboard frees you from constantly moving one hand
+to and from a mouse and needing a desk to operate it. Dragging a
+wired or wireless piece of plastic around a desk for the sake of
+moving a virtual pointer on a screen seems somewhat retarded when you
+give it some thought.
+
+The relatively recent accumulation of radio equipment has required a
+bit of a reshuffle to accommodate it, resulting in those being
+stacked on top of each other and a morse paddle cable-tied to the arm
+of my chair. The HP T620 thin client, which is passively cooled and
+has no moving parts, stands vertically to the right of the radio&#x27;s.
+
+This is not a curated minimalist workstation. It&#x27;s an unusual
+arrangement[1], but it works for me at the present time.
+
+[1](gopher://gopher.icu/I/images/battlestation.jpg)
+</pre>]]></description>
+</item>
 </channel></rss>
