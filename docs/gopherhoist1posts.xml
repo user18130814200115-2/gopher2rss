@@ -16146,4 +16146,117 @@ iceberg.
 [1]: gopher://hoi.st:70/0/docs/own/hp-12c-soft.txt
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-06-01-a-vm-so-tiny-it-even-fits-on-12c.txt</link>
+<title>(2025-06-01) A VM so tiny that it even fits on a HP 12C</title>
+<description><![CDATA[<pre>
+(2025-06-01) A VM so tiny that it even fits on a HP 12C
+-------------------------------------------------------
+Picture this. It&#x27;s 1983, the year before the year of our Lord Orwell, and you
+are a 7-to-12-year-old kid living in a rather developed country who just 
+found out that personal computers already exist and are spreading across 
+homes. Of course, your family quickly lets you know that not only a home PC, 
+but even a portable BASIC one with a single-line screen or a mere 
+programmable calculator is something prohibitively expensive to buy for 
+someone as young as you. But you still wanna learn at least something about 
+computers as your bright and fresh mind (rightfully) sees them as the future 
+of technology. You don&#x27;t miss any tech-related TV shows in the time free 
+from school and homework. When suddenly... You see a solution to your 
+dilemma demonstrated right on one of those shows: a working computer model 
+that fits on a sheet of paper. You quickly grab a pencil and a sheet of 
+paper, redraw what they show on the TV screen, note the set of five very 
+simple instructions and finally start writing your own programs. You enjoy 
+the process even though you have to execute every step by yourself. Believe 
+it or not, this is how a lot of German children got into programming in 
+1983, when &quot;Der Know-How Computer&quot; had been demonstrated in the WDR 
+Computerclub TV show.
+
+What personally fascinated me when I read about this educational project was
+the fact that, despite the original worksheet (a printable version of which 
+was created around the same time and distributed in over 400000 copies 
+across the entire (West) Germany) was pretty limited to its 21 program steps 
+and 8 registers, the instruction set itself was proven to be 
+Turing-complete, which means that, in theory, given enough steps and 
+registers, it can do any arbitrarily complex computation. And it&#x27;s just five 
+instructions we&#x27;re talking about:
+
+- increment a register (add 1),
+- decrement a register (subtract 1),
+- skip the next instruction if the contents of a register is zero,
+- jump to an instruction,
+- halt the program.
+
+Yeah, that&#x27;s it. No extra I/O required: you put the values into the registers
+before starting the program and read the values off the registers after it 
+finishes. The original sheets started the numbering of both instructions and 
+registers from 1, so that kids could better understand this. However, we can 
+also make use of this fact in order to merge the &quot;jump&quot; and &quot;halt&quot; 
+instructions into just the &quot;jump&quot; one, replacing &quot;halt&quot; with &quot;jump to 0&quot; 
+(looks familiar, huh?). This brings the total instruction count to just four 
+in the set, which means all the opcodes can fit into just two bits. Finally, 
+I&#x27;d like to do some rearrangement and bring the jump instruction first and 
+also assign some three-letter mnemonics to all those. With that, we get the 
+following opcodes: 0) JMP, 1) INC, 2) DEC, 3) ISZ. After writing a simple 
+Python script to emulate this instruction set (a task that pretty much 
+everyone can accomplish in like 5 minutes), I realized that this is the 
+tiniest non-OISC Turing-complete VM I have ever dealt with, which in turn 
+brought a crazy idea to my mind: why not emulate it on the HP 12C?
+
+The actual task turned out not as trivial as it sounded. First, I had to
+assess how much memory I had at my disposal. Realistically, 10 (host) 
+registers at most, which needed to be split between the program and the data 
+memory. Ultimately, I decided to allocate five registers for the program and 
+five for data. Five registers for the program can contain five steps each 
+(taking 10 digits), which dictated the maximum program length of 25 steps 
+(comparable to the 21 in the original paper version) and the two-digit 
+instruction format: instr = opcode * 25 + opreg, where opreg can either be a 
+register (&quot;paper&quot; register number minus 1) or a step number (1 to 24). The 
+five data registers, on the other hand, are plain host registers that can 
+hold arbitrary integers and be read or written by the program. Of course, 
+the only way of accessing either of those would be indirect, so I really 
+could only afford 85 (host) program steps at most to implement this emulator 
+for the main registers R0 to R8 and additionally RFV to remain free.
+
+Then, I needed to figure out how to decode the packed instructions and
+decrease the amount of conditionals when executing them. I won&#x27;t go over the 
+details of the program format and the VM implementation itself here, but 
+you, as usual, may read all that in my 12C document ([1]) under the 
+&quot;KHCEmu12&quot; section. However, I can&#x27;t stress enough how important it was to 
+properly debug the instruction decoding part and the indirect addressing 
+bits, considering all Rn pre-increments and post-decrements and whatnot. 
+This is something that you won&#x27;t see in any Python-based emulator. Also, to 
+decrease the amount of conditionals, I combined the increment and decrement 
+instructions into a single formula, given that the opcode is 1 for 
+incerement is 2 for decrement: regs[opreg] += 3 - opcode * 2. Maybe sticking 
+to four conditionals instead of three might yield faster code, but then I 
+might not be able to stay within the 85-step limit. The actual KHCEmu12 
+program turned out to be 80 steps long, by the way.
+
+Now, is there any practical use we could get out of this? For the masses, not
+much: even a simple canonical addition program for KHC runs for about 71 
+seconds when emulated on the original 12C and trying to add 5 and 8. 
+However, the real value here is that it does work and does indeed produce 
+the correct results. On some forums, I had seen some nonsense statements 
+that HP 12C &quot;isn&#x27;t Turing-complete&quot;. Well, what I just did proves the 
+opposite: not only is it Turing-complete by itself, but it is also capable 
+of running Turing-complete VMs! Not to mention that, just like the KHC 
+itself was an educational tool for the children to learn elementary 
+programming concepts, writing KHCEmu12 was a way for me to learn advanced 
+programming concepts on the 12C, confirming once again how damn capable of a 
+machine this is despite all its known quirks and limitations.
+
+And this, my friends, is how the two topics I covered throughout the previous
+weeks finally have met at one point. Of course, I&#x27;m not going to abandon 
+them both anytime soon, but for the next month or so, I want to switch my 
+phlog to something completely different. Something so minimalistic that it 
+doesn&#x27;t involve any electronics whatsoever, yet it cannot be truly mastered 
+in a day, a week or a month. Yet another journey is ahead of me, and I feel 
+like being ready to walk it.
+
+--- Luxferre ---
+
+[1]: gopher://hoi.st:70/0/docs/own/hp-12c-soft.txt
+</pre>]]></description>
+</item>
 </channel></rss>
