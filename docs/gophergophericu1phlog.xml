@@ -7632,4 +7632,96 @@ arrangement[1], but it works for me at the present time.
 [1](gopher://gopher.icu/I/images/battlestation.jpg)
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Modularity.md</link>
+<title>Modularity                                                 2025-06-03</title>
+<description><![CDATA[<pre>
+# Modularity
+
+It strikes me that the ever increasing drive toward miniaturization
+and integration of chips and circuitry has lead to an enormous
+current and future waste problem.
+
+The positive is that they are smaller, lighter to carry and are more
+power efficient. The trade off is that they are tomorrows land fill,
+as they are not upgradeable or repairable. 
+
+Even if physically possible, the expertise needed to do the job would
+far outweigh the cost of replacement. More often than not they expire
+due to the iterative changes in software API&#x27;s and the end of
+manufacturer firmware upgrades to keep those devices functional.
+When they do physically break you probably lose the functionality of
+several items in one swoop. For example, your phone may double as
+your watch, calendar, camera, audio player and computer...
+
+Modularity of functionality and modularity of componentry gives you
+some freedom to choose individual items which can be repaired or
+updated only when that specific item or component requires it.
+
+A phone with a glued in battery vs one with a user replaceable
+battery. A computer with replaceable RAM, CPU, graphics or sound
+card. A separate wrist watch, MP3 player or camera. 
+
+Items designed and made for a specific task are usually much better
+at it and much better quality. The UNIX philosophy of doing one thing
+well is a universal truth.
+
+I still have one or two AT/ATX motherboards where every function,
+apart from maybe serial/parallel ports, is provided by individual
+daughter cards (AGP, PCI, ISA). If one component died or became
+outdated you could replace it with another, up to a point. 
+
+A significant investment in a piece of electronics you would expect
+to have around 10 years service from and repair it should it break.
+
+
+## Hardware choices 
+
+My daily driver computer is a second hand HP T620 (16Gb SSD, 4Gb
+RAM), both RAM and SSD are user replaceable. It consumes just 15w
+which compared to an old ATX is very little. My conscience rests
+easier buying used items, I had nothing to do with driving the
+marketing forces which caused them to be produced. With me it has a
+second life and I&#x27;m very happy with its performance. I am already
+considering getting another, or the later T630, as a backup system in
+case this one should break and I&#x27;m unable to fix it.
+
+For portable work I have a Lenovo Thinkpad X61s, which was very
+generously given to me, with a recently replaced after-market
+battery. Thankfully the quality and appreciation for these laptops
+has ensured parts are still available for them.  I love the square
+screen format and classic IBM build quality. It&#x27;s fast enough and I
+enjoy using it when I have occasion to.
+
+My phone is a Nokia E72. I have maybe 3 spare batteries and a spare
+case and keyboard (yes it has a keyboard!). I broke the screen a
+couple of years ago when it fell off my dashboard. I bought one for
+spares off eBay that turned out to be in better physical condition
+than my own so I swapped the internals from my original. You just
+can&#x27;t do that with a modern phone. 
+
+I use it primarily as an MP3 player and for text messaging (remember
+SMS?) as I don&#x27;t use any of the modern messenger services. I also use
+it occasionally as a phone and for satellite navigation.
+
+For taking photos I have a compact Panasonic Lumix TZ-18 and for
+anything more serious a Nikon D40X along with a couple of lenses to
+cover most situations.
+
+
+## There&#x27;s no excuse
+
+It&#x27;s a pity that all our developed engineering ability has been used
+primarily to increase profitability and not product quality and
+longevity. There is absolutely no excuse, we can make products to
+last decades, modularly upgradeable and repairable, but this doesn&#x27;t
+make manufacturers and shareholders money.
+
+My love for old hardware is not merely nostalgia. These dinosaurs of
+the digital age are infinitely more sustainable than your iThing,
+googlebox or fruitySBC.
+
+</pre>]]></description>
+</item>
 </channel></rss>
