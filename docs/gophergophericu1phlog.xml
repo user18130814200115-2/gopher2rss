@@ -7724,4 +7724,65 @@ googlebox or fruitySBC.
 
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/Make-your-own-tools.md</link>
+<title>Make your own tools                                        2025-06-09</title>
+<description><![CDATA[<pre>
+# Make your own tools
+
+It&#x27;s convenient to download some package and all its dependencies for
+some basic functionality. Rarely do you use or need many of the
+features of the software and even less of the included libraries and
+dependencies.
+
+Since starting in amateur radio I initially avoided logging software
+and had been keeping only a paper log. More recently I started
+manually adding entries to a tab separated file so that I could see
+if I had spoken to some call sign or other before and on what band
+etc.
+
+There are many packages and websites you can sign up to that provide
+this functionality, but it&#x27;s unlikely I would use half of it. I just
+need to log my calls and a tsv file, which I can search with standard
+text processing tools, is sufficient.
+
+Only you can truly understand what you need from a piece of software
+and once you understand what you need, often you realize it&#x27;s
+actually not that much.
+
+
+## How it works
+
+&gt; $ LF DL4ST
+&gt; 2025-06-07 19:18:11     DL4ST   10.120  30m     CW      579     4..
+
+The above shows all contacts for DL4ST.
+
+&gt; $ LG G0GSY
+
+The above will add the call to the logfile and open it with your
+$EDITOR falling back to vi if it&#x27;s not defined.
+
+Defaults for band and mode are set using environment variables,
+LB_BAND and LB_MODE in the logbook.sh[0] file, which also contains
+the shell functions that make it work. I currently have the variables
+set to 40m and CW respectively, but you can export them again to
+dynamically change them.
+
+&gt; $ export LB_MODE=SSB
+
+I include logbook.sh in my .kshrc file.
+
+When you add a contact the frequency is pre-filled based on the band
+of operation like so 7.### for 40m allowing you to do a simple search
+and replace with the exact frequency.
+
+It will probably evolve over time, but for now it covers the basics
+of my needs.
+
+
+[0](gopher://gopher.icu/0/files/logbook.sh)
+</pre>]]></description>
+</item>
 </channel></rss>
