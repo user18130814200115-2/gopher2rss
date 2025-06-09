@@ -16259,4 +16259,533 @@ like being ready to walk it.
 [1]: gopher://hoi.st:70/0/docs/own/hp-12c-soft.txt
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-06-09-addition-addiction.txt</link>
+<title>(2025-06-09) Addition addiction</title>
+<description><![CDATA[<pre>
+(2025-06-09) Addition addiction
+-------------------------------
+Well, the summer is here, and it&#x27;s time to take a rest from all those
+electronics (except probably the one I&#x27;m typing this post on). To be honest, 
+I had always wanted some kind of a purely mechanical adding machine (any 
+kind will do but smaller and lighter are preferred) but never got a chance 
+to obtain one. In case you didn&#x27;t know, an adding machine is a type of 
+calculator that bases all its operations on maintaining a running total. 
+Yeah, that&#x27;s it. I had watched a lot of videos on this topic (including but 
+not limited to all of them from Chris Staecker and Stephen Freeborn, most 
+from Jaap Scherphuis and some from Jens Puhle) and am pretty amazed at the 
+amount of models or even different types of adding machines and mechanical 
+calculators as a whole that the industry and individual inventors had come 
+up with throughout last several centuries. Just to recap from memory: 
+Schickard&#x27;s design, Pascaline, Troncet (aka Addiators), Leibniz wheels and 
+the original Arithmometer based on them, Odhner&#x27;s pinwheel design, co-axial 
+Pascalines, Comptometers, Webb-type column adders, Adix-type column 
+adders... And that surely is not all. This industry was so vast and diverse 
+it&#x27;s hard to even find the full list of all of the different device types, 
+let alone brands, yet all those essentially served a single purpose: add 
+(and sometimes subtract) decimal numbers. If they had any additional 
+features advertised as those for multiplication and division, those features 
+just helped automating the same addition and subtraction, nothing more. Some 
+of them even went beyond decimal, like the Troncet-based Hex Adder or Odhner 
+LuSiD for calculating old British currency. What&#x27;s even more remarkable is 
+that, unlike slide rules or sectors which were purely analogue, adding 
+machines of any type were purely digital. That is, they all worked with 
+discrete digits and always returned the exact result as opposed to an 
+approximation given by a slide rule. You don&#x27;t count money with a slide rule 
+if you want to be accurate down to a cent, you better have an adding 
+machine. Or... at the very least...
+
+OK. I&#x27;m getting a bit ahead of the train. Let&#x27;s first talk about the addition
+operation itself. It has been known to humankind for many millenia because 
+people always needed to count things in their life (even cats and dogs can 
+count to four because they sometimes need it too), but what changed the 
+situation drastically is when the humankind discovered _positional_ ways to 
+represent numbers, which evolved into the numeric systems we know and use 
+today, like decimal, hexadecimal, octal, binary etc. How do we know whether 
+we need to add 1 or 10? As the zero represents nothing (and the concept of 
+zero didn&#x27;t appear as early as the other digits btw), we can only 
+distinguish these two numbers by the _position_ of 1. So, in the second 
+case, we still just add 1 but to the digit at the second-to-last position 
+instead of the last one. Of course all these things are trivial for a modern 
+person, but finally making addition positional had been a major historical 
+breakthrough that led to the appearance of the simplest possible calculating 
+device called the counting board, which, after streamlining the concept, 
+evolved into an abacus. See, the amount of objects (marbles, beans, coins 
+etc) in a single counting board tray could be arbitrary and, although the 
+rules of &quot;trading&quot; for the higher-position tray existed, nothing enforced 
+them which could lead to some confusion and ambiguity. By fixing the maximum 
+amount of objects (beads on a rod or marbles in a groove) allowed to exist 
+in a single postion, the abacus removed this ambiguity and solidified the 
+basics of modern positional addition, especially with the notion of carry 
+and a strict rule on when it occurs.
+
+So, how does an adding machine of any type differ from an abacus? Well,
+besides the internal representation of numbers and the method of operation 
+(sliders, cranks, keys etc), the only real difference is that adding 
+machines offered a mechanism for automatic (or sometimes semi-automatic) 
+carry. That&#x27;s what usually made them faster but that&#x27;s what also broke the 
+most often (unless it&#x27;s a semi-auto carry like in the Troncet-type machines 
+that have almost nothing to break) because that usually involved passing the 
+torque to the next wheel to the left, and if several carries in a row were 
+required (like 9999 + 7)... You get the idea. Chain-based (and there even 
+were ribbon-based) machines suffered from multi-carries the most. Some of 
+them even printed phrases like &quot;do not playfully add 999999 and 1 because 
+this will cause stress to the mechanism&quot; in their instruction manuals. Even 
+the machines specifically designed to handle multi-carries well, like 
+Comptometers, couldn&#x27;t handle them properly in the earliest revisions if 
+several keys had been pressed at a time (which later, when this issue was 
+fixed, became a killer feature of this machine class). So, if it ain&#x27;t a 
+Troncet or a two-three-wheel column adder, the question &quot;how long can this 
+machine carry on carrying without being broken?&quot; looked like a real dilemma, 
+considering how much non-Troncet machines usually cost in the past. And, of 
+course, the more moving parts it had, the more potential points of failure 
+were awaiting the user. In an ideal design, the amount of moving parts would 
+be less than or equal to the amount of different digits you can enter in 
+each position times the amount of positions. Which inevitably brings us back 
+to...
+
+...the abacus. The primordial positional adder and subtractor. Of course,
+with an abacus, you are the one who does the carries, but other than that, 
+it&#x27;s fundamentally the same. I mean, whatever can be done on a Troncet-type 
+machine can be done on an abacus (in fact, one may consider this design an 
+attempt to create an ultraportable abacus). Whatever can be done on a 
+Pascaline, including co-axial ones, can be done on an abacus. Whatever can 
+be done on a Comptometer can be done on an abacus, although usually slower. 
+The only real inconvenience is that the abacus can only be used when firmly 
+placed on a level horizontal surface, meaning you can&#x27;t use it on the go or 
+something (although, again, no one prevents you from creating one with 
+friction-held beads etc). But this limitation, if you are really interested 
+in it, can be compensated for with another thing that I&#x27;m going to mention 
+closer to the end of this post.
+
+## Level 0: Represent numbers ##
+
+Now, what&#x27;s the optimal amount of beads per rod for us to be able to
+represent any decimal digit (from 0 to 9)? Of course, the number theory says 
+the _minimum_ amount is 4, but that would require us to isolate the position 
+of each individual bead, effectively turning the abacus into binary, which 
+is not very mental-friendly. So, the optimal amount needs to be higher than 
+that. And it turns out the Japanese figured it out perfectly with the use of 
+the bi-quinary system on their native abacus (which is called soroban): 5 
+beads per rod with the higher bead moving in an isolated position (this is 
+also called the 1/4 configuration) and the &quot;answer bar&quot; aka &quot;reckoning bar&quot; 
+being in between the upper and lower beads (so that adding 5 is moving a 
+5-bead down but adding 1 is moving a 1-bead up). I guess five is the 
+practically feasible minimum of moving parts per digit, anything less than 
+that would be too inconvenient to use. The 1/4 configuration imposes a 
+specific set of rules for doing addition and subtraction on any individual 
+rod, and these rules actually sound more complicated than they really are. 
+To really grasp them though, you first need to know the concept of 
+complements.
+
+## Level 1: Complement, add and subtract ##
+
+Complements are yet another thing an abacus has in common with adding
+machines. We say that n-complement of a digit d is n-d, in other words, the 
+sum of a digit and its n-complement always equals to n. For instance, 7 is 
+10-complement of 3, and 1 is 5-complement of 4. Adding machines usually use 
+9-complements for subtraction (due to the fact that a - b = (10^(|log b| + 
+1) - b) + a if we ignore the last carry, and this first term consists of all 
+9-complements of b with extra 1 added). The 10-bead and 9-bead abaci only 
+use 10-complements. The soroban, on the other hand, uses both 5-complements 
+and 10-complements in different situations for both addition and 
+subtraction, but again, it&#x27;s much easier in practice than it sounds. See for 
+yourselves. Here are the four rules for single digit addition on the soroban:
+
+1. Are there enough beads to add the digit directly (e.g. 1 + 7)? If so, do
+this. If not, go to rule 2.
+2. Is the digit you&#x27;re adding less than or equal to 5 (e.g. 2 + 4)? If so,
+subtract its 5-complement in the lower part and add 5 in the upper part 
+(toggle the 5-bead, adding 1 to the rod to the left if necessary). Otherwise 
+(or if you cannot subtract the 5-complement), go to rule 3.
+3. Are there enough beads in the lower part to subtract the 10-complement
+(e.g. 3 + 8)? If so, do this and add 1 to the rod to the left. Otherwise, go 
+to rule 4.
+4. If no previous conditions apply (e.g. 6 + 7), perform a &quot;swipe-up&quot; motion
+to subtract the 10-complement: grab the digit by the 5-bead and the 
+remaining beads in the lower position (e.g. for 7 grab the 5-bead and the 
+two lower beads from the part away from the reckoning bar), and move them 
+all up at the same time. Then just add 1 to the rod to the left.
+
+For subtraction, all bead motion and carry direction is reversed but the
+principle is fundamentally the same:
+
+1. Are there enough beads to subtract the digit directly (e.g. 7 - 1)? If so,
+do this. If not, go to rule 2.
+2. Is the digit you&#x27;re subtracting less than or equal to 5 (e.g. 6 - 2)? If
+so, add its 5-complement in the lower part and subtract 5 in the upper part 
+(toggle the 5-bead, subtracting 1 from the rod to the left if necessary). 
+Otherwise (or if you cannot add the 5-complement), go to rule 3.
+3. Are there enough beads in the lower part to add the 10-complement (e.g. 11
+- 8)? If so, do this and subtract 1 from the rod to the left. Otherwise, go 
+to rule 4.
+4. If no previous conditions apply (e.g. 13 - 7), perform a &quot;swipe-down&quot;
+motion to add the 10-complement: grab the digit by the 5-bead and the 
+remaining beads in the lower position (e.g. for 7 grab the 5-bead and the 
+two lower beads from the part near the reckoning bar), and move them all 
+down at the same time. Then just subtract 1 from the rod to the left.
+
+That&#x27;s basically everything you need to remember. Multi-digit
+addition/subtraction is just a cascade of single digit 
+additions/subtractions. All operations are performed left to right and 
+carries are propagated as usual, although it&#x27;s impossible to carry/borrow 
+more than 1 at a time here. With even a little bit of practice, these rules 
+will become your second nature and you won&#x27;t even think about the individual 
+rules, just see and apply the correct one in every possible case. Getting 
+these basic operations to speed brings a real fun factor and also opens the 
+door to more advanced stuff: multiplication, division, square roots, natural 
+logarithms and exponents, even trigonometry. I don&#x27;t think it will surprise 
+anyone that most of this advanced stuff is pretty much duplicating the 
+techniques used with pen and paper or with adding machines, although my 
+personal preference is a mix and match: for instance, I prefer paper-like 
+multiplication (with my own simplifications, effectively a Trachtenberg 
+method but in a different order) but machine-like division and square roots. 
+Regardless of the method, all the following techniques boil down to simple 
+additions and subtractions for both the abacus and any kind of adding 
+machine.
+
+Just as a fun exercise, try adding 98765432 nine times on a soroban. This
+puts you through all possible situations you can encounter in real life 
+addition problems. And you&#x27;ll see why it&#x27;s called &quot;crazy eights&quot; (if you 
+don&#x27;t see them, then you&#x27;ve done something wrong). I really encourage you to 
+find more training problems like this.
+
+## Level 2: Multiply and divide ##
+
+Once you&#x27;ve mastered addition and subtraction, you can go ahead. For
+multiplication, I personally prefer treating both operands as integers and 
+dealing with the decimal point later. If your soroban is long enough, you 
+can cache the multiplier on the right hand side, but that&#x27;s optional. All 
+you need to memorize for it is your usual digit-by-digit times table. The 
+algorithm is as follows:
+
+1. Start with the leftmost position on the abacus as the current position.
+2. Enter the product of the first digit of the multiplicand and the first
+digit of the multiplier at the current position. Treat all products as 
+2-digit numbers, e.g. 2 * 3 = 06.
+3. Shift one position to the right and add the product of the second digit of
+the multiplicand and the first digit of the multiplier.
+4. Repeat the process of shifting and adding until all digits of the
+multiplicand are multiplied by the first digit of the multiplier.
+5. For every remaining digit of the multiplier, increase the starting
+position (second, third, fourth etc) and repeat steps 2 to 4 until all 
+digits are processed.
+6. Adjust the decimal point if necessary (the amount of decimals in the
+result is the sum of the decimal amounts in the operands).
+
+Let&#x27;s see an example, 1337 * 53:
+
+- Enter 1 * 5 = 05 into the leftmost position.
+- Add 3 * 5 = 15 into the shifted position, the result register shows 065.
+- Add 3 * 5 = 15 into another shifted position, the result shows 0665.
+- Add 7 * 5 = 35 into another shifted position, the result shows 06685.
+- We&#x27;ve processed the first multiplier digit, now let&#x27;s process another one.
+- Add 1 * 3 = 03 into the second leftmost position, the result shows 06985.
+- Add 3 * 3 = 09 into the shifted position, the result shows 07075.
+- Add 3 * 3 = 09 into another shifted position, the result shows 07084.
+- Add 7 * 3 = 21 into another shifted position, the result shows 070861.
+- All digits of the multiplier have been processed, stop the algorithm.
+
+Indeed, 1337 * 53 = 70861.
+
+For division, lots of folks (especially on the soroban) try mimicking what
+essentially is the &quot;standard&quot; long division on paper, but I find that 
+extremely inconvenient. The approach used with adding machines (especially 
+the pinwheel ones) is much more reliable for me. Again, this assumes that 
+the decimal point can be figured out later on. The algorithm is as follows:
+
+1. Enter the dividend starting from the third leftmost rod.
+2. Start subtracting the divisor from the dividend using the least amount of
+digits possible, keeping track of the amount of times you subtract it in the 
+leftmost rod.
+3. When you cannot subtract the divisor anymore, shift one position to the
+right for both the operation register and the tracking rod.
+4. Repeat steps 2 and 3 until you get no remainder or the desired accuracy of
+the result. The result will be formed in the tracking rods on the left side 
+of the soroban.
+5. Adjust the decimal point of the result based on the operand size if
+necessary.
+
+Let&#x27;s see an example, 512 / 32:
+
+- Enter 512 starting from the third rod.
+- We cannot subtract 32 from 5, let&#x27;s use the next digit. Can we subtract 32
+from 51? Yes.
+- Start subtracting 32 from 51, keeping track of the subtraction count in the
+first rod.
+- We could subtract 32 from 51 one time, with the remainder of 19.
+- Shift one position to the right, we have 192. Can we subtract 32 from 192?
+Yes.
+- Start subtracting 32 from 192, keeping track of the subtraction count in
+the second rod.
+- We could subtract 32 from 196 six times, with no remainder left.
+- Our result can be read in the first tracking rods, 16.
+
+Indeed, 512 / 32 = 16.
+
+Of course, when dividing by a single-digit number, you can use the times
+table to shortcut the process of repeated subtraction by estimating the 
+closest product less than the remainder, and then directly entering the 
+resulting digit into the tracking rod.
+
+As you can see from these algorithms, multiplication and division really are
+nothing more than series of shifted additions and subtractions. On the 
+fundamental level, computers do the same, just in binary. But we can go even 
+deeper.
+
+## Level 3: Find square roots ##
+
+I know that it might sound absurd, but the very first electronic calculator I
+got in my life as a child (I only remember the OEM brand, Namhwa, and the 
+fact it had a flip cover for the keyboard) didn&#x27;t even have a square root 
+key (there was a stupid beep toggle key instead). When I finally got one 
+with this function several years later (again, I only remember that it was a 
+Taksun and had a flip cover too), it still seemed pretty arcane to me. After 
+all, this is the most common way to obtain irrational numbers, something 
+that can&#x27;t even be expressed as a fraction! I even came up with something 
+resembling the Heron&#x27;s method on my own, just to get square roots on my 
+crippled Namhwa. But little did I know at that time that there was a way to 
+calculate them even on the granny&#x27;s abacus we had in the closet.
+
+To be honest, ALL square root methods described on dedicated soroban
+resources had left me EXTREMELY confused. I just couldn&#x27;t follow them and 
+left with the frustration of not understanding what it was: whether the 
+algorithm descriptions had been missing some crucial details or it was just 
+me who couldn&#x27;t see something directly on the surface. Not just the texts, 
+but the videos on this topic are equally confusing. And then I realized I 
+had been looking in the wrong place. Just like with division, the real 
+answer here lies with how square roots are done with adding machines. With 
+some interesting tweaks, of course.
+
+It all started with the Toepler&#x27;s algorithm. It was specifically designed for
+mechanical pinwheel calculators of Odhner and Leibniz systems and 
+essentially is based on the fact that the sum of N successive odd numbers 
+(1,3,5,7...) is equal to N-squared. The major inconvenience of this 
+algorithm is that, after you have done all possible subtractions in a step, 
+you have to multiply the intermediate result by 20 and then re-enter it for 
+further subtraction. This still is not a problem for pinwheel machines 
+because, instead of multiplying the result by 20, you can just add 1 to the 
+intermediate input lever position, then shift once and you&#x27;re good to go, 
+however, for any other machine type that doesn&#x27;t store intermediate input, I 
+think this method becomes way too cumbersome. But then came Friden and 
+modified this procedure in a way that not only is friendly to their 
+electromechanical beasts, but also, all of a sudden, to the abacus.
+
+Enter the &quot;fives method&quot; that turns the odd numbers into the odd multiples of
+5 and, most importantly, multiplying by 20 into multiplying by 100, which is 
+just a 2-position shift. It is, in my opinion, the most straightforward way 
+of obtaining the square root on any non-lever-driven mechanical device that 
+can subtract: from a soroban to a Marchant Silent Speed. Of course, the 
+decimal point can be dealt with later. The algorithm follows.
+
+1. Multiply the argument by 5 and enter the result starting from the third
+leftmost rod, keeping the even number of digits in the integer part (e.g. if 
+the result was 858.05, you enter 085805 into the soroban).
+2. Split the entered number into _two-digit_ groups. The rods to the left of
+the number, starting from the leftmost one, will be your result tracking 
+rods.
+3. Start subtracting 5, 15, 25, 35 etc from the first group, keeping track of
+these subtractions in the first tracking rod (the leftmost rod). The amount 
+of subtractions goes to the result R.
+4. Whenever you cannot subtract anymore, bring down the next 2-digit group
+(along with whatever remained of the previous groups) and start subtracting 
+R * 100 + odd multiples of 5 (R*100 + 5, R*100 + 15, R*100 + 25, R*100 + 35 
+etc), keeping track on the corresponding result rod. If you cannot do even a 
+single subtraction, don&#x27;t forget to record 0 into the result.
+5. Repeat step 4 (using the entire result value R for the next iteration)
+until you&#x27;re out of rods or have no remainder or have reached the desired 
+accuracy.
+   * If you are out of rods before reaching the desired accuracy, you can
+move the intermediate state to the left (by the *even* number of rods) and 
+continue further, as long as you have it separated from the result by at 
+least one empty rod.
+   * If you don&#x27;t have enough rods to continue with full accuracy, you can
+either transfer the result onto paper and start from the left again or 
+continue with reduced accuracy by imagining the remaining rods with shifted 
+positions.
+6. Adjust the decimal point of the result if necessary.
+
+OK, let&#x27;s see an example: square root of 171.61.
+
+- First, we multiply it by 5 and get 858.05. We have an odd number of digits,
+so we need to enter 085805 into the soroban starting from the third 
+position. The number forms three two-digit groups.
+- The first group is 08. We can only subtract 05 from it and can&#x27;t subtract
+15 anymore. Record 1 in the first result rod. And the remainder (in the 
+first group) is 03.
+- Bring down the second group and we have 0358. Now, since the first result
+digit is 1, we need to subtract 105, 115, 125 etc. In fact, we could only 
+subtract these three numbers before running into the remainder of 13. Record 
+3 in the second result rod.
+- Bring down the third group and we have 1305. We also have 13 in the result,
+so the first number to subtract is 1305 as well. Which leaves no remainder, 
+that means that the final result rod is only populated with 1 and the 
+complete result 131 can be read on the left of the soroban.
+- Now, we see that 131 is the square root of 17161 but we also need to adjust
+the decimal point. Two places in the square mean one place in the root, so 
+the true result is 13.1.
+
+Indeed, sqrt(171.61) = 13.1.
+
+I still stand firmly on my position that this method is much easier than the
+Kojima&#x27;s method, the Kato&#x27;s method or pretty much any other seen online. It 
+only requires a single multiplication in the beginning and then, just like 
+division, boils down to repeated subtractions, and the numbers you&#x27;re 
+subtracting are always multiples of 5 which makes the task even easier. 
+Again, maybe I&#x27;m missing something big, but why hasn&#x27;t this method gotten 
+the popularity it deserves?
+
+## Level 4: Transcend ##
+
+Once you know how to do all four basic arithmetic operations and the square
+root, you can calculate any polynomial (converting it into the Horner form 
+first, of course) and any transcendental function with a known polynomial or 
+other similar approximation. This includes all trigonometric functions, 
+exponents, logarithms and so on. Of course, the methods for computing them 
+on an abacus are not unique to the abacus or even mechanical adding 
+machines, they can be used pretty much on any mechanical or electronic 
+device that doesn&#x27;t provide such functions natively. Taylor series, Minimax, 
+Newton&#x27;s method, Lagrange interpolation... You name it. However, those 
+methods can and do differ by the amount of elementary operations (additions 
+and subtractions) required to be performed to achieve any sufficient 
+accuracy, and yes, this difference is most noticeable on an abacus where 
+everything is manual. So, I guess, transcendental algorithms deserve a whole 
+separate post in this phlog. Don&#x27;t worry, I have a lot of interesting stuff 
+to tell ya about them. In this section, however, I&#x27;d like to draw some 
+attention to one thing: sometimes, when you compute those functions, you run 
+into negative numbers. How do we even represent them on a soroban, and, more 
+importantly, how to continue the chain of operations like nothing happened? 
+That&#x27;s what I&#x27;d like to discuss now, because that&#x27;s where the machine and 
+human approaches totally differ.
+
+Well, we could operate with all nines before the number like adding machines
+do, that just is inconvenient and error-prone on an abacus. So, if we know 
+the answer is going to be negative, what we do instead is set the 1 to the 
+rod before the number we&#x27;re subtracting from and then doing the &quot;normal&quot; 
+subtraction. However, if we need to read the negative result right away, we 
+read the digits from the beads that are NOT near the reckoning bar (in fact, 
+they form the 9-complements), and then add 1. From that point onwards 
+though, we can continue additions and subtractions, but whenever we return 
+to the positive side, we must subtract the highest bead we had added in the 
+beginning. Simple enough. But what if we got a negative intermediate result 
+and need to multiply it by something (positive)? That&#x27;s where things get 
+tricky: we still can use the negative number in the complementary form, but 
+we need to subtract the positive factor from the leftmost digits of the 
+result (and borrow another high 1 if we cannot). The amount of those 
+leftmost digits is the same as the amount of significant digits in the 
+factor. By the way, we can multiply negative by negative in the 
+complementary forms too, just remember to subtract _both_ operands (still in 
+the complementary form) from the leftmost result digits afterwards.
+
+For negative-by-positive division, you pre-add the divisor-1 to the leftmost
+dividend digits accordingly. What to do with a remainder? Quoting: &quot;If 
+there&#x27;s a remainder in the final answer, convert the positive remainder to 
+negative by adding 1 to the quotient and subtracting the divisor from the 
+remainder.&quot; But I hope this won&#x27;t be needed as much often, to be honest.
+
+Let&#x27;s take a look at one of my favorite example problems:
+
+1. Divide 45 by 90. Let&#x27;s name the result x = 0.5.
+2. Square x. Let&#x27;s name it y = x * x = 0.25.
+3. Multiply y by 0.07 and then subtract 0.64.
+4. Multiply the result by y and then add 1.57.
+5. Finally, multiply the result by x.
+
+So, first we multiply y = 0.25 by 0.07 according to the multiplication
+procedure described above. The result is 0.0175. Then, we subtract 0.64 from 
+0.0175 and get into the negative zone: the true result is -0.6225 (as we can 
+see by the complements + 1) but the buffered complementary result shown on 
+the soroban is 0.3775. And that&#x27;s normal. Now, we multiply this 
+complementary result by 0.25 and get 0.094375. However, as we are in the 
+negative zone, we also need to subtract the multiplier (0.25) from the 
+result&#x27;s 0.09 (two significant digits), which gives us 0.844375 on the 
+soroban. And now, we add 1.57 to this and return to the positive zone, 
+getting 2.414375. Now, we need to remember to subtract one bead from the 
+highest position once we&#x27;re in the positive zone again, getting 1.414375. On 
+the last step, we multiply this result by the initial x = 0.5, getting our 
+final result 0.7071875. 
+
+Now, if you have noticed this value we&#x27;ve got is close to half of the square
+root of 2, that&#x27;s not a coincidence. In fact, it&#x27;s about 0.000081 more than 
+half of the square root of 2. Why? Because the above problem is in fact an 
+algorithm to calculate a sine approximation (with the maximum deviation of 
+0.000239)! And yes, you can even plug degrees into it, as demonstrated here, 
+we calculate sin(45 deg). That&#x27;s why this is my favorite low-tech 
+calculation problem. And that&#x27;s why understanding negative numbers on a 
+soroban helps with computing transcendentals. See how everything suddenly 
+started making perfect sense?
+
+## Level 5: Encrypt ##
+
+Now, THIS may sound absolutely bonkers, but an abacus looks like a perfect
+helper device for one-time pad encryption. You see, unlike adding machines 
+where the carry is absolutely hardwired into the mechanism, the manual 
+carrying process on an abacus can be seen as an advantage: when required, 
+you can choose NOT to do it. And if you choose NOT to do it while obeying 
+the rest of the addition/subtraction rules, what you&#x27;re left with is pure 
+digit-wise modulo 10 arithmetic, exactly the kind used by the good old OTP. 
+Of course, I recommend practicing it only when you become absolutely fluent 
+in normal addition and subtraction, otherwise it&#x27;s quite easy to get 
+confused. The concept itself, however, is pretty straightforward. You can 
+use the classic scheme (add the keystream to encrypt, subtract to decrypt) 
+or the Diana-like (I call it XOR-like) symmetric scheme (subtract the 
+message FROM the keystream for both encryption and decryption), in which 
+case you only need to memorise the modulo 10 subtraction rules. A 
+well-trained operator can subtract 98765 from 43210 digit-wise faster than I 
+can enter both values into the program. The result is 55555, in case you 
+wonder. A **really** well-trained operator though can do the same 
+subtraction mentally. Which brings us to...
+
+## Level 6: Visualize ##
+
+This is the endgame. This is why all of it is worth it. This is why millions
+of Japanese kids are still being taught soroban to this very day. This is 
+what I have mentioned in the beginning: the abacus as a physical object 
+definitely does have some limits on its usability, but those limits 
+disappear when you always carry it inside your mind. For me personally, I&#x27;m 
+not even sure that I can ever reach this level, but I promise that I&#x27;ll do 
+my best. For now I know that just being able to fully visualize a working 
+13-rod soroban inside your head, let alone do any computations on it, 
+requires an enormous amount of practice (this is also why it&#x27;s better to be 
+done at a young age). Effectively, this kind of practice makes you think 
+about numbers in a different way: you&#x27;ll no longer need any kind of an 
+adding machine because you&#x27;ll become an adding machine yourself. And this, 
+by the way, requires some constant training. Learning a physical abacus is 
+like learning to ride a bike: once you have it in your muscle memory, it&#x27;s 
+almost impossible to forget. Switching to a mental abacus though is a 
+continuous effort even when you become proficient at it. Unlike a physical 
+soroban that&#x27;s impossible to break under normal operation, keeping your mind 
+sharp takes a lifelong commitment.
+
+Well, if all this got you interested, let me give you some final tips.
+Climbing up to any of these levels does take time, so don&#x27;t expect to 
+quickly become proficient in any advanced stuff before your brain is firmly 
+holding the fundamentals. Practice addition and subtraction for as long as 
+you need to get as fast with an abacus as possible, ideally faster than with 
+a Troncet-type machine (Addiator etc), without mistakes or sudden slowdowns, 
+and only then move on to multiplication, division and roots. Addition and 
+subtraction should become your numeric bicycle that you need to learn to 
+ride steadily. Eventually, you&#x27;ll find that, at least for these two 
+operations, there&#x27;s no point in taking an electronic calculator at all as 
+you enter the operands just as quickly but can see the result immediately 
+after entering the last one. When this realization clicks in you, it is the 
+definite sign that you can move further. Another important tip is: don&#x27;t 
+overthink. In particular, don&#x27;t try reimagining numbers as anything but what 
+you can see directly in front of you. For instance, the number seven is not 
+the digit 7, it&#x27;s a five-bead down and two one-beads up. I myself often 
+experience temptation to use mental math shortcuts I know for numbers in 
+their traditional representation, but they just will slow you down when 
+working with beads and rods. What&#x27;s entered on the soroban stays on the 
+soroban. Only the eight bead movement rules apply there: four for addition, 
+four for subtraction. In this regard, you really should act like a machine 
+to achieve consistent results: no shortcuts, no exceptions to the rules, no 
+deviation from the algos.
+
+In the next post, we&#x27;ll start getting into some transcendental stuff
+specificaly for the abacus and adding machines. Stay tuned!
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
