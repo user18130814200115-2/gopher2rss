@@ -7785,4 +7785,48 @@ of my needs.
 [0](gopher://gopher.icu/0/files/logbook.sh)
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://gopher.icu/1/phlog/Computing/UMN-gopher-no-more.md</link>
+<title>UMN gopher no more                                         2025-06-16</title>
+<description><![CDATA[<pre>
+# UMN gopher no more
+
+I&#x27;ve been an evangelist for this ancient browser with all its bugs
+and even, unsuccessfully, attempted to get my fixes added to the main
+repo on github.
+
+I won&#x27;t go into details but my patch was basically thrown back at me
+with a bunch of requests for changes I saw no merit in. I refused in
+no uncertain terms and in response any further communication was
+blocked by the repo owner. The owner also appears to have no personal
+interest in fixing any of the reported issues[0].
+
+I&#x27;ve taken some time to think about the situation and the end result
+is that I have consigned UMN gopher to the great bit-bucket in the
+sky. There is no future in it.
+
+
+## Future gophering
+
+I had the idea some time ago for a client-less gopher client.
+Essentially just a filter to de-gopher gopher maps, exposing the
+links so that they can be accessed via my terminal[1], or display the
+content of files.
+
+I have made a very basic filter[2] which seems to do what I need.
+Although I will also need to make a script to handle complete gopher
+URI&#x27;s and request input for type 7 selectors.
+
+Example usage:
+&gt; $ echo &quot;&quot; | nc gopher.icu 70 | ./degopher.awk | less
+
+
+## References
+
+[0](gopher://gopher.icu/0/phlog/Computing/Display-lines-and-UMN-gopher.md)
+[1](gopher://gopher.icu/0/phlog/Computing/Smart-terminal-not-client.md)
+[2](gopher://gopher.icu/0/files/degopher.awk)
+</pre>]]></description>
+</item>
 </channel></rss>
