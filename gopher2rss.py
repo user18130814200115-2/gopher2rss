@@ -96,7 +96,7 @@ def check(url):
 <title>''' + header[0][1:] + '''</title>
 <description><![CDATA[<pre>\n''' + html.escape(contents) + '''</pre>]]></description>
 </item>'''
-                    rss_items += new_item
+                    rss_items = new_item + rss_items
                     printv(new_item)
                 else:
                     new_posts -= 1
