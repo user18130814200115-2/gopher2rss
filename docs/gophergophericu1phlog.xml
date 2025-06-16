@@ -5,6 +5,107 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/UNIX-Primitivism.md</link>
+<title>UNIX Primitivism                                           2025-06-16</title>
+<description><![CDATA[<pre>
+# UNIX Primitivism
+
+I have been whittling away at my computing environment for some time.
+The basic idea being to use only what is required in terms of
+functionality.
+
+This firstly lead to a downscaling from the large resource hungry
+graphical applications to CLI equivalents. They didn&#x27;t replace all of
+the functionality of the originals, but included the functionality I
+actually used.
+
+My window manager too was replaced with ratpoison. I had begun my
+transition to tiling window management under i3wm and now, committed
+to that choice and keyboard centric navigation, ratpoison seemed like
+a natural progression.
+
+Once that was done, and all the associated packages and their
+dependencies were removed, disk space and memory usage were reduced
+quite considerably allowing me to use lower specification hardware.
+
+Then of course I had to consider my own development tool choices. My
+text editor for a long time has been vim and text editing is a core
+process for me. Of all the programs I use this is the one I would
+have most difficulty replacing. Perl had also been my go-to language
+for most of my personal projects.
+
+
+## Programming languages
+
+Programming languages are like toothpaste, especially scripting
+languages. Many varieties and flavours exist, but they largely
+perform the same task. It would be nice to have just one capable
+scripting language and compiled language. Sadly most systems these
+days are a melting pot of whatever has been in vogue over the past
+couple of decades. This makes for an awful lot of dependency baggage.
+
+I have abandoned my use of Perl and instead been restricting myself
+to POSIX shell[0], awk, and trying to write portable code. Which is
+not as easy as it sounds.  Recently I discovered gensub(), which I
+had used quite extensively, was not part of the POSIX awk
+specification. 
+
+
+## Base utilities
+
+The POSIX standard tool set[1] provides the fundamentals for an
+extensible and portable computing environment. I think today people
+are largely oblivious that many of these programs exist and even if
+they are aware of some. They don&#x27;t ever bother to learn their
+capabilities and so never use them.
+
+There are entire books written about some of them, like ed[2] and
+awk[3], that give you a true insight into their capabilities.
+
+
+## Summary
+
+There is a lot of included functionality in any linux/unix base
+system. Adherence to standards like POSIX and the Single UNIX
+Specification[4] make for interoperability and portability.
+
+The Art of UNIX programming[5] paints a wonderful picture of the
+early UNIX community, their methods, philosophy and collaborative
+spirit. I know I am not alone in my quest for a similar environment. 
+
+
+                  ** Make POSIX great again! ** 
+
+
+## References
+
+[0](https://www.grymoire.com/Unix/Sh.html)
+[1](https://en.wikipedia.org/wiki/List_of_POSIX_commands)
+[2](gopher://gopher.icu/9/files/edtut.pdf)
+[3](gopher://gopher.petergarner.net/9/Cybertech/The_AWK_Programming_Language.pdf)
+[4](https://en.wikipedia.org/wiki/Single_UNIX_Specification)
+[5](gopher://port70.de/9/books/unix/taoup.pdf)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Striving.md</link>
+<title>Striving                                                   2025-06-16</title>
+<description><![CDATA[<pre>
+# Striving
+
+
+            There are many paths to the summit.
+
+            There is no one true way.
+
+            The enjoyment is in the journey.
+
+            The steps we take each day.
+
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Money-saving-and-minimalism/Disposables.md</link>
 <title>Disposables                                                2020-11-25</title>
 <description><![CDATA[<pre>
@@ -7390,4 +7491,5 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 </channel></rss>
