@@ -1,0 +1,5406 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>gopher://alexkarle.com/1/phlog</title>
+<link>gopher://alexkarle.com/1/phlog</link>
+
+<item>
+<link>gopher://alexkarle.com/1/phlog/001.txt</link>
+<title>[2021-11-03] Choosing a Phormat</title>
+<description><![CDATA[<pre>
+Choosing a Phormat                         [2021-11-03]
+-------------------------------------------------------
+
+Hello phlog!
+
+For right now, I think I&#x27;m gonna prepend entries onto
+the gophermap for the phlog directory. While half the
+appeal of gopher is that it serves up plaintext as-is,
+I think having the ability to link to othe documents
+might come in handy. So... the menu is the phlog. Is
+that backwards? We&#x27;ll see.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/002.txt</link>
+<title>[2021-11-03] Choosing a Phormat pt. 2</title>
+<description><![CDATA[<pre>
+Choosing a Phormat pt. 2                   [2021-11-03]
+-------------------------------------------------------
+
+And immediately after publishing as a gophermap, I
+realized that the &#x27;----&#x27; heading is being interpreted
+as &quot;remove the &#x27;-------&#x27; file from the file listing.
+So that&#x27;s fun.
+
+Looks like we&#x27;re back to &quot;single text file&quot;. Ain&#x27;t
+nuthin wrong with that I suppose. Just no linking to
+other resources... hmmm. Maybe I should check out a
+different gopher server.
+
+On second thought, the appeal of gopher was that I
+*dont* have to write or learn a new markup flavor...
+yeah plaintext it is!
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/003.txt</link>
+<title>[2021-11-04] Momentum</title>
+<description><![CDATA[<pre>
+Momentum                                   [2021-11-04]
+-------------------------------------------------------
+
+I&#x27;ve been serving _something_ over gopher since February
+2021 [1], but in these past couple days this gopherhole
+has gone from 0 to 100 realll quick.
+
+Once I started putting real gopher-exclusive content
+here, I kept wanting to add more! The latest motivation
+is using gopher as a simple access protocol to a plaintext
+&quot;second brain&quot; (notetaking system).
+
+So, the repo that houses my gopherhole now has a &quot;notes&quot;
+directory, and I wrote a small &quot;notetag&quot; script that
+parses the &quot;^tags:&quot; directive in the files, generates
+a directory-per-tag, symlinks the notes into the dirs,
+and then outputs a gophermap index of the files!
+
+This was a ton of fun, and of course urged me to add my
+next piece of content--a &quot;code&quot; section of the hole to
+share &quot;notetag&quot;, which I&#x27;m unreasonably proud of :)
+
+So there you have it--in 24 hrs we went from phlogless
+to phlog + code + notes... only time will tell if I keep
+up the publishing, but for now I&#x27;m having fun!
+
+[1]: https://git.alexkarle.com/alexkarle.com/commit/cf670de12685a94e7a53f0a126ae77cbf548cf91.html
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/004.txt</link>
+<title>[2021-11-06] Launch Plan</title>
+<description><![CDATA[<pre>
+Launch Plan                                [2021-11-06]
+-------------------------------------------------------
+
+Thinking about announcing my phlog on my blog.. and
+maybe even moving it here. What would it take to
+get there?
+
+* Git mirroring via stagit-gopher
+  - requires a server change to geomyidae
+* TLS support
+
+The latter seems pretty new.. I&#x27;ll have to see if its
+standardized enough for it to be a reasonable expectation
+that clients will support the implementation.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/005.txt</link>
+<title>[2021-11-07] Server Migration</title>
+<description><![CDATA[<pre>
+Server Migration                           [2021-11-07]
+-------------------------------------------------------
+
+I moved from gophernicus(8) to geomyidae(8) tonight.
+It was relatively painless, with a bit of lift to
+replicate the &quot;*&quot; directory-indexing feature of
+the gophernicus gophermap files (I had to write my
+own directory-to-gph tool and cat it to index.gph).
+
+Of course, I _could_ have used dynamic CGI, but it
+feels a bit safer NOT to allow the daemon to spawn
+other programs :)
+
+As a funny aside--I was previously championing
+gopher&#x27;s &quot;lack of a markup language&quot; by using
+plaintext for content.. the truth is uglier than that:
+all servers have their OWN markup for the menu
+files that have become core to the gopher experience.
+So, migrating servers becomes more of a pain than
+just changing the config file.
+
+In fact, the lack of a standardized markup is the
+reason I had to migrate in the first place!
+gophernicus doesn&#x27;t support geomyidae *.gph, which
+is what stagit-gopher outputs...
+
+Maybe the Gemini people are onto something--specify
+the markup AND the protocol.. hmmm
+
+I suppose one could always use canonical-only gopoher
+and not embed info (`i`) lines/just have the daemon
+auto-list... but that&#x27;s no fun!
+
+P.S. the gopherhole is available over TLS now!
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/006.txt</link>
+<title>[2021-11-10] What's in a RFC?</title>
+<description><![CDATA[<pre>
+What&#x27;s in a RFC?                           [2021-11-10]
+-------------------------------------------------------
+
+I&#x27;ve always idealized the RFC process of the IETF as
+a way to effectively run a distributed project. And
+it is, but it&#x27;s *way* more complex and intricate than
+I originally thought. This note serves to share some
+of my findings.
+
+The biggest surprise was that RFC&#x27;s can&#x27;t just be
+published. You have to send them to the &quot;RFC Editor&quot;!
+This person can make minor edits and, at their
+discretion, broadcast the document. When the process
+first started, these were physical documents!
+
+RFC&#x27;s begin life as Internet Drafts, where they are
+iterated on, but there&#x27;s no guarantee you _do_ get
+published as an RFC (let alone an Internet Standard).
+
+And I suppose that&#x27;s the disconnect between what I
+envisioned (mailing list participants just asking for
+feedback) and what reality is (a formal process with
+a publisher, with gated entry). It&#x27;s both &quot;open&quot; in
+the sense that the publications can be redistributed,
+but &quot;closed&quot; in the sense that the Editor decides
+what makes the cut. It feels less community-oriented
+than I expected; more formal.
+
+Just my 2c.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/007.txt</link>
+<title>[2021-11-11] Choosing a Phormat pt. 3</title>
+<description><![CDATA[<pre>
+Choosing a Phormat pt. 3                   [2021-11-11]
+-------------------------------------------------------
+
+Keeping the title the same to hopefully make it easier
+to get threads going between posts...
+
+I wanted to callout an interesting observation I read
+on the gemini FAQ [1] about text vs menu content
+serving. The observation is that menus are appealing
+because they allow hyperlinking (with restrictions,
+like way outdated content types); however, using a
+menu that is largely text (`i` info types) is a
+_really_ inefficient way to serve up content, due
+to the phony selectors and hostnames that come with
+it!
+
+As a practical example, this phlog.txt, including
+this post, is 7396 bytes, but if it was served as
+a *.gph file, it becomes 11131 bytes! That&#x27;s 1.5x
+the size (~1/3 overhead)!
+
+This is also discussed a bit on the gemlog of
+mozz.us [2], which describes the history of `i`.
+`i` isn&#x27;t part of the original RFC, and it _seems_
+that the original gopher team weren&#x27;t thrilled to
+add it. Of course, `i` won out over plain menus
+because people like to see a little context... but
+the &quot;pure&quot; gopher way would be to put said context
+in a file named ABOUT and be done with it!
+
+I think this is all interesting because people are
+making some really cool gopher apps out of the
+menu format (like stagit-gopher, for instance).
+But maybe this is the wrong way to go about things?
+in the sense that it would benefit from a more
+flexible format, like text/gemini...
+
+Anyways, to go full circle, this revelation about
+phony selectors reaffirmed my decision to use
+a plaintext file instead of a gopher menu for this
+phlog.
+
+It&#x27;s an interesting hypothetical though--is
+Gopher as useful without `i`? Does the lack of
+MIME types hinder its future adoption?
+
+It does still serve well as a plaintext delivery
+system, IMHO. And this phlog is a lot of that :)
+
+[1]: https://gemini.circumlunar.space/docs/faq.gmi
+[2]: https://portal.mozz.us/gemini/mozz.us/journal/2021-05-27.gmi
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/008.txt</link>
+<title>[2021-11-11] Choosing a Phormat pt. 4</title>
+<description><![CDATA[<pre>
+Choosing a Phormat: pt 4 -- The Great Split
+-------------------------------------------
+Thu Nov 11 22:38:24 EST 2021
+
+Ok ok, hopefully this is the last post on this
+topic, I know it&#x27;s been QUITE the series. As a
+refresher I went from:
+
+1. A single gophermap as a blog
+2. A single text file
+3. Analyzing the differences
+
+And now I&#x27;m here in part 4 to tell you that the
+future of this phlog is multiple files.
+
+Why?
+
+1. Linkability -- I want to be able to share an
+   individual post!
+2. Syndication -- individual URI&#x27;s enable an RSS
+   feed
+3. Bandwidth-friendly -- of course my phlog.txt
+   was NOWHERE near the JS bloat that is the
+   modern web (and probably never will be), but
+   small files are faster!
+
+So here we are!
+
+I briefly toyed with the thought of putting the
+titles in the URI, for example:
+
+  gopher://alexkarle.com/phlog/008-choosing-a-phormat-pt-3.txt
+
+But, I ended up deciding that the title doesn&#x27;t
+add too much value to end users. I kinda like the
+XKCD-like (or RFC-like) style of just using a
+number :)
+
+  gopher://alexkarle.com/phlog/008.txt
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/009.txt</link>
+<title>[2021-11-15] Going Live on the Weblog</title>
+<description><![CDATA[<pre>
+Going Live on the Weblog
+------------------------
+Mon Nov 15 00:00:23 EST 2021
+
+Tonight I made the decision to merge my phlog repo in with
+my alexkarle.com repo and announce the phlog on my blog. I
+had previously kept the repos separate to make it truly
+exclusive (i.e. no git history on the WWW), but that felt
+like a pain for not much gain (if anyone is motivated enough
+to look at the git history, they&#x27;ve put in more effort than
+going to a gopher proxy).
+
+The announcement was for two reasons:
+
+  1. Raise awareness of Gopher
+  2. Deprecate text.alexkarle.com
+
+With this gopherhole serving up the same content and more,
+text.alexkarle.com didn&#x27;t feel super necessary anymore.
+
+If anyone&#x27;s reading this from my blog announcment, welcome!
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/010.txt</link>
+<title>[2021-11-17] Adding a Feed for the Phlog</title>
+<description><![CDATA[<pre>
+Adding a Feed to the Phlog
+--------------------------
+Wed Nov 17 00:21:20 EST 2021
+
+Quick entry to mark a new milestone for the phlog
+--an atom feed!
+
+This was a pretty simple adaptation of my genatom
+script originally described on the blog post
+use-feeds(7) [1]. It just parses index.gph for
+lines that have the [[Date] Title|path...] format
+and spits out the right XML.
+
+Potentially the most interesting decision here
+wasn&#x27;t actually the crafting of the feed, but
+rather whether to serve the feed over Gopher
+exclusively or HTTP and Gopher.
+
+The argument for HTTP is that most feed
+reader clients can&#x27;t handle gopher://--I know for
+sure newsboat doesn&#x27;t. So by putting it on HTTP,
+it could at least be read by a wider audience...
+
+I ended up choosing to keep it gopher-only, since
+this is, after all, &quot;gopher exclusive content&quot; :)
+I&#x27;ll find or build a feed reader that can handle
+it!
+
+The source for the gophatom.sh generator can be
+found in the &quot;code&quot; section of this gopherhole [2]
+
+[1]: https://alexkarle.com/use-feeds.html
+[2]: gopher://alexkarle.com/1/code
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/011.txt</link>
+<title>[2021-11-21] Lowering Barriers to Writing</title>
+<description><![CDATA[<pre>
+Lowering Barriers to Writing
+----------------------------
+Sun Nov 21 10:21:16 EST 2021
+
+---
+Sipping coffee and listening to Psychedelic Swamp on the
+turntable while Jennie shops online for plants as presents.
+---
+
+When I moved from mdoc(7) over HTTP to plaintext over Gopher,
+the barrier to writing became much smaller. No longer did I
+have to look up the mdoc man page while writing, nor did I
+have to check how it looked in multiple formats (HTML and
+ASCII). There were also psychological barriers too--a phlog
+has less traffic, and the traffic here is maybe less judgey.
+I feel I can be a bit more open in my writing and worry about
+the phrasing less.
+
+I wanted to make it even easier to &quot;just start writing&quot;, so
+I wrote a small shell script &quot;phlog(1)&quot; that:
+
+  1. Takes a title
+  2. Starts a new entry at the next NNN.txt file available
+  3. Prepopulates the entry with the title and date
+  4. Updates the phlog index to include the entry
+
+It&#x27;s in gopher://alexkarle.com/1/code, but I wanted to include
+it here too, just because I expect it&#x27;ll morph over time and
+I want to document the MVP!
+
+Some things learned:
+
+- `$(())` for arithmetic returns the result, so to avoid
+  executing a number, prefix it with the null operation `:`
+
+- ed(1) is awesome for programmatic edits to files
+
+--- phlog(1) ---
+
+#!/bin/sh
+# phlog -- lowering the barrier to phlogging
+# see gopher://alexkarle.com/phlog/011.txt
+die() {
+    echo &quot;$*&quot;
+    exit 1
+}
+
+[ -z &quot;$1&quot; ] &amp;&amp; die &quot;usage: phlog TITLE&quot;
+
+PHLOG=$(dirname &quot;$(dirname &quot;$(readlink -f &quot;$0&quot;)&quot;)&quot;)/phlog
+
+i=1
+nextfile() {
+    file=$(printf &quot;%03d.txt&quot; $i)
+    : $((i+=1))
+}
+
+title=&quot;$*&quot;
+underline=&quot;$(echo &quot;$title&quot; | sed &#x27;s/./-/g&#x27;)&quot;
+
+nextfile
+while [ -e &quot;$PHLOG/$file&quot; ]; do
+    nextfile
+done
+
+echo &quot;$title&quot; &gt;&quot;$PHLOG/$file&quot;
+echo &quot;$underline&quot; &gt;&gt;&quot;$PHLOG/$file&quot;
+date &gt;&gt;&quot;$PHLOG/$file&quot;
+
+ed  &quot;$PHLOG/index.gph&quot; &lt;&lt;EOM
+/^\[0|Atom Feed/+a
+[0|[$(date +%F)] $title|/phlog/$file|server|port]
+.
+wq
+EOM
+
+exec &quot;${EDITOR:-vi}&quot; &quot;$PHLOG/$file&quot;
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/012.txt</link>
+<title>[2021-11-21] Optimizing for Archival</title>
+<description><![CDATA[<pre>
+Optimizing for Archival
+-----------------------
+Sun Nov 21 13:56:35 EST 2021
+
+---
+Written on my desktop while Jennie mod-podge&#x27;s the puzzle
+we put together last weekend for framing.
+---
+
+If you&#x27;ve read any of my previous posts, it&#x27;s no secret that
+one of the reasons I&#x27;m really enjoying phlogging is the
+plaintext content. I wanted to call out one of my favorite
+side-effects of plaintext entries: ease of archiving.
+
+Browsing gopherspace, it&#x27;s clear that plaintext is among the
+most suitable formats for long term storage. Look at quux.org&#x27;s
+treasure trove of historical documents. Or all of the IETF
+RFC&#x27;s. Plain ascii-encoded files seem to be a guaranteed way
+to ensure your content is not only readable in the future,
+but easy to archive for that future.
+
+This is actually one of my biggest beefs with mdoc(7). It&#x27;s
+a great semantic language, but it&#x27;s not really that legible
+in its raw form. It&#x27;s a safe bet for archival--given that so
+much of our historical manuals are written in it, it seems
+that interpreters like mandoc(1) will be around for a while;
+however, it&#x27;s still dependent on external tools for proper
+viewing.
+
+Same with HTML--you need a browser or interpreter to read it.
+
+I think this is one of the strengths of markdown--even in a
+post-HTML future, the markdown source will be archived and
+readable. However, I kind-of like explicitly scoping the
+content to _just_ ascii and not focusing on *any* other
+presentation format other than the source. It&#x27;s all too common
+to get markdown files that are illegible because the author
+cares more about the way GitHub renders it than the way
+it looks in an editor (unwrapped lines, massive amounts of
+image URLs, non-prettified tables, etc).
+
+I take comfort knowing I&#x27;ll be able to `cat` this file
+two decades from now and still remember what I was thinking :)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/013.txt</link>
+<title>[2021-11-25] Gopher-First Feeds</title>
+<description><![CDATA[<pre>
+Gopher-First Feeds
+------------------
+Thu Nov 25 00:05:30 EST 2021
+
+The original reason for this post was to follow up on
+my previous post, &quot;Adding a Feed for the Phlog&quot; [1], in
+which I discussed the decision to keep the Atom feed
+itself only available on gopher (at the risk of limiting
+the number of clients that can read it). I wanted to
+broadcast that I&#x27;ve settled on sfeed(1) and sfeed_curses(1)
+as a feed reader with gopher support (due to using
+curl(1) as the default fetcher, which supports gopher).
+
+As I wrote this though, I realized I observed something
+more interesting to discuss about feeds--just like
+gopher specifies the menu format as part of the protocol
+(and thus makes all user interaction the same between
+gopherholes), feed readers are able to present a
+universal interface to many different blogs, which
+is so cool. I know some people put a lot of effort into
+their styling, but it&#x27;s really enjoyable to read the
+sfeed_content(1) dumps of the articles all from the
+same client. Just like I know exactly what to expect
+when I visit a gopherhole, each new feed item is
+familiar in its presentation.
+
+Maybe it&#x27;s just me, but there&#x27;s a bit of comfort in
+browsing without surprises.
+
+[1]: gopher://alexkarle.com/0/phlog/010.txt
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/014.txt</link>
+<title>[2021-11-30] Screen Time</title>
+<description><![CDATA[<pre>
+Screen Time
+-----------
+Tue Nov 30 23:42:47 EST 2021
+
+When I was a kid, my parents had the concept of &quot;screen time&quot;.
+The rules were simple:
+
+1. No &quot;screen time&quot; before sundown
+2. Limited total screen time for the day (maybe a couple hrs)
+
+We didn&#x27;t have TV, so this really just meant no time on the
+computer or watching movies.
+
+I was reminiscing about this recently, and thinking about the
+great irony that is screen time in my adult life as a paid
+programmer. I would wager I spend upwards of 10-12 hours looking
+at screens every day on an average work day. A bit of time
+scrolling the news on my phone before work, a 8-9hr workday
+(fully remote -&gt; meetings are screens), and then &quot;couch time&quot;
+hobby coding and watching shows if Jennie and I don&#x27;t otherwise
+have a social commitment (most work nights).
+
+Sometimes we give our eyes a break and play a board game, do
+a puzzle, or read a book; but even if I spent no time on screens
+outside of work, it&#x27;d be a shocking number of hours at a screen
+each week.
+
+When did I transition from such limited computer-time to such
+a screen-full day? It probably started with high school, when
+we started having homework on computers. Limiting screen time
+became &quot;limited video game time&quot; and less-so about screens.
+
+Regardless of when it happened, I&#x27;ve been wanting to get back
+some of that offline time recently. I definitely find it
+improves my mood and outlook on work and life.
+
+I need to get outside more :)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/015.txt</link>
+<title>[2021-12-11] Add Context to Your Notes</title>
+<description><![CDATA[<pre>
+Add Context to Your Notes
+-------------------------
+Sat Dec 11 04:15:51 PM EST 2021
+
+My dad found an old USB from 2014 that was mine. I had
+given it to someone with some mp3&#x27;s that I thought
+they&#x27;d like, but it was at first a mystery as to who
+it was.
+
+There was a README.rtf, which I was able to salvage
+via GNU unRTF (shoulda used plaintext!), and the USB
+itself was UMass (my alma mater) branded, so I had a
+rough idea of when I received the USB... but the
+full context was woefully lacking from the README.
+
+Fortunately, the modification times on the files indicated
+it was my brother&#x27;s birthday--a dead giveaway; but I
+couldn&#x27;t help but feel I got lucky this time around.
+
+Mod-times are notoriously easy to break as we move
+files between devices, back them up, etc. It occurred
+to me how important it is to keep crucial context
+(who was this for, when was it written, etc) in the
+note itself, and not rely on external systems
+(filesystem info, word-of-mouth, memory) to stand up
+to time.
+
+Do your future self a favor: Add Context to your Notes!
+
+In vi(m), it&#x27;s easy to add a date. Just:
+
+    :r !date
+
+And carry on with your writing.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/016.txt</link>
+<title>[2022-09-23] Been a While</title>
+<description><![CDATA[<pre>
+Been a While
+------------
+Fri Sep 23 00:04:50 EDT 2022
+
+It&#x27;s been a while since I&#x27;ve written a phlog.
+Looks like 9 months or so.
+
+It&#x27;s always a pleasant surprise when software
+can run untouched for so long; geomyidae has
+proven to be a solid choice.
+
+I haven&#x27;t forgotten about the phlog, just life
+got busy. In 2022 my job got increasingly
+stressful (for reasons I may write about one day)
+but also personal life had its rewarding moments.
+
+I proposed to Jennie on 2022-08-20 (she said yes!)
+on top of Mt. Lincoln in the White Mountains on
+an overnight backpacking trip. I love her and can&#x27;t
+imagine a future without her. Wedding planning is
+proving to be somewhat of a drag (who knew how
+expensive they were?) but we&#x27;ll figure it out.
+The future beyond the wedding is more exciting--
+a house, kids, one day retirement. It feels all
+so far away and ever so close all at the same
+time.
+
+Here&#x27;s to us, as we say &lt;3
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/017.txt</link>
+<title>[2022-09-24] The Non-Technical Diffculties of Phlogging</title>
+<description><![CDATA[<pre>
+The Non-Technical Difficulties of Phlogging
+-------------------------------------------
+Sat Sep 24 11:41:57 PM EDT 2022
+
+I&#x27;ve put in some effort over the years to make sure
+that phlogging is as easy as possible from a technical
+perspective. I mean... the phlog(1) script creates
+a new file and updates my index, and a simple git-push
+publishes it.. since files are served as plaintext,
+even ed(1) is a WYSIWYG editor :)
+
+So why is it hard to phlog regularly?
+
+Obviously this phlog has been sporadic at best,
+but I noticed that it&#x27;s definitely a theme over at
+SDF too (gopher.club)--so many newcomers have a
+first post like &quot;I&#x27;m so excited to be here&quot; and then
+&quot;I hope to phlog daily&quot; only to stop after a couple
+posts.
+
+I think the barriers to phlogging are non-technical.
+At least for me (I completely understand that picking
+up gopher requires a good bit of computer smarts).
+
+When it comes down to it: why should I bother phlogging?
+
+I generally write long-form entries for two reasons:
+
+  1. I need to think through my emotions
+  2. I have some tech/thought worth sharing
+
+For (1), I&#x27;d much rather keep these to my pen and paper
+journal. And for (2), the sad reality is that I want
+them to be available over HTTP so that recruiters
+and future employers see my work/hobbies. Unless it
+explicitly involves gopher (and is therefore of most
+interest to other burrowers), it&#x27;s probably good material
+for my weblog to prove I do technical things outside
+of work (plz hire me!).
+
+So why phlog? And _what_ to phlog? I phlog because I
+think gopher is cool and I want to support the ecosystem
+with fresh content. I suppose going forward I&#x27;ll try to
+phlog things I think would be of less interest to my
+blog readers (read: few friends) but are still public
+enough to feel comfortable sharing?
+
+It&#x27;s a fine line for sure between wanting readership
+(publishing on a more accessible medium like HTTP) and
+wanting the cozy community (gopher) and wanting
+total privacy (journal).
+
+I guess I at least share my weblog on my gopherhole
+so it&#x27;s not totally a one-or-the-other situation.
+
+Anyways.. for any readers--why do you phlog instead
+of blog? Do you ever wonder if your phlogging efforts
+would be better spent on a blog?
+
+--
+
+For more context on the &quot;hire me plz&quot;: I&#x27;m starting
+to look around at jobs, and while the initial intention
+of my blog was never to put it on my resume, I realize
+that it&#x27;s actually a great testament to my skillset
+and interests.
+
+Priorities change, I guess.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/018.txt</link>
+<title>[2022-10-02] True Burrowing</title>
+<description><![CDATA[<pre>
+True Burrowing
+--------------
+Sun Oct  2 22:11:55 EDT 2022
+
+This code used to live in the alexkarle.com web repo
+because it was easy and I want to pull a lot of www
+content into the gopherhole.
+
+I decided today to take the somewhat drastic action
+of not only removing the content from web and putting
+it in its own repo but using `git filter-repo` to
+scrub it from alexkarle.com. Why? Well, I posted the
+repo on GitHub, and a friend immediately noticed it.
+
+I&#x27;ve been pretty transparent with work unhappiness /
+interviewing, and GitHub is where I do my professional
+work. The last thing I want is an awkward conversation
+with my manager over &quot;why am I interviewing and posting
+about it on a blog&quot;.
+
+To be fair, I probably shouldn&#x27;t be.
+
+But I did, and it was there. So I scrubbed it.
+
+For future reference, the following easily made the
+gopher/ directory its own repo:
+
+	$ git filter-branch --subdirectory-filter gopher
+
+And in another clone, the following scrubbed it from web:
+
+	$ git filter-repo --invert-paths --path gopher
+
+So here we are. Burrowed at last. But without CI! When
+I hit `git push` this won&#x27;t go live yet... time to hook
+the piping up!
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/019.txt</link>
+<title>[2022-10-06] On Simplicity</title>
+<description><![CDATA[<pre>
+On Simplicity
+-------------
+Thu Oct  6 00:15:41 EDT 2022
+
+[Disclaimer: I&#x27;m not an expert on either language]
+[discussed in this piece, take it with a grain   ]
+[of salt; it&#x27;s more about the bigger picture!    ]
+
+I&#x27;m making my way through Crafting Interpreters [1]
+with a small group of friends (a &quot;book club&quot;, if you
+will), and I decided to try to implement the interpreter
+in Scheme (CHICKEN Scheme to be exact).
+
+Scheme is a funny language. It has &quot;simplicities&quot; in its
+sparsity: parenthesis for unambiguous syntax, no looping
+mechanisms other than recursion, etc.
+
+Sometimes it feels a lot like Go, with its minimal set of
+builtins focused on readability and one-way-to-do-things.
+
+Other times, it feels very different (much more spartan,
+but maybe that&#x27;s due to me not yet grokking the paradigm
+shift / struggling to shift mindset).
+
+Regardless, I wanted to share a quote from Rob Pike that
+really struck me from this talk [2]:
+
+&gt; I want to make a really important point here:
+&gt; I&#x27;ve said Go is simple, but it&#x27;s not.
+&gt; I know, I&#x27;ve worked on it!
+&gt; ...
+&gt; Simplicity ... is the art of hiding complexity
+
+Scheme&#x27;s simplicity seems to come from a mathematical
+purity--closures and recursion and homoiconicity.
+
+Go&#x27;s simplicity seems to come from excellent design
+focused on modern software needs.
+
+It&#x27;s a wonder they can be used to do the same things.
+
+[1]: http://craftinginterpreters.com/
+[2]: https://www.youtube.com/watch?v=rFejpH_tAHM
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/020.txt</link>
+<title>[2022-10-06] The Joys of IRC</title>
+<description><![CDATA[<pre>
+The Joys of IRC
+---------------
+Thu Oct  6 23:23:16 EDT 2022
+
+---
+Written on: x220 (openbsd)
+Listening to: Running Away by Vulfpeck (Live at MSG)
+---
+
+## Discovering IRC
+
+IRC first came across my radar a little out of
+college, when I started spending a good bit of time
+lurking in free software communities. But it wasn&#x27;t
+always second nature--in fact my first dip was nothing
+but intimidating.
+
+I&#x27;ll never forget the first time I downloaded irssi(1)
+and connected to freenode--I was immediately presented
+with my rDNS exposing that akarle was indeed using
+Boston MA FIOS and I logged off pretty quickly scared
+to be exposing my home IP (especially to a bunch of
+hackers!!).
+
+After I got over the IP thing (I can&#x27;t remember if
+I discovered cloaking or used a proxy), I then was
+nervous to speak up--people here seemed to follow a
+strict etiquette (&quot;don&#x27;t ask to ask&quot;, etc). I didn&#x27;t
+want to seem like a noob!
+
+Nevertheless, I felt cool just being there. In the
+room where it happens. I saw chat messages go by from
+programmers I held in high regard. It blew me away
+to have access to these people, even if I wasn&#x27;t using
+it.
+
+When I set up garbash.com with Anthony, IRC was top
+of the list of tech I wanted to play around with,
+and I was not disappointed.
+
+
+## Where IRC Excels
+
+After getting over the learning-the-ropes stages
+(setting up a bouncer for chat history, etc), I
+learned to appreciate IRC beyond the people there.
+
+IRC excels in a few ways:
+
+1. Lightweight medium (super fast)
+2. Open protocol (many clients)
+3. Simple extensibility 
+
+The low-bandwidth medium becomes super obvious
+when using a terminal client during the work day.
+Switching between Slack and catgirl(1) is night and
+day.
+
+The open protocol has been a boon for usage on our
+Tilde.  Most of our members prefer to use the Gamja
+web client, which integrates really nicely with Soju
+for history.
+
+And lastly, the simple extensibility comes from the
+lack of security by default. I mean, anyone who
+can access the server can send messages? Under any
+nick not in use?  A terrible recipe for public
+access, but a great choice for an internal-facing
+network, like a tilde :) It becomes easy to write
+tools that ping channels using just regular unix
+tools.
+
+I wrote my first such tool tonight, which is what
+inspired this post [1].
+
+It uses curl(1) to fetch https and gopher feeds,
+sfeed(1) to parse the feeds, awk(1) to parse the
+parsing (and determine &quot;new&quot; feeds since the last
+run) and lastly nc(1) to connect to IRC and notify
+our main channel. It&#x27;s that simple:
+
+	nc localhost 6667 &lt;&lt;EOM &gt;/dev/null
+	NICK rssbot
+	USER rssbot rssbot localhost :rssbot
+	PRIVMSG #garbash :New post &#x27;$1&#x27; here: $2
+	QUIT
+	EOM
+
+How cool is that?? If all goes well, it should get
+notified about this post :)
+
+[1]: https://git.garbash.com/alex/irc-rss-listener/log.html
+
+
+## Looking Forward
+
+I&#x27;m optimistic that the work coming out of the great
+folks at sourcehut.org will keep IRC along for some
+time more. chat.sr.ht is a fantastic solution (running
+a SaaS version of Gamja and Soju), providing an easy
+cross platform way to connect to multiple servers
+(with things like history built right in).
+
+I can&#x27;t say I&#x27;ve tried many other FOSS messaging
+protocols like XMPP or Matrix, but I do hope the future
+is open-protocol and not walled-garden like Discord
+or Slack.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/021.txt</link>
+<title>[2022-10-08] Remembering the Kitchen Computer</title>
+<description><![CDATA[<pre>
+Remembering the Kitchen Computer
+--------------------------------
+Sat Oct  8 11:56:25 PM EDT 2022
+
+---
+Written on: Thinkpad X13
+Listening to: Goose Live at Dillon Amphitheater 2022-08-17
+---
+
+I&#x27;m dog sitting for my folks this weekend which
+means I&#x27;m spending a good bit of time in my
+childhood home. It&#x27;s nostalgic at times, although
+I do come over about once a week with Jennie to
+see my parents for dinner and board games. We live
+close by, and it&#x27;s a nice way to stay in touch.
+
+Anyways, this post isn&#x27;t about dog sitting or
+being at home really: it&#x27;s about remembering a
+fixture of my childhood: the Kitchen Computer.
+
+For most of my pre-teen and all my high-school
+years, my family had compact PC desktop running
+Windows XP (then Windows 7, never made it to
+Win10). It was finally put out to the garage a
+few years ago, when it became so slow that
+people would rather use phones than wait 30s
+for the browser to start.
+
+But during its heyday, it was a central part
+of my computing life. I was fortunate enough
+to go to a high school where halfway through
+they were able to give everyone a laptop, but
+prior to that it was one of the main ways I
+accessed the internet.
+
+Our house is laid out so that the kitchen,
+a wide open space with an island, is a frequent
+gathering spot. So the kitchen computer was the
+natural place to gather round and share a video.
+Or to queue up some music to listen to while
+my mom cooked (she&#x27;s an amazing cook).
+
+Cooking tonight for my friends (pizza game night!)
+it just struck me how the computing world has
+moved on. My kids probably won&#x27;t have that
+communal &quot;gather round&quot; experience of a shared
+desktop. It&#x27;s both amazing how far our handhelds
+have come and sad to lose that old experience.
+Even if it was slow and involved dealing with
+Windows :)
+
+I wonder what home computing will look like by
+the time I have kids. Hopefully I&#x27;ll be able to
+pass along some favorite technologies when they&#x27;re
+old enough.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/022.txt</link>
+<title>[2022-11-01] Adventures in Scheme</title>
+<description><![CDATA[<pre>
+Adventures in Scheme
+--------------------
+Tue Nov  1 10:16:01 PM EDT 2022
+
+A theme in my programming career has been a fixation on
+exploring the mysterious, challenging, and powerful
+corners of the craft.
+
+It was the promise of speed that led me to Vim.
+
+It was the allure of simplicity that led me to Plan 9.
+
+And it&#x27;s the stories of power that led me to LISP.
+
+I&#x27;m being a bit dramatic, but it&#x27;s true. I&#x27;m highly
+susceptible to evangelist writings and deep rabbit holes.
+
+LISP, and more specifically Scheme, has been on my radar for
+a while now. I think my first encounter was probably through
+Emacs--what was this builtin configuration language people
+raved about? Later I started reading about LISP in general
+through Hackernews and other forums.
+
+In the past couple months, I finally got an excuse to do
+some serious coding in it: implementing the interpreter from
+&quot;Crafting Interpreters&quot; (Nystrom, 2021) as part of a book
+club. I&#x27;m by no means an expert, but I&#x27;ve been enjoying it
+enough I thought it deserved a phlog post!
+
+It&#x27;s kinda funny writing a post in 2022 in praise of Scheme.
+It definitely is still praise-worthy, but I think a lot of
+the things it excelled at (first class functions, tail
+call optimization, even *lexical scope* with early lisps
+using dynamic scope) are now common place in more popular
+languages.
+
+So in a way, it&#x27;s a huge testament to the language that
+there&#x27;s anything left that it excels at that others don&#x27;t do
+better almost 50 years later.
+
+I can&#x27;t claim to be an expert yet, but I do see glimpses of
+the &quot;power&quot;. It took me hours of reading to wrap my head
+around call/cc (continuations) and how they can be used for
+things like coroutines. And I still have yet to write my
+first macro (but I understand now how powerful it is to have
+the source code of the language be data in the language
+itself--macros can access and manipulate the input source
+using primitive functions like map, car, cdr, etc).
+
+I can report that things like dealing with the parenthesis
+and infix notation becomes second nature pretty quickly (and
+now I kinda like it!)
+
+It&#x27;s been a fun adventure so far, and I&#x27;ll try to keep it
+going a bit longer (at least to write some macros). If
+there&#x27;s one thing I&#x27;ve found in any of my explorations in
+search of mysterious programming tools and languages, it&#x27;s
+that I always emerge with a newfound excitement to come into
+work and a better perspective on problem solving.
+
+-- Bonus Puzzle! --
+
+I&#x27;ll end with a continuation puzzle for you. To be honest, I
+didn&#x27;t fully grok it until I made the chart at the end, so
+it&#x27;s just as much for me! :)
+
+Here&#x27;s the code and the output:
+
+(let* ((yin ((lambda (cc) (newline) (display #\@) cc) (call/cc (lambda (c) c))))
+       (yang ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))
+    (yin yang))
+
+@*
+@**
+@***
+@****
+@*****
+@******
+@*******
+@********
+@*********
+...
+
+But before we dive in, let&#x27;s look at the strange oddity that
+is call/cc (call-with-current-continuation). call/cc is a
+function that calls another function with the current
+continuation (as the name implies). The current continuation
+itself is a function that, when invoked, returns from
+call/cc with the value it was invoked with. In its simplest
+form this can be used to abort a function:
+
+(display (call/cc (lambda (cc)
+                    (cc &quot;hello world&quot;)
+                    &quot;not reached&quot;)))
+
+Will print &quot;hello world&quot; since invoking cc will force the
+return from call/cc early before it can return &quot;not
+reached&quot;.
+
+OK this is fine. Languages have &#x27;return&#x27; statements. We&#x27;ve
+all been here. Ahhh but what if we _returned_ the
+continuation? In scheme continuations are first class and
+can be stored in variables--they can persist beyond the
+block they were defined in. THIS is where it gets
+interesting:
+
+(define cc #f)
+(display
+  (+ 1
+     (call/cc (lambda (c)
+                (set! cc c)
+                1))))
+2
+
+(cc 5)
+6
+
+In this example, we add 1 to the result of call/cc, which,
+the first go around is just 1 (that&#x27;s what the lambda
+returns--we don&#x27;t abort, just save it off into the cc
+variable for later).
+
+If we invoke it again, we *return to that point in the
+code* even though it&#x27;s been interpreted already. call/cc
+returns 5 (since that&#x27;s what we invoke cc with) and we print
+6.
+
+OK final twist--this just feels like a goto... but we can
+also show that we package up the state of the callstack:
+
+(define cc #f)
+
+(define (prlist lst)
+  (if (not (null? lst))
+      (begin (display (car lst))
+             (newline)
+             (if (eq? (car lst) &#x27;b)
+               (call/cc (lambda (c) (set! cc c))))
+             (prlist (cdr lst)))))
+
+(prlist &#x27;(a b c))
+(cc 0)
+
+In this case, we have a simple recursive prlist that prints
+each element until it reaches a null list. At element &#x27;b, it
+saves its continuation into cc. Calling cc later picks up
+the loop from that point (printing c a second time):
+
+a
+b
+c
+c
+
+Point being: the state of lst is captured in the
+continuation!
+
+So back to our example (without the newline):
+
+1 | (let* ((yin ((lambda (cc)  (display #\@) cc) (call/cc (lambda (c) c))))
+2 |        (yang ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))
+3 |    (yin yang))
+
+Lets walk line by line, writing down the line just read, the
+output, the name of the continuation (with &#x27; to indicate a
+return) and the state of each variable:
+
+cc-id   | Line | Yin   | Yang  | Out
+----------------------------------------
+yin1    | 1    | yin1  | nil   | @
+yang1   | 2    | yin1  | yang1 | @*
+
+--&gt;  L3: call yin1 on yang1 (jump back to L1 and
+--&gt;  return yang1 from call/cc, storing it in yin)
+
+yin1&#x27;  | 1     | yang1 | nil   | @*@
+yang2  | 2     | yang1 | yang2 | @*@*
+
+--&gt;  call yang1 on yang2 (jump back to L2 and
+--&gt;  return yang2. but NOTE yin has also gone
+--&gt;  back to its old value at the time yang1
+--&gt;  was crafted!)
+
+yang1&#x27; | 2     | yin1  | yang2 | @*@**
+
+--&gt; call yin1 on yang2
+
+yin1&#x27;  | 1     | yang2 | nil   | @*@**@
+yang3  | 2     | yang2 | yang3 | @*@**@*
+
+--&gt; call yang2 on yang3
+
+yang2&#x27; | 2     | yang1 | yang3 | @*@**@**
+
+--&gt; call yang1 on yang3
+
+yang1&#x27; | 2     | yin1  | yang3 | @*@**@***
+
+--&gt; call yin1 on yang3
+
+yin1&#x27;  | 1     | yang3 | nil   | @*@**@***@
+yang4  | 2     | yang3 | yang4 | @*@**@***@*
+yang3&#x27; | 2     | yang2 | yang4 | @*@**@***@**
+yang2&#x27; | 2     | yang1 | yang4 | @*@**@***@***
+yang1&#x27; | 2     | yin1  | yang4 | @*@**@***@****
+yin1&#x27;  | 1     | yang4 | yang5 | @*@**@***@****@
+
+And so on... because the continuation for yang encloses the
+value of yin at the creation time, whenever we invoke yangN
+on yangK, we print a * and invoke yangN-1 on yangK until
+yang1 at which point yin goes back to yin1 and we print a
+new @ and create a new yangN+1. yin is then yangN and the
+cycle continues.
+
+Wow, right?
+
+This is also shown by looking at the following output of the
+pointers for each variable (using CHICKEN Scheme):
+
+
+(import (chicken memory) (chicken format))
+
+(let* ((yin  ((lambda (cc)
+                (newline) cc)
+              (call/cc (lambda (c) c))))
+       (yang ((lambda (cc) cc)
+              (call/cc (lambda (c) c)))))
+    (display (format &quot;~A | ~A\n&quot; (object-&gt;pointer yin) (object-&gt;pointer yang)))
+    (yin yang))
+
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc780c1850&gt;
+
+#&lt;pointer 0x7ffc780c1850&gt; | #&lt;pointer 0x7ffc780b6cc0&gt;
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc780b6cc0&gt;
+
+#&lt;pointer 0x7ffc780b6cc0&gt; | #&lt;pointer 0x7ffc780a6900&gt;
+#&lt;pointer 0x7ffc780c1850&gt; | #&lt;pointer 0x7ffc780a6900&gt;
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc780a6900&gt;
+
+#&lt;pointer 0x7ffc780a6900&gt; | #&lt;pointer 0x7ffc78090d10&gt;
+#&lt;pointer 0x7ffc780b6cc0&gt; | #&lt;pointer 0x7ffc78090d10&gt;
+#&lt;pointer 0x7ffc780c1850&gt; | #&lt;pointer 0x7ffc78090d10&gt;
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc78090d10&gt;
+
+#&lt;pointer 0x7ffc78090d10&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+#&lt;pointer 0x7ffc780a6900&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+#&lt;pointer 0x7ffc780b6cc0&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+#&lt;pointer 0x7ffc780c1850&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+
+
+Notice that we always get down to bb0 in yin and then start
+over!
+
+As a final note, I got super confused in the middle of
+writing this because of this example:
+
+
+(define cc #f)
+
+(let ((state &quot;foo&quot;))
+  (display 
+    (+ 1
+       (call/cc (lambda (c)
+                  (set! cc c)
+                  1))))
+  (newline)
+  (display state)
+  (set! state &quot;bar&quot;)
+  (newline))
+
+(cc 5)
+
+
+I thought surely that this would print:
+
+2
+foo
+6
+foo
+
+Since the closure captured the value of &quot;state&quot; as &quot;foo&quot; at
+the time. But instead it prints &quot;bar&quot;. What gives??
+
+My best guess here is that set! _modifies_ the continuation
+environment in-place. In the yin-yang puzzle, each (let)
+creates its own environment, so we end up with the
+returning-to-old-values behavior, but when we use set! it
+modifies the environment from underneath the continuation.
+
+I&#x27;ll do more research when it&#x27;s not past midnight :)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/023.txt</link>
+<title>[2022-11-15] Revisiting Emacs</title>
+<description><![CDATA[<pre>
+Revisiting Emacs
+----------------
+date: 2022-11-15 14:09:59 EST
+
+## In the Beginning
+
+As a Vim nerd, Emacs has been on my radar for as long
+as I&#x27;ve been nerding over text editor productivity
+(probably ~5yrs ago towards the end of college).
+
+In fact, my journey with Emacs starts much earlier.  My
+second semester of college, we had a systems
+programming course where the first couple labs were on
+a VM. I remember SSHing in, sitting in my dorm hallway,
+and thinking to myself &quot;now what&quot;? That moment of
+hopelessness when you realize that all the files aren&#x27;t
+on your local filesystem and you can&#x27;t use whatever
+editor you are accustomed to (I must have been using
+Eclipse at the time, since Java was the intro
+language).
+
+A friendly neighbor said &quot;oh just type &#x27;emacs FILE&#x27; to
+get an editor&quot;. And so it was that I used emacs years
+before touching Vim.
+
+The subsequent labs ended up adding a graphical desktop
+to the VM with Sublime Text installed, so I didn&#x27;t end
+up diving deep into Emacs, but it was there first.
+
+
+## Over the Years
+
+I vaguely recall trying out Emacs around the same time
+I was getting very into Vim. It&#x27;s sad to say that I
+very much fell for the tribal nature of the argument
+and swore affiliation to Vim before giving it an honest
+try.  There were all sorts of politics involved
+too. Who was this RMS guy? Do I agree with his beliefs?
+(this predated the scandals, which are out of scope of
+this piece).
+
+At the time, and for the years to follow, I was sold on
+the fact that Vim was _efficient_. I bought into the
+&quot;Emacs is the whole toolshed and Vim is a paring knife,
+much more efficient for surgical edits&quot; saying.
+
+When I made it into industry, I was surprised to find
+that the majority of my team were Emacs enthusiasts. I
+resisted and became the Vim holdout (this has been the
+only team I&#x27;ve worked on with this situation--now it&#x27;s
+much more a Vim holdout vs VSCode). Vim was already in
+my fingertips, and I knew all the power features
+(:tags, :jumps, etc).. why learn something new? I gave
+evil-mode a spin, but it felt a bit &quot;off&quot;. All too
+often I&#x27;d pop into a buffer in another mode (like
+Magit) and find myself completely unable to switch back
+with vim-like window motions (and at a loss of how to
+proceed).
+
+To top it all off, I was convinced Emacs was very much
+against the UNIX philosophy--it didn&#x27;t do one thing
+well! Who needs tetris in a text editor? I became
+interested in minimalist computing (suckless, cat-v,
+etc) where Emacs was the butt of many jokes.
+
+
+## Coming Back
+
+Over the past few months (but really dating back
+years), I&#x27;ve become more and more interested in LISP,
+specifically Scheme, and it led me back to Emacs.
+
+Now, I think it&#x27;s totally possible to write LISP in
+Vim. But there is a natural tendency for LISP lovers to
+find themselves using Emacs (and therefore the support
+is much better). I chalk this up to the fact that LISP
+isn&#x27;t used much in industry, so Emacs is maybe one of
+the few chances these developers have to use the
+language in earnest. Maybe that&#x27;s an over
+simplification.
+
+Mind you, it wasn&#x27;t _really_ the promise of
+extensibility or customizeability *in the editor*. I
+had achieved &quot;config equilibrium&quot; with Vim; I had a
+small core set of plugins to be effective and knew the
+editor inside and out--my vimrc remained untouched for
+months at a time. The thought of _having_ to write
+hundreds of lines of elisp to customize an editor
+seemed wasteful.
+
+BUT, what I came to realize is that Emacs isn&#x27;t about
+customizing *an editor*. It&#x27;s about customizing a LISP
+platform for everyday productivity (beyond the scope of
+editing). Things like Email, IRC, gopher clients, web
+browsers, directory managers, and more are all written
+on Emacs *not* for the benefit of the editor, but
+because it&#x27;s fundamentally a platform for applications
+(just like the browser has become a platform for web
+apps).
+
+The thought of a LISP platform, with a whole suite of
+discoverable, self-documenting, FOSS LISP apps is
+definitely appealing. Although I am still relatively
+partial to the &quot;write one tool to do the job well&quot;
+approach, I suppose you could argue that the elisp
+packages do one thing well on top of Emacs.
+
+I thus set out to give Emacs a fair shot.
+
+
+## An Example Productivity Flow
+
+If we move beyond productivity during text editing,
+what does productivity look like? For me, the answer
+was usually shell scripts to automate redundant
+processes.
+
+
+A great example of this is my &#x27;phlog&#x27; script described
+in [1] to start a new phlog entry:
+
+```
+die() {
+    echo &quot;$*&quot;
+    exit 1
+}
+
+[ -z &quot;$1&quot; ] &amp;&amp; die &quot;usage: phlog TITLE&quot;
+
+PHLOG=$(dirname &quot;$(dirname &quot;$(readlink -f &quot;$0&quot;)&quot;)&quot;)/phlog
+
+i=1
+nextfile() {
+    file=$(printf &quot;%03d.txt&quot; $i)
+    : $((i+=1))
+}
+
+title=&quot;$*&quot;
+underline=&quot;$(echo &quot;$title&quot; | sed &#x27;s/./-/g&#x27;)&quot;
+
+nextfile
+while [ -e &quot;$PHLOG/$file&quot; ]; do
+    nextfile
+done
+
+echo &quot;$title&quot; &gt;&quot;$PHLOG/$file&quot;
+echo &quot;$underline&quot; &gt;&gt;&quot;$PHLOG/$file&quot;
+date &gt;&gt;&quot;$PHLOG/$file&quot;
+
+ed  &quot;$PHLOG/index.gph&quot; &lt;&lt;EOM
+/^\[0|Atom Feed/+a
+[0|[$(date +%F)] $title|/phlog/$file|server|port]
+.
+wq
+EOM
+
+exec &quot;${EDITOR:-vi}&quot; &quot;$PHLOG/$file&quot;
+```
+
+This simply makes it so that no matter what I&#x27;m doing,
+I can open a new phlog entry (without having to keep
+track of what number I&#x27;m on, or update the index, etc).
+
+The script is definitely hacky though. It uses some
+obscure shell syntax for incrementing variables, sed(1)
+for string substitution, ed(1) for editing the index
+and local-looking global variables (`file`).
+
+Even with just ~1hr of elisp experience, I was able
+to put together the same flow that (IMHO) reads much
+cleaner:
+
+```
+(defun phlog (title)
+  ;; Allows M-x phlog and prompts for title (passed as an argument)
+  (interactive &quot;sTitle: &quot;)
+  ;; Parse the directory for TXT files (sorted) to get new filename
+  ;; (corresponds to nextfile loop in shell script)
+  (let* ((files (directory-files phlog-root nil &quot;\.txt$&quot; nil))
+	 (most-recent (car (last files)))
+	 (new-name (format &quot;%03d.txt&quot; (+ 1 (string-to-number
+					    (car (split-string most-recent &quot;\\.&quot;)))))))
+    ;; First update the index (corresponds to ed(1) script above)
+    (with-current-buffer (find-file-noselect (concat phlog-root &quot;/index.gph&quot;))
+      (goto-char (point-min))  		      ; go to beginning, if already open
+      (search-forward &quot;Atom Feed&quot;)
+      (next-line)
+      (insert (format &quot;\n[0|[%s] %s|/phlog/%s|server|port]&quot;
+		      (format-time-string &quot;%F&quot; (current-time))
+		      title
+		      new-name))
+      (save-buffer))
+    ;; Now open it in a new file (corresponds to echo/date/exec vi)
+    (find-file (concat phlog-root &quot;/&quot; new-name))
+    (insert (concat title &quot;\n&quot;))
+    (insert (replace-regexp-in-string &quot;.&quot; &quot;-&quot; title))
+    (insert (format &quot;\ndate: %s\n&quot; (format-time-string &quot;%F %H:%M:%S %Z&quot; (current-time))))))
+```
+
+When you factor in the ability to exec parts of these
+as I developed the function (or in the scratch buffer),
+the development experience for the function was much
+better too.
+
+To top it all off, while this function doesn&#x27;t
+highlight it too well, it&#x27;s clear that the interaction
+capabilities of Emacs (with the minibuffer,
+completions, etc) are way beyond that of a shell script
+(reading args or from /dev/tty, etc).
+
+All in all, I think if I&#x27;m going to keep using Emacs, I
+could see myself having dozens of these small custom
+commands to allow me to quickly phlog, blog, or keep
+todo lists up to date (etc).
+
+[1]: gopher://alexkarle.com/0/phlog/011.txt
+
+
+## The Catch
+
+This is all great for customizing my personal
+environment, but the reality is that Emacs users are
+very much in the minority.  Shell scripts have &quot;won&quot;
+because all devs are comfortable running them in a
+terminal. They&#x27;re the lowest common denominator.
+
+So when it comes to _shared_ productivity, Emacs feels
+like a nonstarter. Any team productivity tools will
+need to be first written in shell scripts for the team
+and then duplicated into Emacs, not built primarily
+for Emacs.
+
+
+## Conclusion
+
+Only time will tell if I continue to use Emacs. I think
+I&#x27;ll play around a bit more. I definitely &quot;get&quot; it more
+than I did before, but I&#x27;m skeptical of the investment
+required to customize my own environment (vs investing
+that time into shell scripts that can be shared).
+
+This all said, it&#x27;s worth mentioning that I&#x27;m no longer
+a big believer in customizing the Vim environment
+either (for largely the same reasons). If anything,
+part of what drew me to Emacs was the feeling that the
+(Neo)Vim family was becoming just as &quot;bloated&quot; but with
+a lesser ecosystem:
+
+* The addition of the Vim9 language (instead of using,
+  say, Lua) felt like a misstep for Vim proper
+
+* NeoVim (and now Vim) having a Terminal feels like a
+  violation of the editor boundary (more like Emacs)
+
+* With the above two--why not just use Emacs? I checked
+  and the core of NeoVim is ~300k LOC of C and the core
+  of Emacs is ~400k LOC of C--Emacs then has &gt;1M LOC of
+  LISP, but if the core is solid and makes a hackable
+  platform, isn&#x27;t that a properly designed
+  platform/system? (note: didn&#x27;t try to weed out test
+  code, used David Wheeler&#x27;s SLOCCount)
+
+In other words, Vim and NeoVim feel like they&#x27;re
+gravitating towards Emacs, but with a fragmented
+community and a less capable extension language (even
+if they have a better core editor).
+
+I wonder if Emacs will have a revival? (but such a
+discussion needs to discuss the elephant in the room:
+VSCode, and that requires a whole other post!).
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/024.txt</link>
+<title>[2022-11-20] On Skill vs Automation in Code Editing</title>
+<description><![CDATA[<pre>
+On Skill vs Automation in Code Editing
+--------------------------------------
+date: 2022-11-20 22:52:35 EST
+
+I&#x27;ve been playing with my text editor setup between
+jobs, first dabbling in Emacs (see my last post) and
+now finally taking the time to replace my linter-heavy
+ALE config (Vim) with NeoVim&#x27;s native LSP support.
+
+And well, the LSP mode kind-of blew me away. It truly
+felt like IDE features in NeoVim. And this got me
+thinking about whether NeoVim, Emacs, and VSCode are
+really &quot;Text Editors&quot; and the line between skill based
+editing and assistance via tooling.
+
+Let&#x27;s start at one extreme: GitHub CoPilot being able
+to write code for you. There&#x27;s obviously knowledge
+needed to verify and tweak it, but as far as
+skill-based efficiencies, this feels pretty easy to
+pick up. Pay Microsoft the fee and the efficiency is
+yours, little learning investment required.
+
+I think vi (not Vim) represents the other extreme--
+being efficient in vi is 100% based on memorizing an
+arcane language.
+
+I&#x27;d argue that vi(1) is a skill-based efficiency. Now
+I&#x27;m not saying it&#x27;s a skill worth learning (per-se),
+or even a skill that&#x27;s hard to learn (I don&#x27;t want to
+come across as looking superior for memorizing it), but
+arguably it&#x27;s a skill. More efficient editing comes
+down to learning the language better.
+
+There is an interesting medium here between AI writing
+code and learning an editor that uses the least number
+of keystrokes to make a change, and I think LSP is that
+medium: it provides the operator with smart operations
+(like renaming) based on understanding of the code
+structure.
+
+I&#x27;ve only begun to scratch the surface of LSP, but even
+just watching the rename function work was eye opening.
+
+As an illustration, let&#x27;s look at how I&#x27;d change all
+instances of `foo` to `bar` with `:LspRename` mapped to
+`gr`.
+
+With LSP: `grbar`
+
+Without:
+
+* If only a few: `*ciwbar&lt;ESC&gt;n.n.n.n.` (select the
+  next one, then change it to bar, then next -&gt; change
+  -&gt; next..)
+  
+* If many: `:%s/\&lt;foo\&gt;/bar/gc` (y/n at each prompt)
+
+There&#x27;s a clear slowdown with Vim (beyond the amount of
+typing): the mental overhead of having to decide if
+each is a false positive or not. It can be eliminated a
+bit by the word-boundary \&lt;\&gt; and the search for just
+\&lt;foo\&gt; via *, but it&#x27;s definitely not perfect. With
+LSP, the server knows the instances and can tell the
+client every location without the operator changing
+anything.
+
+The major downside of LSP AFAICT is that it&#x27;s limited to
+languages that have a server (and code in general). In
+a CSV file, for instance, `gr` just won&#x27;t be an option.
+And of course, for massive codebases it can be very
+expensive to run / slow.
+
+If anything, this just reinforces the difference
+between a _text_ editor and a _code_ editor, and I
+expect we&#x27;ll continue to see the gap widen over time
+(with the line between IDE and code editor maybe
+blurring a bit).
+
+vi is a text editor through and through. Vim, Emacs,
+and VSCode are all code editors (the former two if
+configured properly).
+
+In a world with CoPilot, I wonder how far Code editors
+will go. And I wonder if that&#x27;ll make it harder for new
+languages to form (with such a barrier for tooling,
+etc). If developers become operators of AI, there&#x27;s a
+real chicken and egg problem with new languages: the AI
+just won&#x27;t have any samples to learn from if humans
+don&#x27;t write it.
+
+I&#x27;d like to think the AI-operator-coding world is far
+away (but admittedly I&#x27;ve never tried CoPilot myself,
+so I don&#x27;t know how usable it is).
+
+What I do feel pretty strongly about is that it puts
+oneself at a disadvantage to use a pure text editor for
+professional coding where a code editor might provide a
+more full-featured suite of tools.
+
+Even the most adept vi(1) user probably can&#x27;t keep up
+with an LSP enabled editor.
+
+But hey, I&#x27;d love to be proved wrong. As someone who
+strives for simplicity in software (this is on Gopher
+after all), I&#x27;d love to believe some combination of
+vi(1) for surgical edits, sed(1) for bulk edits, etc
+could culminate to VSCode efficiency. It just feels
+like a losing battle having a human make all the
+incantations when we&#x27;ve written language parsers that
+can make high level edits for us.
+
+Now, the more philosophical question is: with the trend
+towards better automation, is it worth becoming a
+skilled/efficient editor of text at all? How much of
+our time is thinking, designing, and generally not
+cranking out words? Is it worth hours of learning,
+config customization, to get the most efficient
+environment? At what point is one doing themselves a
+disservice by refusing to use a code editor and
+insisting on editing code as text?
+
+I&#x27;d like to believe (maybe partially biased by sunk
+cost fallacy) that efficiently editing text is still an
+important skill, even with better editing software: so
+much of the things we deal with are unstructured text
+(logs, emails, blog posts, data files, etc). Of course,
+you can&#x27;t always use your favorite editor for all text
+(unless that editor is Emacs and you&#x27;re willing to
+customize it :)).
+
+I also think there&#x27;s some joy in knowing a language
+well enough to code in it without assistance (even if
+that&#x27;s probably not the way one should write
+professional software while &quot;on the clock&quot;); its like a
+chef cooking from memory instead of following a recipe:
+probably error prone and slower, but enjoyable? There&#x27;s
+a better analogy out there somewhere.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/025.txt</link>
+<title>[2022-11-21] On Text Editing Efficiency pt. 2</title>
+<description><![CDATA[<pre>
+On Text Editing Efficiency pt. 2
+--------------------------------
+date: 2022-11-21 13:04:02 EST
+
+---
+written on: desktop
+using: Emacs (M-x phlog)
+listening to: All I Need by Goose
+---
+
+I was trying to describe my phlog entry from last night
+to Jennie over lunch and came up with an analogy that I
+thought was worth a quick followup:
+
+If we consider text editing efficiency to be a
+mountain, where the higher you are the more efficient
+you are...
+
+Emacs is like deciding to go on a multi-day backpacking
+trip up the mountain: it&#x27;ll be tough, take a while, and
+you&#x27;ll probably have a lot of type-2 fun.
+
+VSCode is like a neighboring mountain with a gondola to
+the top and a bar with all your friends drinking beers
+overlooking the Emacs backpackers.
+
+Now here&#x27;s the kicker: as a professional programmer,
+it&#x27;s your job to be at the top of the mountain, or at
+least close. Your coworkers will notice if you&#x27;re still
+at the base, or, even worse, if you take the gondola
+down to climb another mountain.
+
+There&#x27;s a few reasons it might still be worth climbing
+Emacs mountain:
+
+* It&#x27;s _possible_ that it&#x27;s a taller mountain (and that
+  you can get more efficient than VSCode)
+* The mountain is older and less likely to disappear;
+  you can stay at the top longer.
+* You don&#x27;t have to pay to hike it :)
+* Hiking it can just be plain fun, and you&#x27;ll learn
+  things and make friends along the way
+
+On the other hand, if it turns out that VSCode mountain
+is higher, it becomes harder to justify the effort to
+climb Emacs mountain. And similarly, if Vim and Emacs
+mountain are the same height, it&#x27;s hard to justify
+descending one to climb the other (other than the fact
+that you might enjoy the new hike).
+
+The relative heights of the mountains are, of course,
+up for debate. But the effort to climb them is probably
+not.
+
+I like hiking, what can I say. I think it&#x27;s important
+to recognize that the time could be spent elsewhere
+though.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/026.txt</link>
+<title>[2022-11-27] On Window Managers and the UNIX Philosophy</title>
+<description><![CDATA[<pre>
+On Window Managers and the UNIX Philosophy
+------------------------------------------
+Sun Nov 27 22:32:09 EST 2022
+
+Ok, so the title is a bit clickbaity, but I needed something
+more specific than &quot;On Window Managers&quot;.
+
+Really what I hope to explore in this entry is:
+
+&gt; Why don&#x27;t more applications leverage the window manager?
+
+## Backstory
+
+In my internet research on CHICKEN Scheme, I stumbled
+across Felix&#x27;s website (the original author) [1]. He has
+some projects listed, including a Acme-like editor he
+develops.  As an Acme enthusiast myself, I had to check
+it out!
+
+The editor is called ma [2] and I&#x27;m using it to write
+this post.  It has the classic look and the mouse
+chording/plumbing (and to my pleasant surprise some emacs
+and CUA hybrid so Ctrl-S/C/V saves/copies/pastes and
+Ctrl-N/P go up/down, etc).
+
+The most interesting thing about ma(1), however, is that
+it only supports a single buffer per window. To handle
+multiple files, run multiple ma(1) instances. They
+communicate with a registry, if needed (presumably for
+things like &quot;does anyone have this file open already?&quot;).
+
+From the README:
+
+&gt; ma ... needs a tiling window manager to be used in a
+&gt; satisfactory way.
+
+This is such an interesting concept, I had to write about it.
+
+[1]: http://call-with-current-continuation.org
+[2]: http://call-with-current-continuation.org/ma/ma.html
+
+
+## On Leveraging the Window Manager
+
+The more I looked around, the more I realized... most
+applications have their own window manager. Splits in
+Vim, tabs in Firefox, heck Emacs even _calls_ their splits
+&quot;windows&quot; (vs &quot;frames&quot; for X11 windows).  Terminals
+frequently have tabs/splits, and for those that don&#x27;t
+tmux(1) can be used!
+
+To these apps, the window manager is a foe, not a friend.
+It will resize them, force them to adapt. They really
+don&#x27;t seem to be built to work in tandem.
+
+On the other hand, these apps aren&#x27;t really doing anything
+tiling window managers can&#x27;t. Tabs, splits, stacks... I&#x27;d
+argue tiling window managers provide more flexibility
+than any home baked solution.
+
+Further, each app has a slightly different set of key
+bindings to use their window management. They _have_ to
+be different because frequently users nest apps within
+apps (think vim in tmux in gnome-terminal ctrl-t for gnome
+tabs, ctrl-a[num] for tmux, :tab for vim).
+
+Wouldn&#x27;t it just be cleaner to pull a ma(1) and leverage
+the window manager? This would mean:
+
+1. Uniform key bindings between many app types
+2. The ability to stack/tab/split between different apps
+
+(2) can&#x27;t be understated--it&#x27;s so cool having ma(1) split
+in the main panel, firefox and st(1) on the right. If I was
+in vim, I could have my shell and editor, but surely not
+the browser in the same &quot;grid&quot;!
+
+Off the top of my head there&#x27;s only two reasons _not_
+to do this:
+
+1. (lesser) Needing to run a &quot;registry&quot; to synchonize
+   multiple apps is kindof awkward
+2. (more importantly) The majority of computer
+   users just don&#x27;t (and can&#x27;t) use a tiling (or otherwise
+   configurable) window manager.
+
+With Windows and macOS having the majority of users, of
+_course_ firefox needs to have its own tabs (and so on).
+There&#x27;s simply no sane way to manage your 30+ tab session
+as floating windows.
+
+
+## Wrapping Up
+
+It seems, unless there&#x27;s a massive shift in how mainstream
+desktop window managers work, that writing ma-like programs
+that rely on a window manager for basic things like
+multiple files is a pipe-dream (unless you drastically
+shrink your audience size). That said, it&#x27;s an interesting
+way of dividing the responsibilities; if you can do one
+thing only, and do it well, surely you should focus on
+being an editor and not a window manager :)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/027.txt</link>
+<title>[2022-11-29] A Simple Case for Lisp Parenthesis</title>
+<description><![CDATA[<pre>
+A Simple Case for Lisp Parenthesis
+----------------------------------
+Tue Nov 29 23:12:42 EST 2022
+
+I was reading the Functions chapter of Crafting Interpreters
+today and was struck by the ugliness of chained function
+calls:
+
+   foo()()
+
+This presumably calls `foo`, then calls the function foo
+returns.
+
+While it is arguable that it&#x27;s maybe too subtle, the lisp
+equivalent is definitely easier on the eyes:
+
+  ((foo))
+
+Of course, the real power of lisp parenthesis is the fact that
+by reducing the syntax to.. a lack of syntax (code is data),
+it&#x27;s easy to write metaprograms (code that writes code
+(also called macros)).
+
+But I think sometimes it&#x27;s easier to appeal to aesthetics than
+power. Which would you prefer?
+
+  bar(foo(1, 2)(5), baz(2))(5)
+
+  ((bar ((foo 1 2) 5) (baz 2)) 5)
+
+Or even better:
+
+  ((bar ((foo 1 2) 5)
+        (baz 2))
+   5)
+
+Maybe I&#x27;ve just been reading too many books on Scheme :)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/028.txt</link>
+<title>[2022-11-30] Hackers and Painters and Paint Brushes</title>
+<description><![CDATA[<pre>
+Hackers and Painters and Paint Brushes
+--------------------------------------
+Wed Nov 30 22:55:58 EST 2022
+
+I&#x27;ve been thinking a lot about dev tooling recently, with
+looks at VSCode, Emacs, my Vim setup (still not quite
+recovered from wiping my dotfiles to put a FOSS license
+on them..).
+
+In the past week, I explored:
+
+* Tiling Window Managers and Applications that
+  Leverage Them [1]
+* Text Editors vs Code Editors: LSP and CoPilot [2]
+* Emacs as a Platform [3]
+
+In this post, I wanted to take a step back as more of a
+meta-commentary on not the tooling, but my obsession with
+it.
+
+To continue Paul Graham&#x27;s comparison of Hackers and
+Painters [4], I think it&#x27;s fair to say that text editors
+are like paint brushes. Software users don&#x27;t necessarily
+care about the paintbrush used, but instead the painting
+it made.
+
+I had this realization last night that I&#x27;ve spent so much
+of my free time, and even career (my first job being in
+dev tools), studying paint brushes.  And not just the
+brushes themselves, but also the types of brushes famous
+painters used. I&#x27;ve spent a lot of time reading blogs
+like usesthis.com and watching talks to see what the
+greats used and then trying them myself. Why do Russ Cox
+and Rob Pike still use Acme? Why does Brian Kernighan use
+Sam [5]? Why did Guido switch from Emacs to VSCode [6]?
+I felt the need to find out.
+
+And I think what I realized is that the answer may be &quot;it
+doesn&#x27;t matter&quot;. What matters more is what they&#x27;ve built
+with it: their paintings.
+
+The exception maybe is when the painting is the brush:
+for example, Rob Pike built Acme.  I suppose for brush
+builders, it&#x27;s part of the trade to be up to date on what
+brush weilders are using and why.
+
+But for normal painters it feels like a distraction at
+some point.
+
+And that&#x27;s not to say it&#x27;s not worth studying how others
+are painting--any craftsman should try to stay up to date
+on the best techniques. But the more I grow as a programmer
+the more I think it matters less what tools you choose
+and it&#x27;s not worth the mental and emotional drain to let
+tool choices become religious or part of one&#x27;s identity*
+
+
+[1]: gopher://alexkarle.com/0/phlog/026.txt
+[2]: gopher://alexkarle.com/0/phlog/025.txt
+[3]: gopher://alexkarle.com/0/phlog/023.txt
+[4]: http://paulgraham.com/hp.html
+[5]: https://lexfridman.com/brian-kernighan/
+[6]: https://lexfridman.com/guido-van-rossum/
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/029.txt</link>
+<title>[2022-12-01] Book Review: Sketchy Scheme by Nils M Holm</title>
+<description><![CDATA[<pre>
+Book Review: Sketchy Scheme by Nils M Holm
+------------------------------------------
+Thu Dec  1 22:47:23 EST 2022
+
+I just finished reading Sketchy Scheme [1] and I
+wanted to give it a quick shoutout to my 3 (if that)
+readers :)
+
+TL;DR: This is a great intro on Scheme, but less
+about &quot;functional programming&quot; than I expected. It&#x27;s
+a tad bit outdated I think, but holds up pretty well.
+So far it&#x27;s been the best resource I&#x27;ve found on
+actually writing Scheme.
+
+There&#x27;s a lot of great free resources online for
+Scheme [2][3].
+
+One of the things I really appreciate about the
+langauge and ecosystem is that the language design
+all happens in the open. You can read the language
+spec (R5RS is only 50some pages) and community
+standards (SRFI&#x27;s -- Scheme Requests for Implementation).
+
+However, docs are docs and they aren&#x27;t necessarily
+the &quot;101&quot; course for someone new to Lisp dialects.
+
+I picked up this book in hopes that it would teach
+me more about functional programming. There&#x27;s a lot
+of hype going around about FP these days and I thought
+why not learn a little Scheme in addition to a new
+paradigm. While the examples were functional (and
+certainly interesting) it was moreso the reverse: I
+learned a lot of Scheme and a little FP. That said,
+it was definitely still worth the read; it has a
+great overview of Scheme from the basics (which are
+easy to learn online) up to detailed descriptions
+of define-syntax and call/cc, which I&#x27;ve struggled
+to find good succinct resources on.
+
+For the call/cc and define-syntax bits alone, it was
+worth the $15 :) Toss in a detailed overview of the
+Y combinator that 100% went over my head and I&#x27;ll
+need to walk through with a pen and paper later
+and you&#x27;ve got yourself a great book!
+
+[1]: http://t3x.org/sketchy/index.html
+[2]: http://scheme.org
+[3]: http://schemers.org
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/030.txt</link>
+<title>[2023-01-01] Happy New Year!</title>
+<description><![CDATA[<pre>
+Happy New Year!
+---------------
+Sun Jan  1 14:53:27 EST 2023
+
+It&#x27;s hard to believe its 2023 already.
+2022 just flew by.
+
+2022 was a good year. Got engaged,
+made some new friends, strengthened
+existing friendships, started a new
+job, and spent lots of time with
+family.
+
+I wasn&#x27;t sure I&#x27;d have a New Years
+Resolution. I read a great Hacker News
+comment that anything worth being
+a resolution should be started
+immediately rather than waiting for
+a new year...
+
+But I&#x27;m a sucker for a good resolution.
+There&#x27;s something about a new year
+that inspires new habits.
+
+This year, I&#x27;m keeping it simple:
+
+	Prioritize my health
+
+This means a lot of things:
+
+* Less junk food
+
+* Staying on top of doctor/dentist visits
+
+* Finding time for exercise
+
+* Getting outside more
+
+I find working from home it&#x27;s easy to
+let the days blend together. To choose
+to push things off to tomorrow. But
+I&#x27;m always happier when I prioritize
+my health. So here&#x27;s to a happy and
+healthy 2023.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/031.txt</link>
+<title>[2023-01-05] Announcing a New Gopherhole Section: Games!</title>
+<description><![CDATA[<pre>
+Announcing a New Gopherhole Section: Games!
+-------------------------------------------
+Thu Jan  5 22:38:54 EST 2023
+
+I spent a couple hours the past few nights typing up
+the rules to a couple of my favorite card games (along
+with some heuristics/strategy). You can find it under
+the /games selector in my gopherhole:
+
+	gopher://alexkarle.com/1/games
+
+I hope to grow this section into a small digital library
+of card games, along with maybe some reviews of board
+games (which are much too complicated to teach and
+probably have copyrights preventing duplication).
+
+Enjoy!
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/032.txt</link>
+<title>[2023-01-05] This Gopherhole as a Time Capsule</title>
+<description><![CDATA[<pre>
+This Gopherhole as a Time Capsule
+---------------------------------
+Thu Jan  5 22:51:54 EST 2023
+
+... or &quot;Alex Justifies Spending Time on the Gopherhole&quot;
+
+Remember being in elementary school, when you would
+write a letter to your future self, seal it, and the
+teachers would hold it for when you graduated?
+
+I&#x27;ve been thinking a lot recently about this gopherhole
+and how I want it to grow in the future, and I think
+a large part of that will be thinking of it as a
+&quot;time capsule&quot; for my future self.
+
+There are some parts of the gopherhole that are &quot;living&quot;
+and have direct benefit today:
+
+* The phlog helps me process my thoughts through writing
+
+* The notes section helps me easily fetch helpful tidbits
+
+But recently I got excited about documenting the rules
+for a few of my favorite card games [1] (with some house rules
+and strategy tips). And in the middle of doing so I was
+struck by the fact that (1) this was taking longer than
+I thought it would and (2) I don&#x27;t have an audience that
+would benefit from it and (3) I won&#x27;t benefit from writing
+them down right now.
+
+My realization was: since all the content is in plaintext,
+it should last decades, and I _will_ benefit from revisiting
+these in 30+ years.
+
+I haven&#x27;t heard this concept discussed much (websites as a
+time capsule). Probably because it costs money to host a site
+why would you pay for 30 years of hosting if you don&#x27;t plan
+on using it :) But for gopherholes I think it may be a good
+fit.
+
+So even if no one finds this (and I hope someone does--these
+are fun games!), I&#x27;m excited to revisit them in the decades
+to come.
+
+[1]: gopher://alexkarle.com/1/games
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/033.txt</link>
+<title>[2023-01-14] New Gopherhole Release: My Record Collection</title>
+<description><![CDATA[<pre>
+New Gopherhole Release: My Record Collection
+--------------------------------------------
+Sat Jan 14 00:08:48 EST 2023
+
+Just a quick announcement post: in the spirit of the
+&quot;time capsule&quot; I discussed in the last post, I&#x27;ve
+added a new section to my gopherhole: &quot;records&quot;.
+It&#x27;s got an up to date listing of all the vinyl
+in my collection, a brief post on why I collect it,
+and a list of when / how / why I got each record
+(or set of similar records).
+
+It was really fun to write. Similar to the &quot;this year
+in songs&quot; phlog, but on the decade scale instead of
+weekly.
+
+Since records are relatively expensive, it&#x27;s generally
+the case that every record was either:
+
+1. Given to me as a gift
+
+2. An album I love(d)
+
+In either case, I want to remember the context of
+when and how/why I acquired it!
+
+Enjoy!
+
+	gopher://alexkarle.com/1/records
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/034.txt</link>
+<title>[2023-04-11] On Digital Minimalism</title>
+<description><![CDATA[<pre>
+On Digital Minimalism
+---------------------
+Tue Apr 11 23:45:48 EDT 2023
+
+Sometime in February this year I picked up Cal
+Newport&#x27;s &quot;Digital Minimalism&quot; and decided I&#x27;d
+give a &quot;digital detox&quot; a try. The phlog posts
+definitely suffered, but it was a worthwhile
+experience.
+
+For most of March I tried to limit my outside of
+work screen time. I put my phone on my dresser
+instead of my bedstand. I put my laptop in my
+office instead of the bedroom. I tried hard to
+avoid the urge to surf the web or check the
+news at the first sign of a minute lull.
+
+And I felt better for it. Or at least I think
+I did.
+
+In a way, I&#x27;d been prepping for it inadvertently
+for a while. So much of the book focuses on
+social media, which I&#x27;ve been off for years.
+The hard bit for me was news, blogs, YouTube,
+etc. I&#x27;m hooked on learning new things, and
+the internet is the fastest way to be exposed
+to the craziest shit (for better or worse).
+
+A highlight was rediscovering my love for
+reading. I read more books in the past two
+months than the past three years. Fiction,
+non fiction, sci-fi, you name it. This sounds
+like a brag, but it was probably only 6 books,
+which really just goes to show how little I&#x27;d
+been reading before.
+
+As of today, I&#x27;d say my detox is on hold.
+I got distracted from it, falling back into
+old habits without taking the time to evaluate
+the individual technologies I want to keep
+in my life. It was hard not to, with work
+requiring me to be on-call. I hope to revisit
+it again soon.
+
+All in all, I&#x27;d recommend the book (it&#x27;s a quick
+read!) and trying some form of the recommended
+experience. For a blip, I found the time to
+reflect on life. I wonder where that time went /s
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/035.txt</link>
+<title>[2023-04-24] When Seemingly Infinite Becomes Suddenly Finite</title>
+<description><![CDATA[<pre>
+When Seemingly Infinite Becomes Suddenly Finite
+-----------------------------------------------
+Mon Apr 24 22:36:06 EDT 2023
+
+... or, we&#x27;re buying a house!
+
+We&#x27;ve been renting our current apartment for 4yr
+now, and yesterday our bid was accepted on a house.
+Needless to say, it&#x27;s been a whirlwind of a day.
+Shopping for mortgages, emailing attorneys,
+organizing pay stubs, etc.
+
+But what struck me most has been the sensation that
+the small routines of my life will be changed.
+The little things, like the dishwasher door needing
+an extra shove or the lamp chord working 25% of the time.
+In our four years here I&#x27;ve come to accept them
+as part of life; seemingly infinite in nature.
+
+And then just like that, they&#x27;re finite. As I
+loaded the dishwasher tonight, I thought about how
+it was one of the last dozen times I would run it.
+
+It&#x27;s a peculiar feeling. A mix of excitement for
+the future and bittersweet nostalgia. I&#x27;ve felt
+it before when changing jobs--having the daily
+stressers suddenly evaporate. What felt core to
+my existence turning out to be just a phase.
+
+It&#x27;s funny because I know these things are temporary.
+Renting was never meant to be permanent. The
+dishwasher could have been replaced. And of course
+we all die one day. But to have routines of unknown
+length suddenly truncated feels like a burden lifted.
+
+This is almost definitely melodramatic; I blame it
+on the fact that I&#x27;m halfway through White Noise by
+Don DeLillo. Still I think there&#x27;s something to the
+thought. It&#x27;s amusing I ever let the small annoyances
+become part of my routine at all. Only to appreciate
+them most when I know they&#x27;re temporary.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/036.txt</link>
+<title>[2023-12-02] The Many Benefits of Anti-Consumerism</title>
+<description><![CDATA[<pre>
+The Many Benefits of Anti-Consumerism
+-------------------------------------
+Sat Dec  2 22:06:30 EST 2023
+
+It&#x27;s been a year of non-technical interests,
+as I detailed a bit on my weblog [1]. Among
+them were Digital Minimalism, Financial
+Independence (especially through Frugality),
+Investing, and more recently Sustainability
+and Zero-Waste.
+
+Thinking about minimizing my environmental
+impact / waste led me to a maybe-not-so-shocking
+revelation:
+
+	The simplest path for all of
+	the above is to just not buy
+	things.
+
+You create less waste if you buy less.
+It&#x27;s easier to FI if you buy less.
+You have more to invest if you buy less.
+
+All of the interests are symbiotic in this
+way. Even digital minimalism fits in nicely,
+with less need for state-of-the-art technology,
+less ewaste, and of course less exposure to
+advertisements which drive the desire for things.
+
+I may be misusing the term, but I think what
+is essential to achieving buying less is
+anti-consumerism: rejecting the culture of
+endless consumption. Breaking the desire-&gt;
+purchase-&gt;discard hamster wheel and instead
+reusing, repairing, and recycling.
+
+With our FI hat on:
+
+	Any dollar spent is a dollar
+	not gaining interest (&quot;working
+	for you&quot;).
+
+But maybe that argument doesn&#x27;t appeal to
+the already wealthy. A more urgent need
+is seen with the sustainability hat on:
+
+	Any material thing must
+	have been created with resources
+	taken from this earth (potentially
+	through harmful methods).
+
+Repairing, repurposing, and most importantly
+sharing our possessions can keep waste out
+of landfills and strengthen our communities.
+
+I&#x27;m sharing all this not to preach, judge,
+or otherwise posture as a better earth citizen
+than anyone else. I&#x27;m just as guilty of buying
+my own lawnmower for ~10 mows a year instead
+of arranging a joint custody with neighbors
+(albeit before having given this much thought).
+
+I bring this all up because I&#x27;m excited. My
+seemingly complex and varied lifestyle goals
+all have a simple, effective, solution to get
+me 90% of the way there: just buy less.
+
+[1]: https://alexkarle.com/blog/life-updates-2023.html
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/037.txt</link>
+<title>[2023-12-31] The Joys of a Wood Stove</title>
+<description><![CDATA[<pre>
+The Joys of a Wood Stove
+------------------------
+Sun Dec 31 17:11:05 EST 2023
+
+Jennie and I completed our first
+elective home project this month
+(after a series of unfortunate roof,
+boiler, oil tank, and chimney fixes):
+a wood stove.
+
+The installation itself was stressful--
+shoddy communication, delayed parts,
+incompetent installers... but 3 months
+after we started, it&#x27;s here, and I
+couldn&#x27;t be loving it more.
+
+We&#x27;ve had a fire almost every day for
+3 weeks now, and it&#x27;s given our home
+a new warmth--both in its cozy
+atmosphere and literally; it allows
+us to heat asymmetrically, with a
+toasty chair next to the fire and a
+chillier bedroom upstairs. Much
+preferred to the flat temperature of
+central heating.  Heat people, not
+spaces, as they say.
+
+And while it may become more of a
+chore over time, I&#x27;ve loved the
+demanding nature of heating with wood:
+it&#x27;s forced me to chop kindling and
+haul wood inside every other day, and
+with a busy remote job, this is the
+perfect positive pressure needed to
+get 15 minutes of crisp air.
+
+It demands attention too. Stoking,
+refueling, and monitoring active fires
+while in use, as well as cleaning the
+stove daily. It might sound like a
+hassle, but I love that I&#x27;m capable
+of doing it myself. Our oil boiler
+cannot legally be self-serviced and
+is quite literally a black box.  In
+comparison the wood stove is simple.
+Even though we don&#x27;t have trees to
+cut down, it still feels like a big
+step closer to self sufficiency.
+Certainly in a storm we won&#x27;t worry
+about losing power.
+
+Lastly, there&#x27;s something innately
+appealing in a good fire. Maybe it&#x27;s
+evolutionary, with fire being such
+an important part of primitive life.
+Maybe its just my ability to conceptualize
+the whole lifecycle, from tree to log
+to ember, that heightens my appreciation
+compared to the turning of a dial.
+
+Regardless, I can&#x27;t imagine home
+without it now.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/038.txt</link>
+<title>[2024-01-24] In Praise of the Local Library</title>
+<description><![CDATA[<pre>
+In Praise of the Local Library
+==============================
+Wed Jan 24 09:21:00 EST 2024
+
+When we bought our house, we knew
+we wanted to be walking distance to
+town center. We had various reasons:
+access to public transport, shops,
+and restaurants... but of all the
+amenities, the one that&#x27;s been by far
+the best is the library.
+
+Which came as a bit of a surprise to
+me.
+
+Around the time we were buying, we
+were planning our wedding, and of
+course juggling a bunch of home
+repairs, so reading was low on my
+list of leisure activities (watching
+YouTube videos on how to fix slow
+draining sinks was high).
+
+But the library has been so much
+more than a place to get books. They
+host live music, free exercise classes,
+and have a wealth of knowledge of the
+town (which has been fun to explore).
+
+Even cooler (for the recent homeowner),
+they have a &quot;library of things&quot;, where
+you can check out tools, board games,
+and more. I used it just this week to
+check out an air quality tester and
+moisture meter to make sure our stove
+wasn&#x27;t polluting the living space and
+the wood is properly seasoned. That&#x27;s
+&gt;$200 in tools saved! How cool is that?
+
+And of course there&#x27;s books, lots of
+them :) Our library is part of a bigger
+network where they&#x27;ll share books
+with neighboring libraries, which has
+meant I have never found a title I
+couldn&#x27;t get at the library.
+
+So here&#x27;s a little thanks to all our
+librarians; you make the community a
+better place :)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/039.txt</link>
+<title>[2024-08-03] What Words Can't Describe</title>
+<description><![CDATA[<pre>
+What Words Can&#x27;t Describe
+-------------------------
+Sat Aug  3 11:48:09 AM EDT 2024
+
+I&#x27;m sitting here trying to put into words
+this overwhelming sense of
+
+  Love,
+  Change,
+  Responsibility,
+  Happiness,
+  Exhaustion,
+  Yes, at times Frustration,
+  and Admiration, for my wife Jennie.
+
+The list goes on. This past month we welcomed
+our first child into this world--our son Wesley.
+It&#x27;s been such a rollercoaster of emotions.
+From a long and unexpectedly hard labor (given
+how relatively comfortable a pregnancy we had)
+to an unexpectedly tumultuous hospital stay,
+to coming home and learning to be a family.
+
+It&#x27;s had its highs and its lows--from the first
+eye contact that stops a cry and that half
+smile you know is gas to the 3am poop/cry/feed
+festival that goes on far too long.
+
+It&#x27;s the hardest thing I&#x27;ve ever done, but it&#x27;s
+been so worth it. Much love to our family for
+all the help and support, it&#x27;s made the transition
+so much easier.
+
+Hello, World, little guy &lt;3
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/040.txt</link>
+<title>[2024-11-19] Look to the Slow Things</title>
+<description><![CDATA[<pre>
+Look to the Slow Things
+-----------------------
+Tue Nov 19 14:03:24 CET 2024
+
+Working in tech can be intoxicating.
+The dizzying speed at which things
+change.  New changelogs weekly, feature
+releases to excitedly try, security
+updates to monitor. Internet drama
+with strong personalities and endless
+arguments and strongly held opinions.
+
+I used to love it wholeheartedly. I
+became one with the culture.  I thought
+Free Software was my life&#x27;s calling,
+one of societies biggest issues.
+
+These days, I&#x27;m not so sure.  Yes, I
+still believe we&#x27;d be better off if
+all code was free (as in freedom).
+But there&#x27;s so much more to worry
+about: climate, healthcare &amp; reproductive
+rights, even democracy as we know it.
+
+It&#x27;s been a crazy news cycle this
+month.  Exhausting in its own way.
+And my anxieties for the future are
+more real than ever with a newborn.
+He&#x27;ll have to live with our actions
+now; and thats terrifying.
+
+In trying to cope with that, one
+possibility was to re-embrace tech.
+To bury my head in the familiar news
+cycle. So removed from the physical
+world.
+
+But lately, I&#x27;ve come to appreciate
+a more fulfilling place to focus my
+(currently limited) energy: embracing
+the Slow Things.
+
+Things like finding out the names of
+the trees in my back yard. Learning
+how to plant garlic, put my garden
+beds to rest, and effectively compost.
+How to bake bread. How to raise a
+child.
+
+These things don&#x27;t change every week.
+There&#x27;s no dopamine hit I can get
+refreshing a web page to see &quot;the
+latest&quot;.
+
+But they feel more _human_. They
+connect me to past generations in a
+way tech never can. I can talk to my
+grandfather about our gardens, but
+he&#x27;ll never fully understand the
+intricacies of email. Let alone why
+a columnar database is faster for
+certain access patterns.
+
+I&#x27;m by no means giving up tech; I
+still love to program. To solve little
+logic puzzles and build a system of
+my own design. I&#x27;m not giving up the
+free software (and free culture)
+vision, either.
+
+But I think right now what we need
+above all is a feeling of unity.
+Connection. Empathy for not
+just each other but Mother Earth.
+
+Looking to the Slow Things has
+given me that. Or begun to, at least.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://alexkarle.com/1/phlog/atom.xml</link>
+<title>Atom Feed</title>
+<description><![CDATA[<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;feed xmlns=&quot;http://www.w3.org/2005/Atom&quot;&gt;
+  &lt;title&gt;Alex Karle&#x27;s phlog&lt;/title&gt;
+  &lt;id&gt;gopher://alexkarle.com/1/phlog&lt;/id&gt;
+  &lt;link rel=&quot;self&quot; type=&quot;application/atom+xml&quot; href=&quot;gopher://alexkarle.com/0/phlog/atom.xml&quot;/&gt;
+  &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/1/phlog&quot;/&gt;
+  &lt;author&gt;
+    &lt;name&gt;Alex Karle&lt;/name&gt;
+  &lt;/author&gt;
+  &lt;updated&gt;2024-11-21T04:10:10+01:00&lt;/updated&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Look to the Slow Things&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/040.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/040.txt&lt;/id&gt;
+    &lt;updated&gt;2024-11-19T14:25:27+01:00&lt;/updated&gt;
+    &lt;published&gt;2024-11-19T14:25:27+01:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Look to the Slow Things
+-----------------------
+Tue Nov 19 14:03:24 CET 2024
+
+Working in tech can be intoxicating.
+The dizzying speed at which things
+change.  New changelogs weekly, feature
+releases to excitedly try, security
+updates to monitor. Internet drama
+with strong personalities and endless
+arguments and strongly held opinions.
+
+I used to love it wholeheartedly. I
+became one with the culture.  I thought
+Free Software was my life&#x27;s calling,
+one of societies biggest issues.
+
+These days, I&#x27;m not so sure.  Yes, I
+still believe we&#x27;d be better off if
+all code was free (as in freedom).
+But there&#x27;s so much more to worry
+about: climate, healthcare &amp; reproductive
+rights, even democracy as we know it.
+
+It&#x27;s been a crazy news cycle this
+month.  Exhausting in its own way.
+And my anxieties for the future are
+more real than ever with a newborn.
+He&#x27;ll have to live with our actions
+now; and thats terrifying.
+
+In trying to cope with that, one
+possibility was to re-embrace tech.
+To bury my head in the familiar news
+cycle. So removed from the physical
+world.
+
+But lately, I&#x27;ve come to appreciate
+a more fulfilling place to focus my
+(currently limited) energy: embracing
+the Slow Things.
+
+Things like finding out the names of
+the trees in my back yard. Learning
+how to plant garlic, put my garden
+beds to rest, and effectively compost.
+How to bake bread. How to raise a
+child.
+
+These things don&#x27;t change every week.
+There&#x27;s no dopamine hit I can get
+refreshing a web page to see &quot;the
+latest&quot;.
+
+But they feel more _human_. They
+connect me to past generations in a
+way tech never can. I can talk to my
+grandfather about our gardens, but
+he&#x27;ll never fully understand the
+intricacies of email. Let alone why
+a columnar database is faster for
+certain access patterns.
+
+I&#x27;m by no means giving up tech; I
+still love to program. To solve little
+logic puzzles and build a system of
+my own design. I&#x27;m not giving up the
+free software (and free culture)
+vision, either.
+
+But I think right now what we need
+above all is a feeling of unity.
+Connection. Empathy for not
+just each other but Mother Earth.
+
+Looking to the Slow Things has
+given me that. Or begun to, at least.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;What Words Can&#x27;t Describe&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/039.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/039.txt&lt;/id&gt;
+    &lt;updated&gt;2024-08-03T12:06:07-04:00&lt;/updated&gt;
+    &lt;published&gt;2024-08-03T12:06:07-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+What Words Can&#x27;t Describe
+-------------------------
+Sat Aug  3 11:48:09 AM EDT 2024
+
+I&#x27;m sitting here trying to put into words
+this overwhelming sense of
+
+  Love,
+  Change,
+  Responsibility,
+  Happiness,
+  Exhaustion,
+  Yes, at times Frustration,
+  and Admiration, for my wife Jennie.
+
+The list goes on. This past month we welcomed
+our first child into this world--our son Wesley.
+It&#x27;s been such a rollercoaster of emotions.
+From a long and unexpectedly hard labor (given
+how relatively comfortable a pregnancy we had)
+to an unexpectedly tumultuous hospital stay,
+to coming home and learning to be a family.
+
+It&#x27;s had its highs and its lows--from the first
+eye contact that stops a cry and that half
+smile you know is gas to the 3am poop/cry/feed
+festival that goes on far too long.
+
+It&#x27;s the hardest thing I&#x27;ve ever done, but it&#x27;s
+been so worth it. Much love to our family for
+all the help and support, it&#x27;s made the transition
+so much easier.
+
+Hello, World, little guy &lt;3
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;In Praise of the Local Library&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/038.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/038.txt&lt;/id&gt;
+    &lt;updated&gt;2024-01-24T09:33:37-05:00&lt;/updated&gt;
+    &lt;published&gt;2024-01-24T09:33:37-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+In Praise of the Local Library
+==============================
+Wed Jan 24 09:21:00 EST 2024
+
+When we bought our house, we knew
+we wanted to be walking distance to
+town center. We had various reasons:
+access to public transport, shops,
+and restaurants... but of all the
+amenities, the one that&#x27;s been by far
+the best is the library.
+
+Which came as a bit of a surprise to
+me.
+
+Around the time we were buying, we
+were planning our wedding, and of
+course juggling a bunch of home
+repairs, so reading was low on my
+list of leisure activities (watching
+YouTube videos on how to fix slow
+draining sinks was high).
+
+But the library has been so much
+more than a place to get books. They
+host live music, free exercise classes,
+and have a wealth of knowledge of the
+town (which has been fun to explore).
+
+Even cooler (for the recent homeowner),
+they have a &quot;library of things&quot;, where
+you can check out tools, board games,
+and more. I used it just this week to
+check out an air quality tester and
+moisture meter to make sure our stove
+wasn&#x27;t polluting the living space and
+the wood is properly seasoned. That&#x27;s
+&gt;$200 in tools saved! How cool is that?
+
+And of course there&#x27;s books, lots of
+them :) Our library is part of a bigger
+network where they&#x27;ll share books
+with neighboring libraries, which has
+meant I have never found a title I
+couldn&#x27;t get at the library.
+
+So here&#x27;s a little thanks to all our
+librarians; you make the community a
+better place :)
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;The Joys of a Wood Stove&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/037.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/037.txt&lt;/id&gt;
+    &lt;updated&gt;2023-12-31T17:36:16-05:00&lt;/updated&gt;
+    &lt;published&gt;2023-12-31T17:36:16-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+The Joys of a Wood Stove
+------------------------
+Sun Dec 31 17:11:05 EST 2023
+
+Jennie and I completed our first
+elective home project this month
+(after a series of unfortunate roof,
+boiler, oil tank, and chimney fixes):
+a wood stove.
+
+The installation itself was stressful--
+shoddy communication, delayed parts,
+incompetent installers... but 3 months
+after we started, it&#x27;s here, and I
+couldn&#x27;t be loving it more.
+
+We&#x27;ve had a fire almost every day for
+3 weeks now, and it&#x27;s given our home
+a new warmth--both in its cozy
+atmosphere and literally; it allows
+us to heat asymmetrically, with a
+toasty chair next to the fire and a
+chillier bedroom upstairs. Much
+preferred to the flat temperature of
+central heating.  Heat people, not
+spaces, as they say.
+
+And while it may become more of a
+chore over time, I&#x27;ve loved the
+demanding nature of heating with wood:
+it&#x27;s forced me to chop kindling and
+haul wood inside every other day, and
+with a busy remote job, this is the
+perfect positive pressure needed to
+get 15 minutes of crisp air.
+
+It demands attention too. Stoking,
+refueling, and monitoring active fires
+while in use, as well as cleaning the
+stove daily. It might sound like a
+hassle, but I love that I&#x27;m capable
+of doing it myself. Our oil boiler
+cannot legally be self-serviced and
+is quite literally a black box.  In
+comparison the wood stove is simple.
+Even though we don&#x27;t have trees to
+cut down, it still feels like a big
+step closer to self sufficiency.
+Certainly in a storm we won&#x27;t worry
+about losing power.
+
+Lastly, there&#x27;s something innately
+appealing in a good fire. Maybe it&#x27;s
+evolutionary, with fire being such
+an important part of primitive life.
+Maybe its just my ability to conceptualize
+the whole lifecycle, from tree to log
+to ember, that heightens my appreciation
+compared to the turning of a dial.
+
+Regardless, I can&#x27;t imagine home
+without it now.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;The Many Benefits of Anti-Consumerism&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/036.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/036.txt&lt;/id&gt;
+    &lt;updated&gt;2023-12-02T23:07:43-05:00&lt;/updated&gt;
+    &lt;published&gt;2023-12-02T23:07:43-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+The Many Benefits of Anti-Consumerism
+-------------------------------------
+Sat Dec  2 22:06:30 EST 2023
+
+It&#x27;s been a year of non-technical interests,
+as I detailed a bit on my weblog [1]. Among
+them were Digital Minimalism, Financial
+Independence (especially through Frugality),
+Investing, and more recently Sustainability
+and Zero-Waste.
+
+Thinking about minimizing my environmental
+impact / waste led me to a maybe-not-so-shocking
+revelation:
+
+	The simplest path for all of
+	the above is to just not buy
+	things.
+
+You create less waste if you buy less.
+It&#x27;s easier to FI if you buy less.
+You have more to invest if you buy less.
+
+All of the interests are symbiotic in this
+way. Even digital minimalism fits in nicely,
+with less need for state-of-the-art technology,
+less ewaste, and of course less exposure to
+advertisements which drive the desire for things.
+
+I may be misusing the term, but I think what
+is essential to achieving buying less is
+anti-consumerism: rejecting the culture of
+endless consumption. Breaking the desire-&gt;
+purchase-&gt;discard hamster wheel and instead
+reusing, repairing, and recycling.
+
+With our FI hat on:
+
+	Any dollar spent is a dollar
+	not gaining interest (&quot;working
+	for you&quot;).
+
+But maybe that argument doesn&#x27;t appeal to
+the already wealthy. A more urgent need
+is seen with the sustainability hat on:
+
+	Any material thing must
+	have been created with resources
+	taken from this earth (potentially
+	through harmful methods).
+
+Repairing, repurposing, and most importantly
+sharing our possessions can keep waste out
+of landfills and strengthen our communities.
+
+I&#x27;m sharing all this not to preach, judge,
+or otherwise posture as a better earth citizen
+than anyone else. I&#x27;m just as guilty of buying
+my own lawnmower for ~10 mows a year instead
+of arranging a joint custody with neighbors
+(albeit before having given this much thought).
+
+I bring this all up because I&#x27;m excited. My
+seemingly complex and varied lifestyle goals
+all have a simple, effective, solution to get
+me 90% of the way there: just buy less.
+
+[1]: https://alexkarle.com/blog/life-updates-2023.html
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;When Seemingly Infinite Becomes Suddenly Finite&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/035.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/035.txt&lt;/id&gt;
+    &lt;updated&gt;2023-04-24T22:59:14-04:00&lt;/updated&gt;
+    &lt;published&gt;2023-04-24T22:59:14-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+When Seemingly Infinite Becomes Suddenly Finite
+-----------------------------------------------
+Mon Apr 24 22:36:06 EDT 2023
+
+... or, we&#x27;re buying a house!
+
+We&#x27;ve been renting our current apartment for 4yr
+now, and yesterday our bid was accepted on a house.
+Needless to say, it&#x27;s been a whirlwind of a day.
+Shopping for mortgages, emailing attorneys,
+organizing pay stubs, etc.
+
+But what struck me most has been the sensation that
+the small routines of my life will be changed.
+The little things, like the dishwasher door needing
+an extra shove or the lamp chord working 25% of the time.
+In our four years here I&#x27;ve come to accept them
+as part of life; seemingly infinite in nature.
+
+And then just like that, they&#x27;re finite. As I
+loaded the dishwasher tonight, I thought about how
+it was one of the last dozen times I would run it.
+
+It&#x27;s a peculiar feeling. A mix of excitement for
+the future and bittersweet nostalgia. I&#x27;ve felt
+it before when changing jobs--having the daily
+stressers suddenly evaporate. What felt core to
+my existence turning out to be just a phase.
+
+It&#x27;s funny because I know these things are temporary.
+Renting was never meant to be permanent. The
+dishwasher could have been replaced. And of course
+we all die one day. But to have routines of unknown
+length suddenly truncated feels like a burden lifted.
+
+This is almost definitely melodramatic; I blame it
+on the fact that I&#x27;m halfway through White Noise by
+Don DeLillo. Still I think there&#x27;s something to the
+thought. It&#x27;s amusing I ever let the small annoyances
+become part of my routine at all. Only to appreciate
+them most when I know they&#x27;re temporary.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;On Digital Minimalism&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/034.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/034.txt&lt;/id&gt;
+    &lt;updated&gt;2023-04-12T00:09:51-04:00&lt;/updated&gt;
+    &lt;published&gt;2023-04-12T00:08:20-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+On Digital Minimalism
+---------------------
+Tue Apr 11 23:45:48 EDT 2023
+
+Sometime in February this year I picked up Cal
+Newport&#x27;s &quot;Digital Minimalism&quot; and decided I&#x27;d
+give a &quot;digital detox&quot; a try. The phlog posts
+definitely suffered, but it was a worthwhile
+experience.
+
+For most of March I tried to limit my outside of
+work screen time. I put my phone on my dresser
+instead of my bedstand. I put my laptop in my
+office instead of the bedroom. I tried hard to
+avoid the urge to surf the web or check the
+news at the first sign of a minute lull.
+
+And I felt better for it. Or at least I think
+I did.
+
+In a way, I&#x27;d been prepping for it inadvertently
+for a while. So much of the book focuses on
+social media, which I&#x27;ve been off for years.
+The hard bit for me was news, blogs, YouTube,
+etc. I&#x27;m hooked on learning new things, and
+the internet is the fastest way to be exposed
+to the craziest shit (for better or worse).
+
+A highlight was rediscovering my love for
+reading. I read more books in the past two
+months than the past three years. Fiction,
+non fiction, sci-fi, you name it. This sounds
+like a brag, but it was probably only 6 books,
+which really just goes to show how little I&#x27;d
+been reading before.
+
+As of today, I&#x27;d say my detox is on hold.
+I got distracted from it, falling back into
+old habits without taking the time to evaluate
+the individual technologies I want to keep
+in my life. It was hard not to, with work
+requiring me to be on-call. I hope to revisit
+it again soon.
+
+All in all, I&#x27;d recommend the book (it&#x27;s a quick
+read!) and trying some form of the recommended
+experience. For a blip, I found the time to
+reflect on life. I wonder where that time went /s
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;New Gopherhole Release: My Record Collection&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/033.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/033.txt&lt;/id&gt;
+    &lt;updated&gt;2023-01-14T00:16:04-05:00&lt;/updated&gt;
+    &lt;published&gt;2023-01-14T00:16:04-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+New Gopherhole Release: My Record Collection
+--------------------------------------------
+Sat Jan 14 00:08:48 EST 2023
+
+Just a quick announcement post: in the spirit of the
+&quot;time capsule&quot; I discussed in the last post, I&#x27;ve
+added a new section to my gopherhole: &quot;records&quot;.
+It&#x27;s got an up to date listing of all the vinyl
+in my collection, a brief post on why I collect it,
+and a list of when / how / why I got each record
+(or set of similar records).
+
+It was really fun to write. Similar to the &quot;this year
+in songs&quot; phlog, but on the decade scale instead of
+weekly.
+
+Since records are relatively expensive, it&#x27;s generally
+the case that every record was either:
+
+1. Given to me as a gift
+
+2. An album I love(d)
+
+In either case, I want to remember the context of
+when and how/why I acquired it!
+
+Enjoy!
+
+	gopher://alexkarle.com/1/records
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;This Gopherhole as a Time Capsule&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/032.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/032.txt&lt;/id&gt;
+    &lt;updated&gt;2023-01-05T23:22:36-05:00&lt;/updated&gt;
+    &lt;published&gt;2023-01-05T23:22:36-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+This Gopherhole as a Time Capsule
+---------------------------------
+Thu Jan  5 22:51:54 EST 2023
+
+... or &quot;Alex Justifies Spending Time on the Gopherhole&quot;
+
+Remember being in elementary school, when you would
+write a letter to your future self, seal it, and the
+teachers would hold it for when you graduated?
+
+I&#x27;ve been thinking a lot recently about this gopherhole
+and how I want it to grow in the future, and I think
+a large part of that will be thinking of it as a
+&quot;time capsule&quot; for my future self.
+
+There are some parts of the gopherhole that are &quot;living&quot;
+and have direct benefit today:
+
+* The phlog helps me process my thoughts through writing
+
+* The notes section helps me easily fetch helpful tidbits
+
+But recently I got excited about documenting the rules
+for a few of my favorite card games [1] (with some house rules
+and strategy tips). And in the middle of doing so I was
+struck by the fact that (1) this was taking longer than
+I thought it would and (2) I don&#x27;t have an audience that
+would benefit from it and (3) I won&#x27;t benefit from writing
+them down right now.
+
+My realization was: since all the content is in plaintext,
+it should last decades, and I _will_ benefit from revisiting
+these in 30+ years.
+
+I haven&#x27;t heard this concept discussed much (websites as a
+time capsule). Probably because it costs money to host a site
+why would you pay for 30 years of hosting if you don&#x27;t plan
+on using it :) But for gopherholes I think it may be a good
+fit.
+
+So even if no one finds this (and I hope someone does--these
+are fun games!), I&#x27;m excited to revisit them in the decades
+to come.
+
+[1]: gopher://alexkarle.com/1/games
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Announcing a New Gopherhole Section: Games!&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/031.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/031.txt&lt;/id&gt;
+    &lt;updated&gt;2023-01-05T22:48:42-05:00&lt;/updated&gt;
+    &lt;published&gt;2023-01-05T22:48:42-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Announcing a New Gopherhole Section: Games!
+-------------------------------------------
+Thu Jan  5 22:38:54 EST 2023
+
+I spent a couple hours the past few nights typing up
+the rules to a couple of my favorite card games (along
+with some heuristics/strategy). You can find it under
+the /games selector in my gopherhole:
+
+	gopher://alexkarle.com/1/games
+
+I hope to grow this section into a small digital library
+of card games, along with maybe some reviews of board
+games (which are much too complicated to teach and
+probably have copyrights preventing duplication).
+
+Enjoy!
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Happy New Year!&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/030.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/030.txt&lt;/id&gt;
+    &lt;updated&gt;2023-01-01T15:02:56-05:00&lt;/updated&gt;
+    &lt;published&gt;2023-01-01T15:02:56-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Happy New Year!
+---------------
+Sun Jan  1 14:53:27 EST 2023
+
+It&#x27;s hard to believe its 2023 already.
+2022 just flew by.
+
+2022 was a good year. Got engaged,
+made some new friends, strengthened
+existing friendships, started a new
+job, and spent lots of time with
+family.
+
+I wasn&#x27;t sure I&#x27;d have a New Years
+Resolution. I read a great Hacker News
+comment that anything worth being
+a resolution should be started
+immediately rather than waiting for
+a new year...
+
+But I&#x27;m a sucker for a good resolution.
+There&#x27;s something about a new year
+that inspires new habits.
+
+This year, I&#x27;m keeping it simple:
+
+	Prioritize my health
+
+This means a lot of things:
+
+* Less junk food
+
+* Staying on top of doctor/dentist visits
+
+* Finding time for exercise
+
+* Getting outside more
+
+I find working from home it&#x27;s easy to
+let the days blend together. To choose
+to push things off to tomorrow. But
+I&#x27;m always happier when I prioritize
+my health. So here&#x27;s to a happy and
+healthy 2023.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Book Review: Sketchy Scheme by Nils M Holm&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/029.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/029.txt&lt;/id&gt;
+    &lt;updated&gt;2022-12-01T23:02:38-05:00&lt;/updated&gt;
+    &lt;published&gt;2022-12-01T23:02:38-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Book Review: Sketchy Scheme by Nils M Holm
+------------------------------------------
+Thu Dec  1 22:47:23 EST 2022
+
+I just finished reading Sketchy Scheme [1] and I
+wanted to give it a quick shoutout to my 3 (if that)
+readers :)
+
+TL;DR: This is a great intro on Scheme, but less
+about &quot;functional programming&quot; than I expected. It&#x27;s
+a tad bit outdated I think, but holds up pretty well.
+So far it&#x27;s been the best resource I&#x27;ve found on
+actually writing Scheme.
+
+There&#x27;s a lot of great free resources online for
+Scheme [2][3].
+
+One of the things I really appreciate about the
+langauge and ecosystem is that the language design
+all happens in the open. You can read the language
+spec (R5RS is only 50some pages) and community
+standards (SRFI&#x27;s -- Scheme Requests for Implementation).
+
+However, docs are docs and they aren&#x27;t necessarily
+the &quot;101&quot; course for someone new to Lisp dialects.
+
+I picked up this book in hopes that it would teach
+me more about functional programming. There&#x27;s a lot
+of hype going around about FP these days and I thought
+why not learn a little Scheme in addition to a new
+paradigm. While the examples were functional (and
+certainly interesting) it was moreso the reverse: I
+learned a lot of Scheme and a little FP. That said,
+it was definitely still worth the read; it has a
+great overview of Scheme from the basics (which are
+easy to learn online) up to detailed descriptions
+of define-syntax and call/cc, which I&#x27;ve struggled
+to find good succinct resources on.
+
+For the call/cc and define-syntax bits alone, it was
+worth the $15 :) Toss in a detailed overview of the
+Y combinator that 100% went over my head and I&#x27;ll
+need to walk through with a pen and paper later
+and you&#x27;ve got yourself a great book!
+
+[1]: http://t3x.org/sketchy/index.html
+[2]: http://scheme.org
+[3]: http://schemers.org
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Hackers and Painters and Paint Brushes&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/028.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/028.txt&lt;/id&gt;
+    &lt;updated&gt;2022-11-30T23:54:33-05:00&lt;/updated&gt;
+    &lt;published&gt;2022-11-30T23:54:33-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Hackers and Painters and Paint Brushes
+--------------------------------------
+Wed Nov 30 22:55:58 EST 2022
+
+I&#x27;ve been thinking a lot about dev tooling recently, with
+looks at VSCode, Emacs, my Vim setup (still not quite
+recovered from wiping my dotfiles to put a FOSS license
+on them..).
+
+In the past week, I explored:
+
+* Tiling Window Managers and Applications that
+  Leverage Them [1]
+* Text Editors vs Code Editors: LSP and CoPilot [2]
+* Emacs as a Platform [3]
+
+In this post, I wanted to take a step back as more of a
+meta-commentary on not the tooling, but my obsession with
+it.
+
+To continue Paul Graham&#x27;s comparison of Hackers and
+Painters [4], I think it&#x27;s fair to say that text editors
+are like paint brushes. Software users don&#x27;t necessarily
+care about the paintbrush used, but instead the painting
+it made.
+
+I had this realization last night that I&#x27;ve spent so much
+of my free time, and even career (my first job being in
+dev tools), studying paint brushes.  And not just the
+brushes themselves, but also the types of brushes famous
+painters used. I&#x27;ve spent a lot of time reading blogs
+like usesthis.com and watching talks to see what the
+greats used and then trying them myself. Why do Russ Cox
+and Rob Pike still use Acme? Why does Brian Kernighan use
+Sam [5]? Why did Guido switch from Emacs to VSCode [6]?
+I felt the need to find out.
+
+And I think what I realized is that the answer may be &quot;it
+doesn&#x27;t matter&quot;. What matters more is what they&#x27;ve built
+with it: their paintings.
+
+The exception maybe is when the painting is the brush:
+for example, Rob Pike built Acme.  I suppose for brush
+builders, it&#x27;s part of the trade to be up to date on what
+brush weilders are using and why.
+
+But for normal painters it feels like a distraction at
+some point.
+
+And that&#x27;s not to say it&#x27;s not worth studying how others
+are painting--any craftsman should try to stay up to date
+on the best techniques. But the more I grow as a programmer
+the more I think it matters less what tools you choose
+and it&#x27;s not worth the mental and emotional drain to let
+tool choices become religious or part of one&#x27;s identity*
+
+
+[1]: gopher://alexkarle.com/0/phlog/026.txt
+[2]: gopher://alexkarle.com/0/phlog/025.txt
+[3]: gopher://alexkarle.com/0/phlog/023.txt
+[4]: http://paulgraham.com/hp.html
+[5]: https://lexfridman.com/brian-kernighan/
+[6]: https://lexfridman.com/guido-van-rossum/
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;A Simple Case for Lisp Parenthesis&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/027.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/027.txt&lt;/id&gt;
+    &lt;updated&gt;2022-11-29T23:23:59-05:00&lt;/updated&gt;
+    &lt;published&gt;2022-11-29T23:23:59-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+A Simple Case for Lisp Parenthesis
+----------------------------------
+Tue Nov 29 23:12:42 EST 2022
+
+I was reading the Functions chapter of Crafting Interpreters
+today and was struck by the ugliness of chained function
+calls:
+
+   foo()()
+
+This presumably calls `foo`, then calls the function foo
+returns.
+
+While it is arguable that it&#x27;s maybe too subtle, the lisp
+equivalent is definitely easier on the eyes:
+
+  ((foo))
+
+Of course, the real power of lisp parenthesis is the fact that
+by reducing the syntax to.. a lack of syntax (code is data),
+it&#x27;s easy to write metaprograms (code that writes code
+(also called macros)).
+
+But I think sometimes it&#x27;s easier to appeal to aesthetics than
+power. Which would you prefer?
+
+  bar(foo(1, 2)(5), baz(2))(5)
+
+  ((bar ((foo 1 2) 5) (baz 2)) 5)
+
+Or even better:
+
+  ((bar ((foo 1 2) 5)
+        (baz 2))
+   5)
+
+Maybe I&#x27;ve just been reading too many books on Scheme :)
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;On Window Managers and the UNIX Philosophy&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/026.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/026.txt&lt;/id&gt;
+    &lt;updated&gt;2022-11-27T23:02:14-05:00&lt;/updated&gt;
+    &lt;published&gt;2022-11-27T23:02:14-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+On Window Managers and the UNIX Philosophy
+------------------------------------------
+Sun Nov 27 22:32:09 EST 2022
+
+Ok, so the title is a bit clickbaity, but I needed something
+more specific than &quot;On Window Managers&quot;.
+
+Really what I hope to explore in this entry is:
+
+&gt; Why don&#x27;t more applications leverage the window manager?
+
+## Backstory
+
+In my internet research on CHICKEN Scheme, I stumbled
+across Felix&#x27;s website (the original author) [1]. He has
+some projects listed, including a Acme-like editor he
+develops.  As an Acme enthusiast myself, I had to check
+it out!
+
+The editor is called ma [2] and I&#x27;m using it to write
+this post.  It has the classic look and the mouse
+chording/plumbing (and to my pleasant surprise some emacs
+and CUA hybrid so Ctrl-S/C/V saves/copies/pastes and
+Ctrl-N/P go up/down, etc).
+
+The most interesting thing about ma(1), however, is that
+it only supports a single buffer per window. To handle
+multiple files, run multiple ma(1) instances. They
+communicate with a registry, if needed (presumably for
+things like &quot;does anyone have this file open already?&quot;).
+
+From the README:
+
+&gt; ma ... needs a tiling window manager to be used in a
+&gt; satisfactory way.
+
+This is such an interesting concept, I had to write about it.
+
+[1]: http://call-with-current-continuation.org
+[2]: http://call-with-current-continuation.org/ma/ma.html
+
+
+## On Leveraging the Window Manager
+
+The more I looked around, the more I realized... most
+applications have their own window manager. Splits in
+Vim, tabs in Firefox, heck Emacs even _calls_ their splits
+&quot;windows&quot; (vs &quot;frames&quot; for X11 windows).  Terminals
+frequently have tabs/splits, and for those that don&#x27;t
+tmux(1) can be used!
+
+To these apps, the window manager is a foe, not a friend.
+It will resize them, force them to adapt. They really
+don&#x27;t seem to be built to work in tandem.
+
+On the other hand, these apps aren&#x27;t really doing anything
+tiling window managers can&#x27;t. Tabs, splits, stacks... I&#x27;d
+argue tiling window managers provide more flexibility
+than any home baked solution.
+
+Further, each app has a slightly different set of key
+bindings to use their window management. They _have_ to
+be different because frequently users nest apps within
+apps (think vim in tmux in gnome-terminal ctrl-t for gnome
+tabs, ctrl-a[num] for tmux, :tab for vim).
+
+Wouldn&#x27;t it just be cleaner to pull a ma(1) and leverage
+the window manager? This would mean:
+
+1. Uniform key bindings between many app types
+2. The ability to stack/tab/split between different apps
+
+(2) can&#x27;t be understated--it&#x27;s so cool having ma(1) split
+in the main panel, firefox and st(1) on the right. If I was
+in vim, I could have my shell and editor, but surely not
+the browser in the same &quot;grid&quot;!
+
+Off the top of my head there&#x27;s only two reasons _not_
+to do this:
+
+1. (lesser) Needing to run a &quot;registry&quot; to synchonize
+   multiple apps is kindof awkward
+2. (more importantly) The majority of computer
+   users just don&#x27;t (and can&#x27;t) use a tiling (or otherwise
+   configurable) window manager.
+
+With Windows and macOS having the majority of users, of
+_course_ firefox needs to have its own tabs (and so on).
+There&#x27;s simply no sane way to manage your 30+ tab session
+as floating windows.
+
+
+## Wrapping Up
+
+It seems, unless there&#x27;s a massive shift in how mainstream
+desktop window managers work, that writing ma-like programs
+that rely on a window manager for basic things like
+multiple files is a pipe-dream (unless you drastically
+shrink your audience size). That said, it&#x27;s an interesting
+way of dividing the responsibilities; if you can do one
+thing only, and do it well, surely you should focus on
+being an editor and not a window manager :)
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;On Text Editing Efficiency pt. 2&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/025.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/025.txt&lt;/id&gt;
+    &lt;updated&gt;2022-11-21T13:13:44-05:00&lt;/updated&gt;
+    &lt;published&gt;2022-11-21T13:13:44-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+On Text Editing Efficiency pt. 2
+--------------------------------
+date: 2022-11-21 13:04:02 EST
+
+---
+written on: desktop
+using: Emacs (M-x phlog)
+listening to: All I Need by Goose
+---
+
+I was trying to describe my phlog entry from last night
+to Jennie over lunch and came up with an analogy that I
+thought was worth a quick followup:
+
+If we consider text editing efficiency to be a
+mountain, where the higher you are the more efficient
+you are...
+
+Emacs is like deciding to go on a multi-day backpacking
+trip up the mountain: it&#x27;ll be tough, take a while, and
+you&#x27;ll probably have a lot of type-2 fun.
+
+VSCode is like a neighboring mountain with a gondola to
+the top and a bar with all your friends drinking beers
+overlooking the Emacs backpackers.
+
+Now here&#x27;s the kicker: as a professional programmer,
+it&#x27;s your job to be at the top of the mountain, or at
+least close. Your coworkers will notice if you&#x27;re still
+at the base, or, even worse, if you take the gondola
+down to climb another mountain.
+
+There&#x27;s a few reasons it might still be worth climbing
+Emacs mountain:
+
+* It&#x27;s _possible_ that it&#x27;s a taller mountain (and that
+  you can get more efficient than VSCode)
+* The mountain is older and less likely to disappear;
+  you can stay at the top longer.
+* You don&#x27;t have to pay to hike it :)
+* Hiking it can just be plain fun, and you&#x27;ll learn
+  things and make friends along the way
+
+On the other hand, if it turns out that VSCode mountain
+is higher, it becomes harder to justify the effort to
+climb Emacs mountain. And similarly, if Vim and Emacs
+mountain are the same height, it&#x27;s hard to justify
+descending one to climb the other (other than the fact
+that you might enjoy the new hike).
+
+The relative heights of the mountains are, of course,
+up for debate. But the effort to climb them is probably
+not.
+
+I like hiking, what can I say. I think it&#x27;s important
+to recognize that the time could be spent elsewhere
+though.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;On Skill vs Automation in Code Editing&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/024.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/024.txt&lt;/id&gt;
+    &lt;updated&gt;2022-11-20T23:19:20-05:00&lt;/updated&gt;
+    &lt;published&gt;2022-11-20T23:19:20-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+On Skill vs Automation in Code Editing
+--------------------------------------
+date: 2022-11-20 22:52:35 EST
+
+I&#x27;ve been playing with my text editor setup between
+jobs, first dabbling in Emacs (see my last post) and
+now finally taking the time to replace my linter-heavy
+ALE config (Vim) with NeoVim&#x27;s native LSP support.
+
+And well, the LSP mode kind-of blew me away. It truly
+felt like IDE features in NeoVim. And this got me
+thinking about whether NeoVim, Emacs, and VSCode are
+really &quot;Text Editors&quot; and the line between skill based
+editing and assistance via tooling.
+
+Let&#x27;s start at one extreme: GitHub CoPilot being able
+to write code for you. There&#x27;s obviously knowledge
+needed to verify and tweak it, but as far as
+skill-based efficiencies, this feels pretty easy to
+pick up. Pay Microsoft the fee and the efficiency is
+yours, little learning investment required.
+
+I think vi (not Vim) represents the other extreme--
+being efficient in vi is 100% based on memorizing an
+arcane language.
+
+I&#x27;d argue that vi(1) is a skill-based efficiency. Now
+I&#x27;m not saying it&#x27;s a skill worth learning (per-se),
+or even a skill that&#x27;s hard to learn (I don&#x27;t want to
+come across as looking superior for memorizing it), but
+arguably it&#x27;s a skill. More efficient editing comes
+down to learning the language better.
+
+There is an interesting medium here between AI writing
+code and learning an editor that uses the least number
+of keystrokes to make a change, and I think LSP is that
+medium: it provides the operator with smart operations
+(like renaming) based on understanding of the code
+structure.
+
+I&#x27;ve only begun to scratch the surface of LSP, but even
+just watching the rename function work was eye opening.
+
+As an illustration, let&#x27;s look at how I&#x27;d change all
+instances of `foo` to `bar` with `:LspRename` mapped to
+`gr`.
+
+With LSP: `grbar`
+
+Without:
+
+* If only a few: `*ciwbar&lt;ESC&gt;n.n.n.n.` (select the
+  next one, then change it to bar, then next -&gt; change
+  -&gt; next..)
+  
+* If many: `:%s/\&lt;foo\&gt;/bar/gc` (y/n at each prompt)
+
+There&#x27;s a clear slowdown with Vim (beyond the amount of
+typing): the mental overhead of having to decide if
+each is a false positive or not. It can be eliminated a
+bit by the word-boundary \&lt;\&gt; and the search for just
+\&lt;foo\&gt; via *, but it&#x27;s definitely not perfect. With
+LSP, the server knows the instances and can tell the
+client every location without the operator changing
+anything.
+
+The major downside of LSP AFAICT is that it&#x27;s limited to
+languages that have a server (and code in general). In
+a CSV file, for instance, `gr` just won&#x27;t be an option.
+And of course, for massive codebases it can be very
+expensive to run / slow.
+
+If anything, this just reinforces the difference
+between a _text_ editor and a _code_ editor, and I
+expect we&#x27;ll continue to see the gap widen over time
+(with the line between IDE and code editor maybe
+blurring a bit).
+
+vi is a text editor through and through. Vim, Emacs,
+and VSCode are all code editors (the former two if
+configured properly).
+
+In a world with CoPilot, I wonder how far Code editors
+will go. And I wonder if that&#x27;ll make it harder for new
+languages to form (with such a barrier for tooling,
+etc). If developers become operators of AI, there&#x27;s a
+real chicken and egg problem with new languages: the AI
+just won&#x27;t have any samples to learn from if humans
+don&#x27;t write it.
+
+I&#x27;d like to think the AI-operator-coding world is far
+away (but admittedly I&#x27;ve never tried CoPilot myself,
+so I don&#x27;t know how usable it is).
+
+What I do feel pretty strongly about is that it puts
+oneself at a disadvantage to use a pure text editor for
+professional coding where a code editor might provide a
+more full-featured suite of tools.
+
+Even the most adept vi(1) user probably can&#x27;t keep up
+with an LSP enabled editor.
+
+But hey, I&#x27;d love to be proved wrong. As someone who
+strives for simplicity in software (this is on Gopher
+after all), I&#x27;d love to believe some combination of
+vi(1) for surgical edits, sed(1) for bulk edits, etc
+could culminate to VSCode efficiency. It just feels
+like a losing battle having a human make all the
+incantations when we&#x27;ve written language parsers that
+can make high level edits for us.
+
+Now, the more philosophical question is: with the trend
+towards better automation, is it worth becoming a
+skilled/efficient editor of text at all? How much of
+our time is thinking, designing, and generally not
+cranking out words? Is it worth hours of learning,
+config customization, to get the most efficient
+environment? At what point is one doing themselves a
+disservice by refusing to use a code editor and
+insisting on editing code as text?
+
+I&#x27;d like to believe (maybe partially biased by sunk
+cost fallacy) that efficiently editing text is still an
+important skill, even with better editing software: so
+much of the things we deal with are unstructured text
+(logs, emails, blog posts, data files, etc). Of course,
+you can&#x27;t always use your favorite editor for all text
+(unless that editor is Emacs and you&#x27;re willing to
+customize it :)).
+
+I also think there&#x27;s some joy in knowing a language
+well enough to code in it without assistance (even if
+that&#x27;s probably not the way one should write
+professional software while &quot;on the clock&quot;); its like a
+chef cooking from memory instead of following a recipe:
+probably error prone and slower, but enjoyable? There&#x27;s
+a better analogy out there somewhere.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Revisiting Emacs&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/023.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/023.txt&lt;/id&gt;
+    &lt;updated&gt;2022-11-15T15:25:47-05:00&lt;/updated&gt;
+    &lt;published&gt;2022-11-15T15:21:09-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Revisiting Emacs
+----------------
+date: 2022-11-15 14:09:59 EST
+
+## In the Beginning
+
+As a Vim nerd, Emacs has been on my radar for as long
+as I&#x27;ve been nerding over text editor productivity
+(probably ~5yrs ago towards the end of college).
+
+In fact, my journey with Emacs starts much earlier.  My
+second semester of college, we had a systems
+programming course where the first couple labs were on
+a VM. I remember SSHing in, sitting in my dorm hallway,
+and thinking to myself &quot;now what&quot;? That moment of
+hopelessness when you realize that all the files aren&#x27;t
+on your local filesystem and you can&#x27;t use whatever
+editor you are accustomed to (I must have been using
+Eclipse at the time, since Java was the intro
+language).
+
+A friendly neighbor said &quot;oh just type &#x27;emacs FILE&#x27; to
+get an editor&quot;. And so it was that I used emacs years
+before touching Vim.
+
+The subsequent labs ended up adding a graphical desktop
+to the VM with Sublime Text installed, so I didn&#x27;t end
+up diving deep into Emacs, but it was there first.
+
+
+## Over the Years
+
+I vaguely recall trying out Emacs around the same time
+I was getting very into Vim. It&#x27;s sad to say that I
+very much fell for the tribal nature of the argument
+and swore affiliation to Vim before giving it an honest
+try.  There were all sorts of politics involved
+too. Who was this RMS guy? Do I agree with his beliefs?
+(this predated the scandals, which are out of scope of
+this piece).
+
+At the time, and for the years to follow, I was sold on
+the fact that Vim was _efficient_. I bought into the
+&quot;Emacs is the whole toolshed and Vim is a paring knife,
+much more efficient for surgical edits&quot; saying.
+
+When I made it into industry, I was surprised to find
+that the majority of my team were Emacs enthusiasts. I
+resisted and became the Vim holdout (this has been the
+only team I&#x27;ve worked on with this situation--now it&#x27;s
+much more a Vim holdout vs VSCode). Vim was already in
+my fingertips, and I knew all the power features
+(:tags, :jumps, etc).. why learn something new? I gave
+evil-mode a spin, but it felt a bit &quot;off&quot;. All too
+often I&#x27;d pop into a buffer in another mode (like
+Magit) and find myself completely unable to switch back
+with vim-like window motions (and at a loss of how to
+proceed).
+
+To top it all off, I was convinced Emacs was very much
+against the UNIX philosophy--it didn&#x27;t do one thing
+well! Who needs tetris in a text editor? I became
+interested in minimalist computing (suckless, cat-v,
+etc) where Emacs was the butt of many jokes.
+
+
+## Coming Back
+
+Over the past few months (but really dating back
+years), I&#x27;ve become more and more interested in LISP,
+specifically Scheme, and it led me back to Emacs.
+
+Now, I think it&#x27;s totally possible to write LISP in
+Vim. But there is a natural tendency for LISP lovers to
+find themselves using Emacs (and therefore the support
+is much better). I chalk this up to the fact that LISP
+isn&#x27;t used much in industry, so Emacs is maybe one of
+the few chances these developers have to use the
+language in earnest. Maybe that&#x27;s an over
+simplification.
+
+Mind you, it wasn&#x27;t _really_ the promise of
+extensibility or customizeability *in the editor*. I
+had achieved &quot;config equilibrium&quot; with Vim; I had a
+small core set of plugins to be effective and knew the
+editor inside and out--my vimrc remained untouched for
+months at a time. The thought of _having_ to write
+hundreds of lines of elisp to customize an editor
+seemed wasteful.
+
+BUT, what I came to realize is that Emacs isn&#x27;t about
+customizing *an editor*. It&#x27;s about customizing a LISP
+platform for everyday productivity (beyond the scope of
+editing). Things like Email, IRC, gopher clients, web
+browsers, directory managers, and more are all written
+on Emacs *not* for the benefit of the editor, but
+because it&#x27;s fundamentally a platform for applications
+(just like the browser has become a platform for web
+apps).
+
+The thought of a LISP platform, with a whole suite of
+discoverable, self-documenting, FOSS LISP apps is
+definitely appealing. Although I am still relatively
+partial to the &quot;write one tool to do the job well&quot;
+approach, I suppose you could argue that the elisp
+packages do one thing well on top of Emacs.
+
+I thus set out to give Emacs a fair shot.
+
+
+## An Example Productivity Flow
+
+If we move beyond productivity during text editing,
+what does productivity look like? For me, the answer
+was usually shell scripts to automate redundant
+processes.
+
+
+A great example of this is my &#x27;phlog&#x27; script described
+in [1] to start a new phlog entry:
+
+```
+die() {
+    echo &quot;$*&quot;
+    exit 1
+}
+
+[ -z &quot;$1&quot; ] &amp;&amp; die &quot;usage: phlog TITLE&quot;
+
+PHLOG=$(dirname &quot;$(dirname &quot;$(readlink -f &quot;$0&quot;)&quot;)&quot;)/phlog
+
+i=1
+nextfile() {
+    file=$(printf &quot;%03d.txt&quot; $i)
+    : $((i+=1))
+}
+
+title=&quot;$*&quot;
+underline=&quot;$(echo &quot;$title&quot; | sed &#x27;s/./-/g&#x27;)&quot;
+
+nextfile
+while [ -e &quot;$PHLOG/$file&quot; ]; do
+    nextfile
+done
+
+echo &quot;$title&quot; &gt;&quot;$PHLOG/$file&quot;
+echo &quot;$underline&quot; &gt;&gt;&quot;$PHLOG/$file&quot;
+date &gt;&gt;&quot;$PHLOG/$file&quot;
+
+ed  &quot;$PHLOG/index.gph&quot; &lt;&lt;EOM
+/^\[0|Atom Feed/+a
+[0|[$(date +%F)] $title|/phlog/$file|server|port]
+.
+wq
+EOM
+
+exec &quot;${EDITOR:-vi}&quot; &quot;$PHLOG/$file&quot;
+```
+
+This simply makes it so that no matter what I&#x27;m doing,
+I can open a new phlog entry (without having to keep
+track of what number I&#x27;m on, or update the index, etc).
+
+The script is definitely hacky though. It uses some
+obscure shell syntax for incrementing variables, sed(1)
+for string substitution, ed(1) for editing the index
+and local-looking global variables (`file`).
+
+Even with just ~1hr of elisp experience, I was able
+to put together the same flow that (IMHO) reads much
+cleaner:
+
+```
+(defun phlog (title)
+  ;; Allows M-x phlog and prompts for title (passed as an argument)
+  (interactive &quot;sTitle: &quot;)
+  ;; Parse the directory for TXT files (sorted) to get new filename
+  ;; (corresponds to nextfile loop in shell script)
+  (let* ((files (directory-files phlog-root nil &quot;\.txt$&quot; nil))
+	 (most-recent (car (last files)))
+	 (new-name (format &quot;%03d.txt&quot; (+ 1 (string-to-number
+					    (car (split-string most-recent &quot;\\.&quot;)))))))
+    ;; First update the index (corresponds to ed(1) script above)
+    (with-current-buffer (find-file-noselect (concat phlog-root &quot;/index.gph&quot;))
+      (goto-char (point-min))  		      ; go to beginning, if already open
+      (search-forward &quot;Atom Feed&quot;)
+      (next-line)
+      (insert (format &quot;\n[0|[%s] %s|/phlog/%s|server|port]&quot;
+		      (format-time-string &quot;%F&quot; (current-time))
+		      title
+		      new-name))
+      (save-buffer))
+    ;; Now open it in a new file (corresponds to echo/date/exec vi)
+    (find-file (concat phlog-root &quot;/&quot; new-name))
+    (insert (concat title &quot;\n&quot;))
+    (insert (replace-regexp-in-string &quot;.&quot; &quot;-&quot; title))
+    (insert (format &quot;\ndate: %s\n&quot; (format-time-string &quot;%F %H:%M:%S %Z&quot; (current-time))))))
+```
+
+When you factor in the ability to exec parts of these
+as I developed the function (or in the scratch buffer),
+the development experience for the function was much
+better too.
+
+To top it all off, while this function doesn&#x27;t
+highlight it too well, it&#x27;s clear that the interaction
+capabilities of Emacs (with the minibuffer,
+completions, etc) are way beyond that of a shell script
+(reading args or from /dev/tty, etc).
+
+All in all, I think if I&#x27;m going to keep using Emacs, I
+could see myself having dozens of these small custom
+commands to allow me to quickly phlog, blog, or keep
+todo lists up to date (etc).
+
+[1]: gopher://alexkarle.com/0/phlog/011.txt
+
+
+## The Catch
+
+This is all great for customizing my personal
+environment, but the reality is that Emacs users are
+very much in the minority.  Shell scripts have &quot;won&quot;
+because all devs are comfortable running them in a
+terminal. They&#x27;re the lowest common denominator.
+
+So when it comes to _shared_ productivity, Emacs feels
+like a nonstarter. Any team productivity tools will
+need to be first written in shell scripts for the team
+and then duplicated into Emacs, not built primarily
+for Emacs.
+
+
+## Conclusion
+
+Only time will tell if I continue to use Emacs. I think
+I&#x27;ll play around a bit more. I definitely &quot;get&quot; it more
+than I did before, but I&#x27;m skeptical of the investment
+required to customize my own environment (vs investing
+that time into shell scripts that can be shared).
+
+This all said, it&#x27;s worth mentioning that I&#x27;m no longer
+a big believer in customizing the Vim environment
+either (for largely the same reasons). If anything,
+part of what drew me to Emacs was the feeling that the
+(Neo)Vim family was becoming just as &quot;bloated&quot; but with
+a lesser ecosystem:
+
+* The addition of the Vim9 language (instead of using,
+  say, Lua) felt like a misstep for Vim proper
+
+* NeoVim (and now Vim) having a Terminal feels like a
+  violation of the editor boundary (more like Emacs)
+
+* With the above two--why not just use Emacs? I checked
+  and the core of NeoVim is ~300k LOC of C and the core
+  of Emacs is ~400k LOC of C--Emacs then has &gt;1M LOC of
+  LISP, but if the core is solid and makes a hackable
+  platform, isn&#x27;t that a properly designed
+  platform/system? (note: didn&#x27;t try to weed out test
+  code, used David Wheeler&#x27;s SLOCCount)
+
+In other words, Vim and NeoVim feel like they&#x27;re
+gravitating towards Emacs, but with a fragmented
+community and a less capable extension language (even
+if they have a better core editor).
+
+I wonder if Emacs will have a revival? (but such a
+discussion needs to discuss the elephant in the room:
+VSCode, and that requires a whole other post!).
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Adventures in Scheme&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/022.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/022.txt&lt;/id&gt;
+    &lt;updated&gt;2022-11-02T00:37:14-04:00&lt;/updated&gt;
+    &lt;published&gt;2022-11-02T00:37:14-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Adventures in Scheme
+--------------------
+Tue Nov  1 10:16:01 PM EDT 2022
+
+A theme in my programming career has been a fixation on
+exploring the mysterious, challenging, and powerful
+corners of the craft.
+
+It was the promise of speed that led me to Vim.
+
+It was the allure of simplicity that led me to Plan 9.
+
+And it&#x27;s the stories of power that led me to LISP.
+
+I&#x27;m being a bit dramatic, but it&#x27;s true. I&#x27;m highly
+susceptible to evangelist writings and deep rabbit holes.
+
+LISP, and more specifically Scheme, has been on my radar for
+a while now. I think my first encounter was probably through
+Emacs--what was this builtin configuration language people
+raved about? Later I started reading about LISP in general
+through Hackernews and other forums.
+
+In the past couple months, I finally got an excuse to do
+some serious coding in it: implementing the interpreter from
+&quot;Crafting Interpreters&quot; (Nystrom, 2021) as part of a book
+club. I&#x27;m by no means an expert, but I&#x27;ve been enjoying it
+enough I thought it deserved a phlog post!
+
+It&#x27;s kinda funny writing a post in 2022 in praise of Scheme.
+It definitely is still praise-worthy, but I think a lot of
+the things it excelled at (first class functions, tail
+call optimization, even *lexical scope* with early lisps
+using dynamic scope) are now common place in more popular
+languages.
+
+So in a way, it&#x27;s a huge testament to the language that
+there&#x27;s anything left that it excels at that others don&#x27;t do
+better almost 50 years later.
+
+I can&#x27;t claim to be an expert yet, but I do see glimpses of
+the &quot;power&quot;. It took me hours of reading to wrap my head
+around call/cc (continuations) and how they can be used for
+things like coroutines. And I still have yet to write my
+first macro (but I understand now how powerful it is to have
+the source code of the language be data in the language
+itself--macros can access and manipulate the input source
+using primitive functions like map, car, cdr, etc).
+
+I can report that things like dealing with the parenthesis
+and infix notation becomes second nature pretty quickly (and
+now I kinda like it!)
+
+It&#x27;s been a fun adventure so far, and I&#x27;ll try to keep it
+going a bit longer (at least to write some macros). If
+there&#x27;s one thing I&#x27;ve found in any of my explorations in
+search of mysterious programming tools and languages, it&#x27;s
+that I always emerge with a newfound excitement to come into
+work and a better perspective on problem solving.
+
+-- Bonus Puzzle! --
+
+I&#x27;ll end with a continuation puzzle for you. To be honest, I
+didn&#x27;t fully grok it until I made the chart at the end, so
+it&#x27;s just as much for me! :)
+
+Here&#x27;s the code and the output:
+
+(let* ((yin ((lambda (cc) (newline) (display #\@) cc) (call/cc (lambda (c) c))))
+       (yang ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))
+    (yin yang))
+
+@*
+@**
+@***
+@****
+@*****
+@******
+@*******
+@********
+@*********
+...
+
+But before we dive in, let&#x27;s look at the strange oddity that
+is call/cc (call-with-current-continuation). call/cc is a
+function that calls another function with the current
+continuation (as the name implies). The current continuation
+itself is a function that, when invoked, returns from
+call/cc with the value it was invoked with. In its simplest
+form this can be used to abort a function:
+
+(display (call/cc (lambda (cc)
+                    (cc &quot;hello world&quot;)
+                    &quot;not reached&quot;)))
+
+Will print &quot;hello world&quot; since invoking cc will force the
+return from call/cc early before it can return &quot;not
+reached&quot;.
+
+OK this is fine. Languages have &#x27;return&#x27; statements. We&#x27;ve
+all been here. Ahhh but what if we _returned_ the
+continuation? In scheme continuations are first class and
+can be stored in variables--they can persist beyond the
+block they were defined in. THIS is where it gets
+interesting:
+
+(define cc #f)
+(display
+  (+ 1
+     (call/cc (lambda (c)
+                (set! cc c)
+                1))))
+2
+
+(cc 5)
+6
+
+In this example, we add 1 to the result of call/cc, which,
+the first go around is just 1 (that&#x27;s what the lambda
+returns--we don&#x27;t abort, just save it off into the cc
+variable for later).
+
+If we invoke it again, we *return to that point in the
+code* even though it&#x27;s been interpreted already. call/cc
+returns 5 (since that&#x27;s what we invoke cc with) and we print
+6.
+
+OK final twist--this just feels like a goto... but we can
+also show that we package up the state of the callstack:
+
+(define cc #f)
+
+(define (prlist lst)
+  (if (not (null? lst))
+      (begin (display (car lst))
+             (newline)
+             (if (eq? (car lst) &#x27;b)
+               (call/cc (lambda (c) (set! cc c))))
+             (prlist (cdr lst)))))
+
+(prlist &#x27;(a b c))
+(cc 0)
+
+In this case, we have a simple recursive prlist that prints
+each element until it reaches a null list. At element &#x27;b, it
+saves its continuation into cc. Calling cc later picks up
+the loop from that point (printing c a second time):
+
+a
+b
+c
+c
+
+Point being: the state of lst is captured in the
+continuation!
+
+So back to our example (without the newline):
+
+1 | (let* ((yin ((lambda (cc)  (display #\@) cc) (call/cc (lambda (c) c))))
+2 |        (yang ((lambda (cc) (display #\*) cc) (call/cc (lambda (c) c)))))
+3 |    (yin yang))
+
+Lets walk line by line, writing down the line just read, the
+output, the name of the continuation (with &#x27; to indicate a
+return) and the state of each variable:
+
+cc-id   | Line | Yin   | Yang  | Out
+----------------------------------------
+yin1    | 1    | yin1  | nil   | @
+yang1   | 2    | yin1  | yang1 | @*
+
+--&gt;  L3: call yin1 on yang1 (jump back to L1 and
+--&gt;  return yang1 from call/cc, storing it in yin)
+
+yin1&#x27;  | 1     | yang1 | nil   | @*@
+yang2  | 2     | yang1 | yang2 | @*@*
+
+--&gt;  call yang1 on yang2 (jump back to L2 and
+--&gt;  return yang2. but NOTE yin has also gone
+--&gt;  back to its old value at the time yang1
+--&gt;  was crafted!)
+
+yang1&#x27; | 2     | yin1  | yang2 | @*@**
+
+--&gt; call yin1 on yang2
+
+yin1&#x27;  | 1     | yang2 | nil   | @*@**@
+yang3  | 2     | yang2 | yang3 | @*@**@*
+
+--&gt; call yang2 on yang3
+
+yang2&#x27; | 2     | yang1 | yang3 | @*@**@**
+
+--&gt; call yang1 on yang3
+
+yang1&#x27; | 2     | yin1  | yang3 | @*@**@***
+
+--&gt; call yin1 on yang3
+
+yin1&#x27;  | 1     | yang3 | nil   | @*@**@***@
+yang4  | 2     | yang3 | yang4 | @*@**@***@*
+yang3&#x27; | 2     | yang2 | yang4 | @*@**@***@**
+yang2&#x27; | 2     | yang1 | yang4 | @*@**@***@***
+yang1&#x27; | 2     | yin1  | yang4 | @*@**@***@****
+yin1&#x27;  | 1     | yang4 | yang5 | @*@**@***@****@
+
+And so on... because the continuation for yang encloses the
+value of yin at the creation time, whenever we invoke yangN
+on yangK, we print a * and invoke yangN-1 on yangK until
+yang1 at which point yin goes back to yin1 and we print a
+new @ and create a new yangN+1. yin is then yangN and the
+cycle continues.
+
+Wow, right?
+
+This is also shown by looking at the following output of the
+pointers for each variable (using CHICKEN Scheme):
+
+
+(import (chicken memory) (chicken format))
+
+(let* ((yin  ((lambda (cc)
+                (newline) cc)
+              (call/cc (lambda (c) c))))
+       (yang ((lambda (cc) cc)
+              (call/cc (lambda (c) c)))))
+    (display (format &quot;~A | ~A\n&quot; (object-&gt;pointer yin) (object-&gt;pointer yang)))
+    (yin yang))
+
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc780c1850&gt;
+
+#&lt;pointer 0x7ffc780c1850&gt; | #&lt;pointer 0x7ffc780b6cc0&gt;
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc780b6cc0&gt;
+
+#&lt;pointer 0x7ffc780b6cc0&gt; | #&lt;pointer 0x7ffc780a6900&gt;
+#&lt;pointer 0x7ffc780c1850&gt; | #&lt;pointer 0x7ffc780a6900&gt;
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc780a6900&gt;
+
+#&lt;pointer 0x7ffc780a6900&gt; | #&lt;pointer 0x7ffc78090d10&gt;
+#&lt;pointer 0x7ffc780b6cc0&gt; | #&lt;pointer 0x7ffc78090d10&gt;
+#&lt;pointer 0x7ffc780c1850&gt; | #&lt;pointer 0x7ffc78090d10&gt;
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc78090d10&gt;
+
+#&lt;pointer 0x7ffc78090d10&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+#&lt;pointer 0x7ffc780a6900&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+#&lt;pointer 0x7ffc780b6cc0&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+#&lt;pointer 0x7ffc780c1850&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+#&lt;pointer 0x7ffc780c6bb0&gt; | #&lt;pointer 0x7ffc780758f0&gt;
+
+
+Notice that we always get down to bb0 in yin and then start
+over!
+
+As a final note, I got super confused in the middle of
+writing this because of this example:
+
+
+(define cc #f)
+
+(let ((state &quot;foo&quot;))
+  (display 
+    (+ 1
+       (call/cc (lambda (c)
+                  (set! cc c)
+                  1))))
+  (newline)
+  (display state)
+  (set! state &quot;bar&quot;)
+  (newline))
+
+(cc 5)
+
+
+I thought surely that this would print:
+
+2
+foo
+6
+foo
+
+Since the closure captured the value of &quot;state&quot; as &quot;foo&quot; at
+the time. But instead it prints &quot;bar&quot;. What gives??
+
+My best guess here is that set! _modifies_ the continuation
+environment in-place. In the yin-yang puzzle, each (let)
+creates its own environment, so we end up with the
+returning-to-old-values behavior, but when we use set! it
+modifies the environment from underneath the continuation.
+
+I&#x27;ll do more research when it&#x27;s not past midnight :)
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Remembering the Kitchen Computer&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/021.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/021.txt&lt;/id&gt;
+    &lt;updated&gt;2022-10-09T00:15:20-04:00&lt;/updated&gt;
+    &lt;published&gt;2022-10-09T00:15:20-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Remembering the Kitchen Computer
+--------------------------------
+Sat Oct  8 11:56:25 PM EDT 2022
+
+---
+Written on: Thinkpad X13
+Listening to: Goose Live at Dillon Amphitheater 2022-08-17
+---
+
+I&#x27;m dog sitting for my folks this weekend which
+means I&#x27;m spending a good bit of time in my
+childhood home. It&#x27;s nostalgic at times, although
+I do come over about once a week with Jennie to
+see my parents for dinner and board games. We live
+close by, and it&#x27;s a nice way to stay in touch.
+
+Anyways, this post isn&#x27;t about dog sitting or
+being at home really: it&#x27;s about remembering a
+fixture of my childhood: the Kitchen Computer.
+
+For most of my pre-teen and all my high-school
+years, my family had compact PC desktop running
+Windows XP (then Windows 7, never made it to
+Win10). It was finally put out to the garage a
+few years ago, when it became so slow that
+people would rather use phones than wait 30s
+for the browser to start.
+
+But during its heyday, it was a central part
+of my computing life. I was fortunate enough
+to go to a high school where halfway through
+they were able to give everyone a laptop, but
+prior to that it was one of the main ways I
+accessed the internet.
+
+Our house is laid out so that the kitchen,
+a wide open space with an island, is a frequent
+gathering spot. So the kitchen computer was the
+natural place to gather round and share a video.
+Or to queue up some music to listen to while
+my mom cooked (she&#x27;s an amazing cook).
+
+Cooking tonight for my friends (pizza game night!)
+it just struck me how the computing world has
+moved on. My kids probably won&#x27;t have that
+communal &quot;gather round&quot; experience of a shared
+desktop. It&#x27;s both amazing how far our handhelds
+have come and sad to lose that old experience.
+Even if it was slow and involved dealing with
+Windows :)
+
+I wonder what home computing will look like by
+the time I have kids. Hopefully I&#x27;ll be able to
+pass along some favorite technologies when they&#x27;re
+old enough.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;The Joys of IRC&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/020.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/020.txt&lt;/id&gt;
+    &lt;updated&gt;2022-10-06T23:56:27-04:00&lt;/updated&gt;
+    &lt;published&gt;2022-10-06T23:56:27-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+The Joys of IRC
+---------------
+Thu Oct  6 23:23:16 EDT 2022
+
+---
+Written on: x220 (openbsd)
+Listening to: Running Away by Vulfpeck (Live at MSG)
+---
+
+## Discovering IRC
+
+IRC first came across my radar a little out of
+college, when I started spending a good bit of time
+lurking in free software communities. But it wasn&#x27;t
+always second nature--in fact my first dip was nothing
+but intimidating.
+
+I&#x27;ll never forget the first time I downloaded irssi(1)
+and connected to freenode--I was immediately presented
+with my rDNS exposing that akarle was indeed using
+Boston MA FIOS and I logged off pretty quickly scared
+to be exposing my home IP (especially to a bunch of
+hackers!!).
+
+After I got over the IP thing (I can&#x27;t remember if
+I discovered cloaking or used a proxy), I then was
+nervous to speak up--people here seemed to follow a
+strict etiquette (&quot;don&#x27;t ask to ask&quot;, etc). I didn&#x27;t
+want to seem like a noob!
+
+Nevertheless, I felt cool just being there. In the
+room where it happens. I saw chat messages go by from
+programmers I held in high regard. It blew me away
+to have access to these people, even if I wasn&#x27;t using
+it.
+
+When I set up garbash.com with Anthony, IRC was top
+of the list of tech I wanted to play around with,
+and I was not disappointed.
+
+
+## Where IRC Excels
+
+After getting over the learning-the-ropes stages
+(setting up a bouncer for chat history, etc), I
+learned to appreciate IRC beyond the people there.
+
+IRC excels in a few ways:
+
+1. Lightweight medium (super fast)
+2. Open protocol (many clients)
+3. Simple extensibility 
+
+The low-bandwidth medium becomes super obvious
+when using a terminal client during the work day.
+Switching between Slack and catgirl(1) is night and
+day.
+
+The open protocol has been a boon for usage on our
+Tilde.  Most of our members prefer to use the Gamja
+web client, which integrates really nicely with Soju
+for history.
+
+And lastly, the simple extensibility comes from the
+lack of security by default. I mean, anyone who
+can access the server can send messages? Under any
+nick not in use?  A terrible recipe for public
+access, but a great choice for an internal-facing
+network, like a tilde :) It becomes easy to write
+tools that ping channels using just regular unix
+tools.
+
+I wrote my first such tool tonight, which is what
+inspired this post [1].
+
+It uses curl(1) to fetch https and gopher feeds,
+sfeed(1) to parse the feeds, awk(1) to parse the
+parsing (and determine &quot;new&quot; feeds since the last
+run) and lastly nc(1) to connect to IRC and notify
+our main channel. It&#x27;s that simple:
+
+	nc localhost 6667 &lt;&lt;EOM &gt;/dev/null
+	NICK rssbot
+	USER rssbot rssbot localhost :rssbot
+	PRIVMSG #garbash :New post &#x27;$1&#x27; here: $2
+	QUIT
+	EOM
+
+How cool is that?? If all goes well, it should get
+notified about this post :)
+
+[1]: https://git.garbash.com/alex/irc-rss-listener/log.html
+
+
+## Looking Forward
+
+I&#x27;m optimistic that the work coming out of the great
+folks at sourcehut.org will keep IRC along for some
+time more. chat.sr.ht is a fantastic solution (running
+a SaaS version of Gamja and Soju), providing an easy
+cross platform way to connect to multiple servers
+(with things like history built right in).
+
+I can&#x27;t say I&#x27;ve tried many other FOSS messaging
+protocols like XMPP or Matrix, but I do hope the future
+is open-protocol and not walled-garden like Discord
+or Slack.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;On Simplicity&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/019.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/019.txt&lt;/id&gt;
+    &lt;updated&gt;2024-11-21T04:10:10+01:00&lt;/updated&gt;
+    &lt;published&gt;2022-10-06T00:47:53-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+On Simplicity
+-------------
+Thu Oct  6 00:15:41 EDT 2022
+
+[Disclaimer: I&#x27;m not an expert on either language]
+[discussed in this piece, take it with a grain   ]
+[of salt; it&#x27;s more about the bigger picture!    ]
+
+I&#x27;m making my way through Crafting Interpreters [1]
+with a small group of friends (a &quot;book club&quot;, if you
+will), and I decided to try to implement the interpreter
+in Scheme (CHICKEN Scheme to be exact).
+
+Scheme is a funny language. It has &quot;simplicities&quot; in its
+sparsity: parenthesis for unambiguous syntax, no looping
+mechanisms other than recursion, etc.
+
+Sometimes it feels a lot like Go, with its minimal set of
+builtins focused on readability and one-way-to-do-things.
+
+Other times, it feels very different (much more spartan,
+but maybe that&#x27;s due to me not yet grokking the paradigm
+shift / struggling to shift mindset).
+
+Regardless, I wanted to share a quote from Rob Pike that
+really struck me from this talk [2]:
+
+&gt; I want to make a really important point here:
+&gt; I&#x27;ve said Go is simple, but it&#x27;s not.
+&gt; I know, I&#x27;ve worked on it!
+&gt; ...
+&gt; Simplicity ... is the art of hiding complexity
+
+Scheme&#x27;s simplicity seems to come from a mathematical
+purity--closures and recursion and homoiconicity.
+
+Go&#x27;s simplicity seems to come from excellent design
+focused on modern software needs.
+
+It&#x27;s a wonder they can be used to do the same things.
+
+[1]: http://craftinginterpreters.com/
+[2]: https://www.youtube.com/watch?v=rFejpH_tAHM
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;True Burrowing&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/018.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/018.txt&lt;/id&gt;
+    &lt;updated&gt;2022-10-02T22:17:07-04:00&lt;/updated&gt;
+    &lt;published&gt;2022-10-02T22:17:07-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+True Burrowing
+--------------
+Sun Oct  2 22:11:55 EDT 2022
+
+This code used to live in the alexkarle.com web repo
+because it was easy and I want to pull a lot of www
+content into the gopherhole.
+
+I decided today to take the somewhat drastic action
+of not only removing the content from web and putting
+it in its own repo but using `git filter-repo` to
+scrub it from alexkarle.com. Why? Well, I posted the
+repo on GitHub, and a friend immediately noticed it.
+
+I&#x27;ve been pretty transparent with work unhappiness /
+interviewing, and GitHub is where I do my professional
+work. The last thing I want is an awkward conversation
+with my manager over &quot;why am I interviewing and posting
+about it on a blog&quot;.
+
+To be fair, I probably shouldn&#x27;t be.
+
+But I did, and it was there. So I scrubbed it.
+
+For future reference, the following easily made the
+gopher/ directory its own repo:
+
+	$ git filter-branch --subdirectory-filter gopher
+
+And in another clone, the following scrubbed it from web:
+
+	$ git filter-repo --invert-paths --path gopher
+
+So here we are. Burrowed at last. But without CI! When
+I hit `git push` this won&#x27;t go live yet... time to hook
+the piping up!
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;The Non-Technical Diffculties of Phlogging&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/017.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/017.txt&lt;/id&gt;
+    &lt;updated&gt;2022-09-25T00:00:48-04:00&lt;/updated&gt;
+    &lt;published&gt;2022-09-25T00:00:48-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+The Non-Technical Difficulties of Phlogging
+-------------------------------------------
+Sat Sep 24 11:41:57 PM EDT 2022
+
+I&#x27;ve put in some effort over the years to make sure
+that phlogging is as easy as possible from a technical
+perspective. I mean... the phlog(1) script creates
+a new file and updates my index, and a simple git-push
+publishes it.. since files are served as plaintext,
+even ed(1) is a WYSIWYG editor :)
+
+So why is it hard to phlog regularly?
+
+Obviously this phlog has been sporadic at best,
+but I noticed that it&#x27;s definitely a theme over at
+SDF too (gopher.club)--so many newcomers have a
+first post like &quot;I&#x27;m so excited to be here&quot; and then
+&quot;I hope to phlog daily&quot; only to stop after a couple
+posts.
+
+I think the barriers to phlogging are non-technical.
+At least for me (I completely understand that picking
+up gopher requires a good bit of computer smarts).
+
+When it comes down to it: why should I bother phlogging?
+
+I generally write long-form entries for two reasons:
+
+  1. I need to think through my emotions
+  2. I have some tech/thought worth sharing
+
+For (1), I&#x27;d much rather keep these to my pen and paper
+journal. And for (2), the sad reality is that I want
+them to be available over HTTP so that recruiters
+and future employers see my work/hobbies. Unless it
+explicitly involves gopher (and is therefore of most
+interest to other burrowers), it&#x27;s probably good material
+for my weblog to prove I do technical things outside
+of work (plz hire me!).
+
+So why phlog? And _what_ to phlog? I phlog because I
+think gopher is cool and I want to support the ecosystem
+with fresh content. I suppose going forward I&#x27;ll try to
+phlog things I think would be of less interest to my
+blog readers (read: few friends) but are still public
+enough to feel comfortable sharing?
+
+It&#x27;s a fine line for sure between wanting readership
+(publishing on a more accessible medium like HTTP) and
+wanting the cozy community (gopher) and wanting
+total privacy (journal).
+
+I guess I at least share my weblog on my gopherhole
+so it&#x27;s not totally a one-or-the-other situation.
+
+Anyways.. for any readers--why do you phlog instead
+of blog? Do you ever wonder if your phlogging efforts
+would be better spent on a blog?
+
+--
+
+For more context on the &quot;hire me plz&quot;: I&#x27;m starting
+to look around at jobs, and while the initial intention
+of my blog was never to put it on my resume, I realize
+that it&#x27;s actually a great testament to my skillset
+and interests.
+
+Priorities change, I guess.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Been a While&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/016.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/016.txt&lt;/id&gt;
+    &lt;updated&gt;2022-09-23T00:17:33-04:00&lt;/updated&gt;
+    &lt;published&gt;2022-09-23T00:17:33-04:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Been a While
+------------
+Fri Sep 23 00:04:50 EDT 2022
+
+It&#x27;s been a while since I&#x27;ve written a phlog.
+Looks like 9 months or so.
+
+It&#x27;s always a pleasant surprise when software
+can run untouched for so long; geomyidae has
+proven to be a solid choice.
+
+I haven&#x27;t forgotten about the phlog, just life
+got busy. In 2022 my job got increasingly
+stressful (for reasons I may write about one day)
+but also personal life had its rewarding moments.
+
+I proposed to Jennie on 2022-08-20 (she said yes!)
+on top of Mt. Lincoln in the White Mountains on
+an overnight backpacking trip. I love her and can&#x27;t
+imagine a future without her. Wedding planning is
+proving to be somewhat of a drag (who knew how
+expensive they were?) but we&#x27;ll figure it out.
+The future beyond the wedding is more exciting--
+a house, kids, one day retirement. It feels all
+so far away and ever so close all at the same
+time.
+
+Here&#x27;s to us, as we say &lt;3
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Add Context to Your Notes&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/015.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/015.txt&lt;/id&gt;
+    &lt;updated&gt;2021-12-11T16:31:24-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-12-01T00:16:51-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Add Context to Your Notes
+-------------------------
+Sat Dec 11 04:15:51 PM EST 2021
+
+My dad found an old USB from 2014 that was mine. I had
+given it to someone with some mp3&#x27;s that I thought
+they&#x27;d like, but it was at first a mystery as to who
+it was.
+
+There was a README.rtf, which I was able to salvage
+via GNU unRTF (shoulda used plaintext!), and the USB
+itself was UMass (my alma mater) branded, so I had a
+rough idea of when I received the USB... but the
+full context was woefully lacking from the README.
+
+Fortunately, the modification times on the files indicated
+it was my brother&#x27;s birthday--a dead giveaway; but I
+couldn&#x27;t help but feel I got lucky this time around.
+
+Mod-times are notoriously easy to break as we move
+files between devices, back them up, etc. It occurred
+to me how important it is to keep crucial context
+(who was this for, when was it written, etc) in the
+note itself, and not rely on external systems
+(filesystem info, word-of-mouth, memory) to stand up
+to time.
+
+Do your future self a favor: Add Context to your Notes!
+
+In vi(m), it&#x27;s easy to add a date. Just:
+
+    :r !date
+
+And carry on with your writing.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Screen Time&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/014.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/014.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-30T23:54:44-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-30T23:54:44-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Screen Time
+-----------
+Tue Nov 30 23:42:47 EST 2021
+
+When I was a kid, my parents had the concept of &quot;screen time&quot;.
+The rules were simple:
+
+1. No &quot;screen time&quot; before sundown
+2. Limited total screen time for the day (maybe a couple hrs)
+
+We didn&#x27;t have TV, so this really just meant no time on the
+computer or watching movies.
+
+I was reminiscing about this recently, and thinking about the
+great irony that is screen time in my adult life as a paid
+programmer. I would wager I spend upwards of 10-12 hours looking
+at screens every day on an average work day. A bit of time
+scrolling the news on my phone before work, a 8-9hr workday
+(fully remote -&gt; meetings are screens), and then &quot;couch time&quot;
+hobby coding and watching shows if Jennie and I don&#x27;t otherwise
+have a social commitment (most work nights).
+
+Sometimes we give our eyes a break and play a board game, do
+a puzzle, or read a book; but even if I spent no time on screens
+outside of work, it&#x27;d be a shocking number of hours at a screen
+each week.
+
+When did I transition from such limited computer-time to such
+a screen-full day? It probably started with high school, when
+we started having homework on computers. Limiting screen time
+became &quot;limited video game time&quot; and less-so about screens.
+
+Regardless of when it happened, I&#x27;ve been wanting to get back
+some of that offline time recently. I definitely find it
+improves my mood and outlook on work and life.
+
+I need to get outside more :)
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Gopher-First Feeds&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/013.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/013.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-25T00:17:05-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-25T00:17:05-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Gopher-First Feeds
+------------------
+Thu Nov 25 00:05:30 EST 2021
+
+The original reason for this post was to follow up on
+my previous post, &quot;Adding a Feed for the Phlog&quot; [1], in
+which I discussed the decision to keep the Atom feed
+itself only available on gopher (at the risk of limiting
+the number of clients that can read it). I wanted to
+broadcast that I&#x27;ve settled on sfeed(1) and sfeed_curses(1)
+as a feed reader with gopher support (due to using
+curl(1) as the default fetcher, which supports gopher).
+
+As I wrote this though, I realized I observed something
+more interesting to discuss about feeds--just like
+gopher specifies the menu format as part of the protocol
+(and thus makes all user interaction the same between
+gopherholes), feed readers are able to present a
+universal interface to many different blogs, which
+is so cool. I know some people put a lot of effort into
+their styling, but it&#x27;s really enjoyable to read the
+sfeed_content(1) dumps of the articles all from the
+same client. Just like I know exactly what to expect
+when I visit a gopherhole, each new feed item is
+familiar in its presentation.
+
+Maybe it&#x27;s just me, but there&#x27;s a bit of comfort in
+browsing without surprises.
+
+[1]: gopher://alexkarle.com/0/phlog/010.txt
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Optimizing for Archival&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/012.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/012.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-21T14:08:02-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-21T14:08:02-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Optimizing for Archival
+-----------------------
+Sun Nov 21 13:56:35 EST 2021
+
+---
+Written on my desktop while Jennie mod-podge&#x27;s the puzzle
+we put together last weekend for framing.
+---
+
+If you&#x27;ve read any of my previous posts, it&#x27;s no secret that
+one of the reasons I&#x27;m really enjoying phlogging is the
+plaintext content. I wanted to call out one of my favorite
+side-effects of plaintext entries: ease of archiving.
+
+Browsing gopherspace, it&#x27;s clear that plaintext is among the
+most suitable formats for long term storage. Look at quux.org&#x27;s
+treasure trove of historical documents. Or all of the IETF
+RFC&#x27;s. Plain ascii-encoded files seem to be a guaranteed way
+to ensure your content is not only readable in the future,
+but easy to archive for that future.
+
+This is actually one of my biggest beefs with mdoc(7). It&#x27;s
+a great semantic language, but it&#x27;s not really that legible
+in its raw form. It&#x27;s a safe bet for archival--given that so
+much of our historical manuals are written in it, it seems
+that interpreters like mandoc(1) will be around for a while;
+however, it&#x27;s still dependent on external tools for proper
+viewing.
+
+Same with HTML--you need a browser or interpreter to read it.
+
+I think this is one of the strengths of markdown--even in a
+post-HTML future, the markdown source will be archived and
+readable. However, I kind-of like explicitly scoping the
+content to _just_ ascii and not focusing on *any* other
+presentation format other than the source. It&#x27;s all too common
+to get markdown files that are illegible because the author
+cares more about the way GitHub renders it than the way
+it looks in an editor (unwrapped lines, massive amounts of
+image URLs, non-prettified tables, etc).
+
+I take comfort knowing I&#x27;ll be able to `cat` this file
+two decades from now and still remember what I was thinking :)
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Lowering Barriers to Writing&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/011.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/011.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-21T10:58:30-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-21T10:58:30-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Lowering Barriers to Writing
+----------------------------
+Sun Nov 21 10:21:16 EST 2021
+
+---
+Sipping coffee and listening to Psychedelic Swamp on the
+turntable while Jennie shops online for plants as presents.
+---
+
+When I moved from mdoc(7) over HTTP to plaintext over Gopher,
+the barrier to writing became much smaller. No longer did I
+have to look up the mdoc man page while writing, nor did I
+have to check how it looked in multiple formats (HTML and
+ASCII). There were also psychological barriers too--a phlog
+has less traffic, and the traffic here is maybe less judgey.
+I feel I can be a bit more open in my writing and worry about
+the phrasing less.
+
+I wanted to make it even easier to &quot;just start writing&quot;, so
+I wrote a small shell script &quot;phlog(1)&quot; that:
+
+  1. Takes a title
+  2. Starts a new entry at the next NNN.txt file available
+  3. Prepopulates the entry with the title and date
+  4. Updates the phlog index to include the entry
+
+It&#x27;s in gopher://alexkarle.com/1/code, but I wanted to include
+it here too, just because I expect it&#x27;ll morph over time and
+I want to document the MVP!
+
+Some things learned:
+
+- `$(())` for arithmetic returns the result, so to avoid
+  executing a number, prefix it with the null operation `:`
+
+- ed(1) is awesome for programmatic edits to files
+
+--- phlog(1) ---
+
+#!/bin/sh
+# phlog -- lowering the barrier to phlogging
+# see gopher://alexkarle.com/phlog/011.txt
+die() {
+    echo &quot;$*&quot;
+    exit 1
+}
+
+[ -z &quot;$1&quot; ] &amp;&amp; die &quot;usage: phlog TITLE&quot;
+
+PHLOG=$(dirname &quot;$(dirname &quot;$(readlink -f &quot;$0&quot;)&quot;)&quot;)/phlog
+
+i=1
+nextfile() {
+    file=$(printf &quot;%03d.txt&quot; $i)
+    : $((i+=1))
+}
+
+title=&quot;$*&quot;
+underline=&quot;$(echo &quot;$title&quot; | sed &#x27;s/./-/g&#x27;)&quot;
+
+nextfile
+while [ -e &quot;$PHLOG/$file&quot; ]; do
+    nextfile
+done
+
+echo &quot;$title&quot; &gt;&quot;$PHLOG/$file&quot;
+echo &quot;$underline&quot; &gt;&gt;&quot;$PHLOG/$file&quot;
+date &gt;&gt;&quot;$PHLOG/$file&quot;
+
+ed  &quot;$PHLOG/index.gph&quot; &lt;&lt;EOM
+/^\[0|Atom Feed/+a
+[0|[$(date +%F)] $title|/phlog/$file|server|port]
+.
+wq
+EOM
+
+exec &quot;${EDITOR:-vi}&quot; &quot;$PHLOG/$file&quot;
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Adding a Feed for the Phlog&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/010.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/010.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-17T00:33:07-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-17T00:33:07-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Adding a Feed to the Phlog
+--------------------------
+Wed Nov 17 00:21:20 EST 2021
+
+Quick entry to mark a new milestone for the phlog
+--an atom feed!
+
+This was a pretty simple adaptation of my genatom
+script originally described on the blog post
+use-feeds(7) [1]. It just parses index.gph for
+lines that have the [[Date] Title|path...] format
+and spits out the right XML.
+
+Potentially the most interesting decision here
+wasn&#x27;t actually the crafting of the feed, but
+rather whether to serve the feed over Gopher
+exclusively or HTTP and Gopher.
+
+The argument for HTTP is that most feed
+reader clients can&#x27;t handle gopher://--I know for
+sure newsboat doesn&#x27;t. So by putting it on HTTP,
+it could at least be read by a wider audience...
+
+I ended up choosing to keep it gopher-only, since
+this is, after all, &quot;gopher exclusive content&quot; :)
+I&#x27;ll find or build a feed reader that can handle
+it!
+
+The source for the gophatom.sh generator can be
+found in the &quot;code&quot; section of this gopherhole [2]
+
+[1]: https://alexkarle.com/use-feeds.html
+[2]: gopher://alexkarle.com/1/code
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Going Live on the Weblog&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/009.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/009.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-15T00:16:38-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-15T00:16:38-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Going Live on the Weblog
+------------------------
+Mon Nov 15 00:00:23 EST 2021
+
+Tonight I made the decision to merge my phlog repo in with
+my alexkarle.com repo and announce the phlog on my blog. I
+had previously kept the repos separate to make it truly
+exclusive (i.e. no git history on the WWW), but that felt
+like a pain for not much gain (if anyone is motivated enough
+to look at the git history, they&#x27;ve put in more effort than
+going to a gopher proxy).
+
+The announcement was for two reasons:
+
+  1. Raise awareness of Gopher
+  2. Deprecate text.alexkarle.com
+
+With this gopherhole serving up the same content and more,
+text.alexkarle.com didn&#x27;t feel super necessary anymore.
+
+If anyone&#x27;s reading this from my blog announcment, welcome!
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Choosing a Phormat pt. 4&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/008.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/008.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-11T22:53:11-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-11T22:53:11-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Choosing a Phormat: pt 4 -- The Great Split
+-------------------------------------------
+Thu Nov 11 22:38:24 EST 2021
+
+Ok ok, hopefully this is the last post on this
+topic, I know it&#x27;s been QUITE the series. As a
+refresher I went from:
+
+1. A single gophermap as a blog
+2. A single text file
+3. Analyzing the differences
+
+And now I&#x27;m here in part 4 to tell you that the
+future of this phlog is multiple files.
+
+Why?
+
+1. Linkability -- I want to be able to share an
+   individual post!
+2. Syndication -- individual URI&#x27;s enable an RSS
+   feed
+3. Bandwidth-friendly -- of course my phlog.txt
+   was NOWHERE near the JS bloat that is the
+   modern web (and probably never will be), but
+   small files are faster!
+
+So here we are!
+
+I briefly toyed with the thought of putting the
+titles in the URI, for example:
+
+  gopher://alexkarle.com/phlog/008-choosing-a-phormat-pt-3.txt
+
+But, I ended up deciding that the title doesn&#x27;t
+add too much value to end users. I kinda like the
+XKCD-like (or RFC-like) style of just using a
+number :)
+
+  gopher://alexkarle.com/phlog/008.txt
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Choosing a Phormat pt. 3&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/007.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/007.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-11T22:53:11-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-11T22:53:11-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Choosing a Phormat pt. 3                   [2021-11-11]
+-------------------------------------------------------
+
+Keeping the title the same to hopefully make it easier
+to get threads going between posts...
+
+I wanted to callout an interesting observation I read
+on the gemini FAQ [1] about text vs menu content
+serving. The observation is that menus are appealing
+because they allow hyperlinking (with restrictions,
+like way outdated content types); however, using a
+menu that is largely text (`i` info types) is a
+_really_ inefficient way to serve up content, due
+to the phony selectors and hostnames that come with
+it!
+
+As a practical example, this phlog.txt, including
+this post, is 7396 bytes, but if it was served as
+a *.gph file, it becomes 11131 bytes! That&#x27;s 1.5x
+the size (~1/3 overhead)!
+
+This is also discussed a bit on the gemlog of
+mozz.us [2], which describes the history of `i`.
+`i` isn&#x27;t part of the original RFC, and it _seems_
+that the original gopher team weren&#x27;t thrilled to
+add it. Of course, `i` won out over plain menus
+because people like to see a little context... but
+the &quot;pure&quot; gopher way would be to put said context
+in a file named ABOUT and be done with it!
+
+I think this is all interesting because people are
+making some really cool gopher apps out of the
+menu format (like stagit-gopher, for instance).
+But maybe this is the wrong way to go about things?
+in the sense that it would benefit from a more
+flexible format, like text/gemini...
+
+Anyways, to go full circle, this revelation about
+phony selectors reaffirmed my decision to use
+a plaintext file instead of a gopher menu for this
+phlog.
+
+It&#x27;s an interesting hypothetical though--is
+Gopher as useful without `i`? Does the lack of
+MIME types hinder its future adoption?
+
+It does still serve well as a plaintext delivery
+system, IMHO. And this phlog is a lot of that :)
+
+[1]: https://gemini.circumlunar.space/docs/faq.gmi
+[2]: https://portal.mozz.us/gemini/mozz.us/journal/2021-05-27.gmi
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;What&#x27;s in a RFC?&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/006.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/006.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-11T22:53:11-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-11T22:53:11-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+What&#x27;s in a RFC?                           [2021-11-10]
+-------------------------------------------------------
+
+I&#x27;ve always idealized the RFC process of the IETF as
+a way to effectively run a distributed project. And
+it is, but it&#x27;s *way* more complex and intricate than
+I originally thought. This note serves to share some
+of my findings.
+
+The biggest surprise was that RFC&#x27;s can&#x27;t just be
+published. You have to send them to the &quot;RFC Editor&quot;!
+This person can make minor edits and, at their
+discretion, broadcast the document. When the process
+first started, these were physical documents!
+
+RFC&#x27;s begin life as Internet Drafts, where they are
+iterated on, but there&#x27;s no guarantee you _do_ get
+published as an RFC (let alone an Internet Standard).
+
+And I suppose that&#x27;s the disconnect between what I
+envisioned (mailing list participants just asking for
+feedback) and what reality is (a formal process with
+a publisher, with gated entry). It&#x27;s both &quot;open&quot; in
+the sense that the publications can be redistributed,
+but &quot;closed&quot; in the sense that the Editor decides
+what makes the cut. It feels less community-oriented
+than I expected; more formal.
+
+Just my 2c.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Server Migration&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/005.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/005.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-11T22:53:11-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-11T22:53:11-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Server Migration                           [2021-11-07]
+-------------------------------------------------------
+
+I moved from gophernicus(8) to geomyidae(8) tonight.
+It was relatively painless, with a bit of lift to
+replicate the &quot;*&quot; directory-indexing feature of
+the gophernicus gophermap files (I had to write my
+own directory-to-gph tool and cat it to index.gph).
+
+Of course, I _could_ have used dynamic CGI, but it
+feels a bit safer NOT to allow the daemon to spawn
+other programs :)
+
+As a funny aside--I was previously championing
+gopher&#x27;s &quot;lack of a markup language&quot; by using
+plaintext for content.. the truth is uglier than that:
+all servers have their OWN markup for the menu
+files that have become core to the gopher experience.
+So, migrating servers becomes more of a pain than
+just changing the config file.
+
+In fact, the lack of a standardized markup is the
+reason I had to migrate in the first place!
+gophernicus doesn&#x27;t support geomyidae *.gph, which
+is what stagit-gopher outputs...
+
+Maybe the Gemini people are onto something--specify
+the markup AND the protocol.. hmmm
+
+I suppose one could always use canonical-only gopoher
+and not embed info (`i`) lines/just have the daemon
+auto-list... but that&#x27;s no fun!
+
+P.S. the gopherhole is available over TLS now!
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Launch Plan&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/004.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/004.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-11T22:53:11-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-11T22:53:11-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Launch Plan                                [2021-11-06]
+-------------------------------------------------------
+
+Thinking about announcing my phlog on my blog.. and
+maybe even moving it here. What would it take to
+get there?
+
+* Git mirroring via stagit-gopher
+  - requires a server change to geomyidae
+* TLS support
+
+The latter seems pretty new.. I&#x27;ll have to see if its
+standardized enough for it to be a reasonable expectation
+that clients will support the implementation.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Momentum&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/003.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/003.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-11T22:53:11-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-11T22:53:11-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Momentum                                   [2021-11-04]
+-------------------------------------------------------
+
+I&#x27;ve been serving _something_ over gopher since February
+2021 [1], but in these past couple days this gopherhole
+has gone from 0 to 100 realll quick.
+
+Once I started putting real gopher-exclusive content
+here, I kept wanting to add more! The latest motivation
+is using gopher as a simple access protocol to a plaintext
+&quot;second brain&quot; (notetaking system).
+
+So, the repo that houses my gopherhole now has a &quot;notes&quot;
+directory, and I wrote a small &quot;notetag&quot; script that
+parses the &quot;^tags:&quot; directive in the files, generates
+a directory-per-tag, symlinks the notes into the dirs,
+and then outputs a gophermap index of the files!
+
+This was a ton of fun, and of course urged me to add my
+next piece of content--a &quot;code&quot; section of the hole to
+share &quot;notetag&quot;, which I&#x27;m unreasonably proud of :)
+
+So there you have it--in 24 hrs we went from phlogless
+to phlog + code + notes... only time will tell if I keep
+up the publishing, but for now I&#x27;m having fun!
+
+[1]: https://git.alexkarle.com/alexkarle.com/commit/cf670de12685a94e7a53f0a126ae77cbf548cf91.html
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Choosing a Phormat pt. 2&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/002.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/002.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-11T22:53:11-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-11T22:53:11-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Choosing a Phormat pt. 2                   [2021-11-03]
+-------------------------------------------------------
+
+And immediately after publishing as a gophermap, I
+realized that the &#x27;----&#x27; heading is being interpreted
+as &quot;remove the &#x27;-------&#x27; file from the file listing.
+So that&#x27;s fun.
+
+Looks like we&#x27;re back to &quot;single text file&quot;. Ain&#x27;t
+nuthin wrong with that I suppose. Just no linking to
+other resources... hmmm. Maybe I should check out a
+different gopher server.
+
+On second thought, the appeal of gopher was that I
+*dont* have to write or learn a new markup flavor...
+yeah plaintext it is!
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;title&gt;Choosing a Phormat&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; href=&quot;gopher://alexkarle.com/0/phlog/001.txt&quot;/&gt;
+    &lt;id&gt;gopher://alexkarle.com/0/phlog/001.txt&lt;/id&gt;
+    &lt;updated&gt;2021-11-11T22:53:11-05:00&lt;/updated&gt;
+    &lt;published&gt;2021-11-11T22:53:11-05:00&lt;/published&gt;
+    &lt;content type=&quot;text&quot;&gt;
+    &lt;![CDATA[
+Choosing a Phormat                         [2021-11-03]
+-------------------------------------------------------
+
+Hello phlog!
+
+For right now, I think I&#x27;m gonna prepend entries onto
+the gophermap for the phlog directory. While half the
+appeal of gopher is that it serves up plaintext as-is,
+I think having the ability to link to othe documents
+might come in handy. So... the menu is the phlog. Is
+that backwards? We&#x27;ll see.
+    ]]&gt;
+    &lt;/content&gt;
+  &lt;/entry&gt;
+&lt;/feed&gt;
+</pre>]]></description>
+</item>
+</channel></rss>
