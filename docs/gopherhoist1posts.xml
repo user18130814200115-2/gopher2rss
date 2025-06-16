@@ -16788,4 +16788,135 @@ specificaly for the abacus and adding machines. Stay tuned!
 --- Luxferre ---
 </pre>]]></description>
 </item>
+
+<item>
+<link>gopher://hoi.st/1/posts/2025-06-16-the-hunt-for-optimal-sine.txt</link>
+<title>(2025-06-16) The hunt for an optimal sine</title>
+<description><![CDATA[<pre>
+(2025-06-16) The hunt for an optimal sine
+-----------------------------------------
+First, I&#x27;ve got an announcement to make. I&#x27;m setting up a Nex station and its
+contents will not duplicate or mirror this Gopherhole in general, and 
+updates are going to be irregular there (no scheduled posting like here). 
+The station is self-hosted on my Orange Pi Zero (tunneled from this VPS) and 
+you can access it via nex://hoi.st, nex://piratezeppel.in or 
+nex://luxferre.top, whatever fits your preference. Foo the Gopher postings, 
+I&#x27;m taking a break until the next month, I think. Don&#x27;t worry, I&#x27;ll still be 
+here. Just a bit tired again.
+
+Second, I&#x27;ve got a promise to keep: tell you about calculating transcendental
+functions on an abacus or adding machines in general. To start with 
+something, let&#x27;s talk about sine. I&#x27;ve already mentioned one of the formulas 
+in the previous post and it gets you rather good results. But what if we can 
+do better?
+
+Of course, we can ALWAYS do better by introducing more digits into
+coefficients, but remember that our aim is to be able to calculate sine as 
+manually as we can, and the abacus has limited capacity too, so ideally we 
+don&#x27;t want to handle over 5 _significant_ digits at a time. Let&#x27;s first 
+recap what the general form of polynomial sine approximation looks like. 
+Here&#x27;s the general algorithm:
+
+x = orig_x * PM{deg|rad}
+xx = x * x
+sin(orig_x) = x * (A + xx * (B + xx * (C + xx * D)))
+
+And the errors are calculated as:
+MAE = |oursin - truesin|
+MRE = |MAE / truesin|
+
+Here, PM_{deg|rad} is a pre-multiplier to use when the argument is in degrees
+or radians, MAE is maximum absolute error and MRE is maximum relative error.
+
+Now, here are some manually found sets of coefficients for the first quadrant
+(the range from 0 to 90 degrees) with their error values:
+
+PM_deg|PM_rad|coeff. A |coeff. B  |coeff. C |coeff. D | MAE    | MRE
+------|------|---------|----------|---------|---------|--------|--------
+pi/180|1     |0.999997 |-0.166648 |0.008307 |-0.000184|1.4E-6  |3E-6
+1/360 |1/2*pi|6.2832   |-41.3379  |81.3406  |-70.9933 |3.6E-6  |5.4E-6
+pi/180|1     |1        |-0.16665  |0.008307 |-0.000184|4E-6    |4E-6
+pi/180|1     |0.999698 |-0.165675 |0.007515 |0        |6.79E-5 |3.02E-4
+1/360 |1/2*pi|6.2813   |-41.0957  |73.5846  |0        |6.9E-5  |3E-4
+pi/180|1     |1        |-1/6      |1/120    |-1/5125  |7.83E-5 |7.83E-5
+1/360 |1/2*pi|6.281    |-41.09    |73.588   |0        |8.28E-5 |3.478E-4
+1/90  |2/pi  |1.5706268|-0.6432292|0.0727102|0        |1.069E-4|1.087E-4
+1/90  |2/pi  |1.57065  |-0.64323  |0.0727   |0        |1.151E-4|1.238E-4
+1/360 |1/2*pi|6.28     |-41.07    |73.58    |0        |1.427E-4|5.07E-4
+1/360 |1/2*pi|6.28     |-41.19    |80.08    |-72.98   |1.849E-4|5.07E-4
+1/90  |2/pi  |1.57     |-0.64     |0.07     |0        |2.39E-4 |5.07E-4
+pi/180|1     |1        |-1/6      |1/127    |0        |4.893E-4|5.081E-4
+
+But wait! What if we reduce the range to just 45 degrees (since we know how
+to derive the rest)? Here, the situation gets much better in some cases:
+
+PM_deg|PM_rad|coeff. A |coeff. B  |coeff. C |coeff. D | MAE    | MRE
+------|------|---------|----------|---------|---------|--------|--------
+pi/180|1     |1        |-1/6      |1/120    |-1/5125  |2.95E-7 |4.17E-7
+pi/180|1     |0.999997 |-0.166648 |0.008307 |-0.000184|1.16E-6 |3E-6
+pi/180|1     |1        |-0.16665  |0.008307 |-0.000184|2.55E-6 |3.68E-6
+1/360 |1/2*pi|6.2832   |-41.3379  |81.3406  |-70.9933 |3.6E-6  |5.39E-6
+1/360 |1/2*pi|6.2813   |-41.0957  |73.5846  |0        |6.67E-5 |3E-4
+pi/180|1     |0.999698 |-0.165675 |0.007515 |0        |6.74E-5 |3.02E-4
+1/90  |2/pi  |1.5706268|-0.6432292|0.0727102|0        |7.52E-5 |1.08E-4
+1/360 |1/2*pi|6.281    |-41.09    |73.588   |0        |8.28E-5 |3.478E-4
+1/90  |2/pi  |1.57065  |-0.64323  |0.0727   |0        |8.63E-5 |1.22E-4
+pi/180|1     |1        |-1/6      |1/127    |0        |1.01E-4 |1.43E-4
+1/90  |2/pi  |1.57     |-0.64     |0.07     |0        |1.17E-4 |5.07E-4
+1/360 |1/2*pi|6.28     |-41.07    |73.58    |0        |1.427E-4|5.07E-4
+
+Now, it looks like we&#x27;ve got an absolute champion, but keep in mind the
+coefficients can be further adjusted for this specific range. Let&#x27;s do this 
+for some of the &quot;poorest&quot; performing polynomials in an attempt to bring the 
+MAE to &lt;5E-5 (so that we know that our sine is accurate to 4 decimal places):
+
+PM_deg|PM_rad|coeff. A |coeff. B  |coeff. C |coeff. D | MAE    | MRE
+------|------|---------|----------|---------|---------|--------|--------
+1/360 |1/2*pi|6.2813   |-41.0957  |73.5846  |0        |6.67E-5 |3E-4
+1/90  |2/pi  |1.57065  |-0.64323  |0.0727   |0        |8.63E-5 |1.22E-4
+pi/180|1     |1        |-1/6      |1/127    |0        |1.01E-4 |1.43E-4
+1/90  |2/pi  |1.57     |-0.64     |0.07     |0        |1.17E-4 |5.07E-4
+
+No dice. But what if we try further reducing the range? Remember that we have
+some formulas for double-angle and triple-angle sines. Of course they will 
+require more elementary calculations than just introducing the fourth 
+coefficient, but at least they were relatively easy to find with a 
+bruteforce script. So, here we go:
+
+maxarg=15deg A=1.57 B=-0.61 C=0.16 D=0 MAE=4.5244188e-05 MRE=0.000507
+maxarg=15deg A=1.571 B=-0.656 C=0.09 D=0 MAE=1.1206732e-05 MRE=0.00013
+maxarg=15deg A=6.283 B=-41.186 C=73.083 D=0 MAE=2.4884852e-06 MRE=2.9491e-05
+maxarg=22.5deg A=6.283 B=-41.248 C=73 D=0 MAE=3.2931743e-06 MRE=2.9491e-05
+maxarg=22.5deg A=6.283 B=-41.245 C=72.162 D=0 MAE=3.2346554e-06 MRE=2.9491e-05
+maxarg=30deg A=6.28 B=-40.66 C=70.67 D=0 MAE=8.4898903e-05 MRE=0.000507
+maxarg=30deg A=6.283 B=-41.245 C=71.127 D=0 MAE=3.2494899e-06 MRE=2.9491e-05
+
+From here, we can deduce that we have two basic approaches that give the best
+results:
+
+1) convert the argument into radians and just use a 7-degree Taylor
+polynomial with the last coefficient being 1/5125 instead of 1/5040 (use it 
+for the 45 degrees range and then just extend it with the double-angle 
+formula or something),
+2) pre-divide the argument by 360deg or 2pi rad and use a 5-degree polynomial
+with the coefficients 6.283, -41.245 and 71.127, then use the triple-angle 
+formula to extend the range.
+
+Now, I am absolutely sure there exists a 7-degree polynomial with all four
+coefficients having up to just 3 decimal places (making it no more than 5 
+significant digits to deal with on an abacus) that will give a much more 
+accurate result for the 30-degree range than this 5-degree polynomial, but 
+it will take forever to find with just a bruteforce script (considering I 
+spent almost a day running it to find one with 2 decimals). I will keep you 
+posted if I manage to find a better approach or a set of coefficients, 
+however, these two will (theoretically) give you a reliable sine result 
+accurate to four decimals no matter what.
+
+When I return in July, we&#x27;ll continue looking at the other transcendentals
+like arctangents, logarithms or exponents. For now though, keep checking out 
+my Nex and stay tuned!
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
 </channel></rss>
