@@ -3,7 +3,7 @@
 <channel>
 <title>gopher://hoi.st/1/posts</title>
 <link>gopher://hoi.st/1/posts</link>
-
+<description>gopher</description>
 <item>
 <link>https://blog.wester.digital/html/0032-switching-to-codeberg.html</link>
 <title>(2023-04-03) Finally here</title>
