@@ -5,6 +5,66 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/URI-open--plumber-and-xclip.md</link>
+<title>URI open  plumber and xclip                                2025-06-18</title>
+<description><![CDATA[<pre>
+# URI open  plumber and xclip
+
+If you are not blessed with a terminal which can identify URI&#x27;s and
+take some programmable action on selection[0], then I offer the
+following solution:
+
+Double clicking on a URI should put it into your xclip buffer. Verify
+this by selecting some text or URI and then running:
+
+&gt; $ xclip -o
+
+If the above prints out the selected text or URI then you can proceed
+to install the plumber[1] and configure it to your requirements. 
+
+
+## Plumber configuration
+
+Configuration involves exporting environment variables to determine
+the application to be used for opening the specific URI/file type:
+
+     PLUMB_IMAGE=&lt;your_preferred_image_viewer feh -F --auto-rotate?&gt;
+     PLUMB_MEDIA=&lt;your_preferred_mediaplayer mpv?&gt;
+     PLUMB_GOPHER=&lt;your_preferred_gopher_browser gopher?&gt;
+     PLUMB_TXTGOPHER=&lt;your_preferred_gopher_textbrowser gopher?&gt;
+     PLUMB_PDF=&lt;your_preferred_pdf_viewer xpdf?&gt;
+     PLUMB_FILEMANAGER=&lt;your_preferred_filemanager ranger?&gt;
+     PLUMB_WEB=&lt;your_preferred_webbrowser firefox?&gt;
+     PLUMB_TXTWEB=&lt;your_preferred_text_webbrowser lynx?&gt;
+     PLUMB_FEED=&lt;your_preferred_RSS/Atom_client thunderbird?&gt;
+     PLUMB_WAIS=&lt;your_preferred_WAIS_client lynx?&gt;
+     PLUMB_CSO=&lt;your_preferred_CSO_client lynx?&gt;
+     PLUMB_NEWS=&lt;your_preferred_NNTP/NEWS_client lynx?&gt;
+     PLUMB_NEX=&lt;your_preferred_NEX_client ?&gt;
+
+*Note: * If you are into self flagellation you could instead
+use xdg-open.
+
+Create a key binding to trigger calling the plumber with the contents
+of the xclip buffer.
+
+
+## An example for ratpoison
+
+Edit .ratpoisonrc and add the following:
+&gt; bind o exec plumb $(xclip -o)
+
+After restarting ratpoison you should be able to Ctrl-t+o to open
+selected URI&#x27;s.
+
+
+## References
+
+[0](gopher://gopher.icu/0/phlog/Computing/Smart-terminal-not-client.md)
+[1](git://r-36.net/plumber)
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Adherence-is-a-choice.md</link>
 <title>Adherence is a choice                                      2025-06-18</title>
 <description><![CDATA[<pre>
@@ -7513,6 +7573,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 </channel></rss>
