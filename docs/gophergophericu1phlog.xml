@@ -5,6 +5,28 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Adherence-is-a-choice.md</link>
+<title>Adherence is a choice                                      2025-06-18</title>
+<description><![CDATA[<pre>
+# Adherence is a choice
+
+No one can make you follow a standard or best practice. Whether it be
+cooked up by some billion dollar blue chip or bedroom hacker.
+
+You have to consider if people willingly put their egos aside, would
+we better off having some basic agreements so that we could interact
+more easily.
+
+Adherence is to put self aside for the chance of something better
+collectively.
+
+So next time you want to adopt the f*ck you attitude, write lines a
+mile wide and act in defiance, because you can. Ask yourself, who am
+I hurting?
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/UNIX-Primitivism.md</link>
 <title>UNIX Primitivism                                           2025-06-16</title>
 <description><![CDATA[<pre>
@@ -7491,5 +7513,6 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 </channel></rss>
