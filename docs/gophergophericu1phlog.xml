@@ -5,6 +5,61 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Gophering-without-a-client.md</link>
+<title>Gophering without a client                                 2025-06-21</title>
+<description><![CDATA[<pre>
+# Gophering without a client
+
+In a recent article I explained why I&#x27;d finally stopped using UMN
+gopher[0]. In that same article I mentioned my idea for a client-less
+gopher client and that I&#x27;d made a basic filter to degopher[1] menus.
+
+This filter exposes the URI&#x27;s so that I can make use of functionality
+built into my terminal emulator to call a plumber program which knows
+how to handle them. 
+
+*Note:* Configuration of that plumber program, and an alternative
+solution to both the functionality in urxvt and plumber program,
+were given in a follow-up article[2].
+
+
+## gopen
+
+I now have a rudimentary implementation of the final part of the
+puzzle, the gopen[3] script, which can either be called from the
+command line or by the plumber program.
+
+&gt; gopen gopher.icu
+
+If the link contains a search URI then it prompts you for entry.
+
+&gt; gopen gopher.icu/7/quarry
+&gt; Search: 
+
+For every link you open a new shell is spawned so you back-pedal
+through your navigation by just exiting less. This may work better
+inside something like the tabbed suckless application?
+
+
+## Summary
+
+The scripts are very crude and can be improved a lot. The degopher
+filter I have already discovered doesn&#x27;t handle &#x27;i&#x27; type lines well.
+
+It&#x27;s a very crude way of navigating gopher but it makes all URI&#x27;s
+actionable from the command line in a common way and I have taken the
+same approach with NEX.
+
+
+## References
+
+[0](gopher://gopher.icu/0/phlog/Computing/UMN-gopher-no-more.md)
+[1](gopher://gopher.icu/0/files/degopher.awk)
+[2](gopher://gopher.icu/0/phlog/Computing/URI-open--plumber-and-xclip.md)
+[3](gopher://gopher.icu/0/files/gopen)
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/URI-open--plumber-and-xclip.md</link>
 <title>URI open  plumber and xclip                                2025-06-18</title>
 <description><![CDATA[<pre>
@@ -7573,6 +7628,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
