@@ -5,6 +5,148 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/OpenBSD-web-browsers.md</link>
+<title>OpenBSD web browsers                                       2025-06-27</title>
+<description><![CDATA[<pre>
+# OpenBSD web browsers 
+
+## ungoogled-chromium
+
+Dependencies:
+&gt; noto-emoji-20241002
+&gt; noto-fonts-24.9.1v0
+&gt; nspr-4.36
+&gt; nss-3.110
+&gt; libudev-openbsd-20230921p0
+&gt; libxslt-1.1.43p0
+&gt; epoll-shim-0.0.20240608
+&gt; wayland-1.23.1
+&gt; libxkbcommon-1.8.1
+&gt; dconf-0.40.0p2
+&gt; adwaita-icon-theme-legacy-46.2p0
+&gt; adwaita-icon-theme-47.0p0
+&gt; gtk+3-3.24.49
+&gt; jtk+3-cups-3.24.49
+&gt; xdg-utils-1.2
+
+1.134G of disk usage in my estimation. The noto-fonts are enormous
+and the major bulk of the installation.
+
+I have been using this browser since I started using OpenBSD on my
+daily driver, around 3 years. There is no Firefox for 32bit, so this
+was really my only choice and I&#x27;ve stuck with it until today.
+
+Performance is acceptable and it seems to cope with most websites.
+Unfortunately every so often a website will cause it to go into a
+death spiral which will freeze my system if I don&#x27;t catch it quickly.
+
+
+## Vimb
+
+Dependencies:
+&gt; iso-codes-4.17.0:webkitgtk41-2.48.3
+&gt; iso-codes-4.17.0:gst-plugins-bad-1.26.0
+&gt; iso-codes-4.17.0:gst-plugins-good-1.26.0
+&gt; iso-codes-4.17.0:gst-plugins-base-1.26.0
+&gt; iso-codes-4.17.0
+&gt; mozilla-dicts-en-GB-1.3p1:enchant2-2.8.2
+&gt; mozilla-dicts-en-GB-1.3p1:hunspell-1.7.2
+&gt; mozilla-dicts-en-GB-1.3p1
+&gt; pango-1.56.3:gtk+3-3.24.49
+&gt; wayland-1.23.1:libxkbcommon-1.8.1
+&gt; wayland-1.23.1
+&gt; orc-0.4.32
+&gt; lame-3.100p2:libbs2b-3.1.0p5
+&gt; lame-3.100p2:twolame-0.4.0
+&gt; lame-3.100p2:libsndfile-1.2.2p0
+&gt; libunbound-1.22.0:geoclue2-2.7.2
+&gt; libunbound-1.22.0:libsoup3-3.6.5
+&gt; libunbound-1.22.0:glib2-networking-2.80.1p0
+&gt; flac-1.5.0
+&gt; libnotify-0.8.6
+&gt; hyphen-2.8.8p0
+&gt; aspell-0.60.8.1p0
+&gt; taglib-1.13.1
+&gt; woff2-1.0.2p0
+&gt; dbus-daemon-launch-helper-1.16.2
+&gt; epoll-shim-0.0.20240608
+&gt; libavif-1.1.1
+&gt; wavpack-5.6.0p0
+&gt; cdparanoia-3.a9.8p5
+&gt; json-glib-1.10.6
+&gt; soundtouch-2.3.3
+&gt; duktape-2.7.0p1:libproxy-0.5.9p2
+&gt; duktape-2.7.0p1
+&gt; libxslt-1.1.43p0
+&gt; harfbuzz-icu-11.0.0
+&gt; opencore-amr-0.1.6
+&gt; at-spi2-core-2.54.1
+&gt; gsettings-desktop-schemas-47.1p0
+&gt; gstreamer1-1.26.0
+&gt; dbus-1.16.2v0:avahi-glib-0.8p3
+&gt; libshout-2.4.5
+&gt; libpsl-0.21.1p0
+&gt; graphene-1.10.8p1
+&gt; flite-2.2
+&gt; dconf-0.40.0p2
+&gt; adwaita-icon-theme-legacy-4...:adwaita-icon-theme-47.0p0
+&gt; adwaita-icon-theme-legacy-46.2p0
+
+400MB of disk usage in my estimation. Dependency listing looks worse
+than it is with regard to overall size of installation. 
+
+Unfortunately performance on my system sucked, YMMV. It didn&#x27;t last
+more than a couple of minutes before it was uninstalled.
+
+
+## Firefox-ESR
+
+Dependencies:
+&gt; nspr-4.36
+&gt; nss-3.110
+&gt; adwaita-icon-theme-legacy-46.2p0
+&gt; adwaita-icon-theme-47.0p0
+&gt; at-spi2-core-2.54.1
+&gt; epoll-shim-0.0.20240608
+&gt; wayland-1.23.1
+&gt; libxkbcommon-1.8.1
+&gt; dconf-0.40.0p2
+&gt; gtk+3-3.24.49
+
+300MB of disk usage in my estimation.
+
+I have moral issues with the Mozilla Foundation but performance wise,
+it still seems to be the best of a bad bunch.
+
+
+## Wayland?
+
+Not so long ago wayland wasn&#x27;t even a thing, now it is seemingly a
+requirement to significant pieces of software, leverage? Is this what
+people do when they want to force their beliefs and choices upon
+others? 
+
+Redhat with systemd and then Firefox with Rust. Now all web browsers
+seem to come bundled with wayland, whether you want or not...
+
+
+## Summary
+
+This trip down the rabbit hole was prompted by the OpenBSD 7.7
+update. As time goes on it seems to be bloating and the update failed
+due to my running out of available disk space. This forced me to comb
+through the system, uninstall anything I wasn&#x27;t using and check the
+sizes of the larger packages. That of course meant the web browser.
+
+I use vim key-bindings wherever I can get them, so I added the vimium
+plug-in as I had done with ungoogled-chromium.
+
+Emerging from the rabbit hole I&#x27;m back on firefox-esr. The
+performance to bloat ratio is better than the rest.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/urxvt-no-more.md</link>
 <title>urxvt no more                                              2025-06-26</title>
 <description><![CDATA[<pre>
@@ -7704,6 +7846,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
