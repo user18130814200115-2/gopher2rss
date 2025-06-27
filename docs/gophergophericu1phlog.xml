@@ -5,6 +5,82 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/urxvt-no-more.md</link>
+<title>urxvt no more                                              2025-06-26</title>
+<description><![CDATA[<pre>
+# urxvt no more
+
+I&#x27;ve been a urxvt user for a long time. It supported unicode, I could
+hide the scrollbars to gain a clean looking terminal, have a blinking 
+block cursor and there were flags to make the launched terminals
+login terminals so my environment would be set correctly.
+
+As I mostly live in the terminal these days, maybe it is only natural
+that this piece of software comes under scrutiny. urxvt is quite a
+bit lighter than xterm but usually xterm is already included as part
+of the xorg package on most systems. You are saving nothing without
+you manually delete it.
+
+Yesterday I decided to take a look at suckless&#x27;s st (simple
+terminal). It is minute in comparison to either xterm or urxvt. 
+
+I had stayed away from suckless software as I don&#x27;t agree with
+recompiling for changes of basic settings, like fonts or colours.
+After looking through some of the patches available however, I found
+that there was an xresources patch to allow settings for fonts and
+colours to be taken from the generic .Xresources file. 
+
+This seemed a very reasonable thing to do and convinced me that maybe
+it was worth a try.
+
+
+## Configuration
+
+First I amended the config.mk file as I&#x27;m running on OpenBSD. You
+have to uncomment some OpenBSD specific lines in the file and remove
+&#x27;-lrt&#x27; from the LIBS line. It wasn&#x27;t obvious I had to do this, but
+thankfully the included FAQ covers it. I then downloaded and applied
+the xresources patch where I ran into more problems.
+
+Firstly it failed to compile. I later discovered that the patch
+applied changes to config.def.h and if you have already compiled the
+application this file does not get moved to config.h. It doesn&#x27;t
+overwrite config.h so that it doesn&#x27;t stomp on any changes you have
+made. So while sensible, it&#x27;s not obvious when I applied the patch
+why I was seeing errors and it wouldn&#x27;t compile.
+
+Once I had got it to install the colouration was not what I expected.
+The entire text was the colour of my cursor on urxvt. I later
+discovered that the numeric colour values used in the patch were not
+correct looking at those statically set in the header. Once I
+realized the issue and corrected the values it worked as expected.
+
+I made a patch for the patch and emailed the patch author along with
+an explanation, so hopefully this will be fixed soon.
+
+I had intended to add a URI opening patch to match the functionality
+I had with urxvt but I had an alternative[0] way of opening URI&#x27;s
+which was good enough to not warrant the extra patch.
+
+
+## Summary
+
+The st terminal is fast and responsive and my chosen font looks
+somewhat better than on urxvt.  
+
+The only thing I feel missing is my blinking cursor. There is a patch
+for it, but I will give it some time before deciding. I do tend to
+lose my cursor in large documents and the blinking orange block is
+good at drawing the eye.
+
+
+## References
+
+[0](gopher://gopher.icu/0/phlog/Computing/URI-open--plumber-and-xclip.md)
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Gophering-without-a-client.md</link>
 <title>Gophering without a client                                 2025-06-21</title>
 <description><![CDATA[<pre>
@@ -7628,6 +7704,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
