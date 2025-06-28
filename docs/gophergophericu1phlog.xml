@@ -5,6 +5,35 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/On-goals.md</link>
+<title>On goals                                                   2025-06-28</title>
+<description><![CDATA[<pre>
+# On goals
+
+There is nothing wrong with setting goals, as long as you are the one
+setting and benefiting from them. There is no harm in having some
+ambition to improve yourself or your situation.
+
+From time to time I set myself a goals, just to feel that I am making
+some progress in life. Usually for the purpose of attaining or
+expanding on some skill. 
+
+Recent goals have been to pass my foundation exam so that I could
+participate in amateur radio. Then once I attained that, I set myself
+the goal of learning morse code.
+
+You can however hide behind goals as you can set new ones
+indefinitely. They can be a distraction away from things that you
+should be doing. Often these are the things you really should do but
+don&#x27;t want to face.
+
+To quote Aldous Huxley - &quot;The most valuable of all education is the
+ability to make yourself do the thing you have to do, when it has to
+be done, whether you like it or not.&quot;
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/OpenBSD-web-browsers.md</link>
 <title>OpenBSD web browsers                                       2025-06-27</title>
 <description><![CDATA[<pre>
@@ -7846,6 +7875,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
