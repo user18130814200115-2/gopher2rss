@@ -5,6 +5,22 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Addiction.md</link>
+<title>Addiction                                                  2025-07-05</title>
+<description><![CDATA[<pre>
+# Addiction
+
+		The blinking beacon of the cursor, 
+		inviting to command.
+
+		The pulse of the machine, 
+		alluring, 
+		calling, 
+		calling...
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/On-goals.md</link>
 <title>On goals                                                   2025-06-28</title>
 <description><![CDATA[<pre>
@@ -7875,6 +7891,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
