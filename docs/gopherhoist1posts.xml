@@ -5,6 +5,60 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-07-07-a-small-digest.txt</link>
+<title>(2025-07-07) A small digest of what happened in the recent weeks</title>
+<description><![CDATA[<pre>
+(2025-07-07) A small digest of what happened in the recent weeks
+----------------------------------------------------------------
+So, I&#x27;m back, not that I got more time but at least somewhat more capacity to
+manage it.
+
+First, I had set up an experimental Nex station at nex://piratezeppel.in
+address. The address points to the same VPS but the server itself is not 
+hosted there: it is tunneled to my Orange Pi via SSH reverse port 
+forwarding. The Zeppelin journal contains more of philosophical musings 
+stuff, as opposed to this phlog that became more of instructional and 
+technical sort of writing.
+
+Second, I got myself some more hardware. Not spilling the main secret just
+yet, but among this hardware also is a long-awaited upgrade to my slowly 
+dying first-gen Bose QC35 headset, namely Bose QC Ultra, a Victorinox Super 
+Tinker multitool knife and a very interesting foldable Bluetooth keyboard 
+called WiWu FMK-01. Not without its own flaws, but it really is quite 
+portable, easy to type on and the carrying case also has a smartphone stand 
+which can be convenient at times. IMO this is a must-have thing for Termux 
+and whatnot. Not even sure if any further upgrades like Logitech Keys-to-Go 
+2 would be worth it: the FMK-01 fits into a small manpurse or even a cargo 
+pants pocket, where the KtG2 definitely won&#x27;t fit. And if a large backpack 
+is involved... well, this is where I&#x27;d rather take a K6 or K68 with me. 
+And/or the laptop itself.
+
+Third, I&#x27;ve seriously started considering learning WASM/WASI. To me, it&#x27;s
+like JVM without all the bulk. And the projects like container2wasm only add 
+some fuel to the fire: imagine a very restrictive operating environment that 
+can only run WebAssembly instead of native code, and you bring a whole 
+friggin&#x27; emulator on top of that. As much as I despise VM layering, I can 
+think of several real-world scenarios where this could be really useful. And 
+yes, it&#x27;s the lack of any WASM support being the main reason I have finally 
+given up any hopes of making anything useful on top of Gecko 48 and KaiOS in 
+general. Other people should manage all that if they want to, I need to go 
+on.
+
+Fourth, I have met my arch nemesis face-to-face. No, I&#x27;m not working for M$
+or OpenAI lol, but my new project on the job heavily involves cloud-based 
+generative AI as the driving tech. Cloud-based LLMs are something I hate the 
+most (besides Faildows) but my role in this new project allows me to decide 
+how exactly we&#x27;re gonna be interacting with them. On top of that, since the 
+project doesn&#x27;t have a budget for a dedicated dev, all Python coding also is 
+going to be mostly handled by myself. So, this is a chance to finally show 
+them what things may look like when the hindustry doesn&#x27;t intervene. I&#x27;m 
+willing to take that chance. If I fail, I quit. Just like I said some time 
+ago.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2023-04-03-intro.txt</link>
 <title>(2023-04-03) Finally here</title>
 <description><![CDATA[<pre>
@@ -16854,4 +16908,5 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 </channel></rss>
