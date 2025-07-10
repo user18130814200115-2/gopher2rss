@@ -5,6 +5,103 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Legacy.md</link>
+<title>Legacy                                                     2025-07-10</title>
+<description><![CDATA[<pre>
+# Legacy
+
+Software over time never shrinks, it only expands. The legacy
+tail of hardware on that software is long.
+
+We are still emulating teletypes, software support still exists for
+many terminal types, among other things, that have long since become
+extinct.
+
+We are still using qwerty keymaps, designed to avoid the binding of
+physical hammers. Horizontally offset keys to allow for the physical
+bars which connected the keys to the hammers.
+
+The list goes on ...
+
+The reasons for many of these design choices have long gone, but they
+are entrenched.
+
+Maybe after a time people don&#x27;t stop to question why? It becomes the
+standard, the norm and there are too many layers to risk significant
+change. 
+
+
+## Hardware 
+
+There is no excuse with regard to hardware. We don&#x27;t need to use
+qwerty keymaps or horizontally offset keyboards. The manufacturers
+just need to change their offerings or we need to find keyboards we
+can switch the keycaps. Personally I use a remapped qwerty keyboard 
+with a dvorak keymap. I haven&#x27;t needed to look at the keys for a very
+long time, even when I was learning I put a printout behind the
+keyboard so that I could keep my hands in place.
+
+
+## Software
+
+This one is more challenging because of the nature of software.
+Everything is derived from or built upon something which came before
+and removing things at the lower levels of the stack can have
+unforeseen effects on what is above. 
+
+Plan9 I think tried to sidestep this problem of legacy. Being
+something new, something different, there were no expectations of
+backward compatibility, that gives a lot of freedom. Although they
+did port a lot of their familiar tools from UNIX.
+
+
+## Cutting the tail
+
+I&#x27;m not sure if there has ever been an audit of hardware still in use
+but if not, I think it would be a great help so that there is a point
+you know you can cut the tail without causing problems. To be able to
+confidently remove swathes of decades old code would surely be
+something worth celebrating?
+
+
+## Old is not necessarily bad
+
+With regard to hardware there are tradeoffs. Older is usually less
+power efficient and performant, but what you sacrifice in power
+efficiency and speed you usually gain in longevity, repairability and
+robustness.
+
+With regard to software many lessons are learned over time and mature
+software usually has the majority of the bugs fixed and
+implementation issues ironed out.  Reimplementations can often
+introduce new bugs and repeat previous, already resolved
+implementation errors.
+
+
+## Summary
+
+A note to hardware producers, we no longer need horizontally
+staggered keys, unless the reason is to improve ergonomics. Please
+also produce keyboards with switchable key caps so they can be
+arranged for more optimal key maps.
+Computer users, you should use a keymap that is most optimal for your
+usage[1]. 
+
+OpenBSD is meant to be comparatively minimalist and I have very few
+packages installed, yet I am using 5.7G of my 7.3G root partition.
+Last sysupgrade I ran out of available space to complete and the
+situation, as explained above, will only continue to get worse.
+
+How do you identify and remove legacy code from the current stack
+without it all coming crashing down?
+
+
+## References
+
+[1](http://patorjk.com/keyboard-layout-analyzer/v2/)
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Not-my-problem.md</link>
 <title>Not my problem                                             2025-07-07</title>
 <description><![CDATA[<pre>
@@ -7909,6 +8006,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
