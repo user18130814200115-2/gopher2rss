@@ -5,6 +5,97 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/ed-vi-vim-sam-vis-editor.md</link>
+<title>ed vi vim sam vis editor                                   2025-07-11</title>
+<description><![CDATA[<pre>
+# ed vi vim sam vis editor
+
+I have been on a bit of an editor tour over the past week or so,
+after bing initially inspired to look more closely at ed. 
+
+Getting to know ed a little has been a bit of an enlightenment to
+me. As a long time vim user I was left feeling that I had been using
+it all wrong!
+
+Going further down the rabbit hole lead me to install and do some
+experimentation with sam[1]. I hated the GUI, but with the -d flag
+you can use it much like ed on steroids. Here is a quick reference
+to its command language[2].
+
+
+## Structured regular expressions
+
+Once you have seen these[3] in action you can not simply continue to
+use an editor without. Rather than working with lines you are working
+with precicely constrained regions of your document. Only a
+demonstration[4] can do it justice.
+
+This eventually lead me to looking for some happy middle ground
+between the minimalism of ed, the functionality I had become
+accustomed to with vim along with the power of sam.
+
+
+## vis
+
+vis[5] is not a fork of vi or vim. It is a ground up reimagining of
+vi combined with the power of sam&#x27;s command language. It feels more
+like a UNIX tool, even the text reformatting is a call to &#x27;|fmt&#x27;.
+
+Something that always bothered me about vim was that, modal editing
+could be enjoyed while working on your document, but in the command
+mode you were back to plain old typewriter. This is not the case
+with vis, which allows you to modal edit your command line. This is
+a real boon for me as I use vim bindings and modal text entry
+wherever I can get it.
+
+There are some things which have bothered me, but it&#x27;s too early
+to tell if these are long term issues or just teething problems
+because it is not vim. It is however a fraction of the size of vim
+and proving to be a very capable editor.
+
+
+## Historical knowledge
+
+For those who were there at the beginning and learned ed while using
+teletypes a certain way of working became established and when later
+tools came along those established ways developed along with the
+tools.
+
+For people that have come along since, maybe coming from a
+different paradigm for editing text such as using WYSIWG word
+processors and editors, we come with baggage.
+
+I learned to use vi, an then vim, by myself without anyone to give
+me pointers and that has resulted in my use of it being very much
+as a visual editor with lots of hjkl scrolling around to make changes
+to parts of the text as you would in a word processor.
+
+
+## Conclusion
+
+Had I started with ed the story would have been very much different.
+Having spent just a little time learning ed, it has made me aware
+of the following. 
+
+I very rarely made use of the search feature to jump to words, line
+ranges to constrain or widen the scope of my commands , regex search
+and replace or the ability to send parts, or all, of a file for
+processing by external programs. And this is where the real power
+lies.
+
+PS. This document was produced in vis.
+
+
+## References
+
+[1](http://doc.cat-v.org/plan_9/4th_edition/papers/sam/)
+[2](http://sam.cat-v.org/cheatsheet/)
+[3](http://doc.cat-v.org/bell_labs/sam_lang_tutorial/sam_tut.pdf)
+[4](https://www.youtube.com/embed/VZo_F60oqbI)
+[5](https://sr.ht/~martanne/vis/)
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Legacy.md</link>
 <title>Legacy                                                     2025-07-10</title>
 <description><![CDATA[<pre>
@@ -8006,6 +8097,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
