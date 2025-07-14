@@ -5,6 +5,135 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-07-14-taming-the-daemons.txt</link>
+<title>(2025-07-14) Taming the daemons, the POSIX way</title>
+<description><![CDATA[<pre>
+(2025-07-14) Taming the daemons, the POSIX way
+----------------------------------------------
+As you might know, I am also running a fully self-hosted Nex station along
+with some additional services on my Orange Pi Zero. The way I&#x27;m exposing the 
+ports of those services relies on the SSH functionality along with some 
+config tweaks on both sides, maybe I&#x27;m gonna cover it the other time. For 
+now though, I&#x27;d like to focus on a different aspect of that setup: service 
+management. Of course, I could wrap all the scripts into systemd units but I 
+don&#x27;t think that&#x27;s portable enough, and I&#x27;d have to move those units into a 
+place I definitely would forget about at some point. So, up until today, I 
+had individual start/stop scripts for each individual service on that 
+Orange. But then, I found all of them too similar to each other and thought 
+that maybe, just maybe, all my custom daemon management could be ruled from 
+a single place. Thus, the DaemonTamer was born.
+
+You can download it from the &quot;Downloads&quot; section of this Gopherhole but here
+it is, in its entirety:
+
+#!/bin/sh
+# DaemonTamer: simple and portable local service manager in pure sh
+# that allows to quickly daemonize any command and manage it as a service
+# Depends on POSIX versions of sh, nohup, cut and grep
+# the unreg option also depends on mktemp (not POSIX but present everywhere)
+# Run sh dt help to see the parameters
+# Created by Luxferre in 2025, released into public domain with no warranties
+
+err() {
+  echo $*
+  exit 1
+}
+
+find_service() {
+  sline=&quot;$(grep -E &quot;^$1\s+&quot; $CONF)&quot;
+  [ -z &quot;$sline&quot; ] &amp;&amp; err &quot;No such service found in the config!&quot;
+  echo &quot;$sline&quot;
+}
+
+CONF=&quot;$HOME/.dt.conf&quot;
+srv_name=&quot;$2&quot;
+[ &quot;$1&quot; != &quot;help&quot; ] &amp;&amp; [ -z &quot;$srv_name&quot; ] &amp;&amp; err &quot;Service name is required!&quot;
+pidfile=&quot;/tmp/$srv_name.pid&quot;
+case $1 in
+help)
+  echo &#x27;DaemonTamer v1&#x27;
+  echo &quot;Usage: $0 {reg|unreg|start|stop|restart} SERVICE_NAME [REG_PARAMS]&quot;
+  echo &#x27;Parameters for the reg subcommand:&#x27;
+  echo &quot;$0 reg &#x27;COMMAND&#x27; [WORKDIR] [STDOUT_LOG_FILE] [STDERR_LOG_FILE]&quot;
+  echo &#x27;(the COMMAND must be specified in single quotes and without nohup)&#x27;
+  echo &quot;\nCreated by Luxferre in 2025, released into public domain with no
+warranties&quot;
+  ;;
+reg)
+  srv_cmd=&quot;$3&quot;
+  [ -z &quot;$srv_cmd&quot; ] &amp;&amp; err &quot;Service runner command is required!&quot;
+  srv_wdir=&quot;$4&quot;
+  srv_outlog=&quot;$5&quot;
+  srv_errlog=&quot;$6&quot;
+  [ -z &quot;$srv_wdir&quot; ] &amp;&amp; srv_wdir=&#x27;none&#x27;
+  [ -z &quot;$srv_outlog&quot; ] &amp;&amp; srv_outlog=&#x27;/dev/null&#x27;
+  [ -z &quot;$srv_errlog&quot; ] &amp;&amp; srv_errlog=&#x27;/dev/null&#x27;
+  printf &quot;%s\t%s\t%s\t%s\t%s\n&quot; &quot;$srv_name&quot; &quot;$srv_cmd&quot; &quot;$srv_wdir&quot; \
+    &quot;$srv_outlog&quot; &quot;$srv_errlog&quot; &gt;&gt; $CONF
+  echo &quot;Service $srv_name registered&quot;
+  ;;
+unreg)
+  srvline=&quot;$(find_service &quot;$srv_name&quot;)&quot;
+  TCONF=&quot;$(mktemp)&quot;
+  grep -v &quot;$srv_name&quot; $CONF &gt; $TCONF &amp;&amp; mv $TCONF $CONF
+  echo &quot;Service $srv_name unregistered&quot;
+  ;;
+start)
+  srvline=&quot;$(find_service &quot;$srv_name&quot;)&quot;
+  srv_cmd=&quot;$(echo &quot;$srvline&quot; | cut -f2)&quot;
+  srv_wdir=&quot;$(echo &quot;$srvline&quot; | cut -f3)&quot;
+  srv_outlog=&quot;$(echo &quot;$srvline&quot; | cut -f4)&quot;
+  srv_errlog=&quot;$(echo &quot;$srvline&quot; | cut -f5)&quot;
+  echo &quot;Starting service $srv_name&quot;
+  echo &quot;- command: $srv_cmd&quot;
+  echo &quot;- workdir: $srv_wdir&quot;
+  echo &quot;- stdout: $srv_outlog&quot;
+  echo &quot;- stderr: $srv_errlog&quot;
+  [ &quot;$srv_wdir&quot; != &quot;none&quot; ] &amp;&amp; cd &quot;$srv_wdir&quot;
+  nohup $srv_cmd &gt;$srv_outlog 2&gt;$srv_errlog &amp; echo $! &gt; $pidfile
+  echo &quot;Service $srv_name started&quot;
+  ;;
+stop)
+  srvline=&quot;$(find_service &quot;$srv_name&quot;)&quot;
+  echo &quot;Stopping service $srv_name&quot;
+  kill $(cat $pidfile)
+  rm -f $pidfile
+  echo &quot;Service $srv_name stopped&quot;
+  ;;
+restart)
+  srvline=&quot;$(find_service &quot;$srv_name&quot;)&quot;
+  $SHELL $0 stop $srv_name
+  $SHELL $0 start $srv_name
+  ;;
+*)
+  echo &#x27;Invalid operation! Pick start, stop, restart, reg, unreg or help&#x27;
+  ;;
+esac
+
+Yeah, that simple. As you can see, you can register any command in a single
+TSV file to be run as a daemon, and you have the options to specify its 
+working directory and the files to redirect standard output and error 
+streams to. After registering this command, you can also unregister this 
+daemon or start/stop/restart it. This is the bare functionality minimum that 
+I personally need. Maybe I&#x27;ll also add some pre/post-start and pre/post-stop 
+hooks and some additional checks if the service is already running in v2, 
+but that&#x27;s really it.
+
+The TSV format was intentionally chosen as the simplest one to parse by any
+shell-based tool, considering the tab character naturally cannot appear in 
+any command, service or file name, and it also is the default one for the 
+&quot;cut&quot; command. Bopher-NG vibes, sort of. The only thing I&#x27;d like to ask you 
+is to not perceive this as any kind of statement. This is a tool created for 
+some practical purposes of portability and quick deployment. It can&#x27;t, won&#x27;t 
+and doesn&#x27;t aim to replace the main service manager in your OS. If you try 
+to do that, don&#x27;t come yelling at me that something doesn&#x27;t work. Because it 
+probably was never supposed to work the way you expected. In any event, stay 
+tuned for v2, you don&#x27;t want to miss it. Just kidding.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-07-07-a-small-digest.txt</link>
 <title>(2025-07-07) A small digest of what happened in the recent weeks</title>
 <description><![CDATA[<pre>
@@ -16908,5 +17037,6 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 </channel></rss>
