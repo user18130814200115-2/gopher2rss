@@ -5,6 +5,1064 @@
 <link>gopher://tilde.club/1/~user18130814200115/posts</link>
 
 <item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0032-switching-to-codeberg.txt</link>
+<title>0032-switching-to-codeberg.txt        2025-Jul-14 20:19     4.4 KB</title>
+<description><![CDATA[<pre>
+Switching to Codeberg
+Wed, 28 May 2025
+Technology, Opinion
+=====================
+
+I have recently switched away from GitHub as my codeforge to
+Codeberg which includes the hosting of this blog. In this brief
+post, I will cover my reasons for switching and briefly describe
+the process.
+
+I have been using GitHub at least since 2016 (possibly earlier,
+I was using a different account at the time, so and cannot see
+exactly when I joined). Back then, I wanted to host some code I
+was working on, and GitHub was (and still is) the most popular
+choice for doing so. Since then however, many things have
+changed, notably the acquisition by Microsoft, the increasing
+social-media-lisation, and now: The AI [1].
+
+Firstly, let me talk about the acquisition of GitHub by
+Microsoft. At the time -- in 2018 -- I didn&#x27;t care much about
+this change. I was still using Microsoft products occasionally
+for university, and I believe I still had a Google account at
+the time as well. Since then, I have increasingly switched away
+from big-tech, but GitHub&#x27;s Microsoft ownership was seemingly
+stored in a bit of a blind-spot in my brain, even though
+migrating away from it would have been much easier than many of
+the products I *did* switch away from (Such as Windows, Office,
+GDrive, GooglePlay, etcetera).
+
+Then there is the fact that GitHub is increasingly becoming more
+of a social media platform. At first, many of these features
+were nice. Stars give you a good idea of how popular a project
+is, and following people can be a nice way to discover new
+projects. However, too many *behaviours* carried over from
+social media as well, such as follow-back and like-farming.
+Besides, at the end of the day, I do not want GitHub to be my
+social media, I want it to host my code and allow me to work
+with others. When I have to star a project before my PR will be
+considered,,, we have lost the path.
+
+Lastly, there is the AI. Now, I do not refer just to AI in the
+sense which it has recently taken (ie: LLMs). Rather I mean both
+GitHub bots and the Copilot LLM. Popular GitHub bots such as
+stale-issue bots completely mess up issue threads. They
+encourage a behaviour where people periodically `bump&#x27; an issue
+to keep it active. The aforementioned star-farming is made
+possible with a bot. Once again, these are *behaviours* which
+frustrate me, but they are *enabled* by GitHub&#x27;s features. It
+also doesn&#x27;t help that GitHub -- as the most popular codeforge
+-- has the lowest-common-denominator of users. When GitHub
+recently introduced a LLM service which would write issues for
+you, I decided it was about time to leave. I can already see the
+future wherein this feature enables bad issue etiquette, and I
+don&#x27;t want to be here for it[2].
+
+So I switched. I archived all my repositories which are not
+using GitHub actions, and migrated active repositories to my
+Codeberg account. I have used Codeberg for some time already to
+comment on projects that I used[3] and I really like the
+interface and featureset (I cannot say the same for GitLab or
+Sourcehut respectively). The migration process was mostly
+painless, with the biggest time-sink being the archiving on the
+GitHub-side.
+
+I hope to stick around on Codeberg for a while, and perhaps to
+also keep it more professional than by GitHub portfolio
+(interests, standards, and personalities tend to change over the
+course of a decade). In fact, this transition has occurred at
+roughly the same time as my learning of the `go&#x27; programming
+language which I will write about shortly and I hope to write
+some larger projects in which are not convenient to write in
+shell or python.
+
+-----------------------------------------------------------------
+
+[1]: I should also mention that GitHub being a US-based company
+     also makes me less than thrilled given the current state of
+     things.
+
+[2]: In fact, this is not really a `future&#x27; at all, it has
+     already been happening for some time. The difference is
+     that the process is now more streamlined and sanctioned by
+     Microsoft.
+
+[3]: Notably the excellent `foot&#x27; terminal emulator
+
+=================================================================
+
+All of my writing and software projects are available free of
+charge under CC-BY unless stated otherwise. I do not accept
+monetary donations, but if my work has brought you value I ask
+you to donate to a charitable cause or high-impact fund,
+organisation, business, institute, or individual driving moral
+progress.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0031-insights-in-living-without-a-smartphone.txt</link>
+<title>0031-insights-in-living-without-a-s   2025-Jul-14 20:19    11.1 KB</title>
+<description><![CDATA[<pre>
+Insights in living without a smartphone
+Wed, 16 Apr 2025
+Technology, Lifestyle
+=======================================
+
+I have not used a smartphone for about 5 years on-and-off
+(discounting of course the years as a child where I didn&#x27;t need
+to worry about silly things like this). It started in the summer
+of 2019 when by best friend gifted me his old Nokia 8110 4G
+(more on this later). Since then, I only had a smartphone for
+about a year. This device burnt through its charging circuitry a
+month or-so ago, so I am back to the dumb-life, though now with
+more insight into how to do things.
+
+In this post, I will be sharing the insights I have accumulated
+over the years. Just as a warning, the advice provided in this
+post might come across as ultimately unsatisfying. While it is
+definitely possible to live off of the information-grid, that is
+not the type of life I can live currently. Therefore, a lot of
+my insights revolve around using alternative but highly similar
+solutions to having a smartphone. The main difference being that
+you don&#x27;t or can&#x27;t bring these devices around in your pocket.
+
+With they being said, let me start by covering briefly the
+things which smartphones provide to us. Obviously, this list is
+not exhaustive, instead only covering those things which I
+personally find valuable and things which are outside of my
+control.
+
+What do smartphones give us?
+----------------------------
+
+	1. The valuable
+		a. Photography
+		b. Navigation
+		c. Phone calls
+		d. Music and podcasts
+		e. Alarms
+	2. The enforced
+		a. Multi-factor-authentication
+			i. TOTP codes
+			ii. Specific apps (primarily banking and government ID)
+		b. Certain communication platforms
+			i. Notably Whatsapp
+		c. Bus/Plane/Train/Cinema Tickets/Identification
+
+How do we replace these services?
+---------------------------------
+
+Now we come to the interesting part: how do we replace all these
+services provided to us by smartphones. For this section, I will
+keep the same divide as listed above, as interesting patterns
+emerge when we do so.
+
+The valuable
+============
+
+Generally, for items in the `valuable&#x27; category, we have a
+two main options: specialized technology or feature phones.
+
+Specialized technology speaks for itself. Get yourself a camera,
+map or GPS, dumb-phone, disc-or-walk-man or mp3 player, and an
+alarm clock.  Obviously, this is a lot more to carry around
+which will force you to be more concious with what you bring
+with you. Furthermore -- while I find this highly upsetting
+when it comes to the state of society -- you can get all of
+these items (new or second-hand) for less than the price of a
+new smartphone.
+
+The other option (and the one I have gone with) is the feature
+phone. Feature phones are a class of devices reminiscent of the
+dumb-phones of old though brought into the modern world. They
+typically allow you to connect to 4G networks, install apps, and
+use the internet. At the same time, they are typically very
+low-powered devices with traditional button-navigation. Some of
+them run Android (which allows you to install all your usual
+apps, though with the processing and navigation limitations
+mentioned), Android-go  (Android with a reduced and simplified
+library of apps), or KaiOS (A operating system based on web
+technologies).
+
+Each of these have their up-and-downsides. The android devices
+are by far the most capable, though in my opinion you might as
+well get an old second-hand smartphone at that point. Many of
+them even have touchscreens making them just overpriced
+smartphones with a built-in keyboard. The android-go devices
+seem more in line with what I would want, though they are
+typically not optimized for button-navigation and I have never
+actually used one. That brings us to KaiOS. KaiOS is the
+operating system which runs on the phone which I have used these
+past 5 years (the aforementioned nokia 8110) and exists at the
+nigh-perfect intersection of usable and limited. I should point
+out at this point that KaiOS is more-or-less a dead project,
+though that doesn&#x27;t mean that it is not still perfectly usable,
+nor that there are not still exciting (though small)
+developments made by the community.
+
+My Nokia runs KaiOS. The camera is not very capable, but more
+than sufficient for capturing memories. It runs a stripped-down
+version of the google-maps website, sufficient for finding your
+way when lost using GPS and 4G. Obviously it is perfectly
+capable of phone calls and texts (even with two sim slots --
+revolutionary, I know --). The built in music player app is
+sufficient for my needs, though it does not allow you to make
+playlists (third party offerings in the KaiStore do offer this
+functionality) and there are plenty of podcast apps available.
+
+In other words, my Nokia covers all the bases of what I find
+valuable in a phone. Problem solved right? Well actually, the
+`valuable&#x27; list is the easy part. Now for the elements outside
+of my control.
+
+The enforced
+============
+
+The enforced section of services is both more difficult and less
+satisfying. Let me just rip of the bandage right away by dealing
+with the least satisfying ones: Authentication, Identification,
+and Communication.
+
+Many services in this area simply REQUIRE an app on either
+android or IOS. Banking applications, Government ID, Healthcare,
+and Whatsapp all require apps to some extent. Banks occasionally
+allow you request a dedicated code-device, though more the
+more-modern e-banks usually don&#x27;t offer such services.
+Governments and Health-insurance-providers (at least the ones
+which are relevant to me) require apps to authenticate to online
+environments. Lastly is Whatsapp, for those not from
+mainland-Europe it might seem strange that this app is in the
+`enforced&#x27; section, but here governments, public institutions,
+customer-service-lines, and the public at-large all use
+whatsapp. And since these services have still not been forced to
+allow for interoperability with other services, I am stuck there
+for now.
+
+Now to the (rather unsatisfying) solutions to these problems.
+Over the years I have found three options:
+	1. Run an android container on your laptop or PC
+	2. Get a tablet running android or IOS
+	3. Get a smartphone that you leave in a drawer somewhere at
+	   home
+In other words, you will be stuck with these services (and
+Android or IOS) either way, though at least these are not
+services you will need to have on you at all times.
+Whatsapp is perhaps an exception to this, though this depends on
+your lifestyle.
+
+Whatsapp is furthermore an exception because it doesn&#x27;t provide
+an IpadOS app for some reason. Therefore, if you want to go with
+the tablet-route, you cannot use and Ipad. Furthermore, while
+Whatsapp does offer a web-version, you will still need to login
+from Android or IOS. Personally, I run an android-emulator on my
+laptop (waydroid) where I authenticate my whatsapp-web and
+hardly ever look at it again. Do keep in mind that you need to
+add contacts in your replacement device of choice as you cannot
+do this through Whatsapp-web. Other communication platforms like
+telegram are much better in this regard as they just have a
+standalone web-app, though for the reasons mentioned above, I
+cannot use these.
+
+When it come to non-app-specific two-factor authentication, the
+story is a lot more encouraging. Firstly, the feature phones I
+mentioned before all have apps which allow for receiving TOTP
+codes. Furthermore, such apps also exist for mac, linux, and
+widows. Allowing you to simply authenticate with your laptop or
+pc instead. Of course, if you are already getting a tablet for
+the services above, then you can also use it to authenticate,
+though at that point you are committing to carrying around your
+tablet to most places where you might need to authenticate (such
+as university, work, or public institutions).
+
+Lastly is tickets and identification. Once again, you can carry
+around a tablet whenever you need a ticket for something, though
+-- especially if you use public transport a lot like I do --
+this is not always feasible. Luckily, all services I have
+encountered thus far still allow you to print a physical card
+(for identification) or just print your ticket on paper (for
+entry tickets and such). This does not necessarily mean that you
+need to buy a printer though. Many libraries and universities
+will allow you to print for a small fee. Some countries
+(especially in southern Europe) also have many copy-shops spread
+throughout their cities. The only difficulty in using the later
+is somehow transferring your documents to the shop. This is
+usually done on-the-spot though email, which is obviously not
+accessible without a smartphone or similar device, though
+luckily many places also accept USB sticks, and you can always
+send your email ahead of time with an explanation that you will
+come by soon.
+
+Final remarks
+-------------
+
+The copy-shop example also leads me to one final point, that
+being the ability to rely on friends and family for help. At the
+end of the day, many of ditch smartphones to feel more connected
+to others, and having a friend help you out with their printer
+or mobile-internet-connection at the copy-shop is one such way
+of connecting. The same goes for navigation. In a group, only
+one person needs to have a method of navigation on them. You can
+meet-up in-person instead of discussing things over text, or
+just inform your friends and family that they need to call you
+if they want to get a hold of you. 
+
+Obviously, this lifestyle (if you want to call it that) can be
+limiting, and it can feel especially discouraging when
+smartphones are forced upon you. I have written in the past
+about QR-codes and how their proliferation for restaurant menus,
+ordering, locker reservation, etcetera basically forces you into
+getting a smartphone (or a friend with one), and this can make
+be limiting. There is almost always a way around this though
+(talk with a waitress instead, see if someone around can get you
+a locker in exchange for cash, etcetera), though there is not
+one generalized solution (Yes, the nokia 8110 can scan QR codes
+and use the websites, but I will always try to find a different
+solution first.).
+
+Ultimately, I have found not having a smartphone quite fun, and
+ultimately more liberating than limiting. If you have never
+tried it however, you don&#x27;t and can&#x27;t know what you are missing
+(and I can&#x27;t really describe it either other than a feeling of
+freedom). I would love to say ``Everyone! Just give it a try&#x27;&#x27;,
+but there will be a large adjustment period and even a fair
+amount of money spent in some cases.
+
+Therefore, my final point of advice is this: If you want to try
+living without a smartphone, don&#x27;t bring one the next time you
+go on holidays -- provided you are traveling with someone who
+does have a smartphone. In this way, you will always have the
+safety of falling back on your partner&#x27;s device, while
+simultaneously forcing yourself to keep the experiment up until
+the end of your trip.
+
+=================================================================
+
+All of my writing and software projects are available free of
+charge under CC-BY unless stated otherwise. I do not accept
+monetary donations, but if my work has brought you value I ask
+you to donate to a charitable cause or high-impact fund,
+organisation, business, institute, or individual driving moral
+progress.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0030-a-neoplatonist-interpretation-of-post-christian-vitalism.txt</link>
+<title>0030-a-neoplatonist-interpretation-   2025-Jul-14 20:19     6.8 KB</title>
+<description><![CDATA[<pre>
+A Neoplatonist interpretation of post-christian vitalism
+Sat, 25 Jan 2025
+Philosophy, Ethics, Opinion
+========================================================
+
+A phenomenon I have seen going around the internet is so-called
+post-Christian vitalism [1]. PCR is based on Nietzschian moral
+philosophy, specifically the `master-mentality&#x27; towards ethics.
+I believe this view is incredibly misguided, and will argue so
+from a Neoplatonist [2] perspective.
+
+
+Let us begin by exploring Nietzsche&#x27;s master-morality and the
+specific interpretations of the post-christian vitalists.
+Nietzsche distinguishes between two types of morality,
+master-morality and slave-morality. Master morality -- he
+asserts -- is the classical form of morality, where virtuous and
+noble were interchangeable terms. Masters are courageous and
+follow their own agenda, like Odysseus. Slave-morality instead
+celebrates weakness by promoting `virtues&#x27; such as humility and
+charity. Slave morality originated from... well slaves, and
+non-nobles generally to give themselves some access to the
+morality which the nobility had. Indeed, slave-moralists assert
+that their form of morality is the only one, and that the
+masters such as Odysseus are not virtuous at all.
+
+Post-christian vitalises then claim [3] to embrace Nietzsche&#x27;s
+master morality, becoming Nietzsche an super-humans and driving
+froth progress in humanity. They asserts that all current-day
+slave moralists are simply still under the thumb of Christian
+propaganda, something which they have rid themselves of (hence
+the post-christian part of the name).
+
+
+Now, I think that this approach is fundamentally misguided and
+indeed that it does not stand up to historical scrutiny. I might
+write about this some day, but today, I instead want to asses
+the PCV position from a Neoplatonic perspective. The reason this
+is of interest to me is because Plotinus and Porphyry assert
+that the sage indeed has no care for others. Neither does the
+One for that fact [5].
+
+This certainly seems to lend credence to the post-christian
+vitalist, though, upon closer inspection, we will see that this
+is not the case. Neoplatonic ethics -- much like nearly all
+ancient ethics -- is built upon virtues. The four prime virtues
+are Courage, Wisdom, Prudence, and Justice. For a person
+starting out on their ethical journey, these virtues exist in
+the ordinary (civic) sense. As one processes however, these 
+virtues take on a different character and become the
+intellectual (cathartic) virtues.
+
+&gt; At the cathartic level, it is wise to ``refrain from opining
+&gt; with the body&#x27;&#x27;, observing through intelligible means
+&gt; rather than sensory ones. This eliminates the blindness
+&gt; which sensory knowledge is inherently accompanied by.
+&gt; Cathartic courage is the soul being turned away from the
+&gt; concerns of the body, such as pain, fear, and discomfort,
+&gt; but also death. Prudence, is the presence of desires
+&gt; exclusively directed by psychic considerations, as opposed
+&gt; to bodily impulses. And finally Justice, still guarantees
+&gt; the cooperation of the virtues, in this case allowing the
+&gt; rule of reason and intellect without opposition [7].
+
+As the practitioner turns away from concerns of the physical
+world, naturally they turn away from the suffering of others.
+They regard their body with a form of indifference, and do
+likewise for the bodies of others. Where the post-christian
+vitalist is mistaken though is the order of operations. They see
+that the noble sage has no regard for others (in the
+traditional sense) and takes this to be first step. They mistake
+an accident of the goal to be the means of achieving said goal.
+
+Furthermore, while the sage has no regard for others, this
+dispassion is not the same as a complete lack of care. Indeed,
+the sage is said to give to others without taking away from
+himself [8]. Plotinus (by all accounts a Neoplatonic sage) is
+said to have taken care over the education of the young people
+in his community, whist also housing several widows and orphans.
+What the sage lacks is merely a passionate interest in the
+affairs of others, but he does not lack other directedness
+altogether[9].
+
+-----------------------------------------------------------------
+
+[1]: I should point out here that this term is mostly applied by
+     opponents of this view, but I have not been able to find a
+     better term, so this is the one I am sticking with.
+
+[2]: When I say `Neoplatonist&#x27; in this post, I specifically
+     refer to Plotinus and Porphyry and to a lesser extent
+     Plato&#x27;s Phaedo (which I take to be the progenitor of
+     Neoplatonic thought.
+
+[3]: I say `claim&#x27; here for the simple reason that I sincerely
+     doubt that anyone ACTUALLY thinks and acts this way. Sure,
+     there are plenty of people who chart their own course and
+     care little about the needs or sufferings of others, but I
+     do not think that these people -- rationally -- believe
+     their behaviour to be moral. Scott Alexander wrote a nice
+     post about this just a few days ago [4].
+
+[4]: astralcodexten.com/p/everyones-a-based-post-christian
+
+[5]: ``The One&#x27;&#x27; the absolutely ontologically prior principle in
+      Neoplatonic philosophy. ``The sage&#x27;&#x27;  is the person who
+      spends their life in pursuit of The One in a semi mystical
+      way [6].
+
+[6]: I say semi-mystical because the term `mystic&#x27; is incredibly
+     loaded. I wont go in to this now, but I have a paper
+     which may be published int he next year or two which
+     addresses this topic.
+
+[7]: This section is a direct quote from my master&#x27;s
+     dissertation, as I cannot currently be bothered re-writing
+     it. The information contained therein is based upon
+     Porphyry&#x27;s `sentences&#x27;.
+
+[8]: This is a paraphrase based on Plotinus&#x27; statements in the
+     Enneads about The One and the attitude the sage has towards
+     his body.
+
+[9]: The argument is clearly underdeveloped in this formulation,
+     and while I would love to expand on it here, a blog post is
+     simply not the right place. As mentioned, I have an article
+     which may be published over the next few years on these
+     topics. In its current form, the work is about 80
+     single-spaces pages, much too long for a post I would say.
+     I will of course update this blog if i ever do manage to
+     get this work published. For the impatient, I recommend
+     Pauliina Remes&#x27; work in the field. A good introduction is
+     `Plotinus’ Ethics of Disinterested Interest&#x27;.
+
+=================================================================
+
+All of my writing and software projects are available free of
+charge under CC-BY unless stated otherwise. I do not accept
+monetary donations, but if my work has brought you value I ask
+you to donate to a charitable cause or high-impact fund,
+organisation, business, institute, or individual driving moral
+progress.
+
+For more information about making a moral impact, search for
+``giving what we can&#x27;&#x27;, ``give well&#x27;&#x27;, or ``effective altruism&#x27;&#x27;.
+
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0029-limits-to-helping-others.txt</link>
+<title>0029-limits-to-helping-others.txt     2025-Jul-14 20:19     5.3 KB</title>
+<description><![CDATA[<pre>
+Limits to helping others
+Mon, 30 Dec 2024
+Opinion, Philosophy, Ethics
+===========================
+
+In applied ethics, I believe one of the fundamental questions to
+be that of helping others. Whether it is full-on charity, or
+just showing someone the way to the library, it is unquotable
+that these actions have a moral aspect.
+
+A question arises however when it a person asks for help
+repeatedly. In particular, I see two common situations arise.
+First, there are those who abuse charity. People asking
+repeatedly for handouts to ``get back on their feet&#x27;&#x27; only to
+blow the assistance on matter non-conducive to bettering their
+situation. Second, are those people who become reliant on your
+help because they never learn to do things themselves. Instead
+of learning to read a map, they become reliant on asking you (or
+other helpful people) for directions. These two situations are
+distinct in that the former contains an intentionally malicious
+actor, whereas the second person might be seen as a victim from
+some perspectives.
+
+Unfortunately for me[1] virtue ethics does not have as clear an
+answer for this problem as some other ethical systems do.
+Consequentialists for example, can simply say that not-helping
+is more conducive to the overall increase in good compared to
+helping. Deontologists -- of the non-categorical variety -- can
+say that the imperative to help others is contingent on said aid
+not being misused or making the recipient dependent[2].
+
+I believe that the virtues of wisdom, courage, moderation, and
+prudence quite plainly inspire one to aid others when they are
+in need. Indeed, the virtues as a whole inspire us to give to
+others what we have and they do not. The virtuous way is to give
+in such a way that one is personally not diminished[3].
+
+Despite the virtue in giving, it is also undeniable that
+virtuous people are responsible for the moral education of
+others. Enabling immoral behaviour, or otherwise limiting the
+growth of virtue in another person is not just, prudent, wise,
+or courageous. Rather, such behaviour is the result of either
+foolishness, pride, jealousy, insecurity, or other such vices.
+
+How do we square this circle? How do we provide others with what
+they need, without diminishing their moral progress? I believe
+that answer of the virtue ethicist involves much more moral
+responsibility than the consequentialist-, and deontological-
+answers provided above. The answer boils down to this: As a
+virtuous person you are responsible for your fellow humans. For
+their material and spiritual needs, and for their moral growth.
+As such, when you provide aid to someone, your responsibility in
+ensuring their moral development grows proportionally to the aid
+provided.
+
+Each time you give your cousin money ``just to cover the rent
+this month, I&#x27;ll pay you back next month when I land that
+job-interview I swear&#x27;&#x27;, you become more responsible for
+ensuring that they take their life in the right direction. In
+other words, if someone abuses your charity, then this is your
+own moral failing. You only took half of the steps which virtue
+required of you and in doing so bred vice in another person.
+Specifically, you are lacking in justice, which keeps the
+virtues balanced.
+
+Despite one&#x27;s increased moral responsibility after helping
+someone, this does not imply that one gains the right to take
+decisions for the recipient. Even more so, even though it is
+your responsibility to morally educate this person, that does
+not give you have any more right to take up their time to
+lecture or berate them.
+
+What then should you do? The answer is simple when you think
+about it. You must give education simultaneously. Your aid must
+come in the form of a moral lesson. Not the type where you give
+someone money and a lecture on the dangers of indulgence at the
+same time, but rather of the type where you teach a hungry man
+to fish rather than feeding him directly. When someone asks your
+for directions, show them where to find the answer. When someone
+asks your opinion, show them your though process. When someone
+someone asks you for money, advise them on how to spend it.
+
+After all, at the end of the day, virtuous actions breed
+virtue, and passing on what you know, do, and feel -- as a
+virtuous person -- will slowly build virtue in those you help.
+
+-----------------------------------------------------------------
+
+[1]: As I outlined in my previous post titled ``Ethical systems
+     and their relative strengths&#x27;&#x27; I am a virtue ethicist.
+
+[2]: If you are not caught up on what these terms mean, see my
+     previous post ``Ethical systems and their relative
+     Strengths&#x27;&#x27;
+
+[3]: This is mostly a Neoplatonic view on virtue, and being
+     `undiminished&#x27; as such does not refer to material
+     matters. Rather, the claim is that we must be generous in
+     such a way that our lives are filled with just as much
+     goodness DESPITE being materially diminished. Indeed, the
+     early neoplatonists seem to assert that material
+     diminishment is a necessary (and perhaps sufficient) cause
+     for being morally enhanced.
+
+=================================================================
+
+All of my writing and software projects are available free of
+charge under CC-BY unless stated otherwise. I do not accept
+monetary donations, but if my work has brought you value I ask
+you to donate to a charitable cause or high-impact fund,
+organisation, business, institute, or individual driving moral
+progress.
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0028-ethical-systems-and-their-relative-strengths.txt</link>
+<title>0028-ethical-systems-and-their-rela   2025-Jul-14 20:19     9.2 KB</title>
+<description><![CDATA[<pre>
+Ethical systems and their relative strengths
+Sat, 28 Dec 2024
+Opinion, Philosophy, Ethics
+============================================
+
+In the near future, I plan to make some posts about morality and
+ethics. This post will simultaneously serve as a FAQ page and
+declaration of affiliation. Here, I will write briefly what I
+think about the major branches of Philosophical ethics, and show
+where my personal affiliations lie.
+
+This introduction should help you -- the reader -- in being a
+good starting point for the coming posts. At the same tine, it
+will help me, in that -- when I cam critiquing, lets say,
+utilitarianism -- I won&#x27;t need to state in great detail that I
+am a virtue ethicist and that this clouds my judgment of
+the theory being discussed.
+
+Consequentialism
+----------------
+
+Consequentialist theories look at the consequences of actions.
+Typically, the analysis of consequences is used pick a course of
+action which maximizes the presence of a certain value or set of
+values at the end. Utilitarianism for example aims to maximize
+utility, hedonism maximises for pleasure, Marxism for
+cultivation, etcetera.
+
+Consequentialists -- in my option -- fall into two camps: the
+practical and the useless. The practical have actual means of
+calculating the relevant values in a given set of circumstances.
+While these calculations usually leave something to be desired
+-- thereby opening up the theory to more repugnant conclusions
+than most -- they are generally useful in their ability to asses
+the world and potential courses of action. The useless (or
+theoretical) consequentialist states that we can assess morality
+by looking at the relative presence certain specific values in
+consequences, but does not outline how to measure these values.
+They are, in this way, much like a virtue ethicist who does not
+explain what virtues are, or which virtues we should embody.
+
+While consequentialists (of the practical type) are great at
+analysing situations, assessing moral progress, and identifying
+potentially high-impact courses of action, they are not
+NECESSARILY great at bringing about these states. A
+consequentialist world would undoubtedly be quite nice to live
+in, though it is not necessary that the people in that world are
+moral, nor that the society as a whole is exactly because the
+means and reason of the action do not matter, only the
+consequence.
+
+Deontology
+----------
+
+Deontological theories are theories of duty where the moral
+course of action is the one which is in accordance with a
+person&#x27;s (or group&#x27;s) obligations. There is much debate on
+whether these duties are circumstantial or categorical. If a
+duty such as ``do not lie&#x27;&#x27; is categorical, then it is immoral
+to lie, even if it would save someone&#x27;s life. If the duty is
+circumstantial, then we may lie in certain -- well defined
+-- circumstances (such as when lying would save a life).
+
+Deontologists thus only look at actions when assessing the
+morality of behaviour, not at the consequences. However, the
+duties themselves do supposedly bring forth good consequences,
+perhaps even maximally good ones. 
+
+While deontologists can easily assess why a certain course of
+action was wrong -- even if that action lead to a favourable
+outcome -- they can not say anything against a person who
+followed their duty but achieved nothing. Certainly, there might
+be a duty to ``try at least *this* hard&#x27;&#x27;, but trying and
+accomplishing are only loosely related. Furthermore, while a
+deontological world would be full of moral actions, it would --
+in my option -- not be full of moral agents, because the agents
+acts in total disregard of the consequences of their actions.
+
+Virtue ethics
+-------------
+
+Theories of virtue asses the character of people, groups, or
+systems. They generally define a set of traits which are good
+people (groups, or systems) embody. Importantly, good people do
+not just poses these traits, as they also act them out, and do
+so entirely without effort, as if it is the most natural thing
+to do. Classic examples of virtues are: Courage, wisdom,
+moderation, justice, etcetera.
+
+There are many reasons as to why I am personally a virtue
+ethicist, rather too many to concisely put in this post, but let
+me cover some of the ways in which virtue ethics meets the
+challenges of consequentialism and deontology.
+
+Firstly -- contra deontology -- virtue ethics looks at people,
+rather than mere actions. This sidesteps the problem of
+deontology mentioned above, where deontological people do not
+necessarily seem to be moral people. At the same time, since
+virtuous people act out their virtues, the resulting actions are
+also virtuous.
+
+Secondly -- contra consequentialism -- virtue ethics&#x27; instance
+on instinctive action rings more true with my intuitions on
+morality than a consequentialist cost-benefit analysis. For
+example, when meeting a beggar on the street, the virtuous
+person -- acting in generosity, humility, moderation, or justice
+-- will take action to help them. A consequentialist will need
+to analyse whether any aid would increase the overall amount of
+good, and whether their, effort, money, food, etcetera might be
+better spent elsewhere where it would do more good.
+
+Now a consequentialist might argue that a generous society does
+not necessarily imply a society effective at eliminating
+poverty, or similar evils which can be combatted with charity. A
+consequents society -- they would say -- is more effective at
+this because they analyse where, how, how much, and when to
+give. I would counter however that, the virtues cannot be taken
+in isolation. A generous person is not a virtuous person, though
+a virtuous person is generous. A virtuous person is furthermore
+wise, patient, and prudent, and will thus also act in a way
+which is maximally beneficial, even when these benefits do not
+show up on a cost-benefit analysis. Indeed, the virtuous sage
+may even employ consequents theories in their procurement of
+wisdom so that they can henceforth take the best courses of
+action.
+
+A deontologist might argue that, while virtues make for good
+people, they do not make for good societies. A society where
+everyone follows their duties is a good society, but a society
+where everyone is virtuous might not be. I would retort however
+that virtuous people build virtuous societies, and that these
+societies run smoothly even in absence of duties. A virtuous
+society provides for its citizens even if there is no duty to
+``feed the hungry&#x27;&#x27; or ``clothe the cold&#x27;&#x27;. Virtuous people will
+built this society and work within it exactly because there is a
+unification of disposition, action, and outcome.
+
+Personal opinion
+================
+
+As I have now mentioned many times, I am a virtue ethicist. I
+(admittedly rather unoriginally) take wisdom, justice, courage,
+and prudence to be the core virtues, with all other virtues
+being derived from these.
+
+I believe that the following of one&#x27;s duty and the analysis of
+outcomes are useful, especially when one is still cultivating
+virtue.
+
+I belie that many religions stress the importance of these
+values, and believe that self-described adherents to these
+faiths too often ignore them. This is especially frustrating in
+faiths which I have personal affiliations with.
+
+For example: The bible -- to me -- seems quite clear on the
+duty/virtue of generosity, inclusion, forgiveness, humility, and
+impartiality. And yet, I know few Christians who actually sold
+everything they didn&#x27;t need and gave it all to charity. Amongst
+the Christians I know, there are many judgemental types, who
+care more about who is sleeping with who, than about following
+Christ&#x27;s example and lifting the world out of suffering. They
+boast about their `virtue&#x27;, their `purity&#x27;, proud of how long
+they have been `saved&#x27; about how often they go to church, how
+long and often they fast, whether they have been baptized,
+re-baptized, whether it was in a pool, a lake, in the Jordan
+itself. They make claims about what type of people can an cannot
+be Christians, about what behaviours are entirely incompatible
+with Jesus&#x27; message all the while they adorn themselves with
+cowardice, excess, foolishness, and inequity; treating the
+Church as nothing but a cult of mutual benefit.
+
+If you read this paragraph and think to yourself ``yeah he is
+right, Christians are awful&#x27;&#x27;, then you have not understood
+anything. If you came away thinking you are exempt from this
+judgement because you are not Christian, know that the above
+applies to people I have met of all religious and non-religious
+persuasions.
+
+If you have made it this far then I assume you are either
+infuriated by how wrong I am, or you agree with me at least in
+part. In either case, this seems a suitable place for a little
+``recruitment drive&#x27;&#x27;. If you agree with me that we must act
+with wisdom, courage, justice, and prudence, then I urge you to
+donate to a charitable cause or other high-impact virtuous
+program in any way which you are able. If you disagree with me
+on morality, then prove me wrong by donating in total absence of
+virtue. Perhaps because it increases overall utility, because it
+is your duty, because it makes you feel good and powerful to
+give to people you consider inferior. If you donate to a
+credible organisation, get a receipt and send it to me at
+&lt;blog.wester.digital&gt;, I will match the first 100 euros of
+donations to the causes of your choosing.
+
+For inspiration consider:
+- Giving what we can
+- Give well
+- Giving Green
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0027-moving-to-nixos.txt</link>
+<title>0027-moving-to-nixos.txt              2025-Jul-14 20:19    10.8 KB</title>
+<description><![CDATA[<pre>
+Moving to NixOS
+Tue, 24 Dec 2024
+Highly technical, Linux, Opinion
+================
+
+Disclaimer
+----------
+
+This post will be rather more technical compared to what I
+normally write about. I will be using a lot of technical jargon
+specific to the Linux desktop space. If you are not familiar
+with this world, then I suggest you skip this post, there are
+more coming soon (tm).
+
+-----------------------------------------------------------------
+
+I recently migrated my (main and only) system from Alpine Linux
+to NixOS. In this post I will explain why I made the switch and
+why I consider Nix to be -- currently -- the best Linux
+distribution available.
+
+Nix is a project that has been on my radar of quite some time
+now. It is a system designed around the principles of
+reproducibility, build-isolation, and declarative design, while
+also boasting one of the largest and most up-to-date software
+repositories in the Linux world.
+
+Of course, there is a lot of hype around Nix, and this tends to
+be a dangerous thing. In fact, I switched away from Arch Linux a
+few years ago exactly because it was increasingly flooded with
+novice users drawn in by the hype who considered the forums
+their personal large-language-model[1]. Aside from the hype
+though, there were a number of aspects which seemed really
+attractive to me. Rollbacks, Software availability, and
+Reproducibility being the main ones. On their own, these were
+not enough to overcome the cost of switching, that is until I
+encountered some problems with my existing Alpine installation.
+
+Alpine
+------
+
+When I initially switched from Arch to Alpine, I was very
+pleased for various reasons. The Alpine Package Keeper (apk) is
+-- to this day -- the most pleasant, fast, and reliable package
+manager I have used, Alpine&#x27;s bi-yearly stable releases allowed
+me to have a more stable system, and the installer that came
+with my flavour of Alpine (PostmarketOS) allowed me to recover
+from catastrophic breakages faster than with Arch.
+
+Out of these benefits, stability and recoverability were the
+most important ones. These values are important for two main
+reasons.  Firstly, I only have one laptop at my disposal, and it
+is an arm laptop at that. If my OS breaks in some catastrophic
+manner, I will need to borrow someone else&#x27;s laptop, take out
+the EMMC storage, and re-flash the operating system. A process
+that could take several days if none of my friends&#x27; laptops are
+available. Faster installations (that can be done from windows
+or mac) massively increase the chances that I will be able to
+recover my system in a reasonable amount of time. Secondly, I do
+not generally have a lot of time to tinker with my system
+outside of holidays. For this reason, I have gotten in the
+habit of only running updates every half year or so. If I would
+do this on Arch, everything would rather quickly break, and I
+would likely not be able to install anything in-between because
+there would be a dependency mismatch.
+
+In other words: Alpine stable is perfect for me. There is one
+problem however: I can&#x27;t use it. `Can&#x27;t&#x27; is a big word of
+course, and I must admit that I could theoretically live with a
+stable alpine release. But as it stands, I use a lot of software
+from Alpine&#x27;s `testing&#x27; repository, which requires one to be on
+Alpine Linux `edge&#x27;, the rolling-release side of Alpine. In
+other words, almost the entire previous paragraph can be thrown
+out. I will say that Alpine&#x27;s apk handles infrequent updates
+better than Arch&#x27;s pacman, but it still is not ideal that I need
+to be `edge&#x27; at all.. 
+
+This leads us to today: the start of the winter holidays. I
+tried running an update and it did not go well. Firstly, apk
+updates itself, so far so good. Secondly it tried to instal
+`mesa-asahi&#x27; for some reason. I have still not figured out which
+program introduced this new dependency. For those who do not
+know `mesa-asahi&#x27; is the graphics driver for Apple&#x27;s arm-based
+macs which recently landed in alpine-testing. I do not have an
+arm-based mac, and so I don&#x27;t know why this should have been
+installed. The reasons are however meaningless because
+`mesa-asahi&#x27; introduced a conflict with `mesa&#x27; generally (the
+graphics drivers I actually need) because the former was already
+on version 24.3 while the rest was still on 24.2.
+
+I tried running `apk fix&#x27; which is generally a good idea when
+you encounter a conflict with apk. This command (for some
+reason) updated `qt6&#x27; and nothing else. This meant that any app
+using qt6, like my web browser, document viewer, file manager,
+music player, video player, tormenting client, and others, would
+not work until they-too were updated.
+
+Since I didn&#x27;t think I needed mesa-asahi in the first place (I
+never installed it up to that point, and I didn&#x27;t see why I
+should start now), I decided to simply tell apk to exclude the
+package and update as usual. This seemed to have... weird
+effects. Firstly, none of my graphical programs were working
+anymore. GTK applications gave some sort or error which I cannot
+at the moment recall while QT applications just segfaulted -- a
+great start. Secondly, the system was incredibly slow: both in
+being sluggish to use and taking three times longer to boot than
+usual.
+
+Now -- clearly -- I messed something up by telling apk not to
+include mesa-asahi in the update. Indeed these problems may be
+attributable to missing graphics drivers -- with the system
+falling back to software rendering. However, the dependency
+introduction and version-mismatch were both out of my control,
+and the fact that `apk fix&#x27; updated QT6 and broke all my
+graphical applications meant that I couldn&#x27;t just wait for the
+version conflict to be resolved[2].
+
+I though for some time about what to do -- re-installing
+Alpine-edge might work, or I could try Alpine-stable and make-do
+without half of my software -- and ultimately decided that I
+could not stay on Alpine due to the simultaneous need to be on
+`edge&#x27; while also needing a rock-solid system. Which brings us
+to Nix.
+
+NixOS
+-----
+
+I managed to download the NixOS installer ISO with `curl&#x27; and
+install it to a borrowed USB-stick using `dd&#x27; while still on my
+broken Alpine install. According to the wiki, I should just be
+able to use the graphical installer on my system. Easy peasy.
+
+This was not the case. The graphical installer does not have a
+menu to select the bootloader, and nix&#x27;s default loader `grub&#x27;
+does not work well on arm based systems. Luckily the wiki-page
+for installing NixOS on arm single-board-computers had the
+correct instructions for a manual install, and a few minutes
+later I had a fresh install of NixOS.
+
+My initial impressions of Nix were rather positive. It was
+remarkably easy to learn, and there were a lot of resources
+available, notably the wiki and the forums. At first I had some
+trouble to get things working properly. Every time I ran an
+update, the updater itself would be broken on the new
+install[3]. Everytime though, I could just roll-back to the
+previous version and try again[4].
+
+I spent some time getting my usual configuration set up using
+nix and noticed just how helpful the nix-rebuild command was.
+For instance, when I tried to install flatpak, nix informed me
+that for flatpak to be functional, I needed to enable the
+xdg-desktop-portal service. After doing this, it told me that I
+didn&#x27;t have an actual portal configured and/or installed. For
+context. If you do this on Arch or Alpine, you are pretty much
+left to your own devices in figuring out how to get these
+working, especially if you are not using a pre-configured
+desktop environment.
+
+A second immediately noticeable difference was the sheer size of
+the nix repositories. Every piece of software which I use, with
+the exception of one[5], was in the nix repositories, and I use
+a lot of niche and obscure software. The only somewhat strange
+thing I noticed is that the font which I like to use for my
+desktop: droid, was not in the stable repository, but only the
+unstable one[6]. This didn&#x27;t matter though as nix allows me to
+add just this one package from the unstable repository while
+keeping my others on version 24.11.
+
+Nix handily beats Alpine in terms of software availability. I
+think this is in large-part to to the fact that alpine requries
+more porting work due to its use of musl-libc and openrc, rather
+than the more standard glibc and systemd Nix also beats Arch if
+you look only at the main repositories. The arch user repository
+still has an edge over nix in some cases, but this is not so
+much as repository as much as it is a collection of build scripts
+which -- in my experience -- work about as often as they do not.
+
+Lastly is recoverability. I already mentioned nix&#x27;s rollback
+feature, but even if my laptop dies in its entirety, if the
+drive gets corrupted, or if I want to move to a different
+system, I will be able to get back on track in no time
+whatsoever. This is because an entire NixOS install is
+essentially defined as a configuration file. I have this
+configuration backed up in a public Github repository[7] and can
+therefore recover my system in minutes, rather than hours or
+days.
+
+All in all I am loving nix so far, and I will probably keep
+using it for quite some time.
+
+-----------------------------------------------------------------
+
+[1]: As a quick aside, I think the classic Arch-user-forum
+     response `RTFM&#x27; (Read the F Manual), is harmful to the
+     community as a whole, though I cannot deny that most of the
+     questions raised by new uses are described extensively on
+     the excellent wiki pages.
+
+[2]: As of writing, the mesa package has still not been updated
+     and the version conflict persists. It has been about a
+     week.
+
+[3]: This is 100% a case of user-error, and not a problem with
+     Nix or NixOS.
+
+[4]: I recall when I first installed Arch constantly messing
+     things up and re-installing from scratch. Even on Alpine I
+     once managed to remove any means of connecting to wifi and
+     needing to re-install.
+
+[5]: I can&#x27;t even blame nix for this. The program in question is
+     a niche add-on to a niche program which has not been updated
+     in over a year. The only reason this program is in the
+     Alpine repositories is because I added it there.
+
+[6]: I don&#x27;t know exactly what it means for a typeface
+     to be `unstable&#x27;, but I believe it has something to do with
+     the fact that droid is designed for small-screen-interfaces which
+     are currently under heavy development.
+
+[7]: https://github.com/user18130814200115-2/riverbed
+
+=================================================================
+
+All of my writing and software projects are available free of
+charge under CC-BY unless stated otherwise. I do not accept
+monetary donations, but if my work has brought you value I ask
+you to donate to a charitable cause or high-impact fund,
+organisation, business, institute, or individual driving moral
+progress.
+
+For more information about making a moral impact, search for
+``giving what we can&#x27;&#x27;, ``give well&#x27;&#x27;, or ``effective altruism&#x27;&#x27;.
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://tilde.club/1/~user18130814200115/posts/0026-descartes-the-kabbalist.txt</link>
 <title>0026-descartes-the-kabbalist.txt      2024-Oct-30 18:25     2.3 KB</title>
 <description><![CDATA[<pre>
@@ -2734,4 +3792,5 @@ is up again, I expect I will be writing frequently, we have a lot
 to catch up on.
 </pre>]]></description>
 </item>
+
 </channel></rss>
