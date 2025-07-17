@@ -5,6 +5,76 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/password-store.md</link>
+<title>password store                                             2025-07-17</title>
+<description><![CDATA[<pre>
+# password store
+
+A while ago I read a post by Jay Scot[1] that described the numerous
+dependencies of the pass(1) password-store on an OpenBSD system and
+his replacement of it with a shell script and a command to generate
+new password files.
+
+His script is tailored to work with dmenu. I have largely plagerized
+his work and modified it for my own purposes. In doing so I have
+integrated the new password generation command into the shell
+script[2].
+
+
+## Usage
+
+You must first export an environment variable for your password
+store.  If you have been using pass already on OpenBSD, then the
+following should work:
+&gt; $ export PASSWORD_STORE=&quot;$HOME/.password-store&quot;
+
+Don&#x27;t forget to add the above export to your .kshrc, or whatever,
+so that it is set next time you come to use it.
+
+If all is well the following will list all your password files.
+&gt; $ pw
+
+The following will list files based on a partial match, if there
+are more than one, or it will request you to enter your password
+to decrypt the file.
+&gt; $ pw &lt;part-match&gt;
+
+If only one was found, after entering the password, it will be
+copied to your pastebuffer for pasting.
+
+
+## Flags 
+
+There are two additional flags that can be used:
+-n Which when supplied with a filename will generate a random
+password, create a new password file and copy the password to your
+pastebuffer.
+&gt; $ pw -n &lt;new-filename&gt;
+
+-v Which will list files based on a partial match, if there are
+more than one, or it will request you to enter your password to
+decrypt the file.
+
+If only one was found, after entering the password, the file will
+be printed to stdout.
+&gt; $ pw -v &lt;part-match&gt;
+
+This is useful if you have several pieces of information within the
+file you need access to.
+
+At the top of the pw script is a variable, PB_SECONDS. This determines
+the amount of seconds after which the pastebuffer is overwritten,
+the default is 30 seconds.
+
+
+## References
+
+[1]( gopher://jay.scot )
+[2]( gopher://gopher.icu/0/files/pw )
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/ed-vi-vim-sam-vis-editor.md</link>
 <title>ed vi vim sam vis editor                                   2025-07-11</title>
 <description><![CDATA[<pre>
@@ -8097,6 +8167,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
