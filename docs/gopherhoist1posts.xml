@@ -5,6 +5,61 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-07-21-on-piracy.txt</link>
+<title>(2025-07-21) When buying isn't owning, piracy isn't stealing</title>
+<description><![CDATA[<pre>
+(2025-07-21) When buying isn&#x27;t owning, piracy isn&#x27;t stealing
+------------------------------------------------------------
+First, there were pirate ships.
+Then, there were pirate radio stations.
+Then, there was pirate software.
+Then, there were pirate books.
+Then, there was pirate photography.
+Then, there was pirate music.
+Then, there were pirate movies.
+
+Of course, all of these things still exist, yes, even ships. Alas, no
+pirate zeppelins (except my Nex station lol). But now, a new kind of piracy
+has emerged, hiding in the shadows since the mid-2000s but suddenly becoming
+hugely relevant in the mid-2020s. And the reason for that is the reason for
+all the previous iterations of piracy to appear: greed. This time though, it&#x27;s
+even worse: you don&#x27;t even get a copy of the item you&#x27;re supposedly pirating,
+all you get is an alternative way to access the same resource you&#x27;ll never own
+anyway. This was pretty niche before because no one had an incentive to have
+something as unappealing as this. Now, cloud-based LLMs are a thing. Along
+with their APIs. As such, the world of API piracy is reborn.
+
+It is quite surprising what you can do even without any key leakage: someone,
+somewhere, always exposes those APIs in one form or another, be it a Web chat
+or a &quot;client-side-protected&quot; library, or even a fair subsidized API (not even
+compatible with the original, of course). Using all this doesn&#x27;t even involve
+any cracking in a traditional sense, it just involves quite a bit of work of
+reverse-engineering existing public resources and knowing exactly where to
+look and what to look for. As much as I despise modern Web browsers, I have to
+admit that their developer tools provide pretty much everything necessary to
+facilitate these search efforts, up to the point of finding &quot;which requests
+use this exact cookie&quot;, and the first one usually is the one that sets it.
+Then, any request can be exported in the curl command format and further
+refined to eliminate any unnecessary headers. And the final request chain can
+be converted to the programming language of your choice in order to use the
+APIs of interest outside the browser. Thus, you can build your own API on top
+of them. In the format suitable just for you.
+
+At this point, congratulations, you have become a Captain Jack Sparrow of
+APIs. You&#x27;re not violating any &quot;intellectual property rights&quot; or any other BS
+but you still are bending the rules to your favor. Someone might not like this
+and block you. This just means you have to mimic the web clients better. In
+the most hardcore cases, people even leverage browser engines like Selenium or
+Playwright, as well as use cloudscraper to bypass stupid CloudFlare pages.
+The point is, however difficult it may turn out to be, it still can be done.
+Sometimes, it not only can, but should be done. The case of yt-dlp is not the
+only one that shows this. When the time comes, I&#x27;m going to announce something
+of my own as well.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-07-14-taming-the-daemons.txt</link>
 <title>(2025-07-14) Taming the daemons, the POSIX way</title>
 <description><![CDATA[<pre>
@@ -17037,6 +17092,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 </channel></rss>
