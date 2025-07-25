@@ -5,6 +5,40 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/</link>
+<title>Back</title>
+<description><![CDATA[<pre>
+                        |&gt;                |&gt;
+|U U U|  ______         |U U_U|_____|U U U|   ____________  __|U U U|
+\_ _  / / ____/___  ____| / /_| ___ |_____|  /  _/ ____/ / / /\_ _  /
+ |_  |-/ /-__/ __ \/ __ \/ __ \/ _ \/ ___/|--/ // /---/ /-/ /--|_  | 
+ | # |/ /_/ / /_/ / /_/ / /#/ /  __/ / #  |_/ // /___/ /_/ / _ | # |
+ |_  |\____/\____/ .___/_/-/_/\___/_/ -   /___/\____/\____/ _  |_  |
+/_ _  \  _-_ _-_/_/-_ _ |- -  |vvvvv|- -  | _ _-_ _-_ _-_ _-_ /_ _  \
+| _   |__________ Breathing life back into the gopher! _______| _   |
+
+   ___________
+__/ P h l o g \______________________________________________________
+
+&lt;a href=gopher://gopher.icu/0/phlog/Philosophical-ramblings/digital-asceticism.md&gt;digital asceticism                                         2025-07-22&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Computing/password-store.md&gt;password store                                             2025-07-18&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Computing/ed-vi-vim-sam-vis-editor.md&gt;ed vi vim sam vis editor                                   2025-07-12&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Computing/Legacy.md&gt;Legacy                                                     2025-07-10&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Philosophical-ramblings/Not-my-problem.md&gt;Not my problem                                             2025-07-07&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Philosophical-ramblings/Addiction.md&gt;Addiction                                                  2025-07-05&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Philosophical-ramblings/On-goals.md&gt;On goals                                                   2025-06-28&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Computing/OpenBSD-web-browsers.md&gt;OpenBSD web browsers                                       2025-06-27&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Computing/urxvt-no-more.md&gt;urxvt no more                                              2025-06-26&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Computing/Gophering-without-a-client.md&gt;Gophering without a client                                 2025-06-21&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Philosophical-ramblings/Adherence-is-a-choice.md&gt;Adherence is a choice                                      2025-06-18&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/0/phlog/Computing/URI-open--plumber-and-xclip.md&gt;URI open  plumber and xclip                                2025-06-18&lt;/a&gt;
+&lt;a href=gopher://gopher.icu/1/phlog&gt;All ...&lt;/a&gt;
+
+var/gopher//index.dcgi[15]: syntax error: `for&#x27; unmatched
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/digital-asceticism.md</link>
 <title>digital asceticism                                         2025-07-22</title>
 <description><![CDATA[<pre>
@@ -8196,6 +8230,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
