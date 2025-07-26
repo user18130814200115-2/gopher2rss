@@ -5,6 +5,100 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/rc-shell-and-new-gopher-server.md</link>
+<title>rc shell and new gopher server                             2025-07-26</title>
+<description><![CDATA[<pre>
+# rc shell and new gopher server
+
+I had been dipping in and out of the Plan9 rabbit hole, without
+going too deep. 
+
+If you had been following along recently, then you know I had also
+been experimenting with ed and sam which lead me to install vis,
+which shares sam&#x27;s command language.
+
+In the process my OpenBSD system has become a bit of a Franken-9,
+with rc as the shell on my local system and installed on my server.
+
+
+## rc shell
+
+After using perl for many years I find POSIX shell quite limiting,
+especially the lack of lists/arrays. So when I discovered the rc
+shell has lists, much cleaner syntax and had dispatched a number
+of bourne keywords determined to be redundant. I decided to give
+it a try.
+
+There were three options in the OpenBSD repos, ordinary, and with
+editline or readline:
+
+&gt;        1: rc-1.7.4p1
+&gt;        2: rc-1.7.4p1-editline
+&gt;        3: rc-1.7.4p1-readline
+
+As I like modal commandline editing I gave both of the later a try.
+I settled on the readline variety as it seemed more compatible
+with what I had become used to with ksh&#x27;s vi-mode.
+
+I started by creating an .rcrc file and converting my existing
+.kshrc to rc. 
+
+This was a very helpful learning experience to start to familiarize
+myself with the syntax, as was reading Tom Duff&#x27;s paper on the rc
+shell[1]. 
+
+I modified my prompt to include the directory path using the examples
+from the paper. Then in short order I converted my aliases to
+functions and ported the remainder of my ksh functionality.
+
+By comparison the resulting file looks a lot neater.
+
+
+## gopher server (gophrc)
+
+Encouraged by what I had learned so far, I wanted to continue
+familiarizing myself with the language. 
+
+The best way for me to do that is be creating some small project.
+I am of the type that learns through doing and a small project is
+usually how I go about learning.
+
+I remembered I had started writing a gopher server in shell that
+ran from inetd but had run into some issues and mostly given up on
+the idea after discovering Katolaz had already created one called
+gosher[2].
+
+So, for the past couple of days I have been chipping away at making
+*gophrc*[3] a gopher server that runs from inetd and that can work
+with my existing geomyidae formated menus and cgi programs.
+
+You are reading this file from that experimental server. 
+
+
+## Summary 
+
+It has been a great learning experience and I am a great fan of
+home brew software. 
+
+I feel that rc shell has a lot of potential, but that I am still
+missing a lot regarding nuances of the language. 
+
+If you know of any more documentation than that I&#x27;ve linked below,
+then please drop me a line.
+
+If you spot anything that doesn&#x27;t work or things I could have done
+better in rc shell, then likewise please let me know.
+
+
+## References
+
+[1]( http://9p.io/sys/doc/rc.html )
+[2]( gopher://katolaz.net/1/software/gosher )
+[3]( gopher://gopher.icu/0/files/gophrc )
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/</link>
 <title>Back</title>
 <description><![CDATA[<pre>
@@ -8230,6 +8324,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
