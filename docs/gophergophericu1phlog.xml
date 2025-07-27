@@ -5,6 +5,38 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Gopher-cleaning.md</link>
+<title>Gopher cleaning                                            2025-07-27</title>
+<description><![CDATA[<pre>
+# Gopher cleaning
+
+It has been some time since I gave my burrow a good cleaning. By
+cleaning, I mean looking through a lot of the programs which drive
+the phlog and other gopher services hosted here.
+
+Changing the server software gave me reason to start poking around
+and, as often happens. You start finding bugs or other things that
+in your present mind you can not accept.
+
+This leads to fixing things in such a way that the present you can
+reconsile. Before you know it you are deep in the rabbit hole.
+
+There was an issue with the new gopher server logging, it was
+mangling the ipv6 addresses due to my poor initial attempt to split
+on &#x27;:&#x27;.  The polling program too had some problems, it should have
+been ordering the polls by most recently active, but it wasn&#x27;t.
+
+There really is too much to remember and list but I should probably
+leave things to settle for a few days before I go digging in there
+again, as maybe I have broken other things in the process. 
+
+I have also been at it for the majority of the day...
+
+If you find anything broken then please let me know.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/rc-shell-and-new-gopher-server.md</link>
 <title>rc shell and new gopher server                             2025-07-26</title>
 <description><![CDATA[<pre>
@@ -8324,6 +8356,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
