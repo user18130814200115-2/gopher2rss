@@ -5,6 +5,126 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-07-28-shell-api-king.txt</link>
+<title>(2025-07-28) Two popular external commands can make you a shell REST API king</title>
+<description><![CDATA[<pre>
+(2025-07-28) Two popular external commands can make you a shell REST API king
+-----------------------------------------------------------------------------
+There exists a widespread myth that you need at least Python or some other
+full-featured programming environment to interact with modern REST APIs of 
+various online services. In fact though, if you are running a normal OS like 
+Linux or BSD, you only need two external commands available in any 
+distribution&#x27;s package manager. Everything else is already there in the 
+POSIX environment, and I&#x27;m going to show you how to make use of it.
+
+The first of these two commands is, of course, curl. This is the Swiss army
+knife of clients that does pretty much all the legwork for you when it comes 
+to connection through all sorts of different protocols (up to the newest 
+HTTP versions, WebSockets (need to research that more though) and even 
+Gopher, yeah), all you need is specify what to send and (optionally) which 
+parts of the response to return. The only things curl can&#x27;t do (_yet_) are 
+torrenting and parallel chunk downloads (well, you&#x27;ve got aria2 for those 
+things) but those are not relevant to our API story anyway. The mainstream 
+has adopted curl so much that all sorts of API manuals even show its 
+command-line calls alongside Python, JS and other languages in their example 
+sections. That&#x27;s quite a success story, I must admit.
+
+Sending requests and receiving responses, however, is just one half of the
+story. The other one is preparing those requests and processing those 
+responses. Of course, the GET request fields, as well as standard HTTP form 
+fields, can be handled with curl itself, but how do we deal with the other 
+data types? Given that the de facto standard of POSTing and responses for 
+modern HTTP APIs is JSON, only one command-line program comes to the rescue, 
+one that&#x27;s much younger than curl but no less important: jq. Yep, that&#x27;s the 
+second tool in our today&#x27;s box. Again, there is a common misconception that 
+jq only can parse JSON text, but in fact, it also can serialize various data 
+into JSON too. It even has a small sublanguage to perform variable 
+subsitution in the required places while it fully handles all the escaping 
+for you. And I&#x27;m gonna show how we can make use of it... right now.
+
+So, how to showcase the possibilities of this sh+curl+jq wombo-combo in the
+most succint way possible? For once, let&#x27;s ride the hype wave and create the 
+simplest possible chat client for OpenAI-compatible API endpoints. Because 
+yeah, there are plenty of them, even Ollama exposes one if you must. For 
+this example, I&#x27;m gonna hardcode everything and assume a lot has been set 
+already, but will include the link to the full chat script ([1]) in the 
+footer. Without further ado, here&#x27;s the example in POSIX shell:
+
+#!/bin/sh 
+hist=&#x27;&#x27;
+inithist=&#x27;&#x27;
+API_ROOT=&#x27;https://text.pollinations.ai/openai&#x27;
+MODEL=&#x27;openai-fast&#x27;
+TEMP=0.6
+prompt() { printf &quot;\e[1;32m&gt;&gt; \e[0m&quot;; }
+clearhist() { hist=&quot;$inithist&quot;; }
+startswith() { case $1 in &quot;$2&quot;*) true;; *) false;; esac; }
+setsys() {
+  inithist=&quot;$(jq -nc --arg sp &quot;$*&quot; &#x27;[{role:&quot;system&quot;,content:$sp}]&#x27;)&quot;
+  clearhist
+}
+setsys &#x27;You are a helpful assistant.&#x27;
+
+while prompt &amp;&amp; read -r line; do
+  [ -z &quot;$line&quot; ] &amp;&amp; continue
+  [ &quot;$line&quot; == &quot;/clear&quot; ] &amp;&amp; clearhist &amp;&amp; echo &quot;Session cleared&quot; &amp;&amp; continue
+  hist=&quot;$(jq -nc --argjson h &quot;$hist&quot; --arg msg &quot;$line&quot; \
+    &#x27;$h+[{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:$msg}]&#x27;)&quot;
+  data=&quot;$(jq -nc --arg m &quot;$MODEL&quot; --arg t &quot;$TEMP&quot; --argjson msgs &quot;$hist&quot; \
+    &#x27;{model:$m,stream:true,private:true,messages:$msgs,temperature:$t}&#x27;)&quot;
+  curl -sSLN &quot;${API_ROOT}/chat/completions&quot; \
+    -H &quot;Content-Type: application/json&quot; \
+    ${OPENAI_API_KEY:+-H &quot;Authorization: Bearer $OPENAI_API_KEY&quot;} \
+    -H &quot;Accept: text/event-stream&quot; --data-raw &quot;$data&quot; 2&gt;/dev/null | \
+  while IFS= read -r chunk; do
+      [ -z &quot;$chunk&quot; ] &amp;&amp; continue
+      data=&quot;${chunk#data: }&quot;
+      [ &quot;$data&quot; == &quot;[DONE]&quot; ] &amp;&amp; break
+      delta=&#x27;&#x27;
+      startswith &quot;$data&quot; &#x27;{&#x27; &amp;&amp; delta=&quot;$(printf &#x27;%s&#x27; &quot;$data&quot; \
+        | jq -rj &#x27;.choices[0].delta.content // empty&#x27; 2&gt;/dev/null;printf x)&quot;
+      delta=&quot;${delta%?}&quot;
+      [ -n &quot;$delta&quot; ] &amp;&amp; printf &quot;\e[0;33m%s\e[0m&quot; &quot;$delta&quot;
+      tailbuf=&quot;$tailbuf$delta&quot;
+  done
+  echo
+  hist=&quot;$(jq -nc --argjson h &quot;$hist&quot; --arg a &quot;$tailbuf&quot; \
+    &#x27;$h+[{&quot;role&quot;:&quot;assistant&quot;,&quot;content&quot;:$a}]&#x27;)&quot;
+  tailbuf=&quot;&quot;
+  line=&#x27;&#x27;
+done
+
+This example chat script uses the &quot;openai-fast&quot; (GPT 4.1 Nano) model from the
+pollinations.ai provider (more famously known for its free image generation 
+service). Of course, the full shee.sh script has a lot more going on but 
+this example also is pretty self-sufficient and shows everything that needs 
+to be shown:
+
+- terminal escape sequences;
+- pure POSIX startswith function implementation;
+- shaping complex JSON objects with jq -nc;
+- parsing complex JSON objects with jq -rj;
+- specifying optional command parameters based on environment variable
+presence;
+- preserving trailing newlines by appending another character and then
+chopping it off;
+- passing SSE response stream from curl for line-by-line shell processing.
+
+Mind you, this is a pretty complicated case, most APIs won&#x27;t even have a
+thing or two shown here. For instance, not everyone uses SSE, let alone SSE 
+with JSON response chunks, not everyone needs to maintain JSON state across 
+calls, not everyone needs to make authorization tokens optional and 
+dependent upon the environment. But this example combines all those 
+techniques for you to make use of them whenever you find them necessary. 
+And, at the end of the day, this is just an LLM chat app written in POSIX 
+shell with no external dependencies except curl and jq. Why? Because we can.
+
+--- Luxferre ---
+
+[1]: gopher://hoi.st/9/files/shee.sh
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-07-21-on-piracy.txt</link>
 <title>(2025-07-21) When buying isn't owning, piracy isn't stealing</title>
 <description><![CDATA[<pre>
@@ -17092,6 +17212,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
