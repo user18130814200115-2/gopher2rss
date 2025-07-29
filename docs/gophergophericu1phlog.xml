@@ -5,6 +5,50 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Hard-copy-and-physical-media.md</link>
+<title>Hard copy and physical media                               2025-07-29</title>
+<description><![CDATA[<pre>
+# Hard copy and physical pedia
+
+Today I took delivery of a second-hand copy of The UNIX Programming
+Environment. I had been looking for a copy for a while, but as is
+often the case with these classic titles, they are becoming a little
+expensive to obtain. 
+
+So, when I do spot them going cheaply I grab them. Not so long ago
+I acquired a copy of The AWK Programming Language in much the same
+way and from the same well known on-line source of pre-loved goodies.
+
+
+## Why hard copy?
+
+It&#x27;s a welcome break to the eyes to look at real paper, under real
+lighting conditions. E-ink is my second favoured medium and I am
+still waiting for mainstream E-ink monitors. To me this will be a
+real technology advancement, but I digress...
+
+I can read this medium whether or not I have an internet connection,
+electrical power or a computer or other device. I can also be sure
+that it will remain unaltered and available as long as the physical
+media exists.
+
+As we know from the Amazon debacle, and others. When we purchase
+non-physical media or stream we don&#x27;t own it and depending on
+cultural or political pressures it can be modified or disappear. 
+
+I can&#x27;t help but think of Orwell&#x27;s 1984 where history is rewritten
+to align with the current narrative...
+
+For this reason I have a reasonable physical library which I continue
+to add to with what I consider useful classic books, CD media for
+music and DVD media for movies and documentaries.
+
+
+To the fellow who saw those O&#x27;Reilly books in the thrift shop, if
+you read me. Maybe you should reconsider that AWK book?
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Gopher-cleaning.md</link>
 <title>Gopher cleaning                                            2025-07-27</title>
 <description><![CDATA[<pre>
@@ -8356,6 +8400,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
