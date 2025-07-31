@@ -5,6 +5,48 @@
 <link>gopher://tilde.club/1/~user18130814200115/posts</link>
 
 <item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/posts</link>
+<title>All posts</title>
+<description><![CDATA[<pre>
+rror: File or directory not found! (null)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/posts/0028-ethical-systems-and-their-relative-strengths.txt</link>
+<title>=== Ethical systems and their relative strengths ===</title>
+<description><![CDATA[<pre>
+Error: File or directory not found! (null)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/posts/0029-limits-to-helping-others.txt</link>
+<title>=== Limits to helping others ===</title>
+<description><![CDATA[<pre>
+Error: File or directory not found! (null)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/posts/0030-a-neoplatonist-interpretation-of-post-christian-vitalism.txt</link>
+<title>=== A Neoplatonist interpretation of post-christian vitalism ===</title>
+<description><![CDATA[<pre>
+Error: File or directory not found! (null)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/posts/0031-insights-in-living-without-a-smartphone.txt</link>
+<title>=== Insights in living without a smartphone ===</title>
+<description><![CDATA[<pre>
+Error: File or directory not found! (null)
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/posts/0032-switching-to-codeberg.txt</link>
+<title>=== Switching to Codeberg ===</title>
+<description><![CDATA[<pre>
+Error: File or directory not found! (null)
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://tilde.club/1/~user18130814200115/posts/0032-switching-to-codeberg.txt</link>
 <title>0032-switching-to-codeberg.txt        2025-Jul-14 20:19     4.4 KB</title>
 <description><![CDATA[<pre>
@@ -3792,5 +3834,6 @@ is up again, I expect I will be writing frequently, we have a lot
 to catch up on.
 </pre>]]></description>
 </item>
+
 
 </channel></rss>
