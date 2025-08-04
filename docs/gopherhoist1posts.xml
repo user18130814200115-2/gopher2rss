@@ -5,6 +5,57 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-08-04-switched-to-nixos.txt</link>
+<title>(2025-08-04) Switched to NixOS: the path of the samurai begins</title>
+<description><![CDATA[<pre>
+(2025-08-04) Switched to NixOS: the path of the samurai begins
+--------------------------------------------------------------
+I have upgraded the SSD in my ThinkPad, my main x86_64 personal machine. The
+new one has a whopping 4 TB of space. And this, as I thought, was the 
+perfect time to try out something completely new as a daily driver OS. And 
+by something completely new I meant something not derived from Debian, Arch 
+or Alpine, and obviously not BSD or Haiku which don&#x27;t match some of my 
+requirements, and obviously not anything RPM-based, not Slackware, Guix or 
+Gobolinux because all of them just suck. As you might have imagined, not so 
+many based options were left, and I chose the one being praised the most by 
+hackers alike: NixOS. Is it worth the hype? It&#x27;s time to find out.
+
+As I just have transferred all my data to this new system and set up the
+basics, I won&#x27;t share my entire opinion at once as it hasn&#x27;t fully shaped 
+yet. I&#x27;ll just say this for now: you have to unlearn a lot of what you have 
+learned about typical Linux distros. On a flip side, you have to be mindful 
+and not forget any minor package that you **might** need at the systemwide 
+level. Whenever you don&#x27;t, isolated Nix shells are clearly preferred here. 
+Of course, some precompiled binaries just don&#x27;t play ball with this 
+non-FHS-compatible directory structure, so NixOS offers several mechanisms 
+to achieve backward compatibility at least to some extent, and I naturally 
+have enabled all of them that I could find.
+
+Besides keeping the number of packages (relatively) low, I also have realized
+something I couldn&#x27;t realize with more &quot;traditional&quot; package management: in 
+my personal workflows, a lot is really happening inside the home directory, 
+not elsewhere in the system. In other words, with some makeshift tooling, I 
+had constantly tried building the same level of isolation in my Arches that 
+I&#x27;m already given out of the box with the native tooling here. The Nix 
+language itself is a bit weird but pretty manageable and offers plenty of 
+flexibility. However, within just two incomplete days of running NixOS, I 
+already have found several caveats that **might** interfere with my 
+workflows until I find a workaround. For instance, one cannot just run uv 
+with a pygame dependency whereas a nix-shell with the same dependency and 
+the same Python version works as expected. In fact, workarounds are an 
+organic part of Nix life, and that might pose a problem sometimes. Not one I 
+couldn&#x27;t solve, but one that could have been avoided if they just had 
+provided an &quot;unsafe sandbox&quot; for certain types of software as an option.
+
+Anyway, to me as a power user, the amount of positives still outweighs the
+negatives by a large number, so I decided to proceed with walking this path. 
+And I&#x27;ll see where it leads me. So, look out for the follow-up posts about 
+NixOS. And no, I haven&#x27;t forgotten about the abacus. As always, stay tuned.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-07-28-shell-api-king.txt</link>
 <title>(2025-07-28) Two popular external commands can make you a shell REST API king</title>
 <description><![CDATA[<pre>
@@ -17212,6 +17263,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
