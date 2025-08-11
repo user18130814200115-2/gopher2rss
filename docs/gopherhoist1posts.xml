@@ -5,6 +5,102 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-08-11-elixir-of-freshness.txt</link>
+<title>(2025-08-11) Elixir of freshness</title>
+<description><![CDATA[<pre>
+(2025-08-11) Elixir of freshness
+--------------------------------
+Closer to the weekend, when I had figured out all the **essential** NixOS
+stuff, I also made another decision to learn something new. The time has 
+come to get familiar with the Erlang ecosystem. The BEAM runtime itself is 
+something that I&#x27;d never heard a single bad word about in many years, and I 
+do still have some warm nostalgic feelings about the original (pre-Sony) 
+Ericsson phones, so that was another factor that nudged me to this decision. 
+However, what was left was the language choice itself. Unless I&#x27;m missing 
+anything, for now there are three worthy candidates: Erlang itself, Elixir 
+and Gleam. There also are some BEAM ports of existing languages, like 
+Clojerl, Luerl and LFE (Lisp Flavored Erlang), but I wanted to learn 
+something fully original, like the pre-Sony Ericssons. Erlang itself, while 
+being iconic on its own, looks too verbose and low-level to me. I think I 
+will come to it at some point in the future, but for my first encounter with 
+BEAM, I needed something easier.
+
+At first, I was inclined to try out Gleam, an OCaml-like static-typed
+language that targets both BEAM and JS runtimes, but it has exhibited 
+several significant problems no one likes to talk about, the least of which 
+being &quot;40% logic, 60% type decoding&quot; and a more critical one being the 
+incompatibility of older packages (over 2/3 out of just &lt;1000 current ones) 
+with the current Gleam version, 1.12. Add to this that you depend on 
+external packages even for the most basic tasks like getting a line from 
+stdin or an environment variable, as well as lack of even the most basic 
+examples for all the functions that working packages expose, and you see why 
+I was left rather disappointed with my initial choice. With all its cool 
+features, I don&#x27;t think Gleam is real-life-ready yet. Maybe will try 
+returning to it in a year or two and see how it goes.
+
+So, the only option left was Elixir. Indeed, among these three, it looks like
+a perfect balance between ease of expression and solid fundamentals. And for 
+that, I can forgive the size of compiled escript files being 5x bigger than 
+the ones compiled from Gleam. At least here you don&#x27;t need any crutches to 
+access any Erlang-native functionality in case you need to, but most of the 
+time you don&#x27;t ever need to go lower because the Elixir standard library 
+already has you covered. There are, of course, some questionable syntax 
+decisions, but the only languages that don&#x27;t have any of them are Tcl, 
+Rebol-likes, Forth and Lisp, so... I&#x27;ll live with that. What&#x27;s much more 
+important is the vast choice of packages from the Hex repository (akin to 
+PyPi, CPAN, NPM Registry... you get the idea) for a whole lot of life 
+situations. Of course, one could say that Gleam packages are also stored in 
+Hex, yes, but there are under 1000 of them, and you can&#x27;t use any other 
+(Erlang/Elixir) package from Gleam without writing some wrapper code first. 
+With Elixir, the interop is seamless, so you have much larger shared 
+codebase at your disposal.
+
+Even without those packages, Elixir&#x27;s built-in &quot;batteries&quot; are quite solid
+and reflect pretty much everything one would expect from a modern 
+programming language: Unicode-first strings, bit fields and other binary 
+data manipulation, standard and file I/O, external subprocess I/O (so-called 
+&quot;ports&quot;), calendar/date/time functions, JSON and URI processing, stateful 
+configuration managers, and, of course, access to everything provided by 
+core Erlang itself, including networking sockets, crypto libraries, RNGs and 
+whatnot. Oh, and did I mention that Elixir applications are easily 
+containerizable and especially suitable for multi-stage builds?
+
+So far, I&#x27;m impressed but, of course, not everything is fine and dandy. For
+instance, the mix tool used for building Elixir projects allows you to 
+compile the &quot;application&quot; bundles and escripts. And while there is some 
+documented mention that the escript mode requires a main(args) function, 
+there is no clear explanation in the main docs what to do to start your 
+program in a normal &quot;application&quot; mode, either after compilation with &quot;mix 
+release&quot; or just by typing &quot;mix run&quot;. Turns out that you need to specify 
+&quot;use Application&quot; and then define a start(type, args) function in the 
+module, and then, of course, specify this module in the mix.exs file like so:
+
+def application do
+  [
+    mod: {ProjName.ModuleName, []},
+    extra_applications: []
+  ]
+end
+
+Again, the official docs provide no example of end-to-end **runnable** Elixir
+programs that could be built with mix to see these nuances. Is it so hard to 
+provide them? Of course, it&#x27;s a minor issue but still a bit annoying for a 
+newcomer. And yes, since I want my programs to be able to run in both 
+escript and standalone modes, I&#x27;m just calling main() from start(). Maybe it 
+should be the other way around, I&#x27;m not sure. But I&#x27;m also not sure why 
+complicate things so much. Having a well-defined entrypoint should be the 
+default behaviour when scaffolding a project, not something one has to add 
+manually every single time.
+
+Nevertheless, I still think Elixir is worth further investing my time and
+passion into learning it in order to build something really cool and useful. 
+After all, having another weapon in the arsenal never hurts.
+
+--- Luxferre ---
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-08-04-switched-to-nixos.txt</link>
 <title>(2025-08-04) Switched to NixOS: the path of the samurai begins</title>
 <description><![CDATA[<pre>
@@ -17263,6 +17359,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
