@@ -5,6 +5,153 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Down-the-rabbit-hole--9front.md</link>
+<title>Down the rabbit hole  9front                               2025-08-16</title>
+<description><![CDATA[<pre>
+# Down the rabbit hole  9front
+
+As time has passed and frustrations with the enormity and complexity
+of software have grown. So too has the motivation to look for
+alternatives.
+
+Recently I purchased a tiny Dell 3040 in the hopes of running either
+Plan9 or 9Legacy. Unfortunately the dell appears to be UEFI boot
+only. There is mention of a legacy boot option, but I am unable to
+find it even after downgrading the firmware to the earliest version
+I can find, 1.2.0. I did get 9front to boot, but could not install
+as the onboard MMC didn&#x27;t appear as a usable device.
+
+Not wanting to give up, I first tried 9Legacy on the Acer B202 I
+still had laying around, but it failed early in the boot process.
+I then tried 9front, which I successfully managed to install with
+both networking and sound devices appearing to be recognized.
+
+
+## Installation
+
+The usb stick install media is like a live CD. 
+
+Once booted and inside rio, if you need to change the keymap then run: 
+&gt; % /bin/kbmap 
+
+Right click to select the keymap, then press &#x27;q&#x27; to quit. 
+
+To begin installation: 
+&gt; % inst/start 
+
+configfs - will ask you to choose a filesystem type, for my purposes
+it was recommended gefs (good enough file system).
+
+partdisk - you can delete and create a partition for your system.
+Here I ran into a problem with the following stage &#x27;prepdisk&#x27; which
+is meant to divide the allocated partition. It failed repeatedly
+until I left a couple of sectors at the beginning of the disk free
+during this stage. So, I couldn&#x27;t allocate from 0 - &lt;disk_total&gt;.
+
+prepdisk - automatically divides the partition or you can manually
+override. I just went with what it recommended.
+
+mountfs - reams/formats the partitions and mounts them
+
+configdist - choose the location of the install media
+
+confignet - choose manual/auto (dhcp).
+
+tzsetup - choose timezone (GMT)
+
+bootsetup - install mbr and mark partition active (yes to both).
+
+finish - reboot
+
+
+## Post install
+
+First thing I needed to do was make my keymap selection permanent.
+To do this edit $home/lib/profile, depending on your level of bravery
+your choices of editor are ed, sam or acme.
+
+Be ware, there are different sections in profile which are run
+depending if you are logging in from a local terminal or as a cpu.
+
+I made the mistake of adding the line to set the keyboard at the
+very top of the file and it really didn&#x27;t like it when I connected
+to it using drawterm from another computer. Make sure local changes
+go under the terminal section.
+
+To get a list of keymaps:
+&gt; % ls /sys/lib/kbmap
+
+Add the following line to your profile under the terminal section:
+	cp /sys/lib/kbmap/&lt;your-keymap&gt; /dev/kbmap
+
+
+## ssh to other systems
+
+&gt; %  auth/rsagen -t &#x27;service=ssh&#x27; &gt;$home/lib/sshkey
+&gt; %  auth/rsa2ssh $home/lib/sshkey &gt;$home/lib/sshkey.pub
+&gt; %  cat $home/lib/sshkey &gt;/mnt/factotum/ctl
+
+I then copied the public key to .ssh/authorized_keys on my remote
+machine.
+
+*WARNING* Do not try to ssh to a remote machine from an ordinary
+9front terminal! It hung and crashed rio in my case.
+
+For vt emulation there is a vt program which you must start before
+trying to use ssh:
+&gt; % vt -xb
+
+Then:
+&gt; % ssh user@remotehost
+
+I will probably create a function in my profile to make this override
+ssh with a single command.
+
+
+## Summary
+
+This is as much a reference for myself as it is maybe of some use
+to someone else. My memory isn&#x27;t great so having something to refer
+to, should I have to do it again, is quite useful.
+
+The current state of play is that I have a 9front system that I can
+connect to using drawterm from my usual openbsd desktop and I can
+connect from the 9front system to my vps.
+
+Old habits die hard. It is evident, when it&#x27;s not there, that I
+use less a lot.  What is significant about the 9systems is not what
+is included, but what has been removed.  
+
+less/more is a good example of this, you don&#x27;t need a pager if your
+terminal window behaves as a pager. Terminal windows by default do
+not scroll to the bottom like a unix terminal would so man pages
+etc appear to just be cat&#x27;d onto the screen. 
+
+This small adjustment from using less to using cat and the screen
+not scrolling is taking some getting used to, and this is just one
+small illustration.  
+
+Coming from linux/unix it is frustrating because while you know it
+is different, it looks very familiar and even some of the same
+programs exist, yet don&#x27;t quite behave the same.  
+
+If you do get stuck without less and it becomes too much there is
+&#x27;p&#x27; which is a pager.  It is tempting to alias it, and a number of
+other things, to more familiar names. But then you would be convincing
+yourself more that it is what it is not.
+
+Much of the above install and configuration information was gathered
+from the 9front Wiki[1] and this excellent Plan 9 Desktop Guide[2].
+
+
+## References
+
+[1]( https://http://wiki.9front.org )
+[2]( https://pspodcasting.net/dan/blog/2019/plan9_desktop.html )
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/The-UNIX-way--a-transcript.md</link>
 <title>The UNIX way  a transcript                                 2025-08-11</title>
 <description><![CDATA[<pre>
@@ -8461,6 +8608,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
