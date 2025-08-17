@@ -5,6 +5,137 @@
 <link>gopher://tilde.club/1/~user18130814200115/posts</link>
 
 <item>
+<link>gopher://tilde.club/1/~user18130814200115/posts/0034-a-fresh-coat-of-paint.txt</link>
+<title>0034-a-fresh-coat-of-paint.txt        2025-Aug-16 21:41     5.2 KB</title>
+<description><![CDATA[<pre>
+A fresh coat of paint
+Sat, 16 Aug 2025
+Technology, Meta content
+========================
+
+If you read the web-based version of this blog, you might have
+noticed that it has recently received a minor makeover. Instead
+of the previous formatting in plain-text, there is now ACTUAL
+formatting happening, paragraphs can be re-flowed to fit on
+smaller screens, lines are actually lines and not just a bunch
+of hyphens, there are actual headings which are picked up by
+screenreaders, etcetera. 
+
+If you read this blog on gopher, you should have noticed...
+absolutely nothing. This post is about that.
+
+-----------------------------------------------------------------
+
+For those unfamiliar: Gopher is a protocol much like the Hyper
+Text Transfer Protocol (http) which is used to serve this
+web-page to you. However, instead of transferring hypertext
+(HTML) which allows for formatting, re-flowing, and all the
+other nice things mentioned in the introduction, the gopher
+protocol transfers mostly plain text files.
+
+When I started this blog up again, my main intention was to
+start writing as soon as possible. As I mentioned in the first
+post on this blog (The return of the blog), the program I wrote
+to generate the front page was incredibly simple. I did not want
+to spend time to make something complicated, I just wanted
+something that worked. At the same time, I wanted to support
+both gopher, web, and rss as targets. To achieve this (still:
+without putting in much time so that I could start writing as
+soon as possible). I just formatted plain text which gopher
+could sever directly and then added VERY minimal html tags to
+the web version which basically told the browser: don&#x27;t do
+anything with this text, just show it as it is.
+
+This approach was great, and it served its purpose in allowing
+me to write. At the same time though, it was quite a bad reading
+experience on smaller devices, and it did not allow for as much
+creativity in styling as I liked.
+
+As such, since I had some time this summer, I wrote a new
+indexer which (amongst other improvements) added html tags to
+the plain text files that I was (and still am) writing in. These
+tell the browser where the paragraphs are, what is a heading and
+what is normal text. It recognizes, quotations, code-snippets,
+horizontal lines. It coverts the backticks and single-quotes I
+write
+
+	``like this&#x27;&#x27;
+
+To properly curved left-double-quotes and right-double-quotes.
+
+``Like this&#x27;&#x27;[1]
+
+This post is to call out to other writers who target these
+platforms that writing content which is nice to read for both
+gopher AND the web is indeed possible. And it is possible even
+if you don&#x27;t use and off-the-shelf solution such as markdown.
+The important thing is that -- whatever formatting you use --
+you have to be consistent with it.
+
+I for example underlined headers in the text version with
+hyphens for main headings and equals-signs for sub headings.
+This made it incredibly trivial for a program to detect these
+lines and add the relevant html tags to them.
+
+Likewise, I always indent code blocks with tabs, and quotation
+blocks with The greater-then symbol.
+
+&gt; This allows for easy detection, processing, and subsequent
+&gt; styling
+
+	Insert code snippet here
+
+All the while without affecting the formatting seen by gopher
+readers.
+
+This consistency in formatting allowed me to code up a
+completely custom parser in just an afternoon.
+
+That being said, I did have to make some minor adjustments to
+some old posts. A rather funny bug was that if I had a paragraph
+immediately following a horizontal line, the whole block would
+be counted as a line, and the paragraph would not show up on the
+web version. I decided to leave this in as a feature and just
+move all paragraphs away from the horizontal lines instead.
+
+-----------------------------------------------------------------
+I can use this to write gopher-only paragraphs after all ;)
+
+There were some other inconsistencies In my writing particularly
+when it came to lists. I decided (since it was much much easier
+to program this way) that all lists should henceforth be
+indented. This was a minor change since I don&#x27;t use lists overly
+much.
+
+And that is all. I hope this might be useful to some other
+writers in the gopher space. If you want to check out the new
+indexer/parser, you can find it on my Codeberg page[2].
+
+-----------------------------------------------------------------
+
+[1]: If you are on gopher, obviously you won&#x27;t see this any
+     differently.
+
+[2]: I did just notice a minor deficiency which I have not yet
+     solved. Gopher can only display lines under 80 characters,
+     and web-urls tend to be longer than this limit. Therefore,
+     including a link to my codeberg page gets a little awkward.
+     As such, please excuse the space in the following url
+     between `200115/&#x27; and `pages/&#x27;:
+     https://codeberg.org/User18130814200115/
+     pages/src/branch/master/indexer.go
+
+=================================================================
+
+All of my writing and software projects are available free of
+charge under CC-BY unless stated otherwise. I do not accept
+monetary donations, but if my work has brought you value I ask
+you to donate to a charitable cause or high-impact fund,
+organisation, business, institute, or individual driving moral
+progress.
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://tilde.club/1/~user18130814200115/posts/0033-fascism-in-progression-fantasy.txt</link>
 <title>0033-fascism-in-progression-fantasy   2025-Aug-15 13:26    13.8 KB</title>
 <description><![CDATA[<pre>
@@ -4132,6 +4263,7 @@ is up again, I expect I will be writing frequently, we have a lot
 to catch up on.
 </pre>]]></description>
 </item>
+
 
 
 
