@@ -5,6 +5,93 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-08-18-a-week-with-elixir.txt</link>
+<title>(2025-08-18) A week with Elixir: what I understand now and what still don't</title>
+<description><![CDATA[<pre>
+(2025-08-18) A week with Elixir: what I understand now and what still don&#x27;t
+---------------------------------------------------------------------------
+Most of the time, the terms &quot;industry-grade&quot; and &quot;pleasant to work with&quot;
+don&#x27;t combine in a single programming language. There are several pretty 
+valid reasons for that, but there also are several notable exceptions to 
+this unwritten rule. These two qualities can be combined in one of the three 
+ways. The first and most common one is, a language that&#x27;s inherently 
+pleasant to work with becomes widely used in the industry AND (that&#x27;s an 
+important part) its quality increases to the level that can be trusted by 
+the industry. An example of this is Python, which already is reliable enough 
+and just works for most engineering domains. The second and a rarer way is 
+when a language already used by the industry for a long time becomes more 
+pleasant to work with over time. This situation is quite rare because the 
+industry loves backwards compatibility and whatnot, but I could think of 
+something like Tcl or Lua that are getting more and more useful features in 
+the core with every major version. The third, final and rarest way of this 
+convergence is when the language designers make things right from the first 
+stable version available. Of course, to do so, someone already had to do all 
+the legwork for them, so such languages usually piggyback on some existing, 
+well-established runtimes whose only problem is the lack of a human-friendly 
+language to make use of them. And, without a doubt, the first thing I 
+understood throughout this week is that Elixir definitely belongs to this 
+third class.
+
+As always, the language I had to compare Elixir to is the language I still
+have to use the most, Python 3. Besides their huge differences regarding 
+almost everything (JIT-interpreted vs. bytecode-compiled, mutable vs. 
+immutable variables, loops vs. recursion etc), I found them quite similar 
+when it comes to organizing code structure and its documentation, and also 
+by the amount of &quot;batteries&quot; that come shipped with their runtimes. Elixir, 
+however, gets a huge bonus since it also has native access to the Erlang&#x27;s 
+standard library functions in addition to its own. In fact, the foundation 
+provided by the BEAM VM is so solid that Erlang/Elixir dependencies almost 
+never need to use any FFI, which is a known PITA for a lot of Python 
+packages, especially those that have dependencies written in Rust. The BEAM 
+package ecosystem being much more self-contained also means it&#x27;s much more 
+portable. Just like Java, for example.
+
+And since we&#x27;ve mentioned Java, let me point out another fact: the full
+Erlang+Elixir runtime for x86_64, without any third-party libraries, weighs 
+just about 22 MB. Unpacked. For comparison, a fresh Python 3.13.4 install 
+takes about 108 MB. Now, I think we&#x27;re long past the time when JRE weighed 
+even 80 MB, now it&#x27;s closer to half a gig, I guess. Because even the minimal 
+JRE package for NixOS is about 52 MB compressed and 440 MB uncompressed. I 
+think I can safely skip the comparison with any modern .NET distibution lol. 
+You get the idea. Only Tcl and Red can compete in size, but not in anything 
+else besides their elegance.
+
+But here&#x27;s the main question: how does it feel to write Elixir? Does it have
+the potential to replace Python (and probably Go and Tcl too) as my main 
+language for day-to-day tasks whenever I have the real chance to do this 
+replacement? For now, the answer is: quite likely, yes, it does have that 
+potential. It feels like the mentally cheapest way of entry into functional 
+programming for someone who grew up with purely imperative languages or 
+modern multiparadigm languages with clear imperativity or OOP bias. That&#x27;s 
+something I couldn&#x27;t even tell about OCaml (a bit of which I also know, yes) 
+and other ML-like languages. Partially because all of them (including Gleam 
+I mentioned in my previous post) are way too focused on types, up to the 
+point of sacrificing the freedom of expression in order to feed the 
+statically typed Molokh. Well, at least OCaml has a powerful type inference 
+mechanism. Most languages from that camp don&#x27;t even have that and require 
+you to clutter your code with pointless definitions. Elixir though, like 
+Python, has type hints but doesn&#x27;t enforce anything. Because, you know, 
+there&#x27;s no need in being foolproof when there are no fools around.
+
+However, as I already mentioned, not everyhthing is fine and dandy, and some
+things continue to surface that just keep me puzzled. And my main problem is 
+the community that seems to know things that they deem too obvious to tell 
+anyone or even write documentation about. This, combined with their 
+obsession with the &quot;XY problem&quot; (that I already have a post about) and a 
+&quot;noneedinthis&quot;-syndrome (popular on some LUG forums btw), makes learning the 
+nuances of Elixir harder than it needs to be. If, however, this is the only 
+obstacle then it surely can be overcome once I cross a certain threshold of 
+language practice. And I don&#x27;t think this threshold is gonna be hard to 
+cross with Elixir: most concepts here are pretty straightforward to grasp 
+and replicate.
+
+In short, an ideal language for a lone ranger with solid foundation. An
+anti-Java, if you will. And this is why I like it the most.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-08-11-elixir-of-freshness.txt</link>
 <title>(2025-08-11) Elixir of freshness</title>
 <description><![CDATA[<pre>
@@ -17359,6 +17446,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
