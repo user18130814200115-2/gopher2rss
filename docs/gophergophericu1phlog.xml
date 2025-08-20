@@ -5,6 +5,134 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Down-the-rabbit-hole--9front-pt2.md</link>
+<title>Down the rabbit hole  9front pt2                           2025-08-20</title>
+<description><![CDATA[<pre>
+# Down the rabbit hole  9front pt2
+
+It&#x27;s a heavy time investment learning a new system and unlearning old
+habits.  Today however I feel I have made a little progress.
+
+
+## No usable web browser
+
+I&#x27;ve overcome this problem by installing a light linux distribution to
+a tiny dell 3040 thin client to which I&#x27;ve installed a vnc server and
+firefox-esr.  This works a lot better than I thought and does away
+with the need for the usual solutions of running 9front from within a
+vm or using drawterm from some other OS to operate the networked
+9front system.
+
+I wanted to be on bare metal using the system natively so I wasn&#x27;t
+prepared to accept those crutches.
+
+
+## Command history
+
+One of my early complaints was lack of command history. I was fairly
+sure that I must be missing something as this would be quite an
+oversight. 
+
+To recall the last command:
+&gt; % &quot;
+
+To run the last command again:
+&gt; % &quot;&quot;
+
+Now for the interesting part.
+
+To recall a command matching a pattern:
+&gt; % &quot; &lt;pattern&gt;
+
+To run a command matching a pattern:
+&gt; % &quot;&quot; &lt;pattern&gt;
+
+If you&#x27;re not satisfied with that, then how about this.
+All the text you have in your window is in /dev/text.  Want to list
+previous commands?
+&gt; % grep term% /dev/text
+
+*NOTE* Each window is its own entity with its own environment and
+/dev/text so you will only have contextual history in that window.  If
+you mount some resource in another window, don&#x27;t expect it to be
+available in another.
+
+
+## Keyboard remapping
+
+I use modal editing not only in my editor but also on the commandline.
+Due to this I use the escape key quite heavily and have in recent
+years got into the habit of remapping caps-lock to escape.
+
+Even though I don&#x27;t use modal editing in 9front I still use it on
+my server and so want the additional escape key where I&#x27;m used to
+it.
+
+In order to do this I had to first discover what keys were being
+pressed.  9front does not seem to use familiar key codes in its
+kbmap files.  In order to discover the codes in the correct format
+I had to use evdump(1) which appears to be very similar to xev under
+xf86.
+
+Once I had learned that escape was &#x27;0 1 0x1b&#x27; and caps-lock was &#x27;0
+58 0xf017&#x27;.  I looked to figure out how to add a mapping for capslock
+to escape.  Looking inside /sys/lib/ascii told me what I needed to
+know &#x27;0 1 ^[&#x27;.  So all that was required was to add &#x27;0 58 ^[&#x27; to
+my modified kbmap.
+
+I had copied the dvorak map to dvorak-riow, so as not to destroy
+the original with my tinkering.  To check if the new file worked,
+all that was required was to: 
+&gt; % cat /sys/lib/kbmap/dvorak-riow &gt; /dev/kbmap
+
+Sure enough caps-lock now behaved as escape.
+
+With that confirmed I edited my user profile to reflect the change
+of keymap for next login.
+
+
+## Keyboard shortcuts
+
+ctrl+a - jump to start of line
+
+ctrl+b - jump to text output point (useful to enter next command)
+
+ctrl+e - jump to end of line
+
+ctrl+d - seems same as linux/unix and closes terminal
+
+ctrl+f - autocomplete file names
+
+ctrl+h - delete letter backwards
+
+ctrl+w - delete word backwards
+
+ctrl+u - delete text from cursor back to the output point
+
+
+## Still To-Do
+
+* Map a key to Kmod4 to use riow (I have no windows key!)
+
+* Check sound, fix if not working. (I can see audio device)
+
+* Change rio window colours (I like white on black)
+
+* Get full resolution (1920x1200x32), currently at 1600x1200x32 vesa.
+
+* Start winwatch and riow on login
+
+winwatch is a taskbar where you can minimize your windows.
+
+
+
+
+
+
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Down-the-rabbit-hole--9front.md</link>
 <title>Down the rabbit hole  9front                               2025-08-16</title>
 <description><![CDATA[<pre>
@@ -8608,6 +8736,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
