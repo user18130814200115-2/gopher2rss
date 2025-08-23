@@ -5,6 +5,94 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Down-the-rabbit-hole--9front-pt3.md</link>
+<title>Down the rabbit hole  9front pt3                           2025-08-23</title>
+<description><![CDATA[<pre>
+# Down the rabbit hole  9front pt3
+
+I have worked a little through my To-Do list from last time.
+
+
+## Keyboard remapping for missing windows key
+
+I needed to reassign a key for Kmod4 due to having no windows key.
+
+Initially I was going to use Alt but was told it was used as the
+compose key for typing special characters. 
+
+Firstly I remapped Alt-gr.  But when I actually came to use it, there
+were functions where you had to hold the button and use the arrow
+keys, which was practically impossible.
+
+In the end I settled upon remapping Alt to Kmod4 (windows key) and
+Alt-gr to Alt.  This feels a lot more natural as the buttons are
+practically where they were intended to be if I&#x27;d had a windows key:
+&gt; 0	56	0xf868 # alt to windows key
+&gt; 2	56	0xf015 # alt-gr to alt
+
+
+## Getting sound working
+
+Fairly easy fix from reading the manual.
+
+The headphone socket was easily identifiable, once that had been
+enabled I had sound and near deafened myself.  Cating a more
+reasonable value into /dev/volume reduced the sound to a more sensible
+level.
+
+Both settings were added to my $home/lib/profile:
+&gt; echo pin 27 &gt; /dev/audioctl
+&gt; echo 70 &gt; /dev/volume
+
+
+## Change rio windows to white on black
+
+Today I was reading through a 9front added feature list and discovered
+that rio had a flag to do this.  It was simply a matter of adding -b
+to the rio startup line in my profile.
+
+
+## riow and winwatch on login
+
+Now that I once again have virtual desktops I don&#x27;t feel I need
+winwatch.
+
+winwatch was really just a crutch to save me being overwhelmed by too
+many windows and losing everything.
+
+The past few days have been a good reminder why I prefer tiling window
+managers and virtual desktops.  They really do make keeping your work
+space organized much easier.
+
+
+## Screen resolution
+
+I did a little digging today and I think my graphics card is supported
+by igfx.  The output[1] seems to suggest that igfx should allow me
+full resolution at 1920x1200.  However, on trying to initialize it, I
+get this error:
+&gt; term% aux/vga -m igfx -l &#x27;1920x1200x32&#x27;
+&gt; aux/vga: main: igfx@1920x1200x32 not in /lib/vgadb
+
+
+## Summary
+There is a bit of satisfaction, and relief, to actually now use the
+system for doing something useful.  This text was written in acme to a
+9fs filesystem, mounted over ssh, from my OpenBSD server.
+
+No longer do I need to be connected to the server via ssh to edit the
+files directly or scp the files across from my local system.  The
+process now is as simple as writing a file to a local filesystem.
+
+The mail attachment downloads directory is also shared in the same
+way, so that I have easy local access.  No more scp downloading email
+attachments!
+
+
+[1]( gopher://gopher.icu/0/files/output-of-aux-vga--vga.txt )
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Down-the-rabbit-hole--9front-pt2.md</link>
 <title>Down the rabbit hole  9front pt2                           2025-08-20</title>
 <description><![CDATA[<pre>
@@ -8736,6 +8824,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
