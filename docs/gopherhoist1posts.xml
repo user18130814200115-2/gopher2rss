@@ -5,6 +5,202 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-08-25-another-numeric-vm.txt</link>
+<title>(2025-08-25) Yet another numeric-only VM from a distant past</title>
+<description><![CDATA[<pre>
+(2025-08-25) Yet another numeric-only VM from a distant past
+------------------------------------------------------------
+Everyone would seem to agree that numeric-only programming
+languages/VMs/runtimes are such a niche topic that one could run out of them 
+very soon. However, that doesn&#x27;t seem to be the case. As I&#x27;ve been following 
+one particular YT channel called &quot;Usagi Electric&quot;, whose creator is 
+collecting and repairing various computers from the pre-IC era, one 
+particular exhibit stood out: Bendix G-15. Yeah, a literal exhibit borrowed 
+to him for repair by some museum and he&#x27;s about to ship it back. Before that 
+though, he had run a piece of software written in a language that I had 
+never seen before. Mind you, the G-15 had been released in 1956, still 
+running on a bunch of vacuum tubes and a (pretty unique) magnetic memory 
+drum that defined the entire architecture and allowed to greatly reduce the 
+amount of those tubes for the ALU, and the language in question was created 
+no earlier than Sep 1957 and evolved to its final form no later than Apr 
+1961. And while some more advanced and modern looking languages like ALGO 
+(yes, ALGO, not ALGOL) were available for this machine too, this one still 
+takes the cake in terms of being the most fun to learn and reimplement. Its 
+name is Intercom.
+
+As you may have guessed from the title, Intercom is numeric-only and doesn&#x27;t
+operate on pretty much anything else. Remember Nino&#x27;s 1V0 and my derivatives 
+of it? Well, this is the OG one straight from the middle of the past 
+century. AFAIK there were several Intercom variations (500, 550, 1000SP and 
+1000DP), I&#x27;m going to talk about the 1000DP (Intercom 1000 Double-Precision) 
+because this is what most information has been preserved about, and this 
+also is what Usagi Electric ran on his G-15. Back in the day, Intercom was 
+referred to as &quot;a high-level programming language&quot; but in fact it&#x27;s about as 
+high-level as CHIP-8 compared to the RCA1802 machine code: it just 
+abstracted away all the hardware specifics enough to not think about them 
+all the time. Going back to CHIP-8, I&#x27;m genuinely surprised how they called 
+it an interpreter when it clearly was a VM... well, there is such a thing as 
+&quot;bytecode interpreter&quot; so technically they might be correct. In case of 
+Intercom though, we are looking at numbers in plaintext, so not quite 
+bytecode yet but already quite far from a &quot;true&quot; high-level language.
+
+So, what does Intercom 1000 look like? Of course, I&#x27;m still at the beginning
+of this journey of learning it and writing my own interpreter, so please 
+forgive my possible mistakes, but from what I understood from the docs and 
+the aforementioned video, it looks like this (omitting the Tab+S sequences 
+to store each line):
+
+500900
+421000
+431002
+382100
+670000
+0511000//
+6/283
+3/141
+0690900//
+
+Confused? Yeah, me too. But it becomes more apparent when we look at the
+manual ([1]). To make things look clearer, let me add some formatting to the 
+program:
+
+  50 0900
+
+  42 1000
+  43 1002
+  38 2100
+  67 0000
+
+0 51 1000 //
+6/283
+3/141
+0 69 0900 //
+
+Still not clear what&#x27;s going on? Don&#x27;t worry, let&#x27;s figure it out together.
+The first three facts that we need to know are:
+
+1) Intercom always starts in the &quot;manual&quot; mode,
+2) since it&#x27;s the double-precision version, every number takes at least two
+&quot;words&quot; (whatever they are),
+3) there is a &quot;command editing&quot; mode that we need to enter and exit to save
+our programs, and an &quot;automatic&quot; mode that we need to enter to run them.
+
+Now, we need to find out what all those numbers mean. Quoting the manual, the
+structure of each Intercom command is: [K] [OP] [ADDR], where K is a 
+single-digit index register (can be omitted in most cases, as you can see), 
+OP is a two-digit opcode, and ADDR is a four-digit word address (for the 
+opcodes that accept valid addresses, in IC1000DP it can be 0900 to 1899... 
+or it can be 2100, more on that later). So, every Intercom instruction has a 
+fixed 7-digit structure and can be stored as an integer. But what are those 
+slashes, you may ask? Well, the single slashes within the numbers are just 
+another way of typing the decimal point, both of which (/ or .) are equally 
+valid, and the double slashes at the end of some commands denote that the 
+interpreter must execute the command as if it already was in the manual mode 
+regardless of which mode it is in now. As far as I understand, the index 
+register was not optional in this case and had to be specified explicitly.
+
+With all this knowledge and the opcode table from the manual, we can now
+decode this listing:
+
+* 50 0900 enters the &quot;command entry&quot; mode starting from the address 900,
+* 42 1000 copies a number from the address 1000 into the accumulator,
+* 43 1002 adds a number from the address 1002 to the accumulator,
+* 38 2100 prints the value from the address 2100 (guess what? it&#x27;s the
+accumulator!) and then a newline (with 33, it would print it with the Tab 
+character),
+* 67 0000 halts the program and returns to the manual mode,
+* 0 51 1000 // forcibly enters the &quot;fixed-point numeric entry&quot; mode starting
+from the address 1000,
+* 6/283 enters the number 6.283 (and increments the entry index by 2 words),
+* 3/141 enters the number 3.141 (and increments the entry index by 2 words),
+* 0 69 0900 // forcibly enters the &quot;automatic&quot; mode and starts the program at
+the address 900.
+
+Now, the mystery is no longer a mystery. The listing is just a
+four-instruction program to add two numbers wrapped into the stuff necessary 
+to enter it into the machine, enter the input data and run this program. By 
+the way, nothing prevents us from putting the entry instructions into the 
+program itself, but we&#x27;d need to manually specify the address from which to 
+continue after we&#x27;re done entering the data, so the approach used in the 
+above example might be more sensible. Like any other programming language, 
+Intercom also contains opcodes for conditional and unconditional jumps and 
+some auxiliary stuff. However, in order to truly grasp Intercom&#x27;s 
+possibilities, we need to learn three more concepts: marked jumps, machine 
+subroutines and index registers.
+
+Marked jumps are a crude form of organizing _custom_ subroutines: the runtime
+remembers where you were, and then you can jump back. Intercom supports two 
+independent marked jumps, which is plenty for organizing relatively complex 
+logic: of course, not having a true call stack can be limiting but not a 
+blocker in any way. Also, remember which year this was developed in and 
+which hardware this ran on: I&#x27;m already glad there were two jump mark 
+registers and not just one. I wish there was some sort of indirect jump in 
+addition to that, but alas. Well, this can be compensated with the fact that 
+code and data resides in the same space, so in theory there should be a way 
+for indirect jumping by writing self-modifying code. In 1958-1961. On a 
+vacuum tube computer. What else could you want?
+
+Machine subroutines are what it says on the tin: subroutines written in the
+native binary code and exposed to the Intercom runtime environment for the 
+programs to call. You specify the opcode 08 and then the subroutine address. 
+Yes, they occupy the same space too. How the machine subroutines are 
+addressed is a bit confusing as IRL they were loaded into different memory 
+&quot;channels&quot; (a &quot;channel&quot; is denoted by the first two digits of an address). 
+The standard subroutine set shipped with Intercom 1000 included square root, 
+lg (log base 10), ln (log base e), log base 2, 10^x, e^x, 2^x, sin x with x 
+in radians, sin x with x in degrees, cos x with x in radians, cos x with x 
+in degrees and arctan x with the result in radians. Not much, but again, 
+always keep in mind where and when this was used.
+
+Index registers, on the other hand, are a feature that looks pretty fresh
+even today. The idea is simple: apply some modification to an address in the 
+command without having to change it directly in the source code. This allows 
+for some form of indirect data addressing. Intercom supports nine index 
+registers (using K=0 means we&#x27;re not using any of them). Now, here&#x27;s the 
+crucial part. Every index register stores the &quot;word base&quot; (from 00 to 99) 
+that gets added to the address when this register is applied to a command. 
+But then, it also stores the &quot;word difference&quot; and &quot;word limit&quot; values (both 
+also from 00 to 99) which are used in the crazy command 76 (&quot;increment word 
+base&quot;) that changes the &quot;word base&quot; value AND performs a jump depending on 
+whether this value still is less than or equal to the &quot;word limit&quot; value. Of 
+course, there also are separate commands for changing all these parameters 
+for every index register.
+
+&quot;But wait, there&#x27;s more!&quot; If that&#x27;s not bonkers enough for you, there also
+are similar commands for changing the &quot;channel&quot; part of the address (the 
+first two digits), so you can increment the cells by hundreds just as easily 
+and perform the same kinds of hoops across the code based on whether or not 
+you&#x27;ve hit the limit. I guess this is how our ancestors got around the 
+problems of aggregating multidimensional arrays of data, which is honestly 
+pretty clever and doesn&#x27;t require a lot of CPU cycles to get done. I&#x27;m not 
+even sure that ALGO or any other high-level langs for the G-15 platform 
+could do the same at the moment. This is like an embodiment of the nested 
+for-loop without constant manual boundary checks (you just specify the data 
+boundaries at the very beginning). Now, combine THIS with the fact that you 
+can write self-modifying Intercom code and...
+
+Yeah, I know. The I/O part is still pretty boring and limited to whatever
+peripherals Bendix had available at the time. The tab-formatted output 
+functions are neat though. Also, the G-15 had a bell, and there was a 
+separate Intercom command to ring it! But here&#x27;s my idea: what if I could 
+write an Intercom interpreter that could replace these peripheral access 
+functions with something more modern and suitable for today&#x27;s systems? Like 
+file access, character I/O or even some low-level networking stuff (although 
+the latter is unlikely). Anyway, writing my own Intercom 1000DP runtime is 
+something that I definitely plan on doing. Just like my TRAC T-64 
+implementation, nntrac, this one is gonna follow the original spec as much 
+as it can, but then the extended functionality in place of the outdated I/O 
+calls will be added. But most importantly...
+
+...it will still ring a bell. Because sometimes this means more than you can
+imagine.
+
+--- Luxferre ---
+
+[1]: https://www.piercefuller.com/collect/bendix/ic1000c.pdf
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-08-18-a-week-with-elixir.txt</link>
 <title>(2025-08-18) A week with Elixir: what I understand now and what still don't</title>
 <description><![CDATA[<pre>
@@ -17446,6 +17642,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
