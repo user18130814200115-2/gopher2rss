@@ -5,6 +5,90 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Down-the-rabbit-hole--9front-pt4.md</link>
+<title>Down the rabbit hole  9front pt4                           2025-08-29</title>
+<description><![CDATA[<pre>
+# Down the rabbit hole 9front pt4
+
+The To-Do list from my second post in this series has been completed,
+other than managing to get my monitor to run at its native resolution.
+
+Unfortunately now that I&#x27;ve been using 9front for a few days there are
+some things I have as yet been unable to do and so the To-Do list
+expanded to include the following. 
+
+
+## Mounting external disks
+
+I have a 500Gb archive drive which holds my music and other files.
+The file-system is ext2 and I wanted to access my music.  I also wanted
+to be able to use usb sticks.
+
+As it turns out dos/fat32 formatted USB sticks will auto mount under /shr
+
+For ext4 there is ext4srv(1).
+
+Firstly you have to start the ext4srv service.
+
+To identify your drive and partition, run the following before and
+after connecting it: 
+&gt; % ls /dev/sd*
+
+Then simply:
+&gt; % mount /srv/ext4 /n/&lt;mount_point&gt; /dev/sd&lt;drive_id&gt;/linux
+
+I added the following to my lib/profile:
+
+&gt;	## Archive HDD
+&gt;	ARCH_DRIVE=/dev/sdU1c3b2/linux
+&gt;	if (test -e $ARCH_DRIVE) {
+&gt;		ext4srv
+&gt;		mount /srv/ext4 /n/archive $ARCH_DRIVE
+&gt;	}
+
+
+## Ham radio logging script migration
+
+Even though I had ported my ksh script to rc in advance, it seems that
+I was still using linuxisms:
+
+* No printf on 9front, used echo instead as no formatting needed.
+
+* date formatting is quite different:
+&gt;	date -uf &#x27;Y-MM-DD hh:mm:ss&#x27;
+vs
+&gt;	date -u &#x27;+%Y-%m-%d %H:%M:%S&#x27;
+
+I think you&#x27;ll agree that the date formatting in 9front is cleaner.
+
+
+## password-store
+
+This was mild torture.  Due to already having migrated the ksh script
+to rc on my OpenBSD system, I was expecting a fairly painless
+migration, but no.
+
+Things that were valid syntax on the OpenBSD implementation of rc were
+not valid on 9front.  I had lots of errors about concatenation of null
+lists, or something like...  I found that using $&quot;var instead of $var
+seemed to alleviate the errors and get things working.
+
+I also had to replace sending data to xclip with /mnt/wsys/snarf and
+use an alternative to gpg to encrypt and decrypt[1] the file.
+
+
+## Summary
+
+The only way to truly learn another system, and discover if it can meet
+your needs, is to use it how you intend to use it and do the things you
+would ordinarily do day to day.
+
+
+## References
+
+[1]( https://pspodcasting.net/dan/blog/2019/plan9_desktop.html#pim_pass )</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Down-the-rabbit-hole--9front-pt3.md</link>
 <title>Down the rabbit hole  9front pt3                           2025-08-23</title>
 <description><![CDATA[<pre>
@@ -8824,6 +8908,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
