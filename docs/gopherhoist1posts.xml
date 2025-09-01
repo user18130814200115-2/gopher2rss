@@ -5,6 +5,124 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-09-01-a-month-with-nixos.txt</link>
+<title>(2025-09-01) A month with NixOS</title>
+<description><![CDATA[<pre>
+(2025-09-01) A month with NixOS
+-------------------------------
+Yeah, it&#x27;s been about a month already since I&#x27;d ditched Arch (namely CachyOS)
+in favor of NixOS on my main machine. And here are my impressions about this 
+distro and personal thoughts about its possible future use.
+
+First, I realized that one really needs to give up on old practices in order
+to fully embrace the power of Nix. Instead of relying on profiles and 
+flakes, just let the /etc/nixos/configuration.nix file do its job. This file 
+allows you to configure literally everything that&#x27;s not configured via the 
+home directory dotfiles/dotdirs, including but absolutely not limited to the 
+package list, hardware configuration and dedicated configuration sections 
+for some popular services. These include a lot, e.g. Docker, Wireguard, 
+OpenVPN, Tor, ZeroTier One, GPG agent and even Ollama, just to name a few. 
+After making the changes, it&#x27;s just a matter of running sudo nixos-rebuild 
+switch to apply them, optionally adding --upgrade to upgrade any possible 
+packages that have a more recent version.
+
+Second, the same file provides you the access to the NixOS overlays mechanism
+that allow you to change individual package configuration or even pin their 
+versions to some values not readily packaged yet. For instance, this is how 
+I pin the llama.cpp version and enable AMD ROCm support for it:
+
+# package config overrides
+nixpkgs.overlays = [
+  (final: prev: {
+    llama-cpp = prev.llama-cpp.override {
+      cudaSupport = false;
+      rocmSupport = true;
+    };
+  })
+  # TODO temporary overrides
+  (final: prev: {
+    llama-cpp = prev.llama-cpp.overrideAttrs {
+      version = &quot;6332&quot;;
+      src = pkgs.fetchFromGitHub {
+        owner = &quot;ggml-org&quot;;
+        repo = &quot;llama.cpp&quot;;
+        tag = &quot;b6332&quot;;
+        hash = &quot;sha256-DwJbFdwxhrx616IERxeyN9GbhWralv3IpkLRTbiKe1Y=&quot;;
+        leaveDotGit = true;
+        postFetch = &#x27;&#x27;
+          git -C &quot;$out&quot; rev-parse --short HEAD &gt; $out/COMMIT
+          find &quot;$out&quot; -name .git -print0 | xargs -0 rm -rf
+        &#x27;&#x27;;
+      };
+    };
+  })
+];
+
+Whenever I&#x27;ll need to update the version, I&#x27;ll alter the &quot;version&quot; and &quot;tag&quot;
+fields accordingly, and also set the &quot;hash&quot; field to an empty string. The 
+next sudo nixos-rebuild switch run will error out by pointing me to a 
+correct hash value, and then I&#x27;ll put it in there and rerun the command to 
+build and install the new llama.cpp version.
+
+Third, there definitely is a way of handling third-party prebuilt Linux
+binaries. Most of the time, they expect to be run in an FHS environment, 
+which NixOS by itself is not. That&#x27;s why you must create FHS-compatible 
+environments with the buildFHSEnv method in order to run such binaries. For 
+example, here&#x27;s the shell.nix file I prepared for the official RVGL (Re-Volt 
+source port) game package for Linux:
+
+{ pkgs ? import &lt;nixpkgs&gt; {} }:
+
+(pkgs.buildFHSEnv {
+  name = &quot;rvgl-env&quot;;
+  targetPkgs = pkgs: (with pkgs; [
+    mesa
+    alsa-lib
+    libGL
+    libGLU
+    openal
+    flac
+    SDL2
+    SDL2_image
+    fluidsynth
+    libunistring
+    libvorbis
+  ]);
+  runScript = &quot;./rvgl&quot;;
+}).env
+
+Then I just run nix-shell from the game directory and the game starts.
+
+Fourth, I found out that frequent configuration updates create a lot of
+unnecessary artifacts and also a lot of generation entries in the boot menu. 
+There is a documented way to fight this: once you&#x27;ve rebooted into a new 
+configuration and everything works correctly, you can just run sudo 
+nix-collect-garbage -d to get rid of the artifacts and then sudo 
+nixos-rebuild switch to get rid of invalid boot menu entries.
+
+Finally, I found out that the &quot;unstable&quot; NixOS channel doesn&#x27;t really live up
+to its name and everything actually is pretty stable here. Yes, I switched 
+to this channel almost right away because I found the package versions in 
+the &quot;stable&quot; channel quite outdated, especially after living with Arch for 
+so long. So far, nothing broke and I hope nothing will. If anything, that&#x27;s 
+the greatest virtue of NixOS: no dependency conflicts by design. If I were 
+them, I&#x27;d rename the &quot;unstable&quot; channel to &quot;rolling&quot; because that looks more 
+like it, giving the Arch experience without having to worry about dependency 
+hell.
+
+As such, my overall impression on NixOS is: you invest some time in the
+beginning into learning configuration.nix and what you can do with it, and 
+then everything... just works. And keeps working. I think that if I ever 
+need to migrate to another VPS, my next provider will be the one that allows 
+installing NixOS. And on the desktop... I think it&#x27;s definitely a keeper on 
+mine, at least until anything better comes up.
+
+By the way, Linux has been desktop-ready since long ago. You aren&#x27;t.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-08-25-another-numeric-vm.txt</link>
 <title>(2025-08-25) Yet another numeric-only VM from a distant past</title>
 <description><![CDATA[<pre>
@@ -17642,6 +17760,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
