@@ -5,6 +5,71 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Timezones.md</link>
+<title>Timezones                                                  2024-12-29</title>
+<description><![CDATA[<pre>
+# Timezones and daylight saving
+
+Do we really need them and do we really need ones which change?
+
+Logically thinking, if there was a world time which didn&#x27;t change,
+then appointments, schedules and whatever else should always be
+possible to synchronize internationally without any ambiguity.
+
+The military uses UTC (GMT or Zulu) time which remains constant,
+radio amateurs also use this singular zone when logging or arranging
+schedules.
+
+
+## Why am I even talking about this?
+
+My server is located in Amsterdam and the VM is defaulted to CET, my
+local machine is GMT. Both of these change dependant on time of year.
+GMT switches to BST (UTC +1hr) at 01:00 on the last Sunday of March
+until 02:00 the last Sunday of October were it returns to GMT. I&#x27;m
+fairly sure CET follows the same schedule but is GMT +1 to begin...
+
+I send my email from the server so it has the server time. I also
+sync files between the server and my local machine so it&#x27;s obviously
+much better if their clocks are in sync.
+
+This led me to the following questions: 
+* Why do they change? 
+* Do they need to change?
+* What are the advantages and disadvantages?
+* Is there a better way?
+
+
+## Would it be weird your morning starting at 13:00?
+
+I guess we have gotten used to the small hours being the very early
+morning and the larger hours being the evening. But would it really
+make any difference? Would the benefits of a common global time
+outweigh the perceived problems? How much computation is performed
+just converting dates from one zone to another?
+
+
+## What really matters?
+
+I think what really matters are daylight hours. There have been
+various studies[0] performed by the British government over time and
+statistical analysis by safety bodies like RoSPA that strongly
+suggest that with extended daylight hours there are less road traffic
+deaths. Another benefit is that less electricity would be consumed
+keeping the lights on during darkness. 
+
+One campaign, Lighter Later, suggested a change to increased daylight
+hours, GMT+1 in winter and GMT+2 in summer, could &quot;save almost
+500,000 tonnes of CO2 each year, equivalent to taking 185,000 cars
+off the road permanently&quot;. That&#x27;s quite a claim.
+
+Why can&#x27;t we just change the alarm clock and not the time? 
+
+[0](gopher://gopherpedia.com/0/British%20Summer%20Time)
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Down-the-rabbit-hole--9front-pt4.md</link>
 <title>Down the rabbit hole  9front pt4                           2025-08-29</title>
 <description><![CDATA[<pre>
@@ -8908,6 +8973,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
