@@ -5,6 +5,99 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-09-08-consumption-creativity.txt</link>
+<title>(2025-09-08) As long as you are consuming, you are not creating</title>
+<description><![CDATA[<pre>
+(2025-09-08) As long as you are consuming, you are not creating
+---------------------------------------------------------------
+As work has started taking most of my focus time, I&#x27;m in a bit of a pause
+regarding all my hobbies (except learning how to play Riichi Mahjong, of 
+course). This, however, isn&#x27;t going to extend for long, but at the same time 
+it allowed me to think about some things I just didn&#x27;t have capacity to 
+think about. While watching yet another video on YT, I suddenly had a 
+thought that bothers me to this day: &quot;am I doing the right thing by watching 
+YT instead of building something of my own right now, at this very moment?&quot; 
+Indeed, I came to a conclusion that no matter what you&#x27;re doing, your 
+creativity process stops once you start consuming other content.
+
+This, to some extent, also applies to tools you use in your creative work.
+You inevitably consume them even while you&#x27;re creating. One thing that can&#x27;t 
+be doubted though is the creation still is attributed to you, not the tool. 
+For instance, lexipwn wasn&#x27;t created by Vim, Go and Fyne; it was created by 
+me using those three tools. i still was consuming them but also putting in 
+my own input for producing some valuable output. The tools I use are quite 
+advanced but I still am in control of the process. The real problems start 
+when your own input becomes almost nothing compared to what the tools do for 
+you. But an even bigger problem is... that&#x27;s what the users had always been 
+wanting.
+
+We may despise all those &quot;AI art&quot; and &quot;vibe coding&quot; trends as long as we want
+(and rightfully so), but the reality is, that&#x27;s how people had been 
+imagining the future of interaction with computers almost since the 
+beginning of the information age. Not a single command entered, not a single 
+key pressed, ideally. And in pursuit of this utopian goal, this is not the 
+first or even the fifth time either when the masses have given up a bit of 
+control and freedom for convenience. Transition from simple and 
+understandable architectures to x86, from procedural and stack-based 
+programming to OOP, from simple graphical APIs to OOP-driven GUIs, from IRC 
+and forums to &quot;social networks&quot; and anti-privacy messengers, from on-premise 
+servers and self-hosting to cloud computing... Does it surprise anyone that 
+now some people already do something as stupid as relying upon LLMs as a 
+replacement for search engines, let alone coding assistants? Yes, those 
+people probably don&#x27;t even realize that they turn into consumers from 
+creators more and more and more, but they still think they are in control, 
+and nothing can be done about it.
+
+I don&#x27;t want to be that guy but sometimes I wish for a global technological
+disaster to happen, just because they won&#x27;t understand the truth in any 
+other way. They keep installing Faildows on mission-critical systems (as if 
+Stuxnet, WannaCry and Crowdstrike weren&#x27;t enough for anyone with a 
+functioning brain to stop doing that), they keep giving up their private 
+data to megacorps (and, by proxy, the data of their unsuspecting customers 
+in case they represent businesses), and now they also trust (cloud-based!) 
+LLMs to do sensitive jobs. IMO they deserve to suffer all the consequences 
+of such an event (the probability of which is increasing year by year), but 
+the problem is, totally innocent people will also be affected. The only way 
+of safeguarding them is to make them more literate in topics they don&#x27;t want 
+to know about in the first place, so I don&#x27;t know how to deal with this 
+besides spreading out the basic counterpropaganda like:
+
+* don&#x27;t use any cloud-based LLM (especially ChatGPT) for anything serious,
+* don&#x27;t use anything by M$ or Meta or Adobe at all,
+* stay away from iCrap in case you are choosing your only mobile device,
+* stay away from 95% of Android phone brands unless you know how to customize
+their firmware, because the stock one comes with malware preinstalled,
+* the same applies to Google Pixels: reflashing to GrapheneOS or DivestOS or
+LineageOS is now a must if you care about your data,
+* what gets into the cloud no longer belongs to you, no matter what you&#x27;re
+told,
+* if a task can be completed offline, this should be a preferred option,
+* in case a program is not FOSS, most likely it&#x27;s designed to spy on you or
+otherwise rob you (even if you already paid for it), and there&#x27;s no legal 
+way to prove otherwise.
+
+There, I said it. These are the principles that anyone (again, with a
+functioning brain) should place before any thought of convenience in order 
+to not fall victim to scammers (both small-scale and large-scale) and to 
+even have a chance of survival in an event of a tech-induced crisis. Another 
+piece of advice, although it obviously might not apply to everyone out 
+there, is to learn a programming language yourselves and start DIYing your 
+own tool ecosystem. I think both Tcl and Python are good starting points for 
+those who know nothing about programming yet. The point of this is to feel 
+enough independence from the vendors who make decisions for you. 
+Additionally, if you already are so into LLMs that you can&#x27;t imagine your 
+life without them, opt for privacy-first solutions and run them locally as 
+much as possible. Although I have several things against Ollama and LM 
+Studio, both of them are good starting points for newcomers as well.
+
+At the end of the day, my point is: keep the balance between consumption and
+creativity. Use the tools but don&#x27;t let yourself become one. Hope for the 
+best, prepare for the worst.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-09-01-a-month-with-nixos.txt</link>
 <title>(2025-09-01) A month with NixOS</title>
 <description><![CDATA[<pre>
@@ -17760,6 +17853,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
