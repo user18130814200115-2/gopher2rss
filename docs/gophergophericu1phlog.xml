@@ -5,6 +5,57 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Confession.md</link>
+<title>Confession                                                 2025-10-09</title>
+<description><![CDATA[<pre>
+# Confession
+
+My adventure down the rabbit hole was short lived.
+
+Using a secondary device so that I could access a web browser that
+would work on modern websites became a significant annoyance, as did
+rc shell&#x27;s handling of quoting and non-completion of program names.
+
+I also hate the terminal windows and often find my cursor some place
+other than where I want it, yes I learned about ctrl-b? to get me
+to that point and a host of other incantations. But collectively
+it was all just too much when I had a system which was complete and
+tolerable to hand.
+
+So I&#x27;m back on OpenBSD, using rc wrapped in readline as my shell,
+except when I find it too annoying. I also finding myself using vim
+again rather than vis. I am writing this using vis but I find vim&#x27;s
+spell checking integration nicer than piping the document through
+spell which just presents me with a list of misspelled words that
+I have to hunt down and modify.
+
+I&#x27;m sure I could quite easily script something to highlight the
+offending words. Maybe I should do that and would feel a little
+happier.
+
+riow&#x27;s key bindings probably made the experience last longer than
+it would have otherwise. I find the constant use of the mouse tedious
+and unnecessary.
+
+I also dislike the inconsistency between acme and rio, acme has its
+own way of doing things which in some cases is quite at odds with
+rio. In the end I preferred to use sam rather than acme as an editor
+partly due to this.
+
+So there we have it, my confession and my reasons.
+
+
+## Summary
+
+It&#x27;s a real pity as the underlying principles of the operating
+system are sound and it does fix and simplify a number of UNIX short
+falls. But like many things that are sound in principle, in use
+they can have problems. None of them individually unsurmountable,
+but there are just too many annoyances for me.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Timezones.md</link>
 <title>Timezones                                                  2024-12-29</title>
 <description><![CDATA[<pre>
@@ -8973,6 +9024,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
