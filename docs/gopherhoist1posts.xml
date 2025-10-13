@@ -5,6 +5,131 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-10-13-a-short-ai-rant.txt</link>
+<title>(2025-10-13) A short rant about "democratizing" genAI, hobbyist software etc</title>
+<description><![CDATA[<pre>
+(2025-10-13) A short rant about &quot;democratizing&quot; genAI, hobbyist software etc
+----------------------------------------------------------------------------
+As you might have noticed, my break from phlog posting had been extended by a
+week from what I&#x27;d been planning. Too much had been going on throughout this 
+month, so I definitely needed to keep my attention span narrow enough. I 
+promise that I am going to eventually return to the previous topics like 
+homebrew VMs or abacus, but right now I&#x27;d like to rant about the state of 
+genAI for &quot;mere mortals&quot; and some other adjacent topics without a particular 
+structure. So, here&#x27;s my chain of thoughts (no pun intented).
+
+Recently, I had something remind me about the existence of KoboldCpp ([1]): a
+single-binary LLM inference runner that uses llama.cpp under the hood but 
+also incorporates a simple web-based chat UI, a set of various API endpoints 
+(its own, OpenAI-compatible and Ollama-compatible, among many others) and a 
+simple GUI to easily run not only text generation, but also image 
+generation, TTS and speech recognition models (via the included 
+stable-diffusion.cpp, TTS.cpp and whisper.cpp distributions respectively). A 
+couple years ago, before LM Studio even was a usable thing, KoboldCpp 
+already gained some traction among lusers who just wanted something fully 
+local for roleplaying scenarios. It was one of the first pieces of software 
+that was considered something to &quot;democratize&quot; running LLMs for a layman. 
+For me, however, as fast and efficient as it is, there are two caveats: 1) 
+it doesn&#x27;t directly use the llama.cpp binaries but the underlying GGML 
+engine instead (exposing a totally different set of commandline parameters), 
+hence some strange defaults like the default maximum generated token limit, 
+2) the GGML engine version it uses doesn&#x27;t get updated as often as the 
+upstream llama.cpp, so some models still can be out of reach, like the 
+recent Granite 4 MoE series. It&#x27;s only a matter of time and patience when 
+the newer engine gets finally merged into Kobold.
+
+As of now, I haven&#x27;t yet explored its image generation or speech capabilities
+but I run the text generation server as follows:
+
+#!/bin/sh
+# Sensible defaults to run KoboldCpp
+CTXSIZE=32768
+# hardware options
+# HARDOPTS=&quot;--usecpu --gpulayers 0 --usemmap&quot;
+HARDOPTS=&quot;--usevulkan --flashattention --gpulayers 99&quot;
+# run it
+koboldcpp --defaultgenamt $(($CTXSIZE&lt;8192?$CTXSIZE:8192)) --skiplauncher
+--contextsize $CTXSIZE $HARDOPTS $*
+
+Then I just pass the GGUF file as the parameter to the script and that&#x27;s it.
+In the model list in the API, it gets exposed as 
+&quot;koboldcpp/filename_without_ext&quot;. For CPU-only inference, the second 
+(commented) line is necessary. Also, as you can see, KoboldCpp can only 
+generate 8192 tokens at a time at most, even when the context window is 
+larger. The upstream llama.cpp doesn&#x27;t have such limitations. On the upside, 
+in case you need to only deploy KoboldCpp to non-GPU systems, there is a 
+&quot;nocuda&quot; binary version that weighs much less, and also an &quot;oldpc&quot; version 
+that disables the AVX2 instructions automatically (which requires a separate 
+CLI flag in the other builds) and performs some other tricks to run the 
+models on older hardware.
+
+Well, why would I even consider using this instead of the usual llama-server
+(or llamafile, previously covered here, if I need a single-file deployment)? 
+Well... KoboldCpp really is easier on RAM consumption. I&#x27;ve purchased a 
+really cheap VPS (around $23/year!) with the only caveat being it having a 
+single core and 512 MB or RAM. Are there any modern LLMs suitable for such 
+amounts of RAM? Sure, there are, like Gemma 3 270M in the 4-bit QAT version. 
+But аre there any engines suitable for running this LLM on such amounts of 
+RAM? Well, KoboldCpp is one of them, I just had to append the &quot;--noavx2&quot; 
+flag for it to not throw the &quot;illegal instruction&quot; error and still get up to 
+the speed of 11 to 14 tokens per second (given that the context window size 
+had to be decreased to 4096 tokens). Ten times slower than on a &quot;normal&quot; 
+system but still perfectly adequate. The llamafile-based deployment, on the 
+other hand, showed about 5 to 6 t/s at most while obviously consuming much 
+more RAM per inference. If/when time permits, I&#x27;m also going to dig up some 
+of my older hardware and run some more tests.
+
+Another side of the coin is the actual usage of all this goodness. Recently,
+a controversial question has emerged: &quot;If LLMs became so good at coding, 
+where&#x27;s all the hobbyist level and indie software, why aren&#x27;t we 
+experiencing a boom of it?&quot; Well, from my own experience, I think I know the 
+answer to this question, and it&#x27;s not a simple one either, it&#x27;s as 
+multifaceted as the technology itself. First, true indie developers most 
+often are resource-conscious, so they will be the last ones to adopt LLMs 
+for any coding assistance. They, and some of them rightfully so, view 
+themselves as artisans instead of code monkeys, and like to be in control of 
+everything that happens in their creations. I share this view myself, so I&#x27;m 
+never going to use LLMs for anything but some boring but inevitable 
+boilerplate parts of code. The second reason we still aren&#x27;t experiencing 
+that indie boom to the fullest is that many &quot;vibe coders&quot; really thought 
+that LLM could think FOR them throughout the entire development process, 
+rather than merely assisting with the boilerplate coding part. Offloading 
+design decisions and mission-critical bits of code to LLMs already has lead 
+to some disasters, with many and many more to come. We just aren&#x27;t at the 
+&quot;good enough&quot; phase yet, no matter how corporate marketoids are trying to 
+convince you otherwise. The third reason is something I already have 
+discussed a bit in the past in this phlog, and it has little to do with LLMs 
+per se: desktop software just isn&#x27;t that popular anymore. An average vibe 
+coder would try generating a mobile app at best, but most of the time, it&#x27;s 
+just some React-based browser-oriented crap. I mean, instead of React, you 
+can insert Next.js, Expo or whatever RAM-hogging framework is popular this 
+week of the month, that doesn&#x27;t really matter. What matters is that, in the 
+eyes of the masses, the definition of &quot;software&quot; really has shifted towards 
+this. And because of the amount of already existing JSX/TSX garbage to train 
+on, it&#x27;s pretty much the only coding thing LLMs are *kinda* good at now. Can 
+it be usable by the general public? Maybe. Can it compete with the industry 
+giants? Probably. Does that qualify as &quot;indie development&quot; in my eyes? Hell 
+no. Truly independent software never requires a gigabyte-sized browser 
+engine to run it.
+
+Want to create independent desktop software? Learn Tcl/Tk, or at least
+Tkinter if you already know Python (just because Python already ships with 
+it). Wanna go mobile too? Learn Go + Fyne then. Wanna go online? Learn 
+Elixir. There are lots of better ways of doing stuff than just succumbing to 
+the mainstream crapware frameworks for languages that aren&#x27;t supposed to be 
+used for that stuff in the first place. By choosing the right tool for the 
+job in the beginning, you make it much easier for your future self. And 
+then, and only then, like I already said some time ago, you may use LLMs to 
+assist you. Not think for you but to help you with writing the boring parts 
+of your implementation while you&#x27;re still in control. Sober, aware and 
+independent.
+
+--- Luxferre ---
+
+[1]: https://github.com/LostRuins/koboldcpp
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-09-16-another-break.txt</link>
 <title>(2025-09-16) Taking yet another two-week break</title>
 <description><![CDATA[<pre>
@@ -17869,6 +17994,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
