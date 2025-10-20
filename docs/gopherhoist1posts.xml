@@ -5,6 +5,107 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-10-20-another-buzzword-debunked-workflows.txt</link>
+<title>(2025-10-20) Another buzzword debunked: workflow orchestration</title>
+<description><![CDATA[<pre>
+(2025-10-20) Another buzzword debunked: workflow orchestration
+--------------------------------------------------------------
+What I especially &quot;love&quot; about tech buzzwords is how they make really simple
+(and obvious) concepts sound complicated and important. Recently, we&#x27;ve been 
+forced to use a particular &quot;workflow orchestration&quot; tool at work, which, to 
+be honest, only has added more complexity to the codebase without any real 
+benefit. My personal attempt to tackle the same problem, on the other hand, 
+took under 20 SLOC of a shell script, but first, let&#x27;s determine what the 
+problem is. According to IBM:
+
+&gt; Workflow orchestration is the practice of coordinating multiple automated
+tasks across business applications and services to help ensure seamless 
+execution. 
+
+If you consider this definition vague AF, you&#x27;re not alone. However, what it
+usually translates to is:
+
+1. Your processes are divided into isolated tasks taking some input and
+returning some output.
+2. These tasks are chained together using workflows, which, again, take some
+input and return some output.
+3. The &quot;workflow orchestration&quot; tools just provide a &quot;standardized&quot; way of
+writing and calling the workflow and task code.
+
+If you still consider this nothing special, well... You&#x27;re absolutely right.
+If we look at this with clear eyes, that&#x27;s essentially how any procedural 
+programming is done, including scripting. Yet somehow, when it comes to 
+calling multiple programs instead of one, that&#x27;s not called scripting 
+anymore, but &quot;workflow orchestration&quot;. And my &quot;orchestration framework&quot; in 
+18 SLOC of shell, called ShellFlow (name it flow.sh), just shows all the 
+absurdity that&#x27;s going on:
+
+#!/bin/sh
+
+# print to stderr
+debugout() { printf &#x27;%s\n&#x27; &quot;$*&quot; &gt;&amp;2; }
+
+# format the message and print to stdout
+flowout() { printf &#x27;%s\t%s&#x27; &quot;$1&quot; &quot;$2&quot;; }
+
+# use this in all task definitions
+run-task() {
+  input=&quot;$(cat)&quot;
+  wf=&quot;$(printf &#x27;%s&#x27; &quot;$input&quot; | cut -f 1)&quot;
+  body=&quot;$(printf &#x27;%s&#x27; &quot;$input&quot; | cut -f 2-)&quot;
+  flowout &quot;$wf&quot; &quot;$(do_task &quot;$wf&quot; &quot;$body&quot;)&quot;
+}
+
+# ShellFlow entry point
+sfrun() {
+  SFLIB=&quot;$(readlink -f &quot;$0&quot;)&quot;
+  wfbase=&quot;$(basename &quot;$1&quot;)&quot;
+  WFDIR=&quot;$(readlink -f $(dirname -- &quot;$1&quot;))&quot;
+  cd &quot;$WFDIR&quot;
+  debugout &quot;Starting workflow $wfbase...&quot;
+  flowout $wfbase &quot;$(cat)&quot; | SFLIB=&quot;$SFLIB&quot; WFDIR=&quot;$WFDIR&quot; $SHELL $wfbase \
+    | cut -f 2-
+}
+
+[ &quot;$(basename &quot;$0&quot;)&quot; == &quot;flow.sh&quot; ] &amp;&amp; sfrun $*
+
+This tool accepts the workflow script file as the argument and any stdin data
+as the workflow input. Then, we can create a workflow script like this, 
+using the most natural thing for the purpose, Unix pipelines:
+
+./task1 | ./task2 | ./task3 ...
+
+And each task script, provided it&#x27;s also shell-based, would look like this:
+
+#!/bin/sh
+. $SFLIB # source the library part of the script
+do_task() { # accepts workflow name into $1 and all input into $2
+   # your actions here
+}
+run-task
+
+In the task, just print your output data as usual and print your debug info
+into stderr (e.g. using the provided debugout shell function). You can also 
+vary your task logic depending on the particular workflow name. In fact, if 
+your task is not shell-based, just extract the first tab-separated field of 
+stdin as the workflow name and treat the rest as the actual data input.
+
+That&#x27;s it. That&#x27;s all there is to it. Everything else is bells and whistles
+around the same concept. It&#x27;s pretty straightforward to add a server side to 
+call any of the workflows remotely if you need to. You can even add a UI 
+with call statistics and success metrics, and so on. It won&#x27;t change the 
+fundamentals in the slightest. Yet there are so many &quot;products&quot; competing 
+exactly around all those bells and whistles and not offering anything really 
+new. Now, of course, half of those &quot;products&quot; also claim to be &quot;AI-driven&quot;. 
+I think those claims can, but not necessarily need to, be easily debunked 
+too.
+
+Keep it simple, stupid. Just use shell.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-10-13-a-short-ai-rant.txt</link>
 <title>(2025-10-13) A short rant about "democratizing" genAI, hobbyist software etc</title>
 <description><![CDATA[<pre>
@@ -17994,6 +18095,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
