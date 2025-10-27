@@ -5,6 +5,60 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-10-27-return-to-the-roots.txt</link>
+<title>(2025-10-27) Make computing personal again: return to the roots</title>
+<description><![CDATA[<pre>
+(2025-10-27) Make computing personal again: return to the roots
+---------------------------------------------------------------
+Digging out old (or otherwise weak) hardware is extremely useful sometimes.
+It helps you rememeber what&#x27;s really important and what&#x27;s just bells and 
+whistles. For instance, after successful tryouts of Alpine and MX Linux, the 
+next candidate for my old MacBook Air A1370 became Bodhi Linux. Yes, it&#x27;s 
+based upon (an older version of) Ubuntu LTS, but the system itself is 
+revamped enough to consider it quite an independent distro. I&#x27;d say, despite 
+some idiosyncrasies, it&#x27;s just as capable as MX for &quot;reviving&quot; such old 
+laptops with 2GB RAM and a weak dual-core CPU. But that&#x27;s not my primary 
+topic of today. It&#x27;s just a case when I, after installing this distro, 
+started thinking about which software I really need in my day-to-day life.
+
+The first thing is, of course, a good terminal emulator. As I probably
+already mentioned, ligature support is a must for me (Fira Code font in 
+particular), so I use patched st for X and Contour for Wayland. Inside the 
+terminal, my workflow revolves around three things: a nice shell (usually, a 
+recent bash or oksh), a nice text editor (modern Vim) and a nice session 
+manager (tmux). All these things require additional configs and plugins that 
+I have used to move from system to system. This is complemented with a few 
+other third-party CLI utilities such as grep, curl, aria2, rlwrap, jq, fq, 
+fzf, mpg123, ffmpeg, sox and the imagemagick package. That comprises like 
+90% of what I use from the generic perspective, besides the browser, the mpv 
+player, LLM-related stuff, VPN-related stuff (like ZeroTier CLI), Android 
+platform tools and some proprietary messenger apps.
+
+What about the rest, you may ask? Well, the rest is pretty much DIY: my own
+scripts written in POSIX shell, POSIX AWK, Tcl and sometimes Python. And 
+this is the essence of how I want it to stay. In fact, once the tooling 
+fundamentals are stabilized with the aforementioned things, one doesn&#x27;t need 
+a lot besides shell, AWK and Tcl/Tk to do pretty much anything else on a 
+local desktop. These three runtimes are 1) much simpler and more enjoyable 
+to learn, 2) require much less system resources, and 3) train your brain 
+much better than any of those modern software stacks, let alone any 
+genAI-related &quot;vibe coding&quot; nonsense. Alas, most distros (esp. ones based on 
+the oldstable Debian/Ubuntu versions) still ship with Tcl/Tk 8.6 instead of 
+9.0 (and 8.6 still has much better &quot;ecosystem&quot; support), but that doesn&#x27;t 
+matter much anyway, it still is a solid choice and I can&#x27;t emphasize enough 
+how easy it is to pick up by a total newcomer to programming. It&#x27;s a true 
+gem of indie software development, and I feel like this gem is yet to be 
+rediscovered by those who want to make computing personal again.
+
+That being said, I also need to dig up another laptop of mine, an even older
+one. Because, with the right software stack, there&#x27;s no such thing as 
+obsolete hardware. And I think I already have every piece required to prove 
+this point.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-10-20-another-buzzword-debunked-workflows.txt</link>
 <title>(2025-10-20) Another buzzword debunked: workflow orchestration</title>
 <description><![CDATA[<pre>
@@ -18095,6 +18149,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
