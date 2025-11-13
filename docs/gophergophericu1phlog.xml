@@ -5,6 +5,41 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Electrolytic-Capacitors.md</link>
+<title>Electrolytic Capacitors                                    2025-11-13</title>
+<description><![CDATA[<pre>
+# Electrolytic Capacitors
+
+Usually the first thing to fail on your electronics devices, after
+the batteries, are the electrolytic capacitors. 
+
+Over time they dry out and go out of specification, which can cause
+damage in itself.  However, the tops can mushroom and even split,
+resulting in acidic goop leaking all over your precious circuits. If
+left, it can cause a lot of damage to the PCB and other components.
+
+Most often when something has stopped working I will open it up and
+visually inspect the capacitors. Usually I can find two or three
+obvious candidates. Even if you can&#x27;t identify the problem ones
+visually, sometimes they give off a tell tale high pitched whine.
+
+Electrolytic capacitors are very cheap and easily obtainable. I&#x27;ve
+repaired a lot of devices just by replacing a few capacitors, costing
+only a few pounds.
+
+The reward is the satisfaction of reviving your device, or someone
+else&#x27;s, giving it a second life and keeping it out of landfill.
+
+Today I revived my old Dell Optiplex GX620. I&#x27;d taken it apart and
+bought the replacement capacitors months ago, but today I finally got
+around to replacing them. 
+
+The GX620 is now working again, cleaned and reassembled ready for a
+new owner.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Confession.md</link>
 <title>Confession                                                 2025-10-09</title>
 <description><![CDATA[<pre>
@@ -9024,6 +9059,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
