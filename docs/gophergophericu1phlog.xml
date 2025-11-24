@@ -5,6 +5,40 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Money-saving-and-minimalism/Generic-batteries.md</link>
+<title>Generic batteries                                          2025-11-24</title>
+<description><![CDATA[<pre>
+# Generic batteries
+
+I have just received two sets of 4 rechargeable batteries that I&#x27;d
+recently ordered, one of AA and one of AAA.
+
+I have several devices which use this type of generic battery. In
+fact, when I am purchasing electronics, I look specifically for
+devices which use generic, user replaceable, batteries.
+
+My preferred battery brand is Eneloop[1]. Produced in Japan by either
+Panasonic or Sanyo, these batteries arrive pre-charged, retain the
+majority of their charge (70% over 10yrs) and have a very good run
+time. 
+
+I have not found a better quality rechargeable battery. In
+combination with a smart charger, which varies the current put into
+the battery depending on state and stops charging them when they are
+full, on a per cell basis. They provide a very good reliable,
+instantly replaceable, generic source of power.
+
+Additionally, the new packaging informs us that the batteries are
+&quot;pre-charged with solar energy&quot; and that the packaging uses &quot;68% less
+paper&quot;.
+
+Great product.
+
+![1]( gopher://gopher.icu/I/images/eneloop.jpg )
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Electrolytic-Capacitors.md</link>
 <title>Electrolytic Capacitors                                    2025-11-13</title>
 <description><![CDATA[<pre>
@@ -9059,6 +9093,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
