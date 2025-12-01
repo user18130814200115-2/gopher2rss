@@ -5,6 +5,69 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-12-01-my-take-on-cyberdecks.txt</link>
+<title>(2025-12-01) My take on cyberdecks</title>
+<description><![CDATA[<pre>
+(2025-12-01) My take on cyberdecks
+----------------------------------
+The winter has come, and I&#x27;m returning as promised. Throughout the no-post
+November, I have remembered another long-forgotten obsession of mine: DIY. 
+And I also remembered a trend among some DIY+cyberpunk folks: building 
+cyberdecks.
+
+So, what&#x27;s a cyberdeck in the first place? In the original cyberpunk novels,
+these were the devices with some kind of brain-to-net interface to jack into 
+the cyberspace. IRL though, the broadest definition of a cyberdeck is: &quot;a 
+DIY portable PC in a non-standard form factor for specialized or general 
+usage&quot;. While this technically is true, I&#x27;d add some more constraints to 
+this definition. You see, a lot of cyberdecks I&#x27;ve seen online have been 
+built with full access to manufacturing facilities like 3D printers or even 
+CNC machines. Which, in my opinion, contradicts the entire cyberpunk vibe. 
+So, I personally define a true real-world cyberdeck as a DIY portable PC 
+that:
+
+1) has a non-standard form factor,
+2) is hand-assembled from existing scrap/spare parts with minimum outside
+sourcing,
+3) once assembled, is fully autonomous but modular enough to replace **any**
+part with ease.
+
+So... I tried assembling something according to this definition. Of course, I
+still had to order most peripherals but the &quot;brain&quot; of the system was 
+something I already had: a Raspberry Pi 5 with 8Gb RAM. As the case, I chose 
+a cheap Mano Standard toolbox; as the screen, a 7&quot; Waveshare clone with HDMI 
+and touch; as the power bank, I settled upon something from Sandberg with 
+the continuous power function, so that I could plug an external source in 
+and out without turning of the Pi itself. The keyboard was a bit of a 
+problem but I found some 60% mechanical wireless &quot;gaming&quot; one, which barely 
+fits but the case still closes. Other than the keyboard, every other 
+component gets &quot;sandwiched&quot; in place: powerbank to the bottom, then the Pi 
+itself, then the display. I also wired out a C-C cable to charge the bank, a 
+USB3 extender from the Pi to connect other hubs and peripherals, and a USB3 
+extender from the bank to connect the Pi power itself. Why? Because, as you 
+know, Raspberries don&#x27;t have a power switch, so that connection doubles as 
+one to conserve the powerbank energy when not in use. To prevent jiggling, I 
+tried hot-gluing velcros inside the case, but that turned out to be rather 
+unsuccessful. I think that enough wiring inside would prevent it much better.
+
+Overall, I think I&#x27;m rather close to implementing what I envisioned here.
+Obviously, I&#x27;ll also need some external storage to transfer large files like 
+ZIM archives of Wikipedia and Project Gutenberg there. Luckily, I have a 
+Gembird M2 SSD enclosure that I can use with my old 512GB SSD from this very 
+Thinkpad. This is one of the few other things that still can fit there. 
+Again, should I ever need to replace the SSD itself, it&#x27;s a matter of 
+disconnecting the enclosure and replacing the innards of it. Modularity 
+looks like the greatest strength of this build.
+
+Then, some stickers for overall aesthetics and I&#x27;m done with it. Will I
+actually use it? Of course I will. This is gonna be my main backup computer 
+for all non-work activities, built out of both necessity and curiosity. And 
+I hope the concept will prove itself over time.
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-11-03-final-break-in-the-year.txt</link>
 <title>(2025-11-03) Final break in the year: no-post November</title>
 <description><![CDATA[<pre>
@@ -18172,6 +18235,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
