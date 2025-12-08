@@ -5,6 +5,93 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-12-08-on-indie-web.txt</link>
+<title>(2025-12-08) On the "indie Web", real and fake</title>
+<description><![CDATA[<pre>
+(2025-12-08) On the &quot;indie Web&quot;, real and fake
+----------------------------------------------
+My recent week had been extremely difficult in every possible sense. However,
+I managed to stumble upon an interesting phenomenon I never met before: fake 
+indie Web. What do I mean by that?
+
+Imagine signing up in a place that poses to be the opposite of big,
+commercialized Web, &quot;striving to bring back the spirit of Web 1.0&quot;, designed 
+in a cyberpunk asethetics, emphasizing on usage of no AI, algorithms, 
+tracking or other modern scum, distancing itself from &quot;the cyber malls of 
+the corpos&quot;. The place looks nice and promising a great hacker vibe at the 
+first glance.
+
+But then, you open the feed. And get instantly bombarded with words like…
+Windows. Iphone. Spotify. Apple Music. Rust. C#.
+
+&quot;Lolwut? Where am I really?&quot;
+
+And then you read the FAQ:
+
+&gt; Images aren’t loading? They need a WebGL shader component to render. Enable
+WebGL in your browser settings.
+&gt; Stack? Nuxt frontend. Firebase backend. Vercel hosting. Your email and
+password are safe and encrypted using Firebase Auth.
+
+And then you open the CSS styles. Tailwind over the top.
+
+And the site doesn’t even display in Dillo Plus because its &quot;Vercel security
+check&quot; requires JS. Even with JS, the auth doesn’t work on some Android 
+browsers.
+
+And then, the more you read the feed, the more you realize all of it is a
+fucking charade.
+
+No real hackers there. No believers in the cause. Not a single person who
+knows what it’s really like to live in a dystopia (which I’ve been trapped 
+in for the last 4 years btw). Just average lusers with their first-world 
+problems, not having a slightest clue what they are doing, hipsters who 
+think they are somehow different (by going all-in form over function) and 
+aggressive commies who call to silence and cancel anyone who doesn’t agree 
+with their doctrine of conformity.
+
+It’s just another fad. Just another pseudo-underground to steal your
+attention from what really matters.
+
+And I fell for it too and spent several days lurking there before realizing
+what it really was.
+
+Social media are doomed not because of all of the modern surveillance and
+algorithm techniques, but because people (at least their online part) have 
+changed throughout the last 20 years. You can fix the medium but you can&#x27;t 
+fix the users. They are different now. Most of them already have grown up 
+without any notion of thinking outside the propaganda narratives. They 
+either keep discovering obvious facts as some kind of great revelations, or 
+they seal themselves hermetically within their world of pink ponies and get 
+offended if someone tries opening their eyes on the truth, which can be even 
+uglier than Rust language syntax.
+
+This is why truly independent Web can never exist in the form of social media
+anymore. By the way, I have decided to return to the Web in the form of 
+ad-hoc no-JS microblogging ([1]) and some space for JS-based experiments 
+([2]). Yes, the second website was created on Neocities, which is a fair 
+effort to support individual creativity from the true early Web days 
+perspective. It even has a CLI program for easy uploading, as well as a HTML 
+editor built into the admin panel itself, also hosting some HTML/CSS 
+tutorials for total noobs. Which, to be honest, is the right way to go 
+instead of forcing everyone into the same design style and decisions made 
+for them by someone else. The more people know the actual HTML and CSS 
+instead of endless bloatware frameworks, the better Web as a whole can be.
+
+What if everyone, instead of using a locked down social platform, created
+their own Web pages with their own unique content, linking to each other’s 
+posts on different sites? Crazy, huh?
+
+Anyway, in case you&#x27;re not doing this, please don&#x27;t call yourselves &quot;indie
+web&quot;.
+
+--- Luxferre ---
+
+[1]: https://lynx.luxferre.top
+[2]: https://ironlynx.neocities.org
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-12-01-my-take-on-cyberdecks.txt</link>
 <title>(2025-12-01) My take on cyberdecks</title>
 <description><![CDATA[<pre>
@@ -18235,6 +18322,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
