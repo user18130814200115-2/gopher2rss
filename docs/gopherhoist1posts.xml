@@ -5,6 +5,55 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-12-22-repl-more-than-enough.txt</link>
+<title>(2025-12-22) When a REPL is more than enough</title>
+<description><![CDATA[<pre>
+(2025-12-22) When a REPL is more than enough
+--------------------------------------------
+What would you do when you find a more than decent piece of hardware but
+can&#x27;t find an equally decent piece of software for this hardware? Write your 
+own, of course.
+
+So, my T-Decks (LilyGo T-Deck Plus handhelds, to be exact) have finally
+arrived and I tried out a lot of firmware options available for them. What I 
+settled upon was a CircuitPython distribution with a custom tdeck_repl 
+package for the built-in keyboard to work correctly there. My goal, however, 
+is to get this setup fully autonomous. So, I have started a project to 
+create all necessary components for comfortable T-Deck usage experience 
+directly from the CircuitPython REPL. And I have named this project 
+T-DeckARD ([1]), which stands for &quot;T-Deck Augmented Runtime Distribution&quot; 
+and, of course, is a tongue-in-cheek reference to Blade Runner cyberpunk 
+vibes.
+
+Why &quot;augmented runtime distribution&quot;? Because that&#x27;s what it actually is.
+It&#x27;s not an OS because CircuitPython already runs on top of a RTOS. It&#x27;s not 
+a shell because we still use the original REPL to do things. It is, however, 
+a set of component and applet modules which allow you to build, among other 
+things, a custom shell (or any chat-like UI) tailored to your particular 
+needs. This set augments the existing Python runtime to make it much easier, 
+hence the name.
+
+A large portion of T-DeckARD doesn&#x27;t even require CircuitPython to run. You
+can use some modules in MicroPython or even in the &quot;desktop&quot; CPython 
+distribution. This allows for easier applet prototyping without having to 
+transfer code to the device every single time. One of my goals, however, is 
+to make T-DeckARD reach the levels of not having to ever use a host PC for 
+development at all. For instance, it already has a simple text editor 
+(supporting a subset of POSIX ed commands) and a paged text viewer with 
+optional line numbering. So, in theory, I can already write 
+T-DeckARD-compatible Python code on a T-Deck itself. Without a PC, I can&#x27;t 
+upload it anywhere though yet. Well, that&#x27;s one of my next targets to reach.
+
+Overall, having a REPL as your primary shell activates a creative portion of
+your mind and motivates you to make everything easier to interact with. 
+That&#x27;s the part of the process I was talking about earlier. DIY or die.
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/t-deckard
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-12-15-creativity-vs-consumption-again.txt</link>
 <title>(2025-12-15) Creativity vs. consumption, again</title>
 <description><![CDATA[<pre>
@@ -18357,6 +18406,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
