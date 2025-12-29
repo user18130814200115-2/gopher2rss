@@ -5,6 +5,29 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2025-12-29-end-of-year.txt</link>
+<title>(2025-12-29) End of year… again</title>
+<description><![CDATA[<pre>
+(2025-12-29) End of year… again
+-------------------------------
+Another difficult year has passed. I don’t do anything like “wrapped” or
+“conclusions”, just trying to survive among this madness with no long-term 
+planning.
+
+Nevertheless, T-DeckARD is under active development and turning into more of
+a “shell within a shell” than just a set of library components. Another 
+thing I’m also creating is a “mini-web” format called DeckText, which is a 
+valid subset of HTML and can be served via the usual HTTP protocol, however, 
+it’s much easier to parse and work with on minimalistic line-oriented 
+environments like… well… CircuitPython on a T-Deck. And the content in this 
+format is following soon.
+
+With a glimmer of hope, I wish y&#x27;all best of luck in the new year!
+
+--- Luxferre ---
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-12-22-repl-more-than-enough.txt</link>
 <title>(2025-12-22) When a REPL is more than enough</title>
 <description><![CDATA[<pre>
@@ -18406,6 +18429,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
