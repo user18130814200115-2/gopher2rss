@@ -5,6 +5,87 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2026-01-05-discovered-new-game.txt</link>
+<title>(2026-01-05) Discovered a game potentially even better than Bulls and Cows</title>
+<description><![CDATA[<pre>
+(2026-01-05) Discovered a game potentially even better than Bulls and Cows
+--------------------------------------------------------------------------
+Picture this game.
+
+* You start with 20 HP, which is your maximum health, and your mission is to
+clear a 44-card dungeon (deck) room by room, without your health reaching 
+zero. The deck is the standard 52-card deck minus all red face cards and red 
+aces (and any jokers). You&#x27;ll also need a way to keep track of your health.
+* Every room is dealt from the top of the deck and consists of four cards.
+You have two choices: engage with the room or run away, but you cannot run 
+away twice in a row or if you already engaged with the room.
+* If you choose to run, all room cards are shuffled and put to the bottom of
+the deck, and an entirely new room is dealt.
+* If you choose to engage, you have to interact with three out of the four
+room cards, and the remaining card stays for the next room. You can choose 
+the cards to interact with in any order you want.
+* In the room, you may encounter a monster (any clubs or spades from 2 to A),
+a weapon (diamonds from 2 to 10) or a potion (hearts from 2 to 10). The item 
+level is 2 to 10 for number cards, 11 for J, 12 for Q, 13 for K and 14 for A.
+* If interacting with a potion card, you &quot;drink&quot; it and increase your HP by
+its value, but the max health still remains 20. Then you discard the potion 
+card.
+* In a single room, only one potion card may be used. If you have to interact
+with another one, it must just be discarded.
+* If interacting with a weapon card, you &quot;equip&quot; it, discarding any previous
+weapon you had. Your weapon also has durability value, meaning the maximum 
+level of monsters you may use it on. For any newly equipped weapon, the 
+durability is 14.
+* If interacting with a monster card, you &quot;fight&quot; it and discard it. You may
+choose to fight it barehanded or with your weapon.
+* If fighting barehanded OR your weapon&#x27;s durability is lower than the
+monster level, you take full damage and just subtract the monster level from 
+your HP.
+* If fighting with your weapon AND its durability is higher than or equal to
+the monster level, you take the damage equal to (monster level - weapon 
+level), taking no damage if the weapon level is higher than the monster 
+level, AND then set the durability to (monster level - 1).
+* When playing with a physical deck, durability tracking is like this: you
+put the monster card on the side of your equipped weapon card so that you 
+can see that you&#x27;re only allowed to fight monsters weaker than you&#x27;ve last 
+slain with this weapon. In this case, when a new weapon is equipped, the old 
+weapon card is discarded along with all slain monsters.
+* Once all three out of four items in the room have been interacted with,
+three new cards are dealt from the deck and you repeat the process in a new 
+room.
+
+What I&#x27;ve just described (omitting the endgame scoring system, which is not
+really necessary here) is the entire ruleset ([1]) of a roguelike solo card 
+game called Scoundrel, designed by Zach Gage and Kurt Bieg in 2011. What&#x27;s 
+remarkable is that, for such a simple ruleset, there really is a lot going 
+on. The gameplay is dynamic and quite challenging, sometimes making you 
+think a lot about your choices. For example, if you see a 10-level weapon in 
+the room but no 11 to 14-level monsters, should you really pick it up? Will 
+you be able to save it for when it&#x27;s really needed? From the mind-training 
+perspective, I think this game can hardly get boring anytime soon.
+
+From the coding perspective, this game was a breeze to implement in
+CircuitPython for my T-DeckARD project ([2]) but I already have started 
+porting it to pure C to polish the algorithmic part. With how 
+straightforward the ruleset is, Scoundrel has plenty of portability 
+potential, almost as much as Bulls and Cows have. I have some doubts about 
+whether it can fit onto calcs like HP 12C (considering how much my Bulls and 
+Cows port weighs there), but on a TI-74S it surely can.
+
+So, it&#x27;s fun to play even without electronics, easy to code if you have some
+electronics, eats no resources and can be recreated from memory on almost 
+any medium. I think that&#x27;s the real entertainment gift I was looking for.
+
+Happy new year!
+
+--- Luxferre ---
+
+[1]: http://stfj.net/art/2011/Scoundrel.pdf
+[2]:
+https://codeberg.org/luxferre/t-deckard/src/branch/master/game/scoundrel.py
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2025-12-29-end-of-year.txt</link>
 <title>(2025-12-29) End of year… again</title>
 <description><![CDATA[<pre>
@@ -18429,6 +18510,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
