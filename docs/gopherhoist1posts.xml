@@ -5,6 +5,74 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2026-01-12-how-i-wrote-my-first-nes-game.txt</link>
+<title>(2026-01-12) How I wrote my first Famicom/NES game and why it can be fun</title>
+<description><![CDATA[<pre>
+(2026-01-12) How I wrote my first Famicom/NES game and why it can be fun
+------------------------------------------------------------------------
+In my first post of the year, I had described a recently discovered roguelike
+card came called Scoundrel and how I began porting it everywhere. 
+Famicom/NES, however, remained one of my goals that seemed unreachable. 
+Well, in fact, provided everything had been done right from the beginning, 
+that goal turned out to be much closer than it appeared.
+
+NES development is often associated with bare 6502 assembly, loads of sprite
+and sound design and a lot of tedious work that can only be supplanted with 
+proprietary, vendor-locked constructors like NESmaker. However, all of that 
+is not entirely true. In fact, you can create a game for Famicom/NES 
+completely for free, without drawing a single sprite or writing a single 
+assembly line. Yes, you still will need to know some hardware internals and 
+you&#x27;ll be limited to 32x28 text mode (unless you opt for 64x56 TGI mode 
+which is rather slow and not worth exploring), but other than that, you can 
+code for NES in pure C, which is exactly what I&#x27;ve done when porting 
+Scoundrel to this platform. The repo, by the way, is in the same place as 
+before ([1]), and the &quot;Releases&quot; section now contains ROMs for every 
+currently ported retro platform, including Famicom/NES in NTSC mode.
+
+So, what did I start with? I started with the standard ANSI C code that I
+already had but, of course, all input/output had to be revamped entirely. 
+So, I designed a title screen, a main scene and a win screen. By the way, 
+have you ever wondered why so many games even have a title screen, like, are 
+there any technical needs to have it besides just eye candy? Turns out there 
+exists at least one: randomization. As the console itself doesn&#x27;t have any 
+independent clock or other internal entropy sources, the only way to collect 
+this entropy is to capture an exact moment of button presses. When we wait 
+for a press, we just increment a counter which is 16-bit by nature and wraps 
+many times over. When the player presses Start, we use this counter value to 
+seed our PRNG. Not ideal (out of the entire 44! ways to shuffle the deck at 
+the start of the game, we essentially only have 65536) but I think I can 
+address this in the future versions, for instance, by collecting more 
+entropy into the pool and shuffling the deck next time using the values from 
+this pool. Anyway, this is partially why so many NES games have a title 
+screen.
+
+For the controls, Scoundrel is an ideal game for a gamepad: select one of the
+four room items with the D-pad and run (if possible) with any other button. 
+Whenever a confirmation is required (e.g. to use your weapon or to restart 
+the session), A confirms and B declines. Start exits the session 
+immediately. To accomodate this UX, I&#x27;ve designed the main screen to have 
+the items laid out in a D-pad-like shape and the stats displayed to the 
+right of it. Coloring limitations (you can only color 4x4 character areas at 
+a time) also dictated where I should place all those elements.
+
+Finally, I needed to make some sound. An entire music driver is too overkill
+for me yet, so I settled upon short, 3- or 6-note jingles, playing each one 
+on both pulse channels for every kind of in-game event. Maybe some sound 
+design connoisseurs won&#x27;t like what I came up with, but I think these 
+jingles perfectly match the entire setting and atmosphere.
+
+I can say this has been an awesome experience and I hope this is not the last
+Famicom/NES game of mine. Why else would I offload all the tedium into the 
+eznes.h header file, if not to reuse it somewhere else? Time will tell. 
+Please take some time to play my Scoundrel port, maybe it will inspire you 
+to do even better.
+
+--- Luxferre ---
+
+[1]: https://codeberg.org/luxferre/scoundrel-ports
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2026-01-05-discovered-new-game.txt</link>
 <title>(2026-01-05) Discovered a game potentially even better than Bulls and Cows</title>
 <description><![CDATA[<pre>
@@ -18510,6 +18578,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
