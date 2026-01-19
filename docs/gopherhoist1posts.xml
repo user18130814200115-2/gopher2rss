@@ -5,6 +5,33 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2026-01-19-short-update.txt</link>
+<title>(2026-01-19) A rather short update: Scoundrel will be ported to GB</title>
+<description><![CDATA[<pre>
+(2026-01-19) A rather short update: Scoundrel will be ported to GB
+------------------------------------------------------------------
+Game Boy is one of the platforms that I technically have all the capabilities
+to port to but that I completely overlooked when porting Scoundrel to 
+Famicom/NES. I&#x27;m going to leverage Z88DK&#x27;s functionality to do so within a 
+week or even earlier. Sound support, however, is going to be subject to 
+separate research.
+
+Also, I&#x27;m still planning to port Joker Jailbreak and Bulls&amp;Cows to T-DeckARD
+and start implementing something completely new, like Gin Rummy Solo mode. 
+That is, if I find enough capacity to do all that.
+
+Other than that, no news to report today. Work is a bit pressing, so little
+time left for hobbies. Some intermediate stuff and thoughts will be posted 
+on [1], as usual, but no global changes just yet.
+
+Stay tuned!
+
+--- Luxferre ---
+
+[1]: https://lynx.luxferre.top
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2026-01-12-how-i-wrote-my-first-nes-game.txt</link>
 <title>(2026-01-12) How I wrote my first Famicom/NES game and why it can be fun</title>
 <description><![CDATA[<pre>
@@ -18578,6 +18605,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
