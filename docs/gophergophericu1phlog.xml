@@ -5,6 +5,55 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Importance-of-small-wins.md</link>
+<title>Importance of small wins                                   2026-01-24</title>
+<description><![CDATA[<pre>
+# Importance of small wins
+
+Life has a way of kicking you when you are down and seemingly with
+age there appears to be an increase in the frequency of negative
+events.
+
+I feel that morale is extremely important to maintain, for otherwise
+one might find themselves on a downward spiral to some very dark
+place.
+
+It is important to have activities or hobbies which bring some solace
+, feeling of connection with others and gratification.
+
+As individuals what brings those feelings will differ, but ultimately
+I think those are the things we should pursue to bolster our spirits.
+
+
+## Electronic kit (Morse Keyer)
+
+I finished building an electronics kit yesterday. This is the first
+one I have ever built, although I have soldered components on various
+circuit boards many times before.
+
+It caused me some difficulties. I had two or three dry solder joints,
+there was a resistor missing from the kit and I thought I had
+probably cooked the variable resistor by trying to fix one of the dry
+joints. 
+
+I persevered however, and early this morning completed the soldering
+of all the components. On putting in the batteries it chirped out
+&quot;73&quot; in CW, signalling that it was working and ready for use.
+
+Connecting up a single paddle key to the keyer and sending a few
+characters resulted in nice crisp CW tone. I enabled the morse tutor,
+which fires call-signs at you to reply to and lets you know if you
+were right or wrong. It repeats the call-sign until you get it right.
+I then recorded my CQ call in one of the 4 available memory slots. It
+was a great feeling to have successfully assembled the kit. 
+
+Encouraged by this small win, maybe I will build something else when
+the need arises. I won&#x27;t be building kits for the sake of it, but
+it&#x27;s nice to know that I can do it.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Money-saving-and-minimalism/Generic-batteries.md</link>
 <title>Generic batteries                                          2025-11-24</title>
 <description><![CDATA[<pre>
@@ -9093,6 +9142,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
