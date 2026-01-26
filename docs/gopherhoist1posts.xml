@@ -5,6 +5,26 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2026-01-01-26-first-break.txt</link>
+<title>(2026-01-26) First long break in the year 2026</title>
+<description><![CDATA[<pre>
+(2026-01-26) First long break in the year 2026
+----------------------------------------------
+Once again, the amount of work and personal stress becomes a bit overwhelming
+for me to write longreads for this phlog. I hope to recover by the end of 
+winter, so will reappear here on March 2 if everything is OK.
+
+Meanwhile, you can read my microblog at [1] (compatible with any TUI/non-JS
+Web browser) to see some useful stuff and random intermediate thoughts.
+
+See ya in the spring!
+
+--- Luxferre ---
+
+[1]: https://lynx.luxferre.top
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2026-01-19-short-update.txt</link>
 <title>(2026-01-19) A rather short update: Scoundrel will be ported to GB</title>
 <description><![CDATA[<pre>
@@ -18605,6 +18625,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
