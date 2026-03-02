@@ -5,6 +5,71 @@
 <link>gopher://hoi.st/1/posts</link>
 
 <item>
+<link>gopher://hoi.st/1/posts/2026-03-02-im-back.txt</link>
+<title>(2026-03-02) I'm back, let's talk about what's happening</title>
+<description><![CDATA[<pre>
+(2026-03-02) I&#x27;m back, let&#x27;s talk about what&#x27;s happening
+--------------------------------------------------------
+So, spring is here, I&#x27;m still alive and thus back as promised. Over the
+course of the time, you might have seen more daily activity in my 
+Lynx-compatible microblog ([1]), but for those who haven&#x27;t, here&#x27;s briefly 
+what happened:
+
+1. I finally moved from NixOS to Void Linux, and planning to move all my
+remaining machines (except the corporate laptop) to it as well. There were 
+several reasons to do that, but the main essence is that Void gives me much 
+more free space in all senses of this phrase.
+2. I created a couple of new purely shell-based utils that can be found
+inside my sh-goodies ([2]) repo, namely Image Transfer (to replace rusty 
+Caligula) and Mount Manager (as a reliable double to udisks2). Using both on 
+a daily basis, no complaints.
+3. Speaking of rusty, the same sh-goodies repo now also has Rusty Checker
+that allows you to verify whether a FOSS project was written in a particular 
+language (defaults to Rust) without you having to check it out by yourself. 
+Supports GitHub, GitLab and Codeberg.
+4. Inside the same repo, I also created PNGizer (that allows to convert any
+data files to/from a PNG image) and a couple of sterganography experiments, 
+with BlueShift being the most prolific, which I also had created a Web 
+version ([3]) for.
+5. Leaning heavily on the microblogging format, I also made the microblog
+export to a twtxt feed ([4]). Obviously, the feed adheres to the guidelines 
+and links to the full post whenever it exceeds the suggested limits or has 
+multiple lines.
+6. Had to repair someone&#x27;s Casio MTP-1129 running on Miyota 2035 aka Casio
+1330 that had been monkied with before, and was very surprised that the 
+module started fully working only after using my cheap demagnetizer on it.
+7. Learned how to set up a Mumble server, way simpler than I thought.
+8. Reignited my interest in Cistercian numerals.
+9. Figured out how to emulate scrolling with the Logitech Marble Mouse
+trackball.
+10. Moved things around in the room so that now I have much more horizontal
+space to work with, which allowed me to finally dig out my microKORG. The 
+only thing left is finding the time to actually play it...
+11. Last but not least, continuing my ongoing battle with AI-pilled
+colleagues and higher management who want to overengineer everything while 
+saying at the same time that it&#x27;s me who suggests complicated solutions.
+
+Among all these, the item number 5 is probably the most important when it
+comes to the fate of this very phlog. I don&#x27;t want to give up on Gopher but 
+I also don&#x27;t want to keep maintaining several independent blog spaces. I 
+need to think about what to do with that. Maybe, since both of these 
+projects still run on the same VPS, I&#x27;m just going to make things reexported 
+for the Gopher server. In other words, I may keep writing for Gopher 
+exclusively but people will be able to also see whatever is going on in the 
+microblog, without having to actually go outside Gopher.
+
+Technical implementation of all that (without breaking existing things) might
+take some time though. So, be patient. I&#x27;m not going anywhere just yet.
+
+--- Luxferre ---
+
+[1]: https://lynx.luxferre.top
+[2]: https://codeberg.org/luxferre/sh-goodies
+[3]: https://blueshift.luxferre.top
+[4]: https://lynx.luxferre.top/twtxt.txt
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://hoi.st/1/posts/2026-01-01-26-first-break.txt</link>
 <title>(2026-01-26) First long break in the year 2026</title>
 <description><![CDATA[<pre>
@@ -18625,6 +18690,7 @@ For the brave explorers:
 
 </pre>]]></description>
 </item>
+
 
 
 
