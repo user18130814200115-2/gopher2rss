@@ -5,6 +5,105 @@
 <link>gopher://gopher.black/1/phlog</link>
 
 <item>
+<link>gopher://gopher.black/1/phlog/20260405-happy-easter</link>
+<title>2026-04-05 - Happy Easter</title>
+<description><![CDATA[<pre>
+----------------------------------------
+Happy Easter
+April 05th, 2026
+----------------------------------------
+
+Happy Easter, gopher!
+
+I&#x27;ve been on a pretty good run with personal projects and hobbies
+lately. Let me do a little round up!
+
+https://films.tomasino.org
+
+This is my personal film rankings site. I had this idea a while
+back to create a system to track my films and create a master list
+of how I rate them. By using Glicko-2, the chess ELO scoring
+system, I can set films up in little tournaments where they&#x27;re
+paired up 1v1 and I pick which one I prefer. Then the tourney
+scoring rules shift them around with their new chess scores and my
+list gets more accurate over time. I&#x27;ve got this thing set up
+pulling my watched films list from Trakt.tv, and that&#x27;s connected
+to my Plex. So it&#x27;s pretty good at catching most of the films
+I watch automatically. My tourney builder has lots of config
+options, but the defaults are set up to priortize scoring films
+I haven&#x27;t rated much, or lately, so they get pulled into the
+rankings quickly. Also, when I input a new film it gets a baseline
+ELO based on critic rating, so I&#x27;m not scoring everything from 0,
+but drifting it off the norm per my own preferences. I&#x27;m really
+proud of this one.
+
+https://www.hellshexagon.com
+
+Hell&#x27;s Hexagon is another film related site. This is a type of
+six-degrees game where you connect film actors to one another
+through shared films with other actors. Six degrees of Kevin Bacon
+being the original impetus here. This hexagon approach is
+a variant I came up with back in college with friends where you
+need to connect three actors through 3 specific movies in a big
+ring. You can&#x27;t re-use actors or films and you&#x27;re trying to get
+the fewest possible steps to complete the hexagon. It&#x27;s
+six-degrees on hard mode. Try it out! You are allowed to use sites
+like IMDb. That&#x27;s fine. Treat it as open-book. Play with friends.
+It&#x27;s more fun that way. Oh, and I set it up to get harder as the
+days of the week approach Sundays, just like crossword puzzles.
+
+https://coach.tomasino.org
+
+My Writing Coach app is one of the most robust open-source
+projects I&#x27;ve put together lately. It&#x27;s free to sign up, but
+you&#x27;ll want to bring your own API key to one of the major LLM
+providers. The tool will help you through directed practice on
+focused skills to grow in skill at your particular style of
+writing. I built it for myself to level up my own fiction writing,
+but it&#x27;s good at business writing, marketing, grant proposals,
+etc. You can have multiple goals if you want, but each has their
+own pathway to growth. The AI/LLM use is minimal: forming prompts
+into clear english, and formatting the deterministic feedback on
+your writing into cogent forms and markup on your writing. The LLM
+doesn&#x27;t do the grading itself. You can also clone the repo and run
+your own. If you want, you can provide the LLM config for all
+users instead of enabling the per-user API keys. That might be
+nice for a small community.
+
+https://github.com/jamestomasino/beep
+
+Back in the early 2000s there was a project from Nullsoft called
+&#x27;beep&#x27; that made computery noises when you did stuff on your
+computer. The more memory or cpu usage, the more beeps. This is my
+attempt to recreate that effect. It&#x27;s written in Ada, because
+that&#x27;s cool. It works really well on linux. I have a homebrew
+version I&#x27;m working on for MacOS, but it&#x27;s not working well yet.
+I don&#x27;t have a mac, so I&#x27;ve been coding it in the dark and asking
+friends to try it. I think I may have hit the end of that pathway,
+so I&#x27;ll consider that functionality on hold until I can get a Mac
+or someone contributes to the project. Anyway, this is a toy app
+and it doesn&#x27;t do anything other than create fun vibes. Try it
+out! I&#x27;ve not tried it on any BSDs yet. Someone let me know if it
+works.
+
+https://github.com/jamestomasino/vic-cipher
+
+Back in 2008-ish I wrote an encoder/decoder for the VIC Cipher in
+Flash. The guy who wrote the date component i used in the encoder
+reached out recently and asked if i&#x27;d ported it into any modern
+tools. I hadn&#x27;t, so I did. Here it is as an npm package. It&#x27;ll
+work with deno also. It&#x27;s the coolest cipher in my opinion, and
+worth playing with. Since it&#x27;s hand solveable with the right
+instructions, it could make for an awesome thing to include in
+your ttrpg, especially if you use a spy setting. Enjoy.
+
+There&#x27;s also been some work on https://thehierophant.world and its
+related projects. I&#x27;ll have to write more on that subject soon.
+Until then, enjoy the fun stuff!
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.black/1/phlog/20260130-visiting-the-us</link>
 <title>2026-01-30 - visiting the us</title>
 <description><![CDATA[<pre>
@@ -161,6 +260,7 @@ What about you? Are you doing anything with your services?
 
 </pre>]]></description>
 </item>
+
 
 
 
