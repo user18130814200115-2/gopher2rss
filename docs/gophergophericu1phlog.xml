@@ -5,6 +5,70 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Seasoned-technology.md</link>
+<title>Seasoned technology                                        2026-04-14</title>
+<description><![CDATA[<pre>
+# Seasoned technology
+
+I&#x27;ve written on this subject many times, but never before used the
+term &#x27;Seasoned technology&#x27;. This came from reading a recent post[0]
+written by Solderpunk.
+
+Like him, I am firmly with team &quot;salvage computing&quot;. I believe there
+is more than enough capable, functional hardware out there already.
+Building more, however more efficient it claims to be, may not repay
+the energy and resource debt from its manufacture during its lifetime.
+
+
+## Use or repurpose what you have
+
+What is already in our hands, cupboards and loft spaces, creates
+no further drain other than powering it and the occasional repair.
+
+This also brings me to another point regarding modern hardware.
+Circuit integration and modern manufacture methods make some DIY
+repairs now practically impossible, you are basically buying
+disposable items which is without doubt the worst kind of waste
+generation.
+
+Obsolescence is planned by manufacturers so that they can keep the
+churn of selling you replacement items every few years.  Your systems
+are effectively poisoned by updates over their lifetime, slowing
+them down, and then finally abandoned by the lack of software updates
+to leave you with little choice but to upgrade to the latest
+iteration.
+
+General purpose computers, which provide you with some level of
+choice over what operating system and application software you run,
+are certainly the best long term investment. Phones and tablets are
+perpetually on borrowed time and that time becomes shorter and
+shorter with each iteration.
+
+For myself it was difficult to find a happy medium, small foot-print,
+some level of component replaceability, low power consumption but
+sufficient processing power to run a modern web browser.
+
+
+## Choices
+
+I have for now settled on the HP T620/T630 thin clients as the right
+balance for my present computing needs. I own one of each, both
+purchased used for not very much money. The T630 is my daily driver,
+the T620 was my previous and now backup.
+
+I no longer purchase tablets or smart phones. The Nokia E72 is my
+every day carry. It&#x27;s not particularly good at anything by modern
+standards but, provides phone and text functionality, satellite
+navigation at a push and is a reasonable mp3 player.
+
+The important thing I guess is to consider your needs and choose
+devices that meet them.  Not be driven by marketing, planned
+obsolescence and FOMO.
+
+[0]( gopher://zaibatsu.circumlunar.space/0/~solderpunk/phlog/lateral-thinking-with-withered-technology.txt )
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Distraction.md</link>
 <title>Distraction                                                2026-03-12</title>
 <description><![CDATA[<pre>
@@ -9201,6 +9265,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
