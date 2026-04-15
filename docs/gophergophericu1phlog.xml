@@ -5,6 +5,97 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/vim-no-more.md</link>
+<title>vim no more                                                2026-04-15</title>
+<description><![CDATA[<pre>
+# vim no more
+
+It&#x27;s true. For some reason rumours of vim becoming a vibe coding
+project, after the untimely passing of project leader Bram Moolenaar,
+have made me again take a look at my most enduring piece of software.
+
+
+## The religion of vim
+
+People feel very strongly about their choice of editor, and I get
+it.  When your job is writing and editing code, you are spending a
+significant amount of your life with your editor and people can
+become religiously fanatical about them. I was one of those people.
+
+However, sometimes circumstances change, perceptions change, you
+see other options and maybe greener grass beyond your current
+border. 
+
+I was never truly comfortable in vim and I could never quite put
+my finger on why. So strong is my modal consumption that practically
+every application I use supports modal editing and vim keys, even
+my shell. So why couldn&#x27;t I modal edit the vim command prompt...
+
+It was only when I came to use vis that I finally felt that disconnect,
+gone. Having also seen the magic of sam command language[0] some
+months ago, the writing was already on the wall. However, because
+of my attachment to vim it has taken until now to fully let go.
+
+
+## My kingdom for a spellchecker
+
+Finally I was able to move on after finding a spell check plugin[1],
+that was the one thing holding me back as these days I do a lot
+more writing than coding. Today I made a little effort to look and
+found one that could easily be used by copying it into your
+~.config/vis/plugins directory and adding require(&#x27;plugins/spellcheck&#x27;)
+to your ~.config/vis/visrc.lua file. aspell too was required to
+make the magic happen.
+
+Usage is pretty simple:
+  
+* To enable highlighting of misspelled words press &lt;Ctrl-w&gt;e in
+normal mode.
+* To disable highlighting press &lt;Ctrl-w&gt;d in normal mode.
+* To toggle highlighting press &lt;F7&gt; in normal mode.
+* To correct the word under the cursor press &lt;Ctrl+w&gt;w in normal mode.
+* To ignore the word under the cursor press &lt;Ctrl+w&gt;i in normal mode.
+* To add the word under the cursor to the user dictionary press
+&#x27;&lt;Ctrl+w&gt;a&#x27; in normal mode.
+
+
+## Customisation&#x27;s
+
+vim is almost a lifetime study, with the vast amount of possible
+customisation&#x27;s and plugins. I had a lot of customisation&#x27;s for various
+projects over time and for specific file types. Most of them now
+seldom used or easily replaced by a simple external function call.
+
+I had a one liner I would use to generate pdf files from within vim:
+	:w !pandoc -f markdown -s -o %:r.pdf
+
+Essentially all this did is create a pdf file with the same name
+as that I was editing but with the suffix replaced with .pdf
+
+This is now replaced by a rc shell function:
+	fn PDF { pandoc -f markdown -s -o `{ echo $vis_filepath | sed -E &#x27;s/\.[a-zA-Z0-1]+$/.pdf/&#x27; }}
+
+which allows me to execute the following from within the vis editor:
+	:% &gt; PDF
+
+
+## A few words of warning 
+
+There&#x27;s a lot there to lead your muscle memory into believing you
+are using vim. It is not, although a lot of vim functionality exists.
+It is a modern re-imagining with features and methodology more
+familiar to users of sam.
+
+If you wish to broaden your horizons and view it with fresh eyes,
+then it could be for you. If you are a vim zealot, then probably
+not.
+
+[0]( https://doc.cat-v.org/bell_labs/sam_lang_tutorial/sam_tut.pdf )
+[1]( https://codeberg.org/muhq/vis-spellcheck/src/branch/master/spellcheck.lua )
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Seasoned-technology.md</link>
 <title>Seasoned technology                                        2026-04-14</title>
 <description><![CDATA[<pre>
@@ -9265,6 +9356,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
