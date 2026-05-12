@@ -5,6 +5,35 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Radio/Level-Up.md</link>
+<title>Level Up                                                   2026-05-12</title>
+<description><![CDATA[<pre>
+# Level Up
+
+&gt; To advance or improve oneself, often used in the context of games
+&gt; or personal development. It can refer to enhancing skills, abilities,
+&gt; or status in various aspects of life.
+
+For the last 16 weeks or so I&#x27;ve been studying for my intermediate
+amateur radio license. In the UK licensing is a three tier system
+with varying restrictions. Yesterday I sat and passed the exam.
+
+I have already made the decision to continue studying to achieve
+the full license.
+
+Full license privileges include being able to transmit outside of
+the UK, use club call signs without supervision, access to the 60m
+band and a maximum transmit power of 1kW.
+
+I can&#x27;t ever see myself running that sort of transmit power but,
+not being able to use the club call sign for dependence on others
+has been a recurring irritation. Access to 60m, away from some
+of the general poor operating frequently displayed on other bands,
+should also prove worthwhile.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/vim-no-more.md</link>
 <title>vim no more                                                2026-04-15</title>
 <description><![CDATA[<pre>
@@ -9356,6 +9385,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
