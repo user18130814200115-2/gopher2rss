@@ -5,6 +5,24 @@
 <link>gopher://gopher.black/1/phlog</link>
 
 <item>
+<link>gopher://gopher.black/1/phlog/2017</link>
+<title>2017 Archive</title>
+<description><![CDATA[<pre>
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.black/1/phlog/2021</link>
+<title>2021 Archive</title>
+<description><![CDATA[<pre>
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.black/1/phlog/2022</link>
+<title>2022 Archive</title>
+<description><![CDATA[<pre>
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.black/1/phlog/20260405-happy-easter</link>
 <title>2026-04-05 - Happy Easter</title>
 <description><![CDATA[<pre>
@@ -260,6 +278,7 @@ What about you? Are you doing anything with your services?
 
 </pre>]]></description>
 </item>
+
 
 
 
