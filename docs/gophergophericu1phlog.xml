@@ -5,6 +5,53 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Re:-True-Hacker-Versus-Growth-Hacker.md</link>
+<title>Re: True Hacker Versus Growth Hacker                       2026-07-25</title>
+<description><![CDATA[<pre>
+# Re: True Hacker Versus Growth Hacker
+
+Ben Collver wrote the original text[1] which has compelled me, from my
+recent slumber, to compose this post.
+
+
+## Amateur Radio Enthusiasts - The original hackers
+
+Hams were hackers long before computers were a thing. Older generations
+built their own equipment from scratch, often using salvaged parts.
+Later, post-war generations bought ex-military radio gear and modified
+it for use on the amateur bands.
+
+That ethos is still part of the hobby but, it is dieing. Mainly due
+to the availability of cheap off the shelf solutions, from which
+you learn nothing...
+
+Today, it&#x27;s too easy to buy a solution; to be a consumer rather
+than a creator. The solution, just one click away with next day delivery.
+
+Unfulfilling...
+
+
+## Playful Creativity
+
+You cannot commoditise the flame that burns which drives our curiosity
+or motivates us to create the things we choose to create and no
+purchase will make you something you are not.
+
+For most of us cut our teeth on outdated equipment. Making something
+we could use from someone elses junk or, extending functionality beyond
+the original design. This habit sticks with you.
+
+Creation is a skill and as with all skills, they need to be developed
+with continued learning and practice. 
+
+To *be* or to *buy*, that is the question...
+
+
+[1]( gopher://tilde.pink/0/~bencollver/log/2026-07-22-true-hacker-vs-growth-hacker/readme.txt )
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Heatwave.md</link>
 <title>Heatwave                                                   2026-06-25</title>
 <description><![CDATA[<pre>
@@ -9425,6 +9472,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
