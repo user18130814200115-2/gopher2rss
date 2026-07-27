@@ -5,6 +5,50 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/My-last-android.md</link>
+<title>My last android                                            2026-07-27</title>
+<description><![CDATA[<pre>
+# My last android
+
+A few weeks ago I put my android phone on charge, when I came to
+take it off the thing practically burned my hand. Thankfully, this
+was the last of the Motorola phones that had a removable battery.
+
+So, I pulled the battery and let it cool down. Some time later I
+put the battery back in and the thing started to heat up around the
+camera area.  It would appear there is some kind of internal short
+or high resistance causing it to get extremely hot and it will no
+longer turn on.
+
+This is the second android phone that I&#x27;ve put on charge and has
+died...
+
+
+## Androids of the past
+
+The list of android devices I&#x27;ve owned:
+* 2013 First generation Tesco Hudl (Sold, outdated android version)
+* 2013 Samsung S4 Zoom phone (Died after putting it on charge)
+* 2014 Lenovo YogaTab 2 (Still have it but, outdated android version)
+* 2017 Motorola G5 phone (Died after putting it on charge)
+
+
+## Summary
+
+My daily driver phone continues to be a 2009 [Nokia E72][1], which
+pre-dates all of the above.
+
+The androids I&#x27;ve owned, which have physically continued to work,
+have all become obsolete due to changes in googles API&#x27;s and lack
+of support from the manufacturers. These devices are practically
+disposable and this is not something I&#x27;m comfortable with so, I
+won&#x27;t be buying any more.
+
+[1]: gopher://gopherpedia.com/0/Nokia%20E72
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Radio/Common-mode-choke.md</link>
 <title>Common mode choke                                          2026-07-27</title>
 <description><![CDATA[<pre>
@@ -9559,6 +9603,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
