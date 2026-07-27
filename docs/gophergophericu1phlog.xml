@@ -5,6 +5,93 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Radio/Common-mode-choke.md</link>
+<title>Common mode choke                                          2026-07-27</title>
+<description><![CDATA[<pre>
+# Common mode choke
+
+Yesterday I took delivery of some materials for making / repairing
+antennas. In the order were 2x FT240-43 toroids.
+
+One I plan to use to make a 4:1 balun, which should be fitted to
+the full wave 10m delta-loop in my attic.
+
+Impedance on a loop antenna is around 200ohms and the transceiver
+is expecting nearer 50ohms.  To bring it within tolerance for the
+transceiver you need a 4:1 balun, 200ohms / 4 = 50ohms, you get the
+idea...
+
+
+The other I had decided to use for a common mode choke, to keep
+common mode noise out of my rig and RF out of my home. These are
+expensive to buy and easy to make.
+
+A large type 43 toroid, some RG58 coaxial cable and a couple of
+cable ties is all you need[1].
+
+[1](gopher://gopher.icu/I/images/common-mode-choke.jpg)
+
+</pre>]]></description>
+</item>
+<item>
+<link>gopher://gopher.icu/1/phlog/Radio/McElroy-Bug-Key-Project.md</link>
+<title>McElroy Bug Key Project                                    2026-07-27</title>
+<description><![CDATA[<pre>
+# McElroy Bug Key Project
+
+Like I don&#x27;t have enough projects of my own, sometimes I inherit
+the projects of others.
+
+This was the case with my 1934 McElroy mechanical telegraphy key[1].
+It was gifted to me by its former keeper who, I think, wanted to
+see it revived and thought I had the interest and skills to do it.
+
+Not wanting to look a gift horse in the mouth, I didn&#x27;t really look
+at what I&#x27;d been given until I got home later that day.
+
+It&#x27;s old, well used and it&#x27;s been mostly stripped to its component
+parts[2].
+
+After a general inspection most of it seems to be there but, some
+of it is in desperate need of replacement parts or repair.
+
+[1](https://morsemad.com/mc_files/mc063.jpg)
+[2](gopher://gopher.icu/I/images/McElroy/P1010341-sml.JPG)
+
+
+## Things needing attention
+
+The spring steel which joins the control linkage to the pendulum
+has broken[3] and the broken part has been lost so, I don&#x27;t know
+it&#x27;s original length. There is however still part of the steel
+riveted inside one of the parts that I can check with a micrometer
+for thickness, once I&#x27;ve removed the rivets...
+
+The rivets appear to be aluminium and so should only require some
+careful drilling of the rolled edge before I can drift them out.
+
+
+The rubber feet have turned to a stone like consistency. Unfortunately
+whoever removed them sheared one of the screws almost flush in the
+cast iron base[4]. This will probably be the most difficult thing
+to rectify without doing any damage.
+
+Suitably sized replacement feet are already on order. They are not
+an exact match for the originals but will be close enough for me.
+
+
+The various pivot points appear to be very worn and in some cases
+the wall of hollowed screws have broken away. I&#x27;m not quite sure
+yet how I will fix these, possibly by simply grinding down the
+height; if there is sufficient material to allow it.
+
+[3](gopher://gopher.icu/I/images/McElroy/P1010340-sml.JPG)
+[4](gopher://gopher.icu/I/images/McElroy/P1010342-sml.JPG)
+
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/Re:-True-Hacker-Versus-Growth-Hacker.md</link>
 <title>Re: True Hacker Versus Growth Hacker                       2026-07-25</title>
 <description><![CDATA[<pre>
@@ -9472,6 +9559,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
