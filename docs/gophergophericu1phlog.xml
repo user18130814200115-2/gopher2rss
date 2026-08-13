@@ -5,6 +5,107 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/In-hope-of-a-digital-arts-and-crafts-movement.md</link>
+<title>In hope of a digital arts and crafts movement              2026-08-13</title>
+<description><![CDATA[<pre>
+# In hope of a digital arts and crafts movement
+
+We are witnessing the industrialisation of the digital realm.
+LLMs and generative AI are the looms of the 2020&#x27;s.
+
+
+I see many complaints of the current digital dystopia. AI slop and
+pressure to use assistive tools for coding. If it&#x27;s your job then
+the pressures can be difficult to withstand.
+
+The tools I have chosen to do my job have always been my choice. I
+remember times when I&#x27;ve had job interviews and specifically asked
+if I could choose the operating system I would use. When told I
+would have to use Windows, I have politely declined.
+
+It seemed ridiculous to be using open source technologies to provide
+online services and for development but, required to use a Windows
+desktop to interact with them.
+
+
+Programming is no longer my job but, I still enjoy the occasional
+programming challenge. I don&#x27;t make it easy for myself by using
+what I&#x27;m most comfortable with, that would be to use Perl. 
+
+For a while I have been deliberately constraining myself to shell,
+awk and sed. There&#x27;s a lot that can be done with these powerful
+tools and they are often overlooked.
+
+Recently my endeavours have been to make simplistic versions of
+some packaged software, which would do far more than I need. 
+
+Off the shelf solutions contain a multitude of options, and complexity,
+catering to the desires of many. My needs are simple and so too are
+my solutions.
+
+The art is to get the needed functionality out of the minimum of code
+and effort. Deliberate constraint leads to novel solutions.
+
+
+## Amateur radio logbook
+
+The most recent example is my amateur radio logbook. You could
+hardly call it a piece of software. The data is stored in a TSV
+file and is entered via a shell function &#x27;LG &lt;CALLSIGN&gt;&#x27;.  This
+writes a UTC timestamp, callsign and data from my transceiver (mode,
+band and frequency), using the rigctl program, to the TSV file.
+After which it opens the TSV file in my text editor at the last
+entry, so that I can add a signal report and any comments about the
+contact. I then save and exit the file.
+
+To look for previous contacts I can do partial match search using
+another shell function &#x27;LF &lt;CALLSIGN&gt;&#x27; which will list any matches.
+
+It&#x27;s all just shell, awk and sed.
+
+Other examples include my [password manager][1] and [gopher server][2].
+
+[1]: gopher://gopher.icu/0/phlog/Computing/password-store.md
+[2]: gopher://gopher.icu/0/phlog/Computing/rc-shell-and-new-gopher-server.md
+
+
+## What I like about gopher and amateur radio
+
+I like that people are largely willing to have a go at making things
+for themselves and share what they learn. That is the reason I
+document a lot of my projects, they may be of use to someone trying
+to do something similar or even just give them some inspiration.
+
+I&#x27;ve made no secret of the fact that I have borrowed from a lot of
+people in the gopher space. People like Matto, Ben Collver and Jay
+Scot have been an inspiration and source of ideas for a number of
+changes to my gopher space and small programming projects.
+
+These are real people who I have exchanged emails with over time
+and although contact is not frequent, it is valuable when there is
+occasion for it. There remains a sense of community spirit.
+
+
+## Made by people for people
+
+We are becoming dependent on governments and faceless multinationals
+with nefarious intent. 
+
+With every technological advancement in our digital realm, I feel
+like our freedom is being eroded and that we are no longer benefactor
+but a slave to it.
+
+I feel that I&#x27;m grasping onto whatever control of my own destiny
+that I can. If that means maintaining my own software stack and
+holding onto ageing technology then so be it but, I don&#x27;t feel that
+I am alone.
+
+Keep the the art of programming alive and remember that, it is meant
+to make our lives better not worse. To serve, not to enslave.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/My-last-android.md</link>
 <title>My last android                                            2026-07-27</title>
 <description><![CDATA[<pre>
@@ -9603,6 +9704,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
