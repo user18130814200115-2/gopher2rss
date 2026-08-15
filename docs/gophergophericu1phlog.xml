@@ -5,6 +5,75 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Radio/Ghetto-knurling.md</link>
+<title>Ghetto knurling                                            2026-08-15</title>
+<description><![CDATA[<pre>
+# Ghetto knurling
+
+This is related to the restoration of the bug key but maybe
+worth a mention of its own.
+
+Due to having to replace one of the pivot bars, I ran into an issue.
+I can replace the bar, the bar is 1/8&quot; diameter and can be found
+fairly easily in a number of materials. But, the original is straight
+knurled, which expands the rod diameter slightly so that it will
+sit tightly in the hole and not move.
+
+It&#x27;s a process usually performed on a lathe by applying a toothed
+tool under pressure to the piece while it is being rotated.
+
+I don&#x27;t own or have access to a lathe...
+
+So, as any good researcher does, I spent an hour or watching
+youtube videos on knurling and the various methods people had
+employed.
+
+The distillation of what I saw is that, you need to apply pressure
+and have a hardened tool to press into the rod.
+
+
+## The plan
+
+Based on all I&#x27;d seen up to that point, I hatched a plan.
+
+My first choice for applying mechanical pressure, in my limited
+workshop, is a vice. As you may remember, I recently used it to
+press out a pivot rod from the McElroy key.
+
+In one of the videos I&#x27;d seen someone use a file, please don&#x27;t
+follow their example and start hammering your files. Tools should
+be respected and used for their intended purpose. Screwdrivers are
+not chisels, files are not knurling tools... or are they?
+
+Picture this. You can&#x27;t rotate a file under pressure, it&#x27;s flat.
+However, if you can turn the round work piece while maintaining
+pressure then you can use the bite into the steel to drive it along
+like a rack and pinion. I just needed a bearing, of sorts, either
+side of the rod.
+
+I went searching and found a couple of old skateboard bearing
+spacers.  It would probably have been better if I could have found
+the bearings but, these would do for a proof of concept.
+
+I got myself a 6&quot; nail and put the spacers over it, I put a flat
+file edge on between the spacers up against the nail. On the file
+side I put a fibre jaw cover so as to not damage the jaw teeth or
+the file. I tightened it down by feel and found a tap tool that
+would fit over and clamp onto the shaft of the nail and tightened
+it up to give a good grip.
+
+I then proceeded to turn the shaft and try as best I could to keep
+the rod at 90 degrees to the file. Once I&#x27;d turned it back and forth
+a few times and was certain I&#x27;d gone 360 I removed the ![piece][1]
+from the vice.
+
+I love it when a plan comes together...
+
+[1]: gopher://gopher.icu/I/images/ghetto-knurl.jpg
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Philosophical-ramblings/In-hope-of-a-digital-arts-and-crafts-movement.md</link>
 <title>In hope of a digital arts and crafts movement              2026-08-13</title>
 <description><![CDATA[<pre>
@@ -9704,6 +9773,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
