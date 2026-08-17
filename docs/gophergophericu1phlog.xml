@@ -5,6 +5,12 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/I-know-vi(m)--Show-me!.md</link>
+<title>I know vi(m)  Show me!                                     2026-08-17</title>
+<description><![CDATA[<pre>
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Radio/Ghetto-knurling.md</link>
 <title>Ghetto knurling                                            2026-08-15</title>
 <description><![CDATA[<pre>
@@ -9773,6 +9779,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
