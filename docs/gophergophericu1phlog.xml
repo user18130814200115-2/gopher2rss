@@ -5,6 +5,48 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Gopher-proxies--Fair-Warning!.md</link>
+<title>Gopher proxies  Fair Warning!                              2026-08-17</title>
+<description><![CDATA[<pre>
+# Gopher proxies  Fair Warning!
+
+I&#x27;ve noticed a lot of repeated connections to my gopher server from
+certain IP addresses. They appear to be junk, the sort of thing
+that you repeatedly get hammering your HTTP server.
+
+On further investigation into one such host, they are running a
+web&lt;-&gt;gopher proxy.
+
+
+## Why I am on gopher (*warning* controversial material!)
+
+I moved to gopher after a career in IT dealing with web technologies,
+web servers and all the associated crap therein. I&#x27;d had enough so,
+the last thing I want to see is the web creeping into my happy
+place.
+
+*Web to gopher proxies are an abomination!* If someone is too
+lazy/retarded to install a gopher client then they don&#x27;t belong
+here.  By building web proxies all you are doing is facilitating a
+bridge for the unwashed hordes of AI bots and scrapers into our
+sacred space.
+
+Proxies also anonymise the originating host so that I cannot deal
+with them individually.
+
+
+## What to do?
+
+I am here by giving *fair warning* that if I see such junk originating
+from your IP address, and find that you are running a proxy, you
+will be added to my IP blacklist along with all the other junk from
+the web.
+
+Thank you for your attention.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/I-know-vi(m)--Show-me!.md</link>
 <title>I know vi(m)  Show me!                                     2026-08-17</title>
 <description><![CDATA[<pre>
@@ -9779,6 +9821,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
