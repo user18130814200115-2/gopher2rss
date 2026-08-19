@@ -5,6 +5,37 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/Cleaning-house.md</link>
+<title>Cleaning house                                             2026-08-19</title>
+<description><![CDATA[<pre>
+# Cleaning house
+
+It&#x27;s been a while since I did any analysis of my gopher logs and,
+I wasn&#x27;t happy with what I found. There has been ongoing abuse from
+several hosts.
+
+The admin of the envs.net pubnix has been informed that both their IPv4
+and IPv6 addresses have been blacklisted due to persistent abuse and has
+been provided with all the log files to back it up.
+
+Should they decide to take action to deal with the the abuse and remove
+the culprits from their system, then I will reconsider the blacklist.
+
+
+I expect better from pubnix and smol-net folks, sadly on more than
+one occasion I have been disappointed...
+
+When I become aware of such abuses, the result is a persistent pf
+blacklist of your host address. 
+
+
+My writing, code and services are all provided freely with hosting
+paid for out of my own pocket. All I ask in return is a little
+respect for my infrastructure.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Gopher-proxies--Fair-Warning!.md</link>
 <title>Gopher proxies  Fair Warning!                              2026-08-17</title>
 <description><![CDATA[<pre>
@@ -9821,6 +9852,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
