@@ -5,6 +5,39 @@
 <link>gopher://gopher.icu/1/phlog</link>
 
 <item>
+<link>gopher://gopher.icu/1/phlog/Computing/No-more-gutenberg-gopher.md</link>
+<title>No more gutenberg gopher                                   2026-08-23</title>
+<description><![CDATA[<pre>
+# No more gutenberg gopher
+
+Unfortunately Project Gutenberg have now shut down their gopher
+server rendering my unofficial Gutenberg search front end to their
+catalogue on gopher useless.
+
+Ben Collver had warned me that this was on the cards but, I had no
+answer at the time how to continue the service. Ben mentioned that
+their catalogue was available to rsync but that it contained several
+terabytes of files.  I just don&#x27;t have the storage capacity to hold
+a mirror that I could make accessible via gopher.
+
+Suggestions would be appreciated.
+
+
+I have already lost two other gopher services due to API changes
+or shutdown of services. 
+
+The weather info for my location, that I had for some time displaying
+ascii weather forecast images, provided by the Met Office. I signed
+up to their new Free-Plan but, couldn&#x27;t find a comparable data set
+to the one I had been using. Also the pod cast search API I was
+using has closed down and again, I couldn&#x27;t find something to easily
+replace it.
+
+Dependence on third parties is always a problem.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.icu/1/phlog/Computing/Cleaning-house.md</link>
 <title>Cleaning house                                             2026-08-19</title>
 <description><![CDATA[<pre>
@@ -9852,6 +9885,7 @@ Example usage:
 [2](gopher://gopher.icu/0/files/degopher.awk)
 </pre>]]></description>
 </item>
+
 
 
 
