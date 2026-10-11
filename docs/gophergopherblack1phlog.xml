@@ -5,6 +5,133 @@
 <link>gopher://gopher.black/1/phlog</link>
 
 <item>
+<link>gopher://gopher.black/1/phlog/20261011-what-i-m-doing-at-work</link>
+<title>2026-10-11 - What I'm doing at work</title>
+<description><![CDATA[<pre>
+----------------------------------------
+What I&#x27;m doing at work
+October 11th, 2026
+----------------------------------------
+
+I don&#x27;t write about work very much. That&#x27;s probably for the best.
+Work is something I do out of need to provide. I have so many
+passion hobbies and interest they should be the focus of my
+writing here. Still, I think I&#x27;m pretty good at my job and I take
+some satisfaction in doing things I think are interesting when
+I can.
+
+As a brief reminder, I work in healthcare marketing. I am
+a managing partner of an agency devoted to that, and my domain is
+what we call Solutions. That includes things like tech, analytics,
+strategy, and media. I&#x27;m responsible for overseeing those things
+at a very strategic level, setting policy, direction, staffing our
+senior team, and playing a role in some of our higher-level client
+relationships. Occasionally I get to play in the weeds, helping to
+craft a program to address as strategic need, or even building
+some custom software.
+
+Right now I&#x27;m working on something that falls in the later
+category. It&#x27;s related to AI (boo). In marketing, you see, we&#x27;re
+very concerned with how to reach audiences with our messaging.
+Whether I&#x27;m talking about a patient and teaching them about
+a savings card program for a drug, or sharing disease state
+information with a doctor on emerging publications, we need to be
+able to get that message to them at the right moment. There&#x27;s
+a lot of systems involved in that, and there&#x27;s no one single
+pathway. One of the major emerging methods is with AI.
+
+When people perform a search on Google, Gemini is there (with
+a weak model) to give an AI answer overview. Believe it or not,
+that has changed the relationship with search engines quite
+considerably on its own. If you consider how many people don&#x27;t go
+to a traditional search engine at all anymore, preferring to ask
+ChatGPT or Claude their questions, that new reality shifts even
+more.
+
+Now this isn&#x27;t an all-or-nothing change. Overall, total search
+volume has increased on the web over the last few years, but
+click-through engagement on branded websites has gone down. The
+difference is hypothesized to live in the AI middle-ground. When
+an LLM gives you an answer, it doesn&#x27;t give you a list of links
+which it&#x27;s determined to have high authority on the subject you&#x27;re
+searching. It gives you an amalgomation of the data it&#x27;s trained
+upon as a direct statement. Instead of links, it gives you
+a narrative.
+
+In the healthcare space this is dangerous for a lot of obvious
+reasons. You don&#x27;t want your machine telling you to eat glue on
+pizza, right? So there was some public outcry when these things
+started, and the AI companys responded by being responsible and
+putting real safeguards in place which source only from the most
+trustworthy information on the--yeah, that&#x27;s bullshit. They
+responded by adding a post-response guard system:
+
+1) Identify that the question relates to a health topic
+
+2) Inject an invisible guard prompt into the LLM to avoid giving
+   dangerous advice that&#x27;s been identified in a previously
+   reported pattern.
+
+3) Read the response text and run a second query out to find
+   citations from a list of trustworthy sources which seem to
+   related to the content being shown.
+
+4) Profit.
+
+Yeah, that&#x27;s right. They make up the citations after the response
+is written. I&#x27;ve got some research that shows between 50-90% of
+medical queries aren&#x27;t fully supported by their citations.
+A Stanford study called it a &quot;facade of trustworthiness&quot;.
+
+So what is impacting the answers? Overwhelmingly it&#x27;s social media
+content, just from sheer volume of information and the structured
+linking of that content being easy to use for training. It&#x27;s also
+frustratingly easy to use social media to poison that AI to say
+what you want[0].
+
+[0] 404 Media article on AI poisoning
+
+So, that sorta sucks, right? For humans, I mean. I hope it gets
+better. I hope the frontier model business structures collapse
+under their own weight, and data center projects fail, and we get
+new leaders who think about more than their own pocket. But that&#x27;s
+not the focus of this post. This is about my capitalism job, where
+I need to figure out how to deal with this changing reality for
+marketing.
+
+So what am I doing? I&#x27;m focusing on the answers the LLMs give us.
+Not the citations they claim, not the number of times key words
+appear, or the sentiment of the posts, but the actual lexicon. I&#x27;m
+comparing that with our other work in Social Listening and media
+reporting, SEO/SEM data, and more. I&#x27;m focused on the public
+narrative being shared by humans and machines about a brand or
+topic. And then I&#x27;m doing real textual analysis work on that
+content to determine if it&#x27;s stable across queries, wording, LLM
+models, channels, and time. I&#x27;m looking at whether it&#x27;s aligning
+with the brand narrative the client is trying to share. Where are
+the gaps?
+
+This lexicon analysis work is fun. There&#x27;s a lot of math and
+figuring out what&#x27;s actually useful is an interesting hard
+challenge. In the end this will surface a new type of landscape
+analysis for our analytics and strategy teams to dig into and plot
+out new marketing efforts. How do we steer those conversations?
+How do we address misinformation? Oh, and this is a real and valid
+use case! My industry is often the subject of deserved criticism,
+but there are legitimately people involved who want to make sure
+factual, well-researched health information is reaching the
+audience.
+
+Anyway, that&#x27;s my latest project. It won&#x27;t be published publicly.
+We&#x27;ll have this as a custom tool we offer to our clients,
+different than the GEO auditing tools out there, and a unique
+value we can bring. Eventually the market will change again, or
+others will start doing something similar, but we&#x27;ll just think
+about what to build next to stay ahead.
+
+</pre>]]></description>
+</item>
+<item>
 <link>gopher://gopher.black/1/phlog/20261008-back-to-cosmic</link>
 <title>2026-10-08 - back to cosmic</title>
 <description><![CDATA[<pre>
@@ -436,6 +563,7 @@ What about you? Are you doing anything with your services?
 
 </pre>]]></description>
 </item>
+
 
 
 
